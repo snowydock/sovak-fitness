@@ -1,0 +1,105 @@
+date,session,exercise,weight_lb,set,reps,set_type
+2026-09-16,Push (old split),Machine Bench Press,150,1,12,working
+2026-09-16,Push (old split),Machine Bench Press,150,2,12,working
+2026-09-16,Push (old split),Machine Bench Press,150,3,12,working
+2026-09-16,Push (old split),DB Lateral Raise,25,1,12,working
+2026-09-16,Push (old split),DB Lateral Raise,25,2,12,working
+2026-09-16,Push (old split),DB Lateral Raise,25,3,2,working
+2026-09-16,Push (old split),Machine OHP,80,1,12,working
+2026-09-16,Push (old split),Machine OHP,80,2,12,working
+2026-09-16,Push (old split),Machine OHP,80,3,12,working
+2026-09-16,Push (old split),Tricep Pushdown,100,1,10,working
+2026-09-16,Push (old split),Tricep Pushdown,100,2,10,working
+2026-09-16,Push (old split),Tricep Pushdown,100,3,9,working
+2026-09-18,Upper B,Machine Bench Press,160,1,10,working
+2026-09-18,Upper B,Machine Bench Press,160,2,10,working
+2026-09-18,Upper B,Machine Bench Press,160,3,10,working
+2026-09-18,Upper B,Seated Cable Row,85,1,12,working
+2026-09-18,Upper B,Seated Cable Row,85,2,12,working
+2026-09-18,Upper B,Seated Cable Row,85,3,12,working
+2026-09-18,Upper B,Straight-Arm Pulldown,80,1,12,working
+2026-09-18,Upper B,Straight-Arm Pulldown,80,2,12,working
+2026-09-18,Upper B,Straight-Arm Pulldown,80,3,12,working
+2026-09-18,Upper B,DB Lateral Raise,20,1,16,working
+2026-09-18,Upper B,DB Lateral Raise,20,2,15,working
+2026-09-18,Upper B,DB Lateral Raise,20,3,15,working
+2026-09-18,Upper B,DB Lateral Raise,20,4,10,working
+2026-09-18,Upper B,Tricep Pushdown,100,1,10,working
+2026-09-18,Upper B,Tricep Pushdown,100,2,10,working
+2026-09-18,Upper B,Tricep Pushdown,100,3,10,working
+2026-09-18,Upper B,Hammer Curl,25,1,10,working
+2026-09-18,Upper B,Hammer Curl,25,2,10,working
+2026-09-18,Upper B,Hammer Curl,25,3,10,working
+2026-09-18,Upper B,Concentration Curl,20,1,10,working
+2026-09-18,Upper B,Concentration Curl,20,2,10,working
+2026-09-18,Upper B,Concentration Curl,15,2,6,drop
+2026-09-20,Lower (partial),Leg Press,220,1,12,working
+2026-09-20,Lower (partial),Leg Curl,90,1,15,working
+2026-09-20,Lower (partial),Leg Curl,90,2,15,working
+2026-09-20,Lower (partial),Leg Curl,90,3,15,working
+2026-09-20,Lower (partial),Leg Extension,110,1,15,working
+2026-09-20,Lower (partial),Leg Extension,110,2,15,working
+2026-09-20,Lower (partial),Ab Wheel,0,1,10,working
+2026-09-20,Lower (partial),Ab Wheel,0,2,10,working
+2026-09-20,Lower (partial),Ab Wheel,0,3,10,working
+2026-09-23,Squat + RDL,Barbell Back Squat,135,1,6,working
+2026-09-23,Squat + RDL,Barbell Back Squat,135,2,6,working
+2026-09-23,Squat + RDL,Barbell Back Squat,135,3,8,working
+2026-09-23,Squat + RDL,RDL,140,1,10,working
+2026-09-23,Squat + RDL,RDL,140,2,10,working
+2026-09-23,Squat + RDL,RDL,140,3,10,working
+2026-09-24,Upper A,Incline DB Press,35,1,10,working
+2026-09-24,Upper A,Incline DB Press,35,2,12,working
+2026-09-24,Upper A,Incline DB Press,35,3,12,working
+2026-09-24,Upper A,Machine OHP,90,1,12,working
+2026-09-24,Upper A,Machine OHP,90,2,12,working
+2026-09-24,Upper A,Machine OHP,90,3,12,working
+2026-09-24,Upper A,Lat Pulldown,100,1,10,working
+2026-09-24,Upper A,Lat Pulldown,100,2,10,working
+2026-09-24,Upper A,Cable Lateral Raise,20,1,10,working
+2026-09-24,Upper A,Cable Lateral Raise,20,2,12,working
+2026-09-24,Upper A,Cable Lateral Raise,20,3,10,working
+2026-09-24,Upper A,Cable Lateral Raise,20,4,10,working
+2026-09-24,Upper A,Overhead Cable Tricep Ext,50,1,15,working
+2026-09-24,Upper A,Overhead Cable Tricep Ext,50,2,15,working
+2026-09-24,Upper A,Incline DB Curl,20,1,10,working
+2026-09-24,Upper A,Incline DB Curl,20,2,12,working
+2026-09-24,Upper A,Face Pull,35,1,15,working
+2026-09-24,Upper A,Face Pull,35,2,15,working
+2026-09-26,Upper B,Machine Bench Press,160,1,12,working
+2026-09-26,Upper B,Machine Bench Press,160,2,12,working
+2026-09-26,Upper B,Machine Bench Press,160,3,12,working
+2026-09-26,Upper B,Seated Cable Row,85,1,12,working
+2026-09-26,Upper B,Seated Cable Row,85,2,12,working
+2026-09-26,Upper B,Seated Cable Row,85,3,12,working
+2026-09-26,Upper B,Straight-Arm Pulldown,80,1,15,working
+2026-09-26,Upper B,Straight-Arm Pulldown,80,2,15,working
+2026-09-26,Upper B,Straight-Arm Pulldown,80,3,15,working
+2026-09-26,Upper B,DB Lateral Raise,20,1,20,working
+2026-09-26,Upper B,DB Lateral Raise,20,2,20,working
+2026-09-26,Upper B,DB Lateral Raise,20,3,16,working
+2026-09-26,Upper B,DB Lateral Raise,20,4,15,working
+2026-09-26,Upper B,Tricep Pushdown,100,1,10,working
+2026-09-26,Upper B,Tricep Pushdown,100,2,12,working
+2026-09-26,Upper B,Tricep Pushdown,100,3,12,working
+2026-09-26,Upper B,Hammer Curl,25,1,12,working
+2026-09-26,Upper B,Hammer Curl,25,2,12,working
+2026-09-26,Upper B,Hammer Curl,25,3,12,working
+2026-09-26,Upper B,Concentration Curl,20,1,12,working
+2026-09-26,Upper B,Concentration Curl,20,2,10,working
+2026-09-26,Upper B,Concentration Curl,15,2,6,drop
+2026-09-30,Lower,Barbell Back Squat,145,1,8,working
+2026-09-30,Lower,Barbell Back Squat,145,2,8,working
+2026-09-30,Lower,Barbell Back Squat,145,3,8,working
+2026-09-30,Lower,RDL,140,1,10,working
+2026-09-30,Lower,RDL,140,2,10,working
+2026-09-30,Lower,RDL,140,3,10,working
+2026-09-30,Lower,Leg Press,220,1,12,working
+2026-09-30,Lower,Leg Curl,100,1,12,working
+2026-09-30,Lower,Leg Curl,100,2,15,working
+2026-09-30,Lower,Leg Curl,100,3,15,working
+2026-09-30,Lower,Leg Extension,110,1,15,working
+2026-09-30,Lower,Leg Extension,110,2,15,working
+2026-09-30,Lower,Ab Wheel,0,1,10,working
+2026-09-30,Lower,Ab Wheel,0,2,10,working
+2026-09-30,Lower,Ab Wheel,0,3,10,working

@@ -1,0 +1,4 @@
+id,name,label,start,end,kind,kcal_target,protein_target_g,steps_target,notes
+cut-light-1a,Cut light: weekly budget,Budget,2026-09-16,2026-09-20,cut,2050,170,10000,Weekly budget with banked social days (weekday ~2050; social days budgeted higher)
+cut-light-1b,Cut: 2050 flat,Cut · 2050 flat,2026-09-21,2026-10-12,cut,2050,180,10000,Flat 2050/day; light social days fit inside the number (protein floor 160)
+switzerland,Switzerland trip,Switzerland,2026-10-13,2026-10-20,maintenance,,,,Planned maintenance; no tracking pressure
