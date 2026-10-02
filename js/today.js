@@ -1,8 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO } from "./store.js?v=202610021923";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202610021923";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202610021923";
-import { isClosedDate, token } from "./store.js?v=202610021923";
-import { VERSION } from "./version.js?v=202610021923";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO } from "./store.js?v=202610021933";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202610021933";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202610021933";
+import { isClosedDate, token } from "./store.js?v=202610021933";
+import { buildSummary } from "./summary.js?v=202610021933";
+import { VERSION } from "./version.js?v=202610021933";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Flag football", "Run", "Walk", "Cardio", "Sport"];
@@ -100,18 +101,36 @@ export function renderToday(root, ctx) {
     <textarea rows="3" data-k="notes" placeholder="How it went, hunger, sleep, what's coming up…">${esc(day.notes || "")}</textarea>
   </section>`));
 
-  /* ---------- Monthly ---------- */
+  /* ---------- Check in with Claude ---------- */
+  if (!future) root.appendChild(h(`<section class="card form claude">
+    <div class="row between"><h2>Check in</h2><small class="fine">Paste into this month's chat</small></div>
+    <button class="btn primary wide" data-copy>${icon.paste}<span>Copy for Claude</span></button>
+  </section>`));
+
+  /* ---------- Monthly (1st of the month, or wherever it was logged) ---------- */
   const m = day.monthly || {};
-  const monthly = h(`<details class="card form monthly" ${date.endsWith("-01") || m.bf != null || m.waist != null ? "open" : ""}>
-    <summary><h2>Monthly check-in</h2><small>1st of the month, fasted</small></summary>
+  if (date.endsWith("-01") || m.bf != null || m.waist != null) root.appendChild(h(`<section class="card form">
+    <div class="row between"><h2>Monthly check-in</h2><small class="fine">Fasted, after the weigh-in</small></div>
     <div class="fields2">
       <label class="field"><span>Hume body fat</span><div class="inwrap"><input inputmode="decimal" data-k="monthly.bf" data-num value="${m.bf ?? ""}"><em>%</em></div></label>
       <label class="field"><span>Waist (navel)</span><div class="inwrap"><input inputmode="decimal" data-k="monthly.waist" data-num value="${m.waist ?? ""}"><em>in</em></div></label>
     </div>
-  </details>`);
-  root.appendChild(monthly);
+  </section>`));
 
   root.appendChild(h(`<div class="center"><button class="link danger" data-clear>Clear this day</button></div>`));
+
+  async function copySummary() {
+    const text = buildSummary(date, state.day, { dirty: ctx.isDirty() });
+    try {
+      await navigator.clipboard.writeText(text);
+      ctx.toast(ctx.isDirty() ? "Copied. Save too, so it's on record." : "Copied. Paste it into the chat.");
+    } catch {
+      // Clipboard blocked: show it so it can be selected by hand.
+      const s = sheet(`<div class="sheet-h"><h2>Copy for Claude</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
+        <p class="sub">Long-press, Select All, Copy.</p><textarea rows="12" readonly class="summary-ta">${esc(text)}</textarea>`, "Copy for Claude");
+      const ta2 = s.el.querySelector("textarea"); ta2.focus(); ta2.select();
+    }
+  }
 
   /* ---------- live bits ---------- */
   function refresh() {
@@ -184,6 +203,7 @@ export function renderToday(root, ctx) {
   root.addEventListener("click", async e => {
     const b = e.target.closest("button"); if (!b) return;
     if ("discard" in b.dataset) return ctx.discardDraft();
+    if ("copy" in b.dataset) return copySummary();
     if ("openPaste" in b.dataset) { pastePanel.hidden = false; ta.focus(); return; }
     if ("closePaste" in b.dataset) { pastePanel.hidden = true; if (ta.value.trim()) applyParse(ta.value); return; }
     if ("clip" in b.dataset) {

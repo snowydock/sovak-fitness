@@ -101,7 +101,7 @@ Equipment: DBs to 50 lb, squat rack + barbell, cable machine, press machine, leg
 
 ## Daily check-in format
 
-Mike logs the day in the app (weight, steps, LoseIt paste or screenshots, day type, activity, lifts, notes). Each save commits to `log/YYYY-MM.json`. In the monthly chat he says "logged" (or pastes anything extra); the coach reads that day from the log file, then replies with: scorecard table → verdict (praise or tough love, patterns not single days) → one focus for today → the ledger.
+Mike logs the day in the app (LoseIt daily report PDF for food, weight and steps; day type, activity, lifts, notes). Each save commits to `log/YYYY-MM.json`. In the monthly chat he pastes the "Check-in · …" block from the app's Copy for Claude button (day totals, foods, lift with ↑ marks for weight increases, week-so-far line), or says "logged" and the coach reads the log file. The coach then replies with: scorecard table → verdict (praise or tough love, patterns not single days) → one focus for today → the ledger.
 
 Future days in the log with `day_type` set to a social day are advance notice: size them before they happen.
 

@@ -147,6 +147,7 @@ header .hright{display:flex;align-items:center;gap:10px}
 .savebar{transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .2s}
 .savebar.off{transform:translateY(calc(100% + 80px));opacity:0;pointer-events:none}
 .tokhelp{margin:4px 0 12px}.tokhelp summary{cursor:pointer;color:var(--s1);font-weight:600;padding:6px 0}
+.summary-ta{width:100%;font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;border-radius:12px;padding:10px;border:1px solid var(--ring);background:var(--raised);color:var(--ink)}
 .toast{position:fixed;left:50%;top:max(14px,env(safe-area-inset-top));transform:translate(-50%,-16px);opacity:0;visibility:hidden;pointer-events:none;z-index:40;background:var(--ink);color:var(--page);font-size:13.5px;font-weight:600;padding:10px 16px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .2s,visibility 0s .25s;max-width:calc(100% - 32px);text-align:center}
 .toast.show{transform:translate(-50%,0);opacity:1;visibility:visible;transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .2s}
 .toast.bad{background:var(--bad);color:#fff}
@@ -325,7 +326,7 @@ details.monthly[open] summary{margin-bottom:12px}
 .sheet-msg.ok{color:var(--good);font-weight:650}.sheet-msg.bad{color:var(--bad);font-weight:650}
 @media (min-width:640px){ .grid3{grid-template-columns:repeat(6,minmax(0,1fr))} }
 </style>
-<script type="module" src="js/app.js?v=202610021923"></script>
+<script type="module" src="js/app.js?v=202610021933"></script>
 </head>
 <body data-tab="today">
 <main id="app">

@@ -1,9 +1,9 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js?v=202610021923";
-import { $, h, esc, icon } from "./ui.js?v=202610021923";
-import { renderDashboard } from "./dashboard.js?v=202610021923";
-import { renderToday } from "./today.js?v=202610021923";
-import { renderLift } from "./lift.js?v=202610021923";
-import { VERSION } from "./version.js?v=202610021923";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js?v=202610021933";
+import { $, h, esc, icon } from "./ui.js?v=202610021933";
+import { renderDashboard } from "./dashboard.js?v=202610021933";
+import { renderToday } from "./today.js?v=202610021933";
+import { renderLift } from "./lift.js?v=202610021933";
+import { VERSION } from "./version.js?v=202610021933";
 
 const TABS = ["today", "lift", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
@@ -87,6 +87,7 @@ const ctx = {
     refreshSaveBar();
   },
   rerender: () => render(),
+  isDirty: () => isDirty(),
   goTab: t => go(t),
   openSettings: () => openSettings(),
   discardDraft() { drafts.clear(state.date); state.restored = false; state.day = clone(state.saved); state.pending = []; render(); },
