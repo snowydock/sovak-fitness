@@ -144,8 +144,11 @@ header .hright{display:flex;align-items:center;gap:10px}
 .savebar .sb-msg{font-size:13px;color:var(--ink-2);padding-left:10px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .savebar .sb-msg.warn{color:var(--s2);font-weight:600}
 .savebar .btn{margin-right:8px}
-.toast{position:fixed;left:50%;top:max(14px,env(safe-area-inset-top));transform:translate(-50%,-140%);z-index:40;background:var(--ink);color:var(--page);font-size:13.5px;font-weight:600;padding:10px 16px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 32px);text-align:center}
-.toast.show{transform:translate(-50%,0)}
+.savebar{transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.savebar.off{transform:translateY(calc(100% + 80px));opacity:0;pointer-events:none}
+.tokhelp{margin:4px 0 12px}.tokhelp summary{cursor:pointer;color:var(--s1);font-weight:600;padding:6px 0}
+.toast{position:fixed;left:50%;top:max(14px,env(safe-area-inset-top));transform:translate(-50%,-16px);opacity:0;visibility:hidden;pointer-events:none;z-index:40;background:var(--ink);color:var(--page);font-size:13.5px;font-weight:600;padding:10px 16px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .2s,visibility 0s .25s;max-width:calc(100% - 32px);text-align:center}
+.toast.show{transform:translate(-50%,0);opacity:1;visibility:visible;transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .2s}
 .toast.bad{background:var(--bad);color:#fff}
 
 /* ===== controls ===== */
@@ -322,19 +325,19 @@ details.monthly[open] summary{margin-bottom:12px}
 .sheet-msg.ok{color:var(--good);font-weight:650}.sheet-msg.bad{color:var(--bad);font-weight:650}
 @media (min-width:640px){ .grid3{grid-template-columns:repeat(6,minmax(0,1fr))} }
 </style>
-<script type="module" src="js/app.js?v=202610021903"></script>
+<script type="module" src="js/app.js?v=202610021923"></script>
 </head>
 <body data-tab="today">
 <main id="app">
   <header>
     <h1>Sovak Fitness</h1>
-    <div class="hright"><div class="asof num" id="asof"></div><button class="iconbtn" id="gear" aria-label="Settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button></div>
+    <div class="hright"><div class="asof num" id="asof"></div><button class="iconbtn" id="gear" aria-label="Settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div>
   </header>
   <div id="view"><div class="err">Loading…</div></div>
   <footer>Data: LoseIt · Apple Health · Hume &nbsp;·&nbsp; <a href="https://github.com/snowydock/sovak-fitness">repo</a></footer>
 </main>
 <nav class="tabbar" aria-label="Sections">
-  <button data-tab="today"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M8.5 14.5l2.2 2.2 4.8-4.8"/></svg>Today</button>
+  <button data-tab="today"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M8.5 14.5l2.2 2.2 4.8-4.8"/></svg>Log</button>
   <button data-tab="lift"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>Lift</button>
   <button data-tab="trends"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19.5h17M5 15.5l4.5-5 3.5 3 6-7"/><circle cx="19" cy="6.5" r="1.2" fill="currentColor"/></svg>Trends</button>
 </nav>

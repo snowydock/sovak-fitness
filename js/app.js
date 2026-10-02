@@ -1,9 +1,9 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js?v=202610021903";
-import { $, h, esc, icon } from "./ui.js?v=202610021903";
-import { renderDashboard } from "./dashboard.js?v=202610021903";
-import { renderToday } from "./today.js?v=202610021903";
-import { renderLift } from "./lift.js?v=202610021903";
-import { VERSION } from "./version.js?v=202610021903";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js?v=202610021923";
+import { $, h, esc, icon } from "./ui.js?v=202610021923";
+import { renderDashboard } from "./dashboard.js?v=202610021923";
+import { renderToday } from "./today.js?v=202610021923";
+import { renderLift } from "./lift.js?v=202610021923";
+import { VERSION } from "./version.js?v=202610021923";
 
 const TABS = ["today", "lift", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
@@ -129,17 +129,20 @@ ctx.applyReport = async (days, label) => {
 };
 
 /* ---------- save bar ---------- */
-const saveBar = h(`<div class="savebar" hidden>
+const saveBar = h(`<div class="savebar off" aria-hidden="true">
   <div class="sb-msg"></div>
   <button class="btn primary sb-save">Save</button>
 </div>`);
 document.body.appendChild(saveBar);
 let lastSaved = null, saving = false;
 function refreshSaveBar() {
-  const show = state.tab !== "trends";
-  saveBar.hidden = !show;
-  if (!show) return;
+  // Only shown while there's something to save; a "Saved" toast confirms, then it slides away.
   const dirty = isDirty();
+  const show = state.tab !== "trends" && (dirty || saving);
+  saveBar.hidden = false;
+  saveBar.classList.toggle("off", !show);
+  saveBar.setAttribute("aria-hidden", String(!show));
+  if (!show) return;
   const btn = saveBar.querySelector(".sb-save"), msg = saveBar.querySelector(".sb-msg");
   if (saving) { btn.disabled = true; btn.textContent = "Saving…"; return; }
   btn.textContent = token.get() ? "Save" : "Connect";
@@ -177,8 +180,9 @@ ctx.toast = toast;
 /* ---------- settings sheet ---------- */
 function openSettings() {
   const has = !!token.get();
-  const sheet = h(`<div class="sheet-wrap"><div class="sheet" role="dialog" aria-label="Connect GitHub">
-    <div class="sheet-h"><h2>Connect GitHub</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
+  const sheet = h(`<div class="sheet-wrap"><div class="sheet" role="dialog" aria-label="Settings">
+    <div class="sheet-h"><h2>${has ? "Settings" : "Connect GitHub"}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
+    ${has ? `<p class="sub">Connected to GitHub. Saves go into <b>snowydock/sovak-fitness</b>.</p><details class="tokhelp"><summary>Replace the token</summary>` : ""}
     <p class="sub">Saves go straight into <b>snowydock/sovak-fitness</b>. This needs a token that can only write to that one repo. It's stored on this phone only.</p>
     <ol class="steps">
       <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → new fine-grained token</a>.</li>
@@ -193,6 +197,7 @@ function openSettings() {
       <button class="btn primary" data-save>${has ? "Replace & test" : "Save & test"}</button>
       ${has ? `<button class="btn ghost" data-test>Test current</button><button class="btn ghost danger" data-remove>Remove</button>` : ""}
     </div>
+    ${has ? "</details>" : ""}
     <p class="fine">Build ${esc(VERSION || "dev")} · <button class="link" data-update>Check for update</button></p>
     <p class="fine">Added this page to your home screen? Paste the token inside the home-screen app; it keeps its own storage separate from Safari. Lost phone: revoke the token on the same GitHub page.</p>
   </div></div>`);

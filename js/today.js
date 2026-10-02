@@ -1,8 +1,8 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO } from "./store.js?v=202610021903";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202610021903";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202610021903";
-import { isClosedDate, token } from "./store.js?v=202610021903";
-import { VERSION } from "./version.js?v=202610021903";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO } from "./store.js?v=202610021923";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202610021923";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202610021923";
+import { isClosedDate, token } from "./store.js?v=202610021923";
+import { VERSION } from "./version.js?v=202610021923";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Flag football", "Run", "Walk", "Cardio", "Sport"];
@@ -58,7 +58,7 @@ export function renderToday(root, ctx) {
   const f = day.food || {};
   const savedImgs = f.images || [];
   const food = h(`<section class="card form">
-    <div class="row between"><h2>Food</h2>${f.source ? `<span class="tag">${f.source === "loseit" ? "from LoseIt" : f.source === "screenshot" ? "screenshots" : "typed"}</span>` : ""}</div>
+    <div class="row between"><h2>Food</h2>${f.source ? `<span class="tag">${f.source?.startsWith("loseit") ? "from LoseIt" : f.source === "screenshot" ? "screenshots" : "typed"}</span>` : ""}</div>
     <div class="meter">
       <div class="m-row"><span class="m-big num" data-kcal>–</span><span class="m-of num">${t.kcal ? `/ ${fmt(t.kcal)} kcal` : "kcal"}</span><span class="m-delta num" data-kdelta></span></div>
       <div class="bar"><i data-kbar></i>${t.kcal ? `<b class="tick" style="left:${(t.kcal / (t.kcal * 1.5)) * 100}%"></b>` : ""}</div>
@@ -66,14 +66,6 @@ export function renderToday(root, ctx) {
       <div class="bar thin"><i data-pbar class="pro"></i></div>
     </div>
     <label class="btn primary wide" data-pdf-label>${icon.doc}<span>Import LoseIt report (PDF)</span><input type="file" accept="application/pdf,.pdf" hidden data-pdf></label>
-    <div class="row gap wrap tools">
-      <button class="btn soft" data-open-paste>${icon.paste}<span>Paste page</span></button>
-      <label class="btn soft">${icon.camera}<span>Screenshots</span><input type="file" accept="image/*" multiple hidden data-files></label>
-    </div>
-    <div class="paste" hidden>
-      <textarea rows="4" placeholder="Paste the loseit.com page (Ctrl+A, copy) or tables copied from a LoseIt report. Numbers fill in automatically." data-paste></textarea>
-      <div class="row gap"><button class="btn ghost small" data-clip>Paste from clipboard</button><button class="btn ghost small" data-close-paste>Done</button></div>
-    </div>
     <div class="parsed" data-parsed hidden></div>
     <div class="thumbs" data-thumbs></div>
     <div class="grid3">
@@ -81,7 +73,7 @@ export function renderToday(root, ctx) {
         `<label class="field compact"><span>${l}</span><div class="inwrap"><input inputmode="decimal" data-k="food.${k}" data-num value="${f[k] != null ? f[k] : ""}">${u ? `<em>${u}</em>` : ""}</div></label>`).join("")}
     </div>
     ${f.items?.length ? `<details class="items"><summary>${f.items.length} foods logged</summary><ul>${f.items.map(i => `<li><span>${esc(i.name)}<small>${esc(i.qty || "")}</small></span><b class="num">${fmt(i.kcal)}</b></li>`).join("")}</ul></details>` : ""}
-    <p class="fine">Screenshots are saved to the public repo. On screenshot days, type at least calories and protein.</p>
+    <p class="fine">In LoseIt: Daily Report → Share → Save to Files, then import it here. Or type the numbers.</p>
   </section>`);
   root.appendChild(food);
 
@@ -186,8 +178,8 @@ export function renderToday(root, ctx) {
     patch(state.day); ctx.changed(); ctx.rerender();
     ctx.toast(`Read ${r.items.length} foods · ${fmt(r.kcal)} kcal${r.steps != null ? ` · ${fmt(r.steps)} steps` : r.stepsNote ? " · steps over 10k, type them" : ""}`);
   };
-  ta.addEventListener("paste", () => setTimeout(() => applyParse(ta.value), 30));
-  ta.addEventListener("change", () => applyParse(ta.value));
+  ta?.addEventListener("paste", () => setTimeout(() => applyParse(ta.value), 30));
+  ta?.addEventListener("change", () => applyParse(ta.value));
 
   root.addEventListener("click", async e => {
     const b = e.target.closest("button"); if (!b) return;
@@ -262,7 +254,7 @@ export function renderToday(root, ctx) {
     finally { lbl.textContent = was; }
   });
 
-  root.querySelector("[data-files]").addEventListener("change", async e => {
+  root.querySelector("[data-files]")?.addEventListener("change", async e => {
     for (const file of e.target.files) {
       try { state.pending.push(await compressImage(file)); } catch { ctx.toast("Couldn't read that image", true); }
     }

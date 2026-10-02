@@ -1,6 +1,6 @@
-import { store, liftHistory, todayISO, getDay } from "./store.js?v=202610021903";
-import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202610021903";
-import { parseNotes } from "./parsers.js?v=202610021903";
+import { store, liftHistory, todayISO, getDay } from "./store.js?v=202610021923";
+import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202610021923";
+import { parseNotes } from "./parsers.js?v=202610021923";
 
 function sessionKey(name = "") {
   if (/upper\s*a/i.test(name)) return "Upper A";

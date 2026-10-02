@@ -200,7 +200,7 @@ export function parseReportText(text) {
 
 // PDF -> rows of text, rebuilt from pdf.js glyph positions. pdfjs is loaded lazily (1.6 MB).
 export async function pdfToLines(file) {
-  const pdfjs = await import("./vendor/pdf.min.mjs?v=202610021903");
+  const pdfjs = await import("./vendor/pdf.min.mjs?v=202610021923");
   pdfjs.GlobalWorkerOptions.workerSrc = new URL("./vendor/pdf.worker.min.mjs" + new URL(import.meta.url).search, import.meta.url).href;
   const doc = await pdfjs.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
   const out = [];
