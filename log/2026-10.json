@@ -67,6 +67,77 @@
       "weight": 178.5,
       "steps": 10974,
       "updated": "2026-10-02T19:14:13.903Z"
+    },
+    "2026-10-02": {
+      "lift": {
+        "session": "Upper A",
+        "exercises": [
+          {
+            "name": "Incline DB Press",
+            "weight": 35,
+            "sets": [
+              12,
+              12,
+              12
+            ]
+          },
+          {
+            "name": "Machine OHP",
+            "weight": 100,
+            "sets": [
+              12,
+              12,
+              12
+            ]
+          },
+          {
+            "name": "Lat Pulldown",
+            "weight": 100,
+            "sets": [
+              12,
+              11,
+              10
+            ]
+          },
+          {
+            "name": "Cable Lateral Raise",
+            "weight": 20,
+            "sets": [
+              12,
+              15,
+              15,
+              15
+            ]
+          },
+          {
+            "name": "Overhead Cable Tricep Ext",
+            "weight": 60,
+            "sets": [
+              15,
+              15,
+              15
+            ]
+          },
+          {
+            "name": "Incline DB Curl",
+            "weight": 20,
+            "sets": [
+              12,
+              12,
+              12
+            ]
+          },
+          {
+            "name": "Face Pull",
+            "weight": 35,
+            "sets": [
+              15,
+              15
+            ]
+          }
+        ]
+      },
+      "updated": "2026-10-02T19:16:35.392Z"
     }
   }
 }
