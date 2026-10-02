@@ -1,4 +1,72 @@
 {
   "version": 1,
-  "days": {}
+  "days": {
+    "2026-10-01": {
+      "food": {
+        "kcal": 2046,
+        "protein": 176,
+        "carbs": 233,
+        "fat": 46,
+        "fiber": 41,
+        "sodium": 1287,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Protein Shake, Chocolate, Fairlife nutrition plan",
+            "qty": "11½ Fluid Ounces",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "1 Container",
+            "kcal": 310
+          },
+          {
+            "name": "Soybeans, Edamame, Shelled (scanned Len), Seapoint Farms",
+            "qty": "120 Grams",
+            "kcal": 144
+          },
+          {
+            "name": "Gochujang Lime Sauce",
+            "qty": "1 Serving",
+            "kcal": 75
+          },
+          {
+            "name": "Overnight Oats",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Greek turkey meatballs with tomato-feta protein pasta",
+            "qty": "1 Serving",
+            "kcal": 524
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "250 Grams",
+            "kcal": 150
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          }
+        ]
+      },
+      "weight": 178.5,
+      "steps": 10974,
+      "updated": "2026-10-02T19:14:13.903Z"
+    }
+  }
 }
