@@ -107,3 +107,72 @@ export function parseNotes(text, program) {
   }
   return { session, exercises: exs };
 }
+
+/* ---------- LoseIt reports (weekly/daily PDF, or table text copied out of one) ---------- */
+const SUMMARY_COLS = { "Budget": "budget", "Food": "kcal", "Exer.": "exercise", "Net": "net", "+/-": "delta", "Weight": "weight" };
+const NUTRIENT_COLS = { "Fat (g)": "fat", "SatF (g)": "satfat", "Chol (mg)": "chol", "Sod (mg)": "sodium", "Carbs (g)": "carbs", "Fib (g)": "fiber", "Sug (g)": "sugars", "Prot (g)": "protein" };
+const ROW_DATE = /^([A-Z][a-z]{2})\s+(\d{1,2}),\s+(\d{2,4})\b\s*(.*)$/;
+
+function headerOrder(line, cols) {
+  const found = Object.keys(cols).map(k => [k, line.indexOf(k)]).filter(([, i]) => i >= 0).sort((a, b) => a[1] - b[1]);
+  return found.length >= 3 ? found.map(([k]) => cols[k]) : null;
+}
+
+// lines: one string per visual row (cells separated by whitespace, tabs or " | ")
+export function parseLoseItReport(lines) {
+  const days = {};
+  let cols = null;
+  let title = null;
+  for (const raw of lines) {
+    const line = raw.replace(/\s*\|\s*/g, " ").replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (!title && /report/i.test(line)) title = line;
+    const s = headerOrder(line, SUMMARY_COLS); if (s) { cols = s; continue; }
+    const nh = headerOrder(line, NUTRIENT_COLS); if (nh) { cols = nh; continue; }
+    if (/^(totals|daily avg|percent)\b/i.test(line)) { cols = null; continue; }
+    const m = line.match(ROW_DATE);
+    if (!m || !cols || !MONTHS[m[1]]) continue;
+    const vals = m[4].split(" ");
+    if (vals.length < cols.length) continue;
+    const yr = m[3].length === 2 ? 2000 + Number(m[3]) : Number(m[3]);
+    const date = `${yr}-${String(MONTHS[m[1]]).padStart(2, "0")}-${String(m[2]).padStart(2, "0")}`;
+    const d = (days[date] ||= {});
+    cols.forEach((c, i) => {
+      const v = vals[i];
+      if (v == null || v === "-") { d[c] = null; return; }
+      if (v.includes("*")) d.incomplete = true;            // LoseIt marks partial nutrient data with *
+      const x = n(v.replace(/[*%]/g, ""));
+      d[c] = Number.isFinite(x) ? x : null;
+    });
+  }
+  // keep only days that actually have something logged
+  for (const [k, d] of Object.entries(days)) if (d.kcal == null && d.weight == null && d.protein == null) delete days[k];
+  return Object.keys(days).length ? { title, days } : null;
+}
+
+// If a pasted block is report-table text rather than the LoseIt web page, parse it as a report.
+export function parseReportText(text) {
+  if (!/daily summary|nutrients|weekly report|daily report/i.test(text || "")) return null;
+  return parseLoseItReport(text.split(/\r?\n/));
+}
+
+// PDF -> rows of text, rebuilt from pdf.js glyph positions. pdfjs is loaded lazily (1.6 MB).
+export async function pdfToLines(file) {
+  const pdfjs = await import("./vendor/pdf.min.mjs");
+  pdfjs.GlobalWorkerOptions.workerSrc = new URL("./vendor/pdf.worker.min.mjs", import.meta.url).href;
+  const doc = await pdfjs.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
+  const out = [];
+  for (let p = 1; p <= doc.numPages; p++) {
+    const tc = await (await doc.getPage(p)).getTextContent();
+    const rows = [];
+    for (const it of tc.items) {
+      if (!it.str || !it.str.trim()) continue;
+      const y = it.transform[5], x = it.transform[4];
+      let row = rows.find(r => Math.abs(r.y - y) <= 2.5);
+      if (!row) rows.push(row = { y, cells: [] });
+      row.cells.push({ x, s: it.str.trim() });
+    }
+    rows.sort((a, b) => b.y - a.y).forEach(r => out.push(r.cells.sort((a, b) => a.x - b.x).map(c => c.s).join(" | ")));
+  }
+  return out;
+}

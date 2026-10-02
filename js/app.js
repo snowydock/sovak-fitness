@@ -1,4 +1,4 @@
-import { store, loadAll, getDay, saveDay, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js";
 import { $, h, esc, icon } from "./ui.js";
 import { renderDashboard } from "./dashboard.js";
 import { renderToday } from "./today.js";
@@ -94,6 +94,35 @@ const ctx = {
     openDate(date);
     patch(state.day); ctx.changed(); render();
   },
+};
+
+// Apply a LoseIt report: { date: fields } -> one commit per month. Fields fill food + weight; nothing else is touched.
+export function reportPatch(f) {
+  return day => {
+    const food = { ...(day.food || {}) };
+    for (const k of ["kcal", "protein", "carbs", "fat", "fiber", "sodium"]) if (f[k] != null) food[k] = f[k];
+    food.source = food.items?.length ? (food.source || "loseit") : "loseit-report";
+    if (f.incomplete) food.incomplete = true; else delete food.incomplete;
+    const out = { ...day, food };
+    if (f.weight != null) out.weight = f.weight;
+    return out;
+  };
+}
+ctx.applyReport = async (days, label) => {
+  if (!token.get()) { openSettings(); return false; }
+  const patches = Object.fromEntries(Object.entries(days).map(([d, f]) => [d, reportPatch(f)]));
+  const dates = Object.keys(days).sort();
+  try {
+    await saveMany(patches, `log: LoseIt report ${dates[0]}${dates.length > 1 ? " to " + dates.at(-1) : ""}`);
+  } catch (e) { console.error(e); toast(e.status === 401 ? "Token rejected. Check settings." : "Import failed. Nothing was changed.", true); return false; }
+  if (days[state.date]) {                // keep any unsaved edits on the open day, layered over the imported numbers
+    const fresh = clone(getDay(state.date));
+    const wasDirty = isDirty();
+    state.day = wasDirty ? reportPatch(days[state.date])(state.day) : clone(fresh);
+    state.saved = fresh;
+  }
+  toast(`Imported ${dates.length} day${dates.length > 1 ? "s" : ""} from ${label || "LoseIt"}`);
+  render(); return true;
 };
 
 /* ---------- save bar ---------- */

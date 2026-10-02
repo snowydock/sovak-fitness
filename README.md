@@ -24,7 +24,7 @@ index.html, js/     The app: Today (log), Lift, Trends (dashboard)
 
 ### The app
 
-- **Today:** weigh-in, steps, food (paste the LoseIt web page with Ctrl+A and macros, foods and steps fill in; or attach screenshots and type calories + protein), day type (normal / light social / heavy social / travel), activity, notes, monthly Hume BF% and waist. Any date, past or future: mark a social day ahead of time.
+- **Today:** weigh-in, steps, food (import a LoseIt report PDF and every day in it fills in at once; or paste the LoseIt web page with Ctrl+A for macros, foods and steps; or attach screenshots and type calories + protein), day type (normal / light social / heavy social / travel), activity, notes, monthly Hume BF% and waist. Any date, past or future: mark a social day ahead of time.
 - **Lift:** suggests the next session (whichever was done longest ago), prefills each exercise with a target weight from the progression rule, shows last time's sets. Or paste an Apple Notes block.
 - **Trends:** the dashboard. Merges closed-month CSVs with the open month's log.
 - **Saving** needs a fine-grained GitHub token limited to this repo with Contents: Read and write, pasted once via the gear icon. Stored on the phone only. Unsaved edits are kept on the phone as drafts.

@@ -21,6 +21,7 @@ export const icon = {
   x: `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>`,
   paste: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2.5"/><path d="M9 4.5V3.5h6v1M9.5 10h5M9.5 13.5h5M9.5 17h3"/></svg>`,
   camera: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.6l1.4-2h5l1.4 2h1.6A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.5" r="3.3"/></svg>`,
+  doc: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5H7.5A2.5 2.5 0 0 0 5 6v12a2.5 2.5 0 0 0 2.5 2.5h9A2.5 2.5 0 0 0 19 18V8.5z"/><path d="M14 3.5v5h5M9 13h6M9 16.5h4"/></svg>`,
   plus: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`,
 };
 
@@ -61,4 +62,14 @@ export function dateNav(container, date, onPick, status) {
   inp.addEventListener("change", () => inp.value && onPick(inp.value));
   container.appendChild(el);
   return el;
+}
+
+// Bottom sheet. Returns { el, close }.
+export function sheet(inner, label = "Dialog") {
+  const wrap = h(`<div class="sheet-wrap"><div class="sheet" role="dialog" aria-label="${esc(label)}">${inner}</div></div>`);
+  document.body.appendChild(wrap);
+  requestAnimationFrame(() => wrap.classList.add("open"));
+  const close = () => { wrap.classList.remove("open"); setTimeout(() => wrap.remove(), 200); };
+  wrap.addEventListener("click", e => { if (e.target === wrap || e.target.closest("[data-close]")) close(); });
+  return { el: wrap, close };
 }

@@ -193,6 +193,30 @@ export async function saveDay(date, day, images = []) {
   return getDay(date);
 }
 
+// Patch many days at once (one commit per month file). patches: { "YYYY-MM-DD": day => newDay }
+export async function saveMany(patches, message) {
+  if (!token.get()) throw Object.assign(new Error("no token"), { code: "no_token" });
+  const byMonth = {};
+  for (const [date, fn] of Object.entries(patches)) (byMonth[monthOf(date)] ||= {})[date] = fn;
+  for (const [ym, fns] of Object.entries(byMonth)) {
+    const attempt = async () => {
+      const { text, sha } = await readFile(`log/${ym}.json`);
+      const doc = text ? JSON.parse(text) : { version: 1, days: {} };
+      doc.days ||= {};
+      for (const [date, fn] of Object.entries(fns)) {
+        const next = fn(JSON.parse(JSON.stringify(doc.days[date] || {})));
+        if (isEmptyDay(next)) delete doc.days[date]; else doc.days[date] = { ...next, updated: new Date().toISOString() };
+      }
+      doc.days = Object.fromEntries(Object.entries(doc.days).sort(([a], [b]) => a.localeCompare(b)));
+      const newSha = await writeFile(`log/${ym}.json`, b64encode(JSON.stringify(doc, null, 2) + "\n"), sha, message);
+      store.log[ym] = doc; store.shas[ym] = newSha;
+    };
+    try { await attempt(); } catch (e) { if (e.status === 409 || e.status === 422) await attempt(); else throw e; }
+  }
+  emit();
+}
+export const isClosedDate = date => store.csv.daily.some(r => r.date === date);
+
 /* ---------- drafts (per-device convenience) ---------- */
 export const drafts = {
   get: date => { try { return JSON.parse(ls.get("sf_draft_" + date)); } catch { return null; } },

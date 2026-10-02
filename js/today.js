@@ -1,6 +1,7 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW } from "./store.js";
-import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js";
-import { parseLoseIt } from "./parsers.js";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO } from "./store.js";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js";
+import { isClosedDate, token } from "./store.js";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Flag football", "Run", "Walk", "Cardio", "Sport"];
@@ -63,12 +64,13 @@ export function renderToday(root, ctx) {
       <div class="m-row small"><span>Protein</span><span class="num" data-pro>–</span><span class="m-of num">/ ${fmt(t.protein)} g</span></div>
       <div class="bar thin"><i data-pbar class="pro"></i></div>
     </div>
+    <label class="btn primary wide" data-pdf-label>${icon.doc}<span>Import LoseIt report (PDF)</span><input type="file" accept="application/pdf,.pdf" hidden data-pdf></label>
     <div class="row gap wrap tools">
-      <button class="btn soft" data-open-paste>${icon.paste}<span>Paste LoseIt</span></button>
+      <button class="btn soft" data-open-paste>${icon.paste}<span>Paste page</span></button>
       <label class="btn soft">${icon.camera}<span>Screenshots</span><input type="file" accept="image/*" multiple hidden data-files></label>
     </div>
     <div class="paste" hidden>
-      <textarea rows="4" placeholder="On loseit.com: Ctrl+A, copy, paste here. Macros, foods and steps fill in automatically." data-paste></textarea>
+      <textarea rows="4" placeholder="Paste the loseit.com page (Ctrl+A, copy) or tables copied from a LoseIt report. Numbers fill in automatically." data-paste></textarea>
       <div class="row gap"><button class="btn ghost small" data-clip>Paste from clipboard</button><button class="btn ghost small" data-close-paste>Done</button></div>
     </div>
     <div class="parsed" data-parsed hidden></div>
@@ -165,6 +167,7 @@ export function renderToday(root, ctx) {
   const applyParse = (text) => {
     const r = parseLoseIt(text, stepT);
     const out = root.querySelector("[data-parsed]");
+    if (!r) { const rep = parseReportText(text); if (rep) { out.hidden = true; return reviewReport(rep, "pasted report"); } }
     if (!r) { out.hidden = false; out.className = "parsed bad"; out.textContent = "Couldn't find LoseIt numbers in that. Copy the whole page (Ctrl+A) on loseit.com."; return; }
     const patch = d => {
       d.food = { ...(d.food || {}), source: "loseit" };
@@ -214,6 +217,48 @@ export function renderToday(root, ctx) {
     if ("clear" in b.dataset) {
       if (confirm(`Clear everything logged for ${md(date)}? It's removed from the repo when you save.`)) { state.day = {}; state.pending = []; ctx.changed(); ctx.rerender(); }
     }
+  });
+
+  /* ---------- LoseIt report PDF ---------- */
+  function reviewReport(rep, label) {
+    const dates = Object.keys(rep.days).sort();
+    const rows = dates.map(d => {
+      const f = rep.days[d], cur = (d === date ? state.saved : null) || getDay(d) || {};
+      const closed = isClosedDate(d);
+      const same = !closed && cur.food?.kcal === f.kcal && cur.food?.protein === f.protein && (f.weight == null || cur.weight === f.weight);
+      const status = closed ? "in September's record" : same ? "already logged" : cur.food?.kcal != null || cur.weight != null ? "updates" : "new";
+      return { d, f, closed, same, status };
+    });
+    const pick = rows.filter(r => !r.closed && !r.same).length;
+    const s = sheet(`
+      <div class="sheet-h"><h2>${esc(rep.title || "LoseIt report")}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
+      <p class="sub">Calories, macros, sodium and weight for each day. Steps, lifts and notes aren't touched.</p>
+      <div class="rlist">${rows.map(r => `<label class="rrow ${r.closed ? "off" : ""}">
+          <input type="checkbox" data-d="${r.d}" ${!r.closed && !r.same ? "checked" : ""} ${r.closed ? "disabled" : ""}>
+          <span class="rd"><b>${parseISO(r.d).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}</b>
+            <small class="num">${fmt(r.f.kcal)} kcal · ${fmt(r.f.protein)} g P${r.f.weight != null ? ` · ${fmt(r.f.weight, 1)} lb` : ""}${r.f.incomplete ? " · partial nutrients" : ""}</small></span>
+          <span class="rs ${r.status.replace(/\W+/g, "-")}">${r.status}</span></label>`).join("")}</div>
+      <div class="row gap"><button class="btn primary grow" data-apply ${pick ? "" : "disabled"}>${token.get() ? `Apply to <span data-n>${pick}</span> day<span data-pl>${pick === 1 ? "" : "s"}</span>` : "Connect GitHub to import"}</button></div>`, "Import LoseIt report");
+    const el = s.el, btn = el.querySelector("[data-apply]");
+    el.addEventListener("change", () => { const k = el.querySelectorAll("input[data-d]:checked").length; const n = el.querySelector("[data-n]"); if (n) { n.textContent = k; el.querySelector("[data-pl]").textContent = k === 1 ? "" : "s"; } btn.disabled = token.get() ? !k : false; });
+    btn.addEventListener("click", async () => {
+      const chosen = [...el.querySelectorAll("input[data-d]:checked")].map(i => i.dataset.d);
+      if (!token.get()) { s.close(); return ctx.openSettings(); }
+      btn.disabled = true; btn.textContent = "Saving…";
+      const ok = await ctx.applyReport(Object.fromEntries(chosen.map(d => [d, rep.days[d]])), label);
+      if (ok) s.close(); else { btn.disabled = false; btn.textContent = "Try again"; }
+    });
+  }
+  root.querySelector("[data-pdf]").addEventListener("change", async e => {
+    const file = e.target.files[0]; e.target.value = "";
+    if (!file) return;
+    const lbl = root.querySelector("[data-pdf-label] span"); const was = lbl.textContent; lbl.textContent = "Reading PDF…";
+    try {
+      const rep = parseLoseItReport(await pdfToLines(file));
+      if (!rep) ctx.toast("That PDF doesn't look like a LoseIt report", true);
+      else reviewReport(rep, "the PDF");
+    } catch (err) { console.error(err); ctx.toast("Couldn't read that PDF", true); }
+    finally { lbl.textContent = was; }
   });
 
   root.querySelector("[data-files]").addEventListener("change", async e => {
