@@ -1,15 +1,4 @@
 {
   "version": 1,
-  "days": {
-    "2026-10-01": {
-      "weight": 178.5,
-      "food": {
-        "kcal": 1826,
-        "protein": 144,
-        "sodium": 978,
-        "source": "manual"
-      },
-      "notes": "Food was partial when September closed; finish from LoseIt."
-    }
-  }
+  "days": {}
 }
