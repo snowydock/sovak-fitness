@@ -1,6 +1,6 @@
 // "Copy for Claude": a compact, paste-ready check-in for the monthly coaching chat.
-import { merged, liftHistory, targetsFor, addDays, parseISO } from "./store.js?v=202610021933";
-import { fmt, md } from "./ui.js?v=202610021933";
+import { merged, liftHistory, targetsFor, addDays, parseISO } from "./store.js?v=202610022245";
+import { fmt, md } from "./ui.js?v=202610022245";
 
 const DT = { normal: "Normal", light_social: "Light social", heavy_social: "Heavy social", travel: "Travel" };
 const n = v => (v == null || v === "" || isNaN(v) ? null : Number(v));

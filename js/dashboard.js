@@ -120,6 +120,7 @@ export function renderDashboard(C0, data){
       seg.style.flex = `0 0 calc(${w}% - 2px)`;
       seg.className = "seg";
       seg.style.background = colors[p.kind] || "var(--muted)";
+      if (p.kind === "cut") seg.style.color = "var(--on-s1)";
       seg.title = `${p.name}: ${md(p.s)}–${md(p.e)}`;
       seg.textContent = w > 22 ? (p.label || p.name) : "";
       seg.setAttribute("aria-label", p.name);
