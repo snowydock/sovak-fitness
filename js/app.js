@@ -1,8 +1,9 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js";
-import { $, h, esc, icon } from "./ui.js";
-import { renderDashboard } from "./dashboard.js";
-import { renderToday } from "./today.js";
-import { renderLift } from "./lift.js";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js?v=202610021903";
+import { $, h, esc, icon } from "./ui.js?v=202610021903";
+import { renderDashboard } from "./dashboard.js?v=202610021903";
+import { renderToday } from "./today.js?v=202610021903";
+import { renderLift } from "./lift.js?v=202610021903";
+import { VERSION } from "./version.js?v=202610021903";
 
 const TABS = ["today", "lift", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
@@ -192,6 +193,7 @@ function openSettings() {
       <button class="btn primary" data-save>${has ? "Replace & test" : "Save & test"}</button>
       ${has ? `<button class="btn ghost" data-test>Test current</button><button class="btn ghost danger" data-remove>Remove</button>` : ""}
     </div>
+    <p class="fine">Build ${esc(VERSION || "dev")} · <button class="link" data-update>Check for update</button></p>
     <p class="fine">Added this page to your home screen? Paste the token inside the home-screen app; it keeps its own storage separate from Safari. Lost phone: revoke the token on the same GitHub page.</p>
   </div></div>`);
   document.body.appendChild(sheet);
@@ -200,6 +202,7 @@ function openSettings() {
   const close = () => { sheet.classList.remove("open"); setTimeout(() => sheet.remove(), 200); refreshSaveBar(); };
   sheet.addEventListener("click", async e => {
     if (e.target === sheet || e.target.closest("[data-close]")) return close();
+    if (e.target.closest("[data-update]")) { msg.textContent = "Checking…"; if (!(await checkUpdate(true))) msg.textContent = "You're on the latest build."; return; }
     if (e.target.closest("[data-save]")) {
       const v = sheet.querySelector("[data-token]").value.trim();
       if (!v || v.startsWith("••")) { msg.textContent = "Paste a token first."; return; }
@@ -239,6 +242,25 @@ function renderNow() {
 
 async function reloadData() { await loadAll(); indexCSV(); openDate(state.date); }
 
+/* ---------- updates ----------
+   Every release stamps a new ?v= on all module URLs (tools/bump.py). On open and on
+   returning to the app, compare against version.json; if newer, reload under a fresh
+   URL so the phone fetches the new files instead of its cached copies. */
+async function checkUpdate(force = false) {
+  if (!VERSION) return false;
+  try {
+    const r = await fetch(`version.json?t=${Date.now()}`, { cache: "no-store" });
+    const { version } = await r.json();
+    if (!version || version <= VERSION) return false;
+    if (isDirty()) drafts.set(state.date, state.day);
+    if (!force && isDirty()) return false;
+    toast("Updating to the latest version…");
+    setTimeout(() => location.replace(`${location.pathname}?v=${version}${location.hash}`), 400);
+    return true;
+  } catch { return false; }
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden) checkUpdate(); });
+
 /* ---------- boot ---------- */
 document.querySelector(".tabbar").addEventListener("click", e => { const b = e.target.closest("button[data-tab]"); if (b) go(b.dataset.tab); });
 $("#gear").addEventListener("click", openSettings);
@@ -254,4 +276,5 @@ document.addEventListener("visibilitychange", () => { if (document.hidden && isD
   state.tab = TABS.includes(startTab) ? startTab : "today";
   document.querySelectorAll(".tabbar button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab));
   openDate(todayISO());
+  checkUpdate();
 })();

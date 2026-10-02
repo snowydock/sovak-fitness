@@ -1,7 +1,8 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO } from "./store.js";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js";
-import { isClosedDate, token } from "./store.js";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO } from "./store.js?v=202610021903";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202610021903";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202610021903";
+import { isClosedDate, token } from "./store.js?v=202610021903";
+import { VERSION } from "./version.js?v=202610021903";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Flag football", "Run", "Walk", "Cardio", "Sport"];
@@ -255,9 +256,9 @@ export function renderToday(root, ctx) {
     const lbl = root.querySelector("[data-pdf-label] span"); const was = lbl.textContent; lbl.textContent = "Reading PDF…";
     try {
       const rep = parseLoseItReport(await pdfToLines(file));
-      if (!rep) ctx.toast("That PDF doesn't look like a LoseIt report", true);
+      if (!rep) ctx.toast(`That PDF doesn't look like a LoseIt report. Build ${VERSION}.`, true);
       else reviewReport(rep, "the PDF");
-    } catch (err) { console.error(err); ctx.toast("Couldn't read that PDF", true); }
+    } catch (err) { console.error(err); ctx.toast(`Couldn't read that PDF (${err?.message || err}). Build ${VERSION}.`, true); }
     finally { lbl.textContent = was; }
   });
 

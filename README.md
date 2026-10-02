@@ -53,3 +53,7 @@ index.html, js/     The app: Today (log), Lift, Trends (dashboard)
 - `set_type`: `working` or `drop`
 - `weight_lb` of `0` in lifts = bodyweight movement
 - Blank cell = not measured (never zero-filled)
+
+## Releasing app changes
+
+Run `python3 tools/bump.py` before committing changes to `index.html` or `js/`. It stamps a new `?v=` on every module URL and writes `version.json`; open copies of the app see the newer version and reload themselves, so phones never run stale cached code. The current build shows in the settings sheet (gear icon).
