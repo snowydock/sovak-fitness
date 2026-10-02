@@ -1,0 +1,54 @@
+{
+  "asof": "2026-10-01",
+  "targets": { "kcal": 2050, "protein": 180, "steps": 10000 },
+  "stepBonusThreshold": 10000,
+  "rotation": ["Upper A", "Lower", "Upper B"],
+  "sessions": {
+    "Upper A": [
+      { "name": "Incline DB Press",          "sets": 3, "lo": 8,  "hi": 12, "inc": 5,  "start": 35,  "db": true },
+      { "name": "Machine OHP",               "sets": 3, "lo": 8,  "hi": 12, "inc": 10, "start": 100 },
+      { "name": "Lat Pulldown",              "sets": 3, "lo": 8,  "hi": 12, "inc": 10, "start": 100 },
+      { "name": "Cable Lateral Raise",       "sets": 4, "lo": 12, "hi": 15, "inc": 5,  "start": 20 },
+      { "name": "Overhead Cable Tricep Ext", "sets": 3, "lo": 10, "hi": 15, "inc": 5,  "start": 50,  "ss": "A" },
+      { "name": "Incline DB Curl",           "sets": 3, "lo": 10, "hi": 12, "inc": 5,  "start": 20,  "ss": "A", "db": true },
+      { "name": "Face Pull",                 "sets": 2, "lo": 15, "hi": 20, "inc": 5,  "start": 35 }
+    ],
+    "Lower": [
+      { "name": "Barbell Back Squat",        "sets": 3, "lo": 6,  "hi": 10, "inc": 10, "start": 145, "note": "Do first. Rack taken? Bulgarian split squat." },
+      { "name": "RDL",                       "sets": 3, "lo": 8,  "hi": 10, "inc": 10, "start": 150 },
+      { "name": "Leg Press",                 "sets": 2, "lo": 12, "hi": 15, "inc": 20, "start": 220 },
+      { "name": "Leg Curl",                  "sets": 3, "lo": 12, "hi": 15, "inc": 10, "start": 100 },
+      { "name": "Leg Extension",             "sets": 2, "lo": 12, "hi": 15, "inc": 10, "start": 120 },
+      { "name": "Ab Wheel",                  "sets": 3, "lo": 10, "hi": 12, "inc": 0,  "start": 0,   "bw": true },
+      { "name": "Lateral Raise Finisher",    "sets": 3, "lo": 15, "hi": 20, "inc": 5,  "start": 20,  "db": true }
+    ],
+    "Upper B": [
+      { "name": "Machine Bench Press",       "sets": 3, "lo": 8,  "hi": 12, "inc": 10, "start": 170 },
+      { "name": "Seated Cable Row",          "sets": 3, "lo": 10, "hi": 12, "inc": 5,  "start": 90 },
+      { "name": "Straight-Arm Pulldown",     "sets": 3, "lo": 12, "hi": 15, "inc": 10, "start": 90 },
+      { "name": "DB Lateral Raise",          "sets": 4, "lo": 12, "hi": 20, "inc": 5,  "start": 20,  "db": true, "drop": true },
+      { "name": "Tricep Pushdown",           "sets": 3, "lo": 10, "hi": 12, "inc": 10, "start": 100, "ss": "B" },
+      { "name": "Hammer Curl",               "sets": 3, "lo": 10, "hi": 12, "inc": 5,  "start": 30,  "ss": "B", "db": true },
+      { "name": "Concentration Curl",        "sets": 2, "lo": 8,  "hi": 12, "inc": 5,  "start": 20,  "db": true, "drop": true, "note": "AMRAP, then drop to 15" }
+    ]
+  },
+  "aliases": {
+    "machine bench": "Machine Bench Press",
+    "bench": "Machine Bench Press",
+    "ohp": "Machine OHP",
+    "ohp machine": "Machine OHP",
+    "incline db press": "Incline DB Press",
+    "overhead cable tri ext": "Overhead Cable Tricep Ext",
+    "overhead tricep ext": "Overhead Cable Tricep Ext",
+    "face pulls": "Face Pull",
+    "db lat raises": "DB Lateral Raise",
+    "lateral raise finisher": "Lateral Raise Finisher",
+    "squat": "Barbell Back Squat",
+    "goblet squat": "Goblet Squat",
+    "seated cable row": "Seated Cable Row",
+    "straight arm pulldown": "Straight-Arm Pulldown",
+    "tricep pushdown": "Tricep Pushdown",
+    "hammer curls": "Hammer Curl",
+    "concentration curls": "Concentration Curl"
+  }
+}

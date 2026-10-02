@@ -97,12 +97,14 @@ Equipment: DBs to 50 lb, squat rack + barbell, cable machine, press machine, leg
 8. **Lift guardrail:** flag only if 0 sessions by Thursday end of day, or fewer than 3 by Sunday. Lifts often land late in the week; that's fine.
 9. **Scale spikes after heavy carb/sodium/alcohol days or new lifts are water.** Judge on the trend, check again 3–4 days later.
 10. **Thursday flag football** raises real maintenance; never eat it back.
-11. **Data hierarchy:** LoseIt weekly reports are the source of truth for food and weight. Chat ledger is the backup. Apple Notes for lifts.
+11. **Data hierarchy:** the app's log file is the record. LoseIt is the source for food. The chat ledger is a backup.
 
 ## Daily check-in format
 
-Mike sends: LoseIt screenshots or web paste (food, macros, steps), the morning weigh-in, and any lift block in the Apple Notes format. The coach replies with: scorecard table → verdict (praise or tough love, patterns not single days) → one focus for today → the ledger.
+Mike logs the day in the app (weight, steps, LoseIt paste or screenshots, day type, activity, lifts, notes). Each save commits to `log/YYYY-MM.json`. In the monthly chat he says "logged" (or pastes anything extra); the coach reads that day from the log file, then replies with: scorecard table → verdict (praise or tough love, patterns not single days) → one focus for today → the ledger.
+
+Future days in the log with `day_type` set to a social day are advance notice: size them before they happen.
 
 ## Month close
 
-1st of each month: LoseIt weekly PDFs + Hume BF% + waist → CSV rows, month review in `months/`, this file updated, next month's prompt in `prompts/`.
+1st of each month: fold `log/YYYY-MM.json` into the CSVs (Hume BF% and waist come from the 1st's Monthly check-in), write the month review in `months/`, update this file and `data/program.json`, write next month's prompt in `prompts/`.

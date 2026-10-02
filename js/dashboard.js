@@ -1,0 +1,347 @@
+const $ = s => document.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt = (n, d=0) => n == null || isNaN(n) ? "–" : n.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const parseDate = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+const dayMs = 864e5;
+const daysBetween = (a,b) => Math.round((b - a) / dayMs);
+const md = d => d.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+const wd = d => d.toLocaleDateString("en-US",{weekday:"short"});
+
+const num = v => v === "" || v == null ? null : Number(v);
+
+function el(tag, attrs={}, parent){
+  const e = document.createElementNS(NS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  if(parent) parent.appendChild(e);
+  return e;
+}
+function html(s){ const t=document.createElement("template"); t.innerHTML=s.trim(); return t.content.firstElementChild; }
+
+// Tooltip
+const tip = $("#tip");
+function showTip(container, x, y, content){
+  tip.innerHTML = content;
+  const cr = container.getBoundingClientRect();
+  const sx = window.scrollX, sy = window.scrollY;
+  tip.style.opacity = 1;
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = cr.left + sx + x - tw/2;
+  left = Math.max(sx + 8, Math.min(left, sx + document.documentElement.clientWidth - tw - 8));
+  let top = cr.top + sy + y - th - 14;
+  if(top < sy + 8) top = cr.top + sy + y + 18;
+  tip.style.left = left + "px"; tip.style.top = top + "px";
+}
+function hideTip(){ tip.style.opacity = 0; }
+document.addEventListener("pointerdown", e => { if(!e.target.closest(".chart,.cal")) hideTip(); });
+
+// Pointer scrubbing for a chart: calls onIndex(idx, px) with nearest x
+function scrub(container, svg, xs, onIndex, onEnd){
+  const handler = e => {
+    const r = svg.getBoundingClientRect();
+    const vb = svg.viewBox.baseVal;
+    const px = (e.clientX - r.left) * (vb.width / r.width);
+    let best=0, bd=Infinity;
+    xs.forEach((x,i)=>{ const d=Math.abs(x-px); if(d<bd){bd=d;best=i;} });
+    onIndex(best, r.width / vb.width);
+  };
+  container.addEventListener("pointermove", handler);
+  container.addEventListener("pointerdown", handler);
+  container.addEventListener("pointerleave", () => { onEnd(); hideTip(); });
+}
+
+function ewma(vals, a=0.1){
+  let t = null; return vals.map(v => { if(v==null) return t; t = t==null ? v : t + a*(v-t); return t; });
+}
+
+function niceTicks(min, max, n=4){
+  const span = max - min, step0 = span / n;
+  const mag = Math.pow(10, Math.floor(Math.log10(step0)));
+  const step = [1,2,2.5,5,10].map(m=>m*mag).find(s=>s>=step0) || mag*10;
+  const t=[]; for(let v=Math.ceil(min/step)*step; v<=max+1e-9; v+=step) t.push(+v.toFixed(4));
+  return t;
+}
+
+export function renderDashboard(C0, data){
+  let { daily, lifts, body, phases } = data;
+  if(!daily.length){ C0.innerHTML = `<div class="err">No data yet.</div>`; return; }
+  daily = daily.map(r => ({...r, d: parseDate(r.date), weight:num(r.weight_lb), kcal:num(r.calories), protein:num(r.protein_g), carbs:num(r.carbs_g), fat:num(r.fat_g), fiber:num(r.fiber_g), sodium:num(r.sodium_mg), steps:num(r.steps)}))
+               .sort((a,b)=>a.d-b.d);
+  lifts = lifts.map(r => ({...r, d: parseDate(r.date), w:num(r.weight_lb), reps:num(r.reps)}));
+  body = body.map(r => ({...r, d: parseDate(r.date), bf:num(r.body_fat_pct), waist:num(r.waist_in), weight:num(r.weight_lb)})).sort((a,b)=>a.d-b.d);
+  phases = phases.map(r => ({...r, label:r.label, s: parseDate(r.start), e: parseDate(r.end), kcal:num(r.kcal_target), protein:num(r.protein_target_g), stepsT:num(r.steps_target)}));
+
+  const last = daily[daily.length-1], first = daily[0];
+  const trend = ewma(daily.map(r=>r.weight));
+  daily.forEach((r,i)=> r.trend = trend[i]);
+  const phaseFor = d => phases.find(p => d >= p.s && d <= p.e);
+  daily.forEach(r => { const p = phaseFor(r.d); r.target = p?.kcal ?? null; r.pTarget = p?.protein ?? null; });
+  const asof = $("#asof"); if(asof) asof.textContent = "through " + md(last.d);
+
+  const C = C0; C.innerHTML = "";
+
+  /* ---------- HERO ---------- */
+  const n = daily.length;
+  const avg = k => daily.reduce((s,r)=>s+(r[k]??0),0) / daily.filter(r=>r[k]!=null).length;
+  const dTrend = last.trend - first.trend;
+  const proteinHits = daily.filter(r => r.protein >= (r.pTarget ? r.pTarget - 10 : 170)).length;
+  const stepHits = daily.filter(r => r.steps >= 10000).length;
+  const sessions = new Set(lifts.map(l=>l.date)).size;
+  // maintenance: avg intake minus trend change converted to kcal
+  const maint = avg("kcal") - (dTrend / Math.max(1, daysBetween(first.d,last.d))) * 3500;
+  const hero = html(`<section class="card hero">
+    <div class="label">Trend weight</div>
+    <div class="big num">${fmt(last.trend,1)}<small>lb</small></div>
+    <div class="delta">${dTrend<=0?"▼":"▲"} <b class="num">${fmt(Math.abs(dTrend),1)} lb</b> since ${md(first.d)} · last weigh-in <b class="num">${fmt(last.weight,1)}</b></div>
+    <div class="tiles">
+      <div class="tile"><div class="k">Avg calories</div><div class="v num">${fmt(avg("kcal"))}</div><div class="n">per day, ${n} days</div></div>
+      <div class="tile"><div class="k">Avg protein</div><div class="v num">${fmt(avg("protein"))}<small>g</small></div><div class="n num">on target ${proteinHits}/${n} days</div></div>
+      <div class="tile"><div class="k">Avg steps</div><div class="v num">${fmt(avg("steps")/1000,1)}<small>k</small></div><div class="n num">10k+ on ${stepHits}/${n} days</div></div>
+      <div class="tile"><div class="k">Est. maintenance</div><div class="v num">~${fmt(Math.round(maint/50)*50)}</div><div class="n">${n<21?"low confidence, early data":"from trend + intake"}</div></div>
+    </div></section>`);
+  C.appendChild(hero);
+
+  /* ---------- PHASE TIMELINE ---------- */
+  {
+    const ps = phases.slice().sort((a,b)=>a.s-b.s);
+    const s0 = ps[0].s, s1 = ps[ps.length-1].e, span = daysBetween(s0,s1)+1;
+    const colors = {cut:"var(--s1)", maintenance:"var(--s3)", bulk:"var(--s2)"};
+    const today = new Date(); today.setHours(0,0,0,0);
+    const sw = phases.find(p=>/switzerland/i.test(p.name));
+    const daysTo = sw ? daysBetween(today, sw.s) : null;
+    const card = html(`<section class="card"><h2>Phases</h2>
+      <p class="sub">${daysTo!=null && daysTo>0 ? `<b class="num">${daysTo}</b> days to Switzerland` : "Where we are in the plan"}</p>
+      <div class="phase-bar" id="pbar"></div>
+      <div class="phase-legend num"><span>${md(s0)}</span><span>${md(s1)}</span></div></section>`);
+    const bar = card.querySelector("#pbar");
+    ps.forEach(p => {
+      const w = (daysBetween(p.s,p.e)+1)/span*100;
+      const seg = document.createElement("div");
+      seg.style.flex = `0 0 calc(${w}% - 2px)`;
+      seg.className = "seg";
+      seg.style.background = colors[p.kind] || "var(--muted)";
+      seg.title = `${p.name}: ${md(p.s)}–${md(p.e)}`;
+      seg.textContent = w > 22 ? (p.label || p.name) : "";
+      seg.setAttribute("aria-label", p.name);
+      bar.appendChild(seg);
+    });
+    if(today >= s0 && today <= s1){
+      const t = document.createElement("div"); t.className="phase-today";
+      t.style.left = `calc(${(daysBetween(s0,today)+.5)/span*100}% - 1px)`;
+      bar.appendChild(t);
+    }
+    C.appendChild(card);
+  }
+
+  /* ---------- WEIGHT CHART ---------- */
+  {
+    const card = html(`<section class="card"><h2>Weight</h2>
+      <p class="sub">Daily weigh-ins are noisy. The trend line is what counts.</p>
+      <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Trend</span><span><i style="background:var(--muted);opacity:.7"></i>Weigh-in</span><span><i style="background:var(--s2)"></i>Social day</span></div>
+      <div class="chart" id="wchart"></div></section>`);
+    C.appendChild(card);
+    const W=360, H=200, P={l:34,r:12,t:12,b:22};
+    const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Daily weight with trend line"});
+    const ws = daily.map(r=>r.weight).filter(v=>v!=null).concat(daily.map(r=>r.trend));
+    let lo = Math.floor(Math.min(...ws)-0.5), hi = Math.ceil(Math.max(...ws)+0.5);
+    const x = i => P.l + (n===1?0:i/(n-1))*(W-P.l-P.r);
+    const y = v => P.t + (1-(v-lo)/(hi-lo))*(H-P.t-P.b);
+    niceTicks(lo,hi,4).forEach(t => {
+      el("line",{x1:P.l,x2:W-P.r,y1:y(t),y2:y(t),stroke:css("--grid"),"stroke-width":1},svg);
+      const tx=el("text",{x:P.l-6,y:y(t)+3.5,"text-anchor":"end","font-size":10,fill:css("--muted"),class:"num"},svg); tx.textContent=t;
+    });
+    // x labels: first, mid weeks, last
+    daily.forEach((r,i)=>{ if(i===0||i===n-1||(r.d.getDay()===1&&n-1-i>3&&i>3)){ const tx=el("text",{x:x(i),y:H-6,"text-anchor":i===0?"start":i===n-1?"end":"middle","font-size":10,fill:css("--muted")},svg); tx.textContent=md(r.d);} });
+    // area wash under trend
+    const tp = daily.map((r,i)=>`${x(i)},${y(r.trend)}`).join(" L");
+    el("path",{d:`M${x(0)},${y(lo)} L${tp} L${x(n-1)},${y(lo)} Z`,fill:css("--s1-wash")},svg);
+    // daily stems from trend to weigh-in (shows the noise)
+    daily.forEach((r,i)=>{ if(r.weight!=null) el("line",{x1:x(i),x2:x(i),y1:y(r.trend),y2:y(r.weight),stroke:css("--axis"),"stroke-width":1},svg); });
+    el("path",{d:`M${tp}`,fill:"none",stroke:css("--s1"),"stroke-width":2.5,"stroke-linejoin":"round","stroke-linecap":"round"},svg);
+    daily.forEach((r,i)=>{ if(r.weight==null) return;
+      const soc = /social/.test(r.day_type);
+      el("circle",{cx:x(i),cy:y(r.weight),r:soc?4.5:3.5,fill:soc?css("--s2"):css("--muted"),stroke:css("--surface"),"stroke-width":2,opacity:soc?1:.85},svg);
+    });
+    // end label
+    const eL = el("text",{x:x(n-1)-2,y:y(last.trend)-9,"text-anchor":"end","font-size":11,"font-weight":650,fill:css("--ink"),class:"num"},svg); eL.textContent = fmt(last.trend,1);
+    const cross = el("line",{y1:P.t,y2:H-P.b,stroke:css("--ink-2"),"stroke-width":1,opacity:0},svg);
+    const box = card.querySelector("#wchart"); box.appendChild(svg);
+    scrub(box, svg, daily.map((_,i)=>x(i)), (i,k) => {
+      const r = daily[i]; cross.setAttribute("x1",x(i)); cross.setAttribute("x2",x(i)); cross.setAttribute("opacity",.4);
+      showTip(box, x(i)*k, y(r.weight ?? r.trend)*k, `<b>${wd(r.d)} ${md(r.d)}</b><br>Weigh-in <b class="num">${fmt(r.weight,1)}</b><br>Trend <b class="num">${fmt(r.trend,1)}</b>${/social/.test(r.day_type)?`<br><span class="m">${r.day_type.replace("_"," ")}</span>`:""}`);
+    }, () => cross.setAttribute("opacity",0));
+  }
+
+  /* ---------- CALORIE CALENDAR ---------- */
+  {
+    const card = html(`<section class="card"><h2>Calories vs target</h2>
+      <p class="sub">Blue is under, red is over. The dot marks a social day.</p>
+      <div class="cal" id="cal"></div>
+      <div class="scale"><span class="num">−500</span><div class="ramp"></div><span class="num">+2,000</span></div>
+      <details class="table"><summary>Table view</summary><div class="wrap"><table id="ctab"></table></div></details></section>`);
+    C.appendChild(card);
+    const cal = card.querySelector("#cal");
+    ["M","T","W","T","F","S","S"].forEach(d=>cal.appendChild(html(`<div class="dow">${d}</div>`)));
+    const byDate = Object.fromEntries(daily.map(r=>[r.date,r]));
+    const start = new Date(first.d); start.setDate(start.getDate() - ((start.getDay()+6)%7));
+    const end = new Date(last.d); end.setDate(end.getDate() + (6-((end.getDay()+6)%7)));
+    // color mixing in sRGB space between tokens
+    const hex = h => { h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); };
+    const mix = (a,b,t) => { const A=hex(a),B=hex(b); return `rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")})`; };
+    const lum = c => { const [r,g,b]=c.match(/\d+/g).map(Number).map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)}); return .2126*r+.7152*g+.0722*b; };
+    const neg=css("--div-neg"), mid=css("--div-mid"), pos=css("--div-pos");
+    const midRGB = mix(mid, mid, 0);
+    for(let d=new Date(start); d<=end; d=new Date(d.getTime()+dayMs)){
+      const key = d.toISOString().slice(0,10) === "" ? "" : `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+      const r = byDate[key];
+      if(!r || r.kcal==null){ cal.appendChild(html(`<div class="cell empty"><span class="d">${d.getDate()}</span></div>`)); continue; }
+      const diff = r.kcal - (r.target ?? 2050);
+      let t, bg;
+      if(Math.abs(diff) <= 100) bg = midRGB;
+      else if(diff < 0){ t = Math.min(1, (-diff)/500); bg = mix(mid, neg, .35 + .65*t); }
+      else { t = Math.min(1, diff/2000); bg = mix(mid, pos, .3 + .7*Math.sqrt(t)); }
+      const ink = lum(bg) > .32 ? "#0b0b0b" : "#ffffff";
+      const c = html(`<div class="cell ${/social/.test(r.day_type)?"social":""}" style="background:${bg};color:${ink}"><span class="d">${d.getDate()}</span><span class="c">${fmt(r.kcal/1000,1)}k</span></div>`);
+      c.addEventListener("pointerdown", ev => {
+        const cr = cal.getBoundingClientRect(), er = c.getBoundingClientRect();
+        showTip(cal, er.left-cr.left+er.width/2, er.top-cr.top, `<b>${wd(r.d)} ${md(r.d)}</b><br><b class="num">${fmt(r.kcal)}</b> kcal <span class="m num">(${diff>=0?"+":""}${fmt(diff)})</span><br>Protein <b class="num">${fmt(r.protein)}g</b> · Steps <b class="num">${fmt(r.steps)}</b>${r.activity?`<br><span class="m">${r.activity}</span>`:""}`);
+      });
+      cal.appendChild(c);
+    }
+    const tab = card.querySelector("#ctab");
+    tab.innerHTML = `<tr><th>Date</th><th>kcal</th><th>P</th><th>C</th><th>F</th><th>Na</th><th>Steps</th><th>Wt</th></tr>` +
+      daily.map(r=>`<tr><td>${md(r.d)}</td><td>${fmt(r.kcal)}</td><td>${fmt(r.protein)}</td><td>${fmt(r.carbs)}</td><td>${fmt(r.fat)}</td><td>${fmt(r.sodium)}</td><td>${fmt(r.steps)}</td><td>${fmt(r.weight,1)}</td></tr>`).join("");
+  }
+
+  /* ---------- WEEKLY ENERGY ---------- */
+  {
+    const weeks = [];
+    daily.forEach(r => {
+      if(r.kcal==null) return;
+      const m = new Date(r.d); m.setDate(m.getDate() - ((m.getDay()+6)%7));
+      const k = m.getTime(); let w = weeks.find(x=>x.k===k);
+      if(!w){ w = {k, start:m, days:[]}; weeks.push(w); }
+      if(r.kcal!=null) w.days.push(r);
+    });
+    weeks.forEach(w => { w.avg = w.days.reduce((s,r)=>s+r.kcal,0)/w.days.length; w.n = w.days.length; w.social = w.days.filter(r=>/social/.test(r.day_type)).length; });
+    const card = html(`<section class="card"><h2>Weekly average intake</h2>
+      <p class="sub">Against the target and estimated maintenance.</p>
+      <div class="legend"><span><i class="line" style="background:var(--ink-2)"></i>Target 2,050</span><span><i class="line" style="background:repeating-linear-gradient(90deg,var(--ink-2) 0 3px,transparent 3px 6px)"></i>Est. maintenance ~${fmt(Math.round(maint/50)*50)}</span></div>
+      <div class="chart" id="wk"></div></section>`);
+    C.appendChild(card);
+    const W=360,H=170,P={l:40,r:12,t:16,b:30};
+    const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Weekly average calories"});
+    const hi = Math.max(3000, ...weeks.map(w=>w.avg))*1.05;
+    const y = v => P.t + (1 - v/hi)*(H-P.t-P.b);
+    const bw = Math.min(40, (W-P.l-P.r)/weeks.length*0.55);
+    const x = i => P.l + (i+.5)*(W-P.l-P.r)/weeks.length;
+    [0,1000,2000,3000].forEach(t=>{ el("line",{x1:P.l,x2:W-P.r,y1:y(t),y2:y(t),stroke:css("--grid")},svg); const tx=el("text",{x:P.l-6,y:y(t)+3.5,"text-anchor":"end","font-size":10,fill:css("--muted"),class:"num"},svg); tx.textContent=fmt(t); });
+    weeks.forEach((w,i)=>{
+      const h = y(0)-y(w.avg), x0 = x(i)-bw/2, r = 5;
+      el("path",{d:`M${x0},${y(0)} V${y(w.avg)+r} Q${x0},${y(w.avg)} ${x0+r},${y(w.avg)} H${x0+bw-r} Q${x0+bw},${y(w.avg)} ${x0+bw},${y(w.avg)+r} V${y(0)} Z`,fill:css("--s1")},svg);
+      const v = el("text",{x:x(i),y:y(w.avg)+16,"text-anchor":"middle","font-size":11,"font-weight":700,fill:"#ffffff",class:"num"},svg); v.textContent = fmt(w.avg);
+      const l = el("text",{x:x(i),y:H-14,"text-anchor":"middle","font-size":10,fill:css("--muted")},svg); l.textContent = md(w.start);
+      const l2 = el("text",{x:x(i),y:H-3,"text-anchor":"middle","font-size":9.5,fill:css("--muted")},svg); l2.textContent = `${w.n}d${w.social?` · ${w.social} social`:""}`;
+    });
+    const ref = (v, label, dash) => {
+      el("line",{x1:P.l,x2:W-P.r,y1:y(v),y2:y(v),stroke:css("--ink-2"),"stroke-width":1.25,"stroke-dasharray":dash||""},svg);
+    };
+    ref(2050,"Target 2,050");
+    ref(Math.round(maint/50)*50, `Maint. ~${fmt(Math.round(maint/50)*50)}`, "3 3");
+    card.querySelector("#wk").appendChild(svg);
+  }
+
+  /* ---------- PROTEIN + STEPS STRIPS ---------- */
+  function strip(title, sub, key, target, unit, maxV){
+    const card = html(`<section class="card"><h2>${title}</h2><p class="sub">${sub}</p><div class="chart"></div></section>`);
+    C.appendChild(card);
+    const W=360,H=110,P={l:34,r:8,t:8,b:18};
+    const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":title});
+    const hi = Math.max(maxV, ...daily.map(r=>r[key]||0));
+    const y = v => P.t + (1-v/hi)*(H-P.t-P.b);
+    const slot = (W-P.l-P.r)/n, bw = Math.min(14, slot-3);
+    const x = i => P.l + (i+.5)*slot;
+    const tt = el("text",{x:P.l-6,y:y(target)+3.5,"text-anchor":"end","font-size":10,fill:css("--muted"),class:"num"},svg); tt.textContent = target>=1000?`${target/1000}k`:target;
+    daily.forEach((r,i)=>{
+      const v = r[key]; if(v==null) return;
+      const hit = v >= ((key==="protein" && r.pTarget) ? r.pTarget : target)*0.95;
+      const top = y(v), x0 = x(i)-bw/2, rr = Math.min(4, bw/2);
+      el("path",{d:`M${x0},${y(0)} V${top+rr} Q${x0},${top} ${x0+rr},${top} H${x0+bw-rr} Q${x0+bw},${top} ${x0+bw},${top+rr} V${y(0)} Z`,fill:hit?css("--s3"):css("--axis")},svg);
+    });
+    el("line",{x1:P.l,x2:W-P.r,y1:y(target),y2:y(target),stroke:css("--ink-2"),"stroke-width":1.25,"stroke-dasharray":"3 3"},svg);
+    el("line",{x1:P.l,x2:W-P.r,y1:y(0),y2:y(0),stroke:css("--axis")},svg);
+    daily.forEach((r,i)=>{ if(i===0||i===n-1||(r.d.getDay()===1&&n-1-i>3&&i>3)){ const t=el("text",{x:x(i),y:H-4,"text-anchor":"middle","font-size":9.5,fill:css("--muted")},svg); t.textContent=md(r.d);} });
+    const box = card.querySelector(".chart"); box.appendChild(svg);
+    scrub(box, svg, daily.map((_,i)=>x(i)), (i,k)=>{ const r=daily[i]; showTip(box, x(i)*k, y(r[key]||0)*k, `<b>${wd(r.d)} ${md(r.d)}</b><br><b class="num">${fmt(r[key])}</b> ${unit}`); }, ()=>{});
+  }
+  strip("Protein", `Green days cleared the target (within 5%). Avg <b class="num">${fmt(avg("protein"))}g</b>.`, "protein", 180, "g protein", 220);
+  strip("Steps", `Green days hit 10k. Avg <b class="num">${fmt(avg("steps"))}</b>.`, "steps", 10000, "steps", 16000);
+
+  /* ---------- LIFTS ---------- */
+  {
+    const e1 = (w,r) => w * (1 + r/30);
+    const byEx = {};
+    lifts.filter(l => l.set_type !== "drop" && l.w > 0).forEach(l => {
+      (byEx[l.exercise] ||= {}); const s = byEx[l.exercise];
+      const v = e1(l.w, l.reps);
+      if(!s[l.date] || v > s[l.date].v) s[l.date] = {v, w:l.w, r:l.reps, d:l.d};
+    });
+    const order = ["Machine Bench Press","Machine OHP","Barbell Back Squat","RDL","Seated Cable Row","Hammer Curl","Leg Curl","Tricep Pushdown","DB Lateral Raise","Straight-Arm Pulldown","Incline DB Press","Lat Pulldown"];
+    const exs = Object.keys(byEx).filter(k=>Object.keys(byEx[k]).length>=1)
+      .sort((a,b)=>(order.indexOf(a)+99*(order.indexOf(a)<0))-(order.indexOf(b)+99*(order.indexOf(b)<0)));
+    const card = html(`<section class="card"><h2>Strength</h2>
+      <p class="sub">Best set per session as an estimated 1-rep max. Up and to the right while cutting means muscle is being kept.</p>
+      <div class="lifts" id="lifts"></div></section>`);
+    C.appendChild(card);
+    const grid = card.querySelector("#lifts");
+    const once = [];
+    exs.forEach(ex => {
+      const pts = Object.values(byEx[ex]).sort((a,b)=>a.d-b.d);
+      if(pts.length < 2){ once.push([ex, pts[0]]); return; }
+      const f = pts[0], l = pts[pts.length-1];
+      const ch = (l.v - f.v)/f.v*100;
+      const cls = pts.length<2 ? "flat" : ch>0.5 ? "up" : ch<-0.5 ? "down" : "flat";
+      const c = html(`<div class="lift"><div class="name" title="${ex}">${ex.replace("Machine ","")}</div>
+        <div class="now num">${fmt(l.w)}<small> × ${l.r}</small></div>
+        <div class="chg ${cls} num">${pts.length<2?"1 session":`${ch>=0?"+":""}${fmt(ch,0)}% e1RM`}</div></div>`);
+      const s = el("svg",{viewBox:"0 0 100 36",preserveAspectRatio:"none"});
+      if(pts.length>1){
+        const lo = Math.min(...pts.map(p=>p.v)), hi = Math.max(...pts.map(p=>p.v));
+        const span = Math.max(hi-lo, hi*0.04);
+        const xx = i => 4 + i/(pts.length-1)*92, yy = v => 30 - (v-lo)/span*24;
+        el("path",{d:"M"+pts.map((p,i)=>`${xx(i)},${yy(p.v)}`).join(" L"),fill:"none",stroke:css("--s1"),"stroke-width":2,"vector-effect":"non-scaling-stroke","stroke-linejoin":"round","stroke-linecap":"round"},s);
+      }
+      c.appendChild(s);
+      // end dot as HTML overlay to avoid stretched circle
+      grid.appendChild(c);
+    });
+    if(once.length){
+      const d = html(`<details class="table"><summary>Logged once so far (${once.length})</summary><div class="wrap"><table><tr><th>Exercise</th><th>Best set</th><th>Date</th></tr>${once.map(([ex,p])=>`<tr><td>${ex}</td><td>${p.w} × ${p.r}</td><td>${md(p.d)}</td></tr>`).join("")}</table></div></details>`);
+      card.appendChild(d);
+    }
+  }
+
+  /* ---------- BODY + MONTHS ---------- */
+  {
+    const b = body[body.length-1];
+    const fatLb = b && b.bf && b.weight ? b.weight * b.bf/100 : null;
+    const card = html(`<section class="card"><h2>Body composition</h2>
+      <p class="sub">One Hume reading a month, same conditions. The trend over months is the signal.</p>
+      <div class="tiles" style="margin-top:4px">
+        <div class="tile"><div class="k">Body fat</div><div class="v num">${fmt(b?.bf,1)}<small>%</small></div><div class="n">${b?md(b.d):""}</div></div>
+        <div class="tile"><div class="k">Fat mass</div><div class="v num">${fmt(fatLb,1)}<small>lb</small></div><div class="n">at ${fmt(b?.weight,1)} lb</div></div>
+        <div class="tile"><div class="k">Waist</div><div class="v num">${b?.waist?fmt(b.waist,1)+'<small>in</small>':"–"}</div><div class="n">${b?.waist?"":"first reading due"}</div></div>
+        <div class="tile"><div class="k">Goal</div><div class="v num">15<small>%</small></div><div class="n num">${b?.bf?`${fmt(b.bf-15,1)} pts to go`:""}</div></div>
+      </div></section>`);
+    C.appendChild(card);
+    const monthsSet = [...new Set(daily.map(r=>r.date.slice(0,7)))].sort().reverse();
+    const mc = html(`<section class="card months"><h2 style="margin-bottom:6px">Monthly reviews</h2></section>`);
+    monthsSet.forEach(m => {
+      const [yy,mm] = m.split("-").map(Number);
+      const name = new Date(yy,mm-1,1).toLocaleDateString("en-US",{month:"long",year:"numeric"});
+      const rows = daily.filter(r=>r.date.startsWith(m) && r.kcal!=null);
+      mc.appendChild(html(`<a href="https://github.com/snowydock/sovak-fitness/blob/main/months/${m}.md">${name}<span class="num">${rows.length} days · ${fmt(rows.reduce((s,r)=>s+r.kcal,0)/rows.length)} avg kcal ›</span></a>`));
+    });
+    C.appendChild(mc);
+  }
+}

@@ -6,7 +6,7 @@ A month-by-month record of Mike's training, nutrition, and body composition, wit
 
 ## How it works
 
-Daily coaching happens in a dedicated Claude chat each month. This repo holds the clean, finished record, committed once a month.
+Mike logs each day in the app (Today + Lift tabs); every save commits to `log/YYYY-MM.json`. Daily coaching happens in a dedicated Claude chat each month, which reads that file. At month close the log is folded into the clean CSVs.
 
 ```
 program.md          The living rulebook: targets, split, next weights, rules
@@ -16,23 +16,34 @@ data/body.csv       Monthly body comp: weight, Hume BF%, waist
 data/phases.csv     Cuts, maintenance, trips, with their targets
 months/YYYY-MM.md   Written review of each month
 prompts/YYYY-MM.md  The prompt that opens each month's chat
-index.html          The dashboard (reads the CSVs directly)
+data/program.json   Session templates, rep ranges, increments (drives the Lift tab's targets)
+log/YYYY-MM.json    Open-month daily entries written by the app (one key per date)
+log/img/            Food screenshots uploaded from the app
+index.html, js/     The app: Today (log), Lift, Trends (dashboard)
 ```
+
+### The app
+
+- **Today:** weigh-in, steps, food (paste the LoseIt web page with Ctrl+A and macros, foods and steps fill in; or attach screenshots and type calories + protein), day type (normal / light social / heavy social / travel), activity, notes, monthly Hume BF% and waist. Any date, past or future: mark a social day ahead of time.
+- **Lift:** suggests the next session (whichever was done longest ago), prefills each exercise with a target weight from the progression rule, shows last time's sets. Or paste an Apple Notes block.
+- **Trends:** the dashboard. Merges closed-month CSVs with the open month's log.
+- **Saving** needs a fine-grained GitHub token limited to this repo with Contents: Read and write, pasted once via the gear icon. Stored on the phone only. Unsaved edits are kept on the phone as drafts.
 
 ## Data sources
 
 | What | Source | When |
 |---|---|---|
-| Food, macros, weight | LoseIt (weekly PDF reports are the source of truth) | Daily, reconciled monthly |
+| Food, macros | LoseIt, pasted or typed into the app | Daily |
+| Weight, steps | Typed into the app (Hume, Apple Health) | Daily |
 | Steps | Apple Health via LoseIt screenshots | Daily |
-| Lifts | Apple Notes blocks pasted into chat | Per session |
+| Lifts | Lift tab in the app (Apple Notes paste still works) | Per session |
 | Body fat % | Hume, one reading on the 1st | Monthly |
 | Waist | Tape at the navel, relaxed, morning | Monthly |
 
 ## Month-close routine (1st of each month)
 
-1. In the month's chat, paste the LoseIt weekly PDFs, the Hume BF% reading, and a waist measurement.
-2. Claude appends rows to the CSVs, writes `months/YYYY-MM.md`, updates `program.md`, and writes `prompts/` for the next month.
+1. Log Hume BF% and waist in the app on the 1st (Monthly check-in). Optionally paste the LoseIt weekly PDFs in the chat to cross-check.
+2. Claude folds `log/YYYY-MM.json` into the CSVs, writes `months/YYYY-MM.md`, updates `program.md` and `data/program.json` (next weights, templates), and writes `prompts/` for the next month.
 3. Commit. The dashboard updates on its own.
 4. Start the next month's chat with the new prompt.
 
