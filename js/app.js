@@ -104,7 +104,9 @@ export function reportPatch(f) {
     food.source = food.items?.length ? (food.source || "loseit") : "loseit-report";
     if (f.incomplete) food.incomplete = true; else delete food.incomplete;
     const out = { ...day, food };
+    if (f.items?.length) food.items = f.items;
     if (f.weight != null) out.weight = f.weight;
+    if (f.steps != null) out.steps = f.steps;
     return out;
   };
 }

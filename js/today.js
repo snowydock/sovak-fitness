@@ -232,11 +232,11 @@ export function renderToday(root, ctx) {
     const pick = rows.filter(r => !r.closed && !r.same).length;
     const s = sheet(`
       <div class="sheet-h"><h2>${esc(rep.title || "LoseIt report")}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
-      <p class="sub">Calories, macros, sodium and weight for each day. Steps, lifts and notes aren't touched.</p>
+      <p class="sub">${dates.some(d => rep.days[d].steps != null) ? "Calories, macros, foods, weight and steps." : "Calories, macros, sodium and weight for each day."} Lifts and notes aren't touched.</p>
       <div class="rlist">${rows.map(r => `<label class="rrow ${r.closed ? "off" : ""}">
           <input type="checkbox" data-d="${r.d}" ${!r.closed && !r.same ? "checked" : ""} ${r.closed ? "disabled" : ""}>
           <span class="rd"><b>${parseISO(r.d).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}</b>
-            <small class="num">${fmt(r.f.kcal)} kcal · ${fmt(r.f.protein)} g P${r.f.weight != null ? ` · ${fmt(r.f.weight, 1)} lb` : ""}${r.f.incomplete ? " · partial nutrients" : ""}</small></span>
+            <small class="num">${fmt(r.f.kcal)} kcal · ${fmt(r.f.protein)} g P${r.f.weight != null ? ` · ${fmt(r.f.weight, 1)} lb` : ""}${r.f.steps != null ? ` · ${fmt(r.f.steps)} steps` : ""}${r.f.items?.length ? ` · ${r.f.items.length} foods` : ""}${r.f.incomplete ? " · partial nutrients" : ""}</small></span>
           <span class="rs ${r.status.replace(/\W+/g, "-")}">${r.status}</span></label>`).join("")}</div>
       <div class="row gap"><button class="btn primary grow" data-apply ${pick ? "" : "disabled"}>${token.get() ? `Apply to <span data-n>${pick}</span> day<span data-pl>${pick === 1 ? "" : "s"}</span>` : "Connect GitHub to import"}</button></div>`, "Import LoseIt report");
     const el = s.el, btn = el.querySelector("[data-apply]");

@@ -118,8 +118,50 @@ function headerOrder(line, cols) {
   return found.length >= 3 ? found.map(([k]) => cols[k]) : null;
 }
 
+// Daily report: summary, itemized log, nutrients, steps.
+const FULL_MONTHS = { January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12 };
+export function parseDailyReport(lines) {
+  const L = lines.map(l => l.replace(/\t+/g, " | ").replace(/\s*\|\s*/g, " | ").replace(/ {2,}/g, " ").trim()).filter(Boolean);
+  const t = L.find(l => /daily report for/i.test(l));
+  const dm = t && t.match(/daily report for\s+([A-Z][a-z]+)\s+(\d{1,2}),\s+(\d{4})/i);
+  if (!dm || !FULL_MONTHS[dm[1]]) return null;
+  const date = `${dm[3]}-${String(FULL_MONTHS[dm[1]]).padStart(2, "0")}-${String(dm[2]).padStart(2, "0")}`;
+  const flat = L.map(l => l.replace(/ \| /g, " "));
+  const val = (re, from = 0, to = flat.length) => { for (let i = from; i < to; i++) { const m = flat[i].match(re); if (m) return n(m[1]); } return null; };
+  const f = { incomplete: false, items: [] };
+  f.kcal = val(/^Food Calories\s+([\d,.]+)/i);
+  f.weight = val(/^Weight\s+([\d,.]+)/i);
+  // nutrients block: from "Nutrients" to "Goals"
+  const ni = flat.findIndex(l => /^n\s?utrients$/i.test(l));
+  const gi = flat.findIndex((l, i) => i > ni && /^goals$/i.test(l));
+  const nEnd = gi > 0 ? gi : flat.length;
+  if (ni >= 0) {
+    f.fat = val(/^Fat\s+([\d,.]+)\s*g/i, ni, nEnd);
+    f.satfat = val(/^Saturated Fat\s+([\d,.]+)\s*g/i, ni, nEnd);
+    f.chol = val(/^Cholesterol\s+([\d,.]+)\s*mg/i, ni, nEnd);
+    f.sodium = val(/^Sodium\s+([\d,.]+)\s*mg/i, ni, nEnd);
+    f.carbs = val(/^Carbohydrates\s+([\d,.]+)\s*g/i, ni, nEnd);
+    f.fiber = val(/^Fiber\s+([\d,.]+)\s*g/i, ni, nEnd);
+    f.sugars = val(/^Sugars?\s+([\d,.]+)\s*g/i, ni, nEnd);
+    f.protein = val(/^Protein\s+([\d,.]+)\s*g/i, ni, nEnd);
+  }
+  f.steps = val(/^Steps\s+([\d,]+)\s*steps/i);
+  // itemized log: between "Daily Log" and the "Exercise" row (only when cells are separated)
+  const li = L.findIndex(l => /^daily log$/i.test(l));
+  const ei = L.findIndex((l, i) => i > li && /^exercise \| /i.test(l));
+  if (li >= 0) for (const l of L.slice(li + 1, ei > 0 ? ei : (ni > 0 ? ni : L.length))) {
+    if (/^nutrient data missing/i.test(l)) { if (/sod|fib|prot|carb|fat/i.test(l)) f.incomplete = true; continue; }
+    const c = l.split(" | ");
+    if (c.length < 3 || !isNum(c.at(-1))) continue;                  // meal headers ("Snacks | 2,046") have 2 cells
+    f.items.push({ name: c[0], qty: c.slice(1, -1).join(" ").replace(/(\d) ½/, "$1½"), kcal: n(c.at(-1)) });
+  }
+  if (f.kcal == null && f.protein == null) return null;
+  return { title: t, days: { [date]: f } };
+}
+
 // lines: one string per visual row (cells separated by whitespace, tabs or " | ")
 export function parseLoseItReport(lines) {
+  if (lines.some(l => /daily report for/i.test(l))) return parseDailyReport(lines);
   const days = {};
   let cols = null;
   let title = null;
