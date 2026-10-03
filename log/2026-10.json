@@ -138,7 +138,91 @@
         ]
       },
       "day_type": "light_social",
-      "updated": "2026-10-02T19:19:48.444Z"
+      "updated": "2026-10-03T14:31:20.625Z",
+      "food": {
+        "kcal": 2917,
+        "protein": 194,
+        "carbs": 221,
+        "fat": 69,
+        "fiber": 21,
+        "sodium": 3239,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Egg, Large",
+            "qty": "2 Each",
+            "kcal": 143
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "160 Grams",
+            "kcal": 87
+          },
+          {
+            "name": "Bread, Sourdough",
+            "qty": "57 Grams",
+            "kcal": 165
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "15 Grams",
+            "kcal": 46
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Greek turkey meatballs with tomato-feta protein pasta",
+            "qty": "1 Serving",
+            "kcal": 524
+          },
+          {
+            "name": "Chicken Breast, Skinless, Cooked",
+            "qty": "100 Grams",
+            "kcal": 165
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Soybeans, Edamame, Shelled (scanned Len), Seapoint Farms",
+            "qty": "82 Grams",
+            "kcal": 98
+          },
+          {
+            "name": "Sauce, Barbecue, Sweet Baby Ray's",
+            "qty": "25 Grams",
+            "kcal": 49
+          },
+          {
+            "name": "Cabarnet Sauvigon, Glass Of Red Wine",
+            "qty": "24 Ounces",
+            "kcal": 555
+          },
+          {
+            "name": "Shells & Cheese, Velveeta",
+            "qty": "1½ Cups",
+            "kcal": 555
+          },
+          {
+            "name": "Slice Of Pizza, Dominos Medium Cheese Pizza",
+            "qty": "3 Slices",
+            "kcal": 210
+          }
+        ]
+      },
+      "weight": 177.1,
+      "steps": 15454
     }
   }
 }
