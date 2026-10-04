@@ -310,12 +310,14 @@
             "name": "Machine Bench Press",
             "weight": 170,
             "sets": [
+              12,
+              12,
               12
             ]
           }
         ]
       },
-      "updated": "2026-10-04T17:21:17.199Z"
+      "updated": "2026-10-04T17:28:48.382Z"
     }
   }
 }
