@@ -226,7 +226,81 @@
     },
     "2026-10-03": {
       "day_type": "light_social",
-      "updated": "2026-10-04T13:49:11.165Z"
+      "updated": "2026-10-04T13:49:28.372Z",
+      "food": {
+        "kcal": 2080,
+        "protein": 188,
+        "carbs": 181,
+        "fat": 49,
+        "fiber": 17,
+        "sodium": 3187,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Carrots 4\" Sticks",
+            "qty": "4 Sticks",
+            "kcal": 35
+          },
+          {
+            "name": "Breaded Chicken Breast, Pinty's",
+            "qty": "2½ Servings",
+            "kcal": 550
+          },
+          {
+            "name": "Dressing, Ranch, Hidden Valley",
+            "qty": "1 Tablespoon",
+            "kcal": 70
+          },
+          {
+            "name": "Beer, Bud Light, Budweiser",
+            "qty": "1½ Bottles",
+            "kcal": 165
+          },
+          {
+            "name": "Greek turkey meatballs with tomato-feta protein pasta",
+            "qty": "1 Serving",
+            "kcal": 524
+          },
+          {
+            "name": "Protein Shake, Chocolate, Fairlife nutrition plan",
+            "qty": "11½ Fluid Ounces",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "250 Grams",
+            "kcal": 150
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "15 Grams",
+            "kcal": 46
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Soybeans, Edamame, Shelled (scanned Len), Seapoint Farms",
+            "qty": "50 Grams",
+            "kcal": 60
+          },
+          {
+            "name": "Protein Shake, Chocolate, Fairlife nutrition plan",
+            "qty": "11½ Fluid Ounces",
+            "kcal": 150
+          }
+        ]
+      },
+      "weight": 176.7,
+      "steps": 10738
     }
   }
 }
