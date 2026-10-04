@@ -137,8 +137,7 @@
           }
         ]
       },
-      "day_type": "light_social",
-      "updated": "2026-10-03T14:31:20.625Z",
+      "day_type": "heavy_social",
       "food": {
         "kcal": 2917,
         "protein": 194,
@@ -222,7 +221,8 @@
         ]
       },
       "weight": 177.1,
-      "steps": 15454
+      "steps": 15454,
+      "updated": "2026-10-04T13:49:17.194Z"
     },
     "2026-10-03": {
       "day_type": "light_social",
