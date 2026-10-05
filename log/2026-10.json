@@ -372,7 +372,65 @@
         ]
       },
       "notes": "slept poorly 10/4 -> 10/5",
-      "updated": "2026-10-05T11:23:26.870Z"
+      "updated": "2026-10-05T11:40:20.048Z",
+      "food": {
+        "kcal": 2097,
+        "protein": 179,
+        "carbs": 320,
+        "fat": 48,
+        "fiber": 47,
+        "sodium": 4842,
+        "source": "loseit-report",
+        "items": [
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chili con carne",
+            "qty": "1 Serving",
+            "kcal": 368
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "ReLyte Electrolytes and Creatine",
+            "qty": "1 Serving",
+            "kcal": 0
+          },
+          {
+            "name": "Soybeans, Edamame, Shelled (scanned Len), Seapoint Farms",
+            "qty": "150 Grams",
+            "kcal": 180
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "1 Container",
+            "kcal": 310
+          },
+          {
+            "name": "Crispy spicy beef noodles",
+            "qty": "1 Serving",
+            "kcal": 562
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "150 Grams",
+            "kcal": 90
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "8 Grams",
+            "kcal": 24
+          }
+        ]
+      },
+      "weight": 177.8,
+      "steps": 10951
     }
   }
 }
