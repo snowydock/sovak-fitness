@@ -434,7 +434,71 @@
     },
     "2026-10-05": {
       "notes": "Stressed today, hungry. The sandwich was an emotional decision.\nRemoved electrolytes",
-      "updated": "2026-10-06T00:59:36.723Z"
+      "updated": "2026-10-06T02:03:51.333Z",
+      "food": {
+        "kcal": 2538,
+        "protein": 204,
+        "carbs": 342,
+        "fat": 73,
+        "fiber": 24,
+        "sodium": 4229,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Overnight Oats",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Crispy spicy beef noodles",
+            "qty": "1 Serving",
+            "kcal": 562
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "250 Grams",
+            "kcal": 150
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "15 Grams",
+            "kcal": 46
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Bread, Sourdough",
+            "qty": "100 Grams",
+            "kcal": 289
+          },
+          {
+            "name": "Skinny Italian, Lettuce, Tomato, Onions, Pickles, Oil, Seaso, Potbelly Sandwich Works",
+            "qty": "1 Serving",
+            "kcal": 460
+          },
+          {
+            "name": "Chili con carne",
+            "qty": "1 Serving",
+            "kcal": 368
+          },
+          {
+            "name": "Creatine Monohydrate, Micronized, Optimum Nutrition",
+            "qty": "1 Serving",
+            "kcal": 0
+          }
+        ]
+      },
+      "weight": 178,
+      "steps": 10415
     }
   }
 }
