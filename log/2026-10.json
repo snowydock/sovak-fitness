@@ -577,6 +577,40 @@
       "weight": 177,
       "steps": 12439
     },
+    "2026-10-07": {
+      "lift": {
+        "session": "Lower",
+        "exercises": [
+          {
+            "name": "Barbell Back Squat",
+            "weight": 145,
+            "sets": [
+              10,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "RDL",
+            "weight": 145,
+            "sets": [
+              10,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "Leg Extension",
+            "weight": 120,
+            "sets": [
+              15,
+              15
+            ]
+          }
+        ]
+      },
+      "updated": "2026-10-07T14:18:57.381Z"
+    },
     "2026-10-09": {
       "day_type": "heavy_social",
       "updated": "2026-10-07T01:53:30.001Z"
