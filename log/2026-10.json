@@ -502,7 +502,80 @@
     },
     "2026-10-06": {
       "notes": "Didn’t sleep great again 10/5 -> 10/6 but better\nRan for 23 minutes",
-      "updated": "2026-10-07T00:41:05.997Z"
+      "updated": "2026-10-07T00:42:00.751Z",
+      "food": {
+        "kcal": 2083,
+        "protein": 189,
+        "carbs": 272,
+        "fat": 59,
+        "fiber": 21,
+        "sodium": 3208,
+        "source": "loseit-report",
+        "items": [
+          {
+            "name": "Overnight Oats",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Crispy spicy beef noodles",
+            "qty": "1 Serving",
+            "kcal": 562
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "150 Grams",
+            "kcal": 90
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "10 Grams",
+            "kcal": 30
+          },
+          {
+            "name": "Chili con carne",
+            "qty": "1 Serving",
+            "kcal": 368
+          },
+          {
+            "name": "Creatine Monohydrate, Micronized, Optimum Nutrition",
+            "qty": "1 Serving",
+            "kcal": 0
+          },
+          {
+            "name": "Bread, Sourdough",
+            "qty": "60 Grams",
+            "kcal": 173
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "2 Each",
+            "kcal": 143
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "100 Grams",
+            "kcal": 54
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "10 Grams",
+            "kcal": 30
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          }
+        ]
+      },
+      "weight": 177,
+      "steps": 12439
     }
   }
 }
