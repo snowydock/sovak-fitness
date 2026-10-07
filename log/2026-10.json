@@ -600,16 +600,34 @@
             ]
           },
           {
+            "name": "Leg Curl",
+            "weight": 100,
+            "sets": [
+              15,
+              15,
+              15
+            ]
+          },
+          {
             "name": "Leg Extension",
             "weight": 120,
             "sets": [
               15,
               15
             ]
+          },
+          {
+            "name": "Ab Wheel",
+            "weight": 0,
+            "sets": [
+              10,
+              10,
+              10
+            ]
           }
         ]
       },
-      "updated": "2026-10-07T14:18:57.381Z"
+      "updated": "2026-10-07T14:33:41.697Z"
     },
     "2026-10-09": {
       "day_type": "heavy_social",
