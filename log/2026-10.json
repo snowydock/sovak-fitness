@@ -627,7 +627,75 @@
           }
         ]
       },
-      "updated": "2026-10-07T14:33:41.697Z"
+      "updated": "2026-10-08T01:15:28.283Z",
+      "food": {
+        "kcal": 2047,
+        "protein": 188,
+        "carbs": 275,
+        "fat": 56,
+        "fiber": 17,
+        "sodium": 3584,
+        "source": "loseit-report",
+        "items": [
+          {
+            "name": "Overnight Oats",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Crispy spicy beef noodles",
+            "qty": "1 Serving",
+            "kcal": 562
+          },
+          {
+            "name": "Creatine Monohydrate, Micronized, Optimum Nutrition",
+            "qty": "1 Serving",
+            "kcal": 0
+          },
+          {
+            "name": "Bread, Sourdough",
+            "qty": "60 Grams",
+            "kcal": 173
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "2 Each",
+            "kcal": 143
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "100 Grams",
+            "kcal": 54
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "10 Grams",
+            "kcal": 30
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Dill chicken soup",
+            "qty": "1 Serving",
+            "kcal": 342
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          }
+        ]
+      },
+      "weight": 176.3,
+      "steps": 10919
     },
     "2026-10-09": {
       "day_type": "heavy_social",
