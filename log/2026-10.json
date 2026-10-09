@@ -783,13 +783,22 @@
             "name": "Incline DB Press",
             "weight": 40,
             "sets": [
+              12,
+              12
+            ]
+          },
+          {
+            "name": "Machine OHP",
+            "weight": 110,
+            "sets": [
+              12,
               12
             ]
           }
         ]
       },
       "notes": "feeling demoralized for letting yesterday get away from me. \nfeeling reflective on the fact that consistently logging is the only way through, even when i fuck it up i cant let one bad day or weekend turn into weeks of inactivity",
-      "updated": "2026-10-09T17:57:04.525Z"
+      "updated": "2026-10-09T19:11:48.060Z"
     }
   }
 }
