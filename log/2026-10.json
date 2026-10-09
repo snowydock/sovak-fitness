@@ -699,7 +699,71 @@
     },
     "2026-10-08": {
       "day_type": "heavy_social",
-      "updated": "2026-10-09T14:23:17.095Z"
+      "updated": "2026-10-09T14:24:02.047Z",
+      "food": {
+        "kcal": 3754,
+        "protein": 233,
+        "carbs": 469,
+        "fat": 84,
+        "fiber": 25,
+        "sodium": 3982,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Overnight Oats",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Crispy spicy beef noodles",
+            "qty": "1 Serving",
+            "kcal": 562
+          },
+          {
+            "name": "Creatine Monohydrate, Micronized, Optimum Nutrition",
+            "qty": "1 Serving",
+            "kcal": 0
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Dill chicken soup",
+            "qty": "1 Serving",
+            "kcal": 342
+          },
+          {
+            "name": "Chicken Pad Thai",
+            "qty": "1 Serving",
+            "kcal": 770
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Gyro Sandwich (Pita Bread, Beef, Lamb, Onion, Condiments with Tomato an",
+            "qty": "1 Serving",
+            "kcal": 587
+          },
+          {
+            "name": "Beer, Guinness",
+            "qty": "6 Bottles",
+            "kcal": 750
+          }
+        ]
+      },
+      "weight": 176.4,
+      "steps": 11393
     },
     "2026-10-09": {
       "day_type": "heavy_social",
