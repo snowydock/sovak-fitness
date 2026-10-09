@@ -703,7 +703,16 @@
     },
     "2026-10-09": {
       "day_type": "heavy_social",
-      "updated": "2026-10-07T01:53:30.001Z"
+      "updated": "2026-10-09T14:23:35.025Z",
+      "food": {
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0,
+        "fiber": 0,
+        "sodium": 0,
+        "source": "loseit-report"
+      },
+      "steps": 2263
     }
   }
 }
