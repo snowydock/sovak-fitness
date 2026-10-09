@@ -784,6 +784,7 @@
             "weight": 40,
             "sets": [
               12,
+              12,
               12
             ]
           },
@@ -792,13 +793,47 @@
             "weight": 110,
             "sets": [
               12,
+              12,
               12
+            ]
+          },
+          {
+            "name": "Lat Pulldown",
+            "weight": 100,
+            "sets": [
+              12,
+              12,
+              12
+            ]
+          },
+          {
+            "name": "Cable Lateral Raise",
+            "weight": 20,
+            "sets": [
+              15,
+              15,
+              15,
+              15
+            ]
+          },
+          {
+            "name": "Overhead Cable Tricep Ext",
+            "weight": 70,
+            "sets": [
+              15
+            ]
+          },
+          {
+            "name": "Incline DB Curl",
+            "weight": 25,
+            "sets": [
+              8
             ]
           }
         ]
       },
       "notes": "feeling demoralized for letting yesterday get away from me. \nfeeling reflective on the fact that consistently logging is the only way through, even when i fuck it up i cant let one bad day or weekend turn into weeks of inactivity",
-      "updated": "2026-10-09T19:11:48.060Z"
+      "updated": "2026-10-09T19:38:24.662Z"
     }
   }
 }
