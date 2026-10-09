@@ -767,7 +767,6 @@
     },
     "2026-10-09": {
       "day_type": "heavy_social",
-      "updated": "2026-10-09T14:23:35.025Z",
       "food": {
         "protein": 0,
         "carbs": 0,
@@ -776,7 +775,21 @@
         "sodium": 0,
         "source": "loseit-report"
       },
-      "steps": 2263
+      "steps": 2263,
+      "lift": {
+        "session": "Upper A",
+        "exercises": [
+          {
+            "name": "Incline DB Press",
+            "weight": 40,
+            "sets": [
+              12
+            ]
+          }
+        ]
+      },
+      "notes": "feeling demoralized for letting yesterday get away from me. \nfeeling reflective on the fact that consistently logging is the only way through, even when i fuck it up i cant let one bad day or weekend turn into weeks of inactivity",
+      "updated": "2026-10-09T17:57:04.525Z"
     }
   }
 }
