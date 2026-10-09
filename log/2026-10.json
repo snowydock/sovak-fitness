@@ -820,20 +820,24 @@
             "name": "Overhead Cable Tricep Ext",
             "weight": 70,
             "sets": [
-              15
+              15,
+              12,
+              11
             ]
           },
           {
             "name": "Incline DB Curl",
             "weight": 25,
             "sets": [
+              8,
+              8,
               8
             ]
           }
         ]
       },
       "notes": "feeling demoralized for letting yesterday get away from me. \nfeeling reflective on the fact that consistently logging is the only way through, even when i fuck it up i cant let one bad day or weekend turn into weeks of inactivity",
-      "updated": "2026-10-09T19:38:24.662Z"
+      "updated": "2026-10-09T19:46:37.759Z"
     }
   }
 }
