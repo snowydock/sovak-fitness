@@ -833,11 +833,19 @@
               8,
               8
             ]
+          },
+          {
+            "name": "Face Pull",
+            "weight": 35,
+            "sets": [
+              15,
+              15
+            ]
           }
         ]
       },
       "notes": "feeling demoralized for letting yesterday get away from me. \nfeeling reflective on the fact that consistently logging is the only way through, even when i fuck it up i cant let one bad day or weekend turn into weeks of inactivity",
-      "updated": "2026-10-09T19:46:37.759Z"
+      "updated": "2026-10-09T20:32:57.235Z"
     }
   }
 }
