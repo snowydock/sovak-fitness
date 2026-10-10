@@ -768,14 +768,83 @@
     "2026-10-09": {
       "day_type": "heavy_social",
       "food": {
-        "protein": 0,
-        "carbs": 0,
-        "fat": 0,
-        "fiber": 0,
-        "sodium": 0,
-        "source": "loseit-report"
+        "protein": 196,
+        "carbs": 433,
+        "fat": 130,
+        "fiber": 61,
+        "sodium": 10099,
+        "source": "loseit-report",
+        "kcal": 4633,
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Chobani Strawberries & Cream",
+            "qty": "1 Serving",
+            "kcal": 170
+          },
+          {
+            "name": "Tall Flat White, Starbucks",
+            "qty": "1 Serving",
+            "kcal": 112
+          },
+          {
+            "name": "Overnight Oats",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Protein Shake, Chocolate, Fairlife nutrition plan",
+            "qty": "11½ Fluid Ounces",
+            "kcal": 150
+          },
+          {
+            "name": "Orange chicken rice bowl",
+            "qty": "1 Serving",
+            "kcal": 556
+          },
+          {
+            "name": "Chips, Tortilla, Yellow Corn",
+            "qty": "30 Pieces",
+            "kcal": 462
+          },
+          {
+            "name": "Guacamole, Chipotle",
+            "qty": "1 Serving",
+            "kcal": 230
+          },
+          {
+            "name": "Queso, Chipotle",
+            "qty": "4 Ounces",
+            "kcal": 240
+          },
+          {
+            "name": "Pico De Gallo, Homemade",
+            "qty": "3 Cups",
+            "kcal": 240
+          },
+          {
+            "name": "Margarita, Classic, On the Rocks, Red Lobster",
+            "qty": "3 Each",
+            "kcal": 750
+          },
+          {
+            "name": "Gordita Crunch, Cheesy, Taco Bell",
+            "qty": "1 Each",
+            "kcal": 500
+          },
+          {
+            "name": "Cider, Okanahan",
+            "qty": "2 Each",
+            "kcal": 300
+          },
+          {
+            "name": "Quesadilla, Chicken, Taco Bell",
+            "qty": "1 Each",
+            "kcal": 510
+          }
+        ]
       },
-      "steps": 2263,
+      "steps": 11548,
       "lift": {
         "session": "Upper A",
         "exercises": [
@@ -845,7 +914,7 @@
         ]
       },
       "notes": "feeling demoralized for letting yesterday get away from me. \nfeeling reflective on the fact that consistently logging is the only way through, even when i fuck it up i cant let one bad day or weekend turn into weeks of inactivity",
-      "updated": "2026-10-09T20:32:57.235Z"
+      "updated": "2026-10-10T17:11:54.393Z"
     }
   }
 }
