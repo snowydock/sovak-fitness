@@ -915,6 +915,82 @@
       },
       "notes": "feeling demoralized for letting yesterday get away from me. \nfeeling reflective on the fact that consistently logging is the only way through, even when i fuck it up i cant let one bad day or weekend turn into weeks of inactivity",
       "updated": "2026-10-10T17:11:54.393Z"
+    },
+    "2026-10-10": {
+      "food": {
+        "kcal": 2955,
+        "protein": 118,
+        "carbs": 294,
+        "fat": 79,
+        "fiber": 9,
+        "sodium": 3610,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Bagel, Everything, with cream cheese",
+            "qty": "and tomato’s 1 Each",
+            "kcal": 464
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Pumpkin Spice Latte, w/ 2%, Grande, Starbucks",
+            "qty": "1 Each",
+            "kcal": 310
+          },
+          {
+            "name": "Shells & Cheese, Velveeta",
+            "qty": "¾ Cup",
+            "kcal": 278
+          },
+          {
+            "name": "Chobani Strawberries & Cream",
+            "qty": "1 Serving",
+            "kcal": 170
+          },
+          {
+            "name": "Steamed Chicken Soup Dumplings, Trader Joes's",
+            "qty": "1½ Servings",
+            "kcal": 390
+          },
+          {
+            "name": "Tater Tots, Great Value",
+            "qty": "15 Pieces",
+            "kcal": 160
+          },
+          {
+            "name": "Pizza, Cheese, 18\" New York style, slice",
+            "qty": "1 Slice",
+            "kcal": 230
+          },
+          {
+            "name": "Beer, Miller High Life",
+            "qty": "24 Fluid Ounces",
+            "kcal": 286
+          },
+          {
+            "name": "Old Fashioned Cocktail, Bar drink",
+            "qty": "1 Serving",
+            "kcal": 160
+          },
+          {
+            "name": "Beer, Guinness",
+            "qty": "1 Bottle",
+            "kcal": 125
+          },
+          {
+            "name": "Mixed Drink, Piña Colada, Homemade",
+            "qty": "1 Each",
+            "kcal": 232
+          }
+        ]
+      },
+      "steps": 16832,
+      "updated": "2026-10-11T14:02:05.628Z"
     }
   }
 }
