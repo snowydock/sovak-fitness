@@ -992,6 +992,67 @@
       "steps": 16832,
       "day_type": "heavy_social",
       "updated": "2026-10-11T14:02:11.746Z"
+    },
+    "2026-10-11": {
+      "food": {
+        "kcal": 2172,
+        "protein": 191,
+        "carbs": 244,
+        "fat": 51,
+        "fiber": 15,
+        "sodium": 3005,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Overnight Oats",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Crispy spicy beef noodles",
+            "qty": "1 Serving",
+            "kcal": 562
+          },
+          {
+            "name": "Dill chicken soup",
+            "qty": "1 Serving",
+            "kcal": 342
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "250 Grams",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Apple tart",
+            "qty": "1 Each",
+            "kcal": 275
+          }
+        ]
+      },
+      "steps": 3163,
+      "updated": "2026-10-12T14:51:03.674Z"
     }
   }
 }
