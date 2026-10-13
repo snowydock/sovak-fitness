@@ -1053,6 +1053,72 @@
       },
       "steps": 3163,
       "updated": "2026-10-12T14:51:03.674Z"
+    },
+    "2026-10-12": {
+      "food": {
+        "kcal": 1915,
+        "protein": 202,
+        "carbs": 177,
+        "fat": 45,
+        "fiber": 21,
+        "sodium": 2383,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Orange chicken rice bowl",
+            "qty": "1 Serving",
+            "kcal": 556
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "2 Each",
+            "kcal": 143
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "240 Grams",
+            "kcal": 130
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Bread, Sourdough",
+            "qty": "60 Grams",
+            "kcal": 173
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "250 Grams",
+            "kcal": 150
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "10 Grams",
+            "kcal": 30
+          }
+        ]
+      },
+      "steps": 13617,
+      "updated": "2026-10-13T03:59:45.350Z"
     }
   }
 }
