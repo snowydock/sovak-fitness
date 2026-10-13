@@ -1119,6 +1119,23 @@
       },
       "steps": 13617,
       "updated": "2026-10-13T03:59:45.350Z"
+    },
+    "2026-10-13": {
+      "lift": {
+        "session": "Upper B",
+        "exercises": [
+          {
+            "name": "Machine Bench Press",
+            "weight": 180,
+            "sets": [
+              10,
+              10,
+              10
+            ]
+          }
+        ]
+      },
+      "updated": "2026-10-13T13:21:25.239Z"
     }
   }
 }
