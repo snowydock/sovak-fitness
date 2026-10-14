@@ -1313,7 +1313,65 @@
     },
     "2026-10-14": {
       "notes": "very weird day. awful sleep on the plane, then a broken nap that we forced ourselves out of to adjust to the timezone",
-      "updated": "2026-10-14T18:13:51.943Z"
+      "updated": "2026-10-14T18:13:59.045Z",
+      "food": {
+        "kcal": 1802,
+        "protein": 104,
+        "carbs": 199,
+        "fat": 71,
+        "fiber": 17,
+        "sodium": 2058,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Sweet and sour sauce, McDonald's",
+            "qty": "1 Package",
+            "kcal": 12
+          },
+          {
+            "name": "French Fries, Medium, McDonald's",
+            "qty": "1 Serving",
+            "kcal": 340
+          },
+          {
+            "name": "chicken nuggets 10pc, McDonald's",
+            "qty": "10 Pieces",
+            "kcal": 440
+          },
+          {
+            "name": "Ketchup",
+            "qty": "1 Tablespoon",
+            "kcal": 15
+          },
+          {
+            "name": "High Protein Drink Strawberry And Banana, Migros",
+            "qty": "500 Milliliters",
+            "kcal": 358
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "0.8 Container",
+            "kcal": 88
+          },
+          {
+            "name": "Mediterranean Breakfast Sandwich , Homemade",
+            "qty": "1 Serving",
+            "kcal": 242
+          },
+          {
+            "name": "Clif Bar, Chocolate Chip",
+            "qty": "1 Each",
+            "kcal": 250
+          },
+          {
+            "name": "Tall Flat White, Starbucks",
+            "qty": "½ Serving",
+            "kcal": 56
+          }
+        ]
+      },
+      "steps": 7577
     }
   }
 }
