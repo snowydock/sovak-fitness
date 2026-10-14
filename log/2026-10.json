@@ -1190,7 +1190,126 @@
         ]
       },
       "notes": "travel day in the evening where some of the later food comes from",
-      "updated": "2026-10-14T18:12:28.988Z"
+      "updated": "2026-10-14T18:12:38.456Z",
+      "food": {
+        "kcal": 3087,
+        "protein": 183,
+        "carbs": 335,
+        "fat": 108,
+        "fiber": 32,
+        "sodium": 3234,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Orange chicken rice bowl",
+            "qty": "1 Serving",
+            "kcal": 556
+          },
+          {
+            "name": "Chobani Strawberries & Cream",
+            "qty": "1 Serving",
+            "kcal": 170
+          },
+          {
+            "name": "Ketchup",
+            "qty": "1 Tablespoon",
+            "kcal": 15
+          },
+          {
+            "name": "Buns, Burger, Butternut",
+            "qty": "1 Each",
+            "kcal": 120
+          },
+          {
+            "name": "Sliced Tomato, Tomotes",
+            "qty": "3 Slices",
+            "kcal": 15
+          },
+          {
+            "name": "Bacon, Cooked",
+            "qty": "2 Pieces",
+            "kcal": 87
+          },
+          {
+            "name": "Lettuce, Iceberg, Shredded",
+            "qty": "1 Cup",
+            "kcal": 5
+          },
+          {
+            "name": "French Fries, Medium, McDonald's",
+            "qty": "1 Serving",
+            "kcal": 340
+          },
+          {
+            "name": "Melted Cheese, Queso-Melt",
+            "qty": "1 Serving",
+            "kcal": 80
+          },
+          {
+            "name": "Sliced Avocado, Canteen",
+            "qty": "1 Each",
+            "kcal": 58
+          },
+          {
+            "name": "Cheese, Parmesan, Grated",
+            "qty": "1 Tablespoon",
+            "kcal": 22
+          },
+          {
+            "name": "Chicken, Patty, Breaded, Tyson",
+            "qty": "1 Piece",
+            "kcal": 200
+          },
+          {
+            "name": "Baklava, Homemade Baklava",
+            "qty": "1 Piece",
+            "kcal": 132
+          },
+          {
+            "name": "Cabarnet Sauvigon, Glass Of Red Wine",
+            "qty": "4 Ounces",
+            "kcal": 92
+          },
+          {
+            "name": "Clif Bar, Chocolate Chip",
+            "qty": "½ Each",
+            "kcal": 125
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Ginger Ale, Canada dry ginger ale",
+            "qty": "12 Fluid Ounces",
+            "kcal": 140
+          },
+          {
+            "name": "Curry, Chicken Korma",
+            "qty": "6 Ounces",
+            "kcal": 216
+          },
+          {
+            "name": "Rice, White, Cooked",
+            "qty": "100 Grams",
+            "kcal": 130
+          }
+        ]
+      },
+      "weight": 177.1,
+      "steps": 14960
     }
   }
 }
