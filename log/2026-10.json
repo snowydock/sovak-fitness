@@ -1464,6 +1464,67 @@
       },
       "steps": 1521,
       "updated": "2026-10-16T10:41:20.607Z"
+    },
+    "2026-10-16": {
+      "food": {
+        "kcal": 3587,
+        "protein": 132,
+        "carbs": 391,
+        "fat": 124,
+        "fiber": 6,
+        "sodium": 870,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Calories",
+            "qty": "126 Each",
+            "kcal": 1260
+          },
+          {
+            "name": "Cocoa Powder, Chatfield's",
+            "qty": "1 Serving",
+            "kcal": 25
+          },
+          {
+            "name": "Iced Latte, Barissimo (ALDI)",
+            "qty": "1 Serving",
+            "kcal": 260
+          },
+          {
+            "name": "Wine, Merlot",
+            "qty": "6 Fluid Ounces",
+            "kcal": 150
+          },
+          {
+            "name": "Iced Vanilla Latte, 2%, Grande, Starbucks",
+            "qty": "1 Each",
+            "kcal": 190
+          },
+          {
+            "name": "Big Mac, McDonalds Big Mac",
+            "qty": "½ Serving",
+            "kcal": 282
+          },
+          {
+            "name": "French Fries, Medium, McDonald's",
+            "qty": "½ Serving",
+            "kcal": 170
+          },
+          {
+            "name": "Calories",
+            "qty": "101 Each",
+            "kcal": 1010
+          },
+          {
+            "name": "Blonde Lager, Cool Beer",
+            "qty": "2 Servings",
+            "kcal": 240
+          }
+        ]
+      },
+      "steps": 17442,
+      "updated": "2026-10-16T19:48:24.104Z"
     }
   }
 }
