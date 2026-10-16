@@ -1372,6 +1372,97 @@
         ]
       },
       "steps": 7577
+    },
+    "2026-10-15": {
+      "food": {
+        "kcal": 3467,
+        "protein": 174,
+        "carbs": 238,
+        "fat": 122,
+        "fiber": 13,
+        "sodium": 1075,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Drink Choco, High Protein",
+            "qty": "500 Milliliters",
+            "kcal": 285
+          },
+          {
+            "name": "Calories",
+            "qty": "27 Each",
+            "kcal": 270
+          },
+          {
+            "name": "Yogurt, Icelandic Style Skyr Vanilla, Siggi's",
+            "qty": "5 ⅓ Ounces",
+            "kcal": 120
+          },
+          {
+            "name": "Boiled Egg, Eggland's Best",
+            "qty": "1 Serving",
+            "kcal": 60
+          },
+          {
+            "name": "Breakfast Sausage Links, Johnsonville",
+            "qty": "2 Pieces",
+            "kcal": 113
+          },
+          {
+            "name": "Scrambled Eggs, Homemade",
+            "qty": "2 Each",
+            "kcal": 182
+          },
+          {
+            "name": "Potatoes Halved, None",
+            "qty": "1 Serving",
+            "kcal": 110
+          },
+          {
+            "name": "Cappuccino, 2%, Tall, Starbucks",
+            "qty": "1 Each",
+            "kcal": 60
+          },
+          {
+            "name": "Juice, Orange",
+            "qty": "8 Fluid Ounces",
+            "kcal": 112
+          },
+          {
+            "name": "Oatmeal, Oats, Old Fashioned, Dry, Quaker",
+            "qty": "½ Cup",
+            "kcal": 150
+          },
+          {
+            "name": "Cucumber, Sliced",
+            "qty": "1 Cup",
+            "kcal": 14
+          },
+          {
+            "name": "Greens, Arugula, Leaf",
+            "qty": "1 Cup",
+            "kcal": 5
+          },
+          {
+            "name": "Cereal, Granola, Homemade",
+            "qty": "¼ Cup",
+            "kcal": 149
+          },
+          {
+            "name": "Bacon, Cooked",
+            "qty": "2 Pieces",
+            "kcal": 87
+          },
+          {
+            "name": "Calories",
+            "qty": "175 Each",
+            "kcal": 1750
+          }
+        ]
+      },
+      "steps": 1521,
+      "updated": "2026-10-16T10:41:15.469Z"
     }
   }
 }
