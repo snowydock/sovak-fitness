@@ -1374,6 +1374,7 @@
       "steps": 7577
     },
     "2026-10-15": {
+      "notes": "steps seem wildly unrepresentative, we walked a lot yesterday, it was just done internationally, are steps via my phone not working correctly?",
       "food": {
         "kcal": 3467,
         "protein": 174,
@@ -1462,7 +1463,7 @@
         ]
       },
       "steps": 1521,
-      "updated": "2026-10-16T10:41:15.469Z"
+      "updated": "2026-10-16T10:41:20.607Z"
     }
   }
 }
