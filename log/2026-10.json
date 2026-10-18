@@ -1566,6 +1566,52 @@
       },
       "steps": 12540,
       "updated": "2026-10-18T08:46:51.719Z"
+    },
+    "2026-10-18": {
+      "food": {
+        "kcal": 3085,
+        "protein": 163,
+        "carbs": 294,
+        "fat": 129,
+        "fiber": 18,
+        "sodium": 4415,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Beef Curry, Rice & Lager",
+            "qty": "1 Serving",
+            "kcal": 980
+          },
+          {
+            "name": "Clif Bar, Chocolate Chip",
+            "qty": "½ Each",
+            "kcal": 125
+          },
+          {
+            "name": "Pistacchio, Movenpick Icecream",
+            "qty": "1 Serving",
+            "kcal": 249
+          },
+          {
+            "name": "Protein Drink - Strawberry - Banana, Isey Skyr",
+            "qty": "300 Milliliters",
+            "kcal": 171
+          },
+          {
+            "name": "Hotel Buffet Breakfast",
+            "qty": "1 Serving",
+            "kcal": 580
+          },
+          {
+            "name": "Abi's Kebab Dürüm with Feta",
+            "qty": "1 Serving",
+            "kcal": 980
+          }
+        ]
+      },
+      "steps": 18153,
+      "updated": "2026-10-18T21:35:42.707Z"
     }
   }
 }
