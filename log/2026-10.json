@@ -1525,6 +1525,47 @@
       },
       "steps": 17442,
       "updated": "2026-10-16T19:48:24.104Z"
+    },
+    "2026-10-17": {
+      "food": {
+        "kcal": 4120,
+        "protein": 142,
+        "carbs": 445,
+        "fat": 203,
+        "fiber": 31,
+        "sodium": 6220,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Shin Ramyun Noodle Soup, Nongshim Ramen",
+            "qty": "1 Package",
+            "kcal": 510
+          },
+          {
+            "name": "Bratwurst & Fries",
+            "qty": "1 Serving",
+            "kcal": 900
+          },
+          {
+            "name": "Pistachio Gelato Cup",
+            "qty": "1 Serving",
+            "kcal": 320
+          },
+          {
+            "name": "Swiss Hotel Breakfast + Granola",
+            "qty": "1 Serving",
+            "kcal": 1030
+          },
+          {
+            "name": "Fondue Sides & Carbonara",
+            "qty": "1 Serving",
+            "kcal": 1360
+          }
+        ]
+      },
+      "steps": 12540,
+      "updated": "2026-10-18T08:46:51.719Z"
     }
   }
 }
