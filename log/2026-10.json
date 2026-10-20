@@ -1613,6 +1613,47 @@
       "steps": 18153,
       "notes": "Steps include a hike that also had some good incline",
       "updated": "2026-10-18T21:36:09.255Z"
+    },
+    "2026-10-19": {
+      "food": {
+        "kcal": 3399,
+        "protein": 186,
+        "carbs": 290,
+        "fat": 116,
+        "fiber": 12,
+        "sodium": 3870,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Half Schnitzel Sandwich & Shared Fries",
+            "qty": "1 Serving",
+            "kcal": 610
+          },
+          {
+            "name": "Chiefs protein",
+            "qty": "bar 1 Serving",
+            "kcal": 214
+          },
+          {
+            "name": "High Protein Strawberry Drink, Coop",
+            "qty": "500 Milliliters",
+            "kcal": 285
+          },
+          {
+            "name": "Swiss Hotel Breakfast",
+            "qty": "1 Serving",
+            "kcal": 600
+          },
+          {
+            "name": "Venison Dinner + Wine",
+            "qty": "1 Serving",
+            "kcal": 1690
+          }
+        ]
+      },
+      "steps": 9223,
+      "updated": "2026-10-20T11:52:59.622Z"
     }
   }
 }
