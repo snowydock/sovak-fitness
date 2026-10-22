@@ -1654,6 +1654,31 @@
       },
       "steps": 9223,
       "updated": "2026-10-20T11:52:59.622Z"
+    },
+    "2026-10-20": {
+      "food": {
+        "kcal": 3970,
+        "protein": 188,
+        "carbs": 403,
+        "fat": 177,
+        "fiber": 25,
+        "sodium": 6130,
+        "source": "loseit-report",
+        "items": [
+          {
+            "name": "Breakfast x2 + Lounge Lunch",
+            "qty": "1 Serving",
+            "kcal": 2910
+          },
+          {
+            "name": "Chipotle Double Chicken Bowl",
+            "qty": "1 Serving",
+            "kcal": 1060
+          }
+        ]
+      },
+      "steps": 6708,
+      "updated": "2026-10-22T18:11:54.888Z"
     }
   }
 }
