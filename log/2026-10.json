@@ -1680,6 +1680,92 @@
       "steps": 6708,
       "notes": "travel day back",
       "updated": "2026-10-22T18:12:07.003Z"
+    },
+    "2026-10-21": {
+      "food": {
+        "kcal": 1975,
+        "protein": 180,
+        "carbs": 187,
+        "fat": 53,
+        "fiber": 14,
+        "sodium": 2304,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Egg, Large",
+            "qty": "3 Each",
+            "kcal": 214
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "54 Grams",
+            "kcal": 118
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "10 Grams",
+            "kcal": 30
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Chobani Strawberries & Cream",
+            "qty": "1 Serving",
+            "kcal": 170
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "54 Grams",
+            "kcal": 118
+          },
+          {
+            "name": "Cheese, Cheddar, Shredded",
+            "qty": "10 Grams",
+            "kcal": 40
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Baking Chips, Morsels, Chocolate, Real, Semi Sweet, Nestle Toll House",
+            "qty": "1 Tablespoon",
+            "kcal": 70
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chicken Breast, Skinless, Cooked",
+            "qty": "161 Grams",
+            "kcal": 266
+          },
+          {
+            "name": "Bun, Hamburger, Great Value",
+            "qty": "1 Each",
+            "kcal": 110
+          },
+          {
+            "name": "Sauce, BBQ, Original, Sweet Baby Ray's",
+            "qty": "3 Tablespoons",
+            "kcal": 105
+          }
+        ]
+      },
+      "steps": 10957,
+      "updated": "2026-10-22T18:58:05.979Z"
     }
   }
 }
