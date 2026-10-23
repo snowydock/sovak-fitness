@@ -1767,6 +1767,108 @@
       "steps": 10957,
       "notes": "didnt undereat intentionally, just tired and didnt need all the food",
       "updated": "2026-10-22T18:58:27.169Z"
+    },
+    "2026-10-22": {
+      "food": {
+        "kcal": 3571,
+        "protein": 231,
+        "carbs": 321,
+        "fat": 117,
+        "fiber": 32,
+        "sodium": 5014,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Ground Beef Grass Fed 85/15",
+            "qty": "110 Grams",
+            "kcal": 233
+          },
+          {
+            "name": "Low Carb Balance, Mission Tortilla",
+            "qty": "2 Servings",
+            "kcal": 160
+          },
+          {
+            "name": "Salsa, Mateo's Gourmet Salsa",
+            "qty": "2 Tablespoons",
+            "kcal": 10
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "110 Grams",
+            "kcal": 241
+          },
+          {
+            "name": "Cheese, Cheddar, Shredded",
+            "qty": "20 Grams",
+            "kcal": 81
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Baking Chips, Morsels, Chocolate, Real, Semi Sweet, Nestle Toll House",
+            "qty": "1 Tablespoon",
+            "kcal": 70
+          },
+          {
+            "name": "Gordita Crunch, Cheesy, Taco Bell",
+            "qty": "1 Each",
+            "kcal": 500
+          },
+          {
+            "name": "Quesadilla, Chicken, Taco Bell",
+            "qty": "1 Each",
+            "kcal": 510
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chicken Breast, Skinless, Cooked",
+            "qty": "161 Grams",
+            "kcal": 266
+          },
+          {
+            "name": "Bun, Hamburger, Great Value",
+            "qty": "1 Each",
+            "kcal": 110
+          },
+          {
+            "name": "Sauce, BBQ, Original, Sweet Baby Ray's",
+            "qty": "3 Tablespoons",
+            "kcal": 105
+          },
+          {
+            "name": "Magners Irish Cider",
+            "qty": "2 Pints",
+            "kcal": 300
+          },
+          {
+            "name": "Guinness Extra Stout",
+            "qty": "24 Fluid Ounces",
+            "kcal": 252
+          }
+        ]
+      },
+      "weight": 177.8,
+      "steps": 11482,
+      "updated": "2026-10-23T16:19:07.838Z"
     }
   }
 }
