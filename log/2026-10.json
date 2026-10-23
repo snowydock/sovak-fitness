@@ -1870,6 +1870,30 @@
       "steps": 11482,
       "day_type": "light_social",
       "updated": "2026-10-23T16:19:20.386Z"
+    },
+    "2026-10-23": {
+      "lift": {
+        "session": "Upper A",
+        "exercises": [
+          {
+            "name": "Incline DB Press",
+            "weight": 45,
+            "sets": [
+              12,
+              12,
+              12
+            ]
+          },
+          {
+            "name": "Machine OHP",
+            "weight": 110,
+            "sets": [
+              10
+            ]
+          }
+        ]
+      },
+      "updated": "2026-10-23T19:55:24.822Z"
     }
   }
 }
