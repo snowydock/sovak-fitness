@@ -1904,7 +1904,75 @@
           }
         ]
       },
-      "updated": "2026-10-23T20:08:01.428Z"
+      "updated": "2026-10-24T14:52:47.039Z",
+      "food": {
+        "kcal": 2046,
+        "protein": 196,
+        "carbs": 189,
+        "fat": 60,
+        "fiber": 37,
+        "sodium": 2212,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Taco, Soft, Beef, Taco Bell",
+            "qty": "1 Each",
+            "kcal": 180
+          },
+          {
+            "name": "Ground Beef Grass Fed 85/15",
+            "qty": "133 Grams",
+            "kcal": 281
+          },
+          {
+            "name": "Low Carb Balance, Mission Tortilla",
+            "qty": "2 Servings",
+            "kcal": 160
+          },
+          {
+            "name": "Salsa, Mateo's Gourmet Salsa",
+            "qty": "2 Tablespoons",
+            "kcal": 10
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chobani Strawberries & Cream",
+            "qty": "1 Serving",
+            "kcal": 170
+          },
+          {
+            "name": "Chicken Breast, Skinless, Cooked",
+            "qty": "161 Grams",
+            "kcal": 266
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "1 Container",
+            "kcal": 310
+          },
+          {
+            "name": "Soybeans, Edamame, Shelled (scanned Len), Seapoint Farms",
+            "qty": "30 Grams",
+            "kcal": 36
+          }
+        ]
+      },
+      "steps": 9063
     }
   }
 }
