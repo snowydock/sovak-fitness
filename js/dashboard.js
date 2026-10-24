@@ -101,35 +101,61 @@ export function renderDashboard(C0, data){
     </div></section>`);
   C.appendChild(hero);
 
-  /* ---------- PHASE TIMELINE ---------- */
+  /* ---------- ROAD TO 15% ---------- */
+  // Goal weight keeps today's lean mass (from the latest Hume reading) and puts fat at 15%.
+  // Two finish lines: the pace the scale is actually showing, and the pace the plan would give.
   {
-    const ps = phases.slice().sort((a,b)=>a.s-b.s);
-    const s0 = ps[0].s, s1 = ps[ps.length-1].e, span = daysBetween(s0,s1)+1;
-    const colors = {cut:"var(--s1)", maintenance:"var(--s3)", bulk:"var(--s2)"};
-    const today = new Date(); today.setHours(0,0,0,0);
-    const sw = phases.find(p=>/switzerland/i.test(p.name));
-    const daysTo = sw ? daysBetween(today, sw.s) : null;
-    const card = html(`<section class="card"><h2>Phases</h2>
-      <p class="sub">${daysTo!=null && daysTo>0 ? `<b class="num">${daysTo}</b> days to Switzerland` : "Where we are in the plan"}</p>
-      <div class="phase-bar" id="pbar"></div>
-      <div class="phase-legend num"><span>${md(s0)}</span><span>${md(s1)}</span></div></section>`);
-    const bar = card.querySelector("#pbar");
-    ps.forEach(p => {
-      const w = (daysBetween(p.s,p.e)+1)/span*100;
-      const seg = document.createElement("div");
-      seg.style.flex = `0 0 calc(${w}% - 2px)`;
-      seg.className = "seg";
-      seg.style.background = colors[p.kind] || "var(--muted)";
-      if (p.kind === "cut") seg.style.color = "var(--on-s1)";
-      seg.title = `${p.name}: ${md(p.s)}–${md(p.e)}`;
-      seg.textContent = w > 22 ? (p.label || p.name) : "";
-      seg.setAttribute("aria-label", p.name);
-      bar.appendChild(seg);
-    });
-    if(today >= s0 && today <= s1){
-      const t = document.createElement("div"); t.className="phase-today";
-      t.style.left = `calc(${(daysBetween(s0,today)+.5)/span*100}% - 1px)`;
-      bar.appendChild(t);
+    const GOAL_BF = 0.15;
+    const bfRow = [...body].reverse().find(b => b.bf != null);
+    const card = html(`<section class="card goal"><h2>Road to 15%</h2></section>`);
+    if (!bfRow) {
+      card.appendChild(html(`<p class="sub">Needs a Hume body-fat reading. Log one on the 1st.</p>`));
+    } else {
+      const bfW = bfRow.weight ?? daily.filter(r => r.d <= bfRow.d && r.weight != null).at(-1)?.weight ?? last.trend;
+      const lean = bfW * (1 - bfRow.bf / 100);
+      const goalW = lean / (1 - GOAL_BF);
+      const toGo = last.trend - goalW;
+
+      // Current pace: straight-line fit through the last 28 days of weigh-ins.
+      const since = new Date(last.d.getTime() - 27 * dayMs);
+      const pts = daily.filter(r => r.weight != null && r.d >= since).map(r => [daysBetween(since, r.d), r.weight]);
+      let perDay = null;
+      if (pts.length >= 6) {
+        const mx = pts.reduce((s, p) => s + p[0], 0) / pts.length, my = pts.reduce((s, p) => s + p[1], 0) / pts.length;
+        const sxy = pts.reduce((s, p) => s + (p[0] - mx) * (p[1] - my), 0), sxx = pts.reduce((s, p) => s + (p[0] - mx) ** 2, 0);
+        perDay = sxx ? sxy / sxx : null;
+      }
+      // Perfect compliance: the cut's calorie target every day against estimated maintenance.
+      const cutKcal = [...phases].sort((a, b) => b.s - a.s).find(p => p.kind === "cut" && p.kcal)?.kcal ?? 2050;
+      const planPerDay = -(maint - cutKcal) / 3500;
+
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const row = (label, pd, cls, note) => {
+        const wk = pd * 7;
+        if (toGo <= 0) return { label, cls, wk, weeks: 0, html: `<b class="num">There</b>` };
+        if (pd == null || pd >= -0.005) return { label, cls, wk, weeks: null, html: `<b class="num">Not losing</b>` };
+        const days = toGo / -pd, weeks = days / 7;
+        const when = new Date(today.getTime() + days * dayMs);
+        const whenTxt = weeks > 104 ? "2+ years" : when.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+        return { label, cls, wk, weeks, html: `<b class="num">${whenTxt}</b><small class="num">${weeks > 104 ? "" : `${fmt(Math.round(weeks))} weeks`}</small>` };
+      };
+      const rows = [
+        row("At your current pace", perDay, "now", `last 4 weeks`),
+        row("With perfect compliance", planPerDay, "plan", `${fmt(cutKcal)} kcal daily`),
+      ];
+      const maxW = Math.max(...rows.map(r => r.weeks || 0), 1);
+      card.appendChild(html(`<div class="goal-head">
+        <div><span class="k">Goal weight</span><b class="num">${fmt(goalW, 1)}<small>lb</small></b></div>
+        <div><span class="k">To go</span><b class="num">${toGo > 0 ? fmt(toGo, 1) : "0"}<small>lb</small></b></div>
+      </div>`));
+      const list = html(`<div class="goal-rows"></div>`);
+      rows.forEach((r, i) => list.appendChild(html(`<div class="goal-row ${r.cls}">
+        <div class="gr-top"><span>${r.label}</span><span class="gr-when">${r.html}</span></div>
+        <div class="gr-bar"><i style="width:${r.weeks ? Math.max(4, r.weeks / maxW * 100) : 0}%"></i></div>
+        <div class="gr-note num">${r.wk == null ? "Not enough weigh-ins yet" : `${r.wk <= 0 ? "−" : "+"}${fmt(Math.abs(r.wk), 2)} lb/week`} · ${i === 0 ? "trend of the last 4 weeks" : `${fmt(cutKcal)} kcal daily vs ~${fmt(Math.round(maint / 50) * 50)} maintenance`}</div>
+      </div>`)));
+      card.appendChild(list);
+      card.appendChild(html(`<p class="fine">From the ${md(bfRow.d)} Hume reading (${fmt(bfRow.bf, 1)}%). Assumes you keep your ${fmt(lean, 0)} lb of lean mass, which lifting and 180 g protein are for; any muscle lost pushes the date out. Updates with each monthly reading.</p>`));
     }
     C.appendChild(card);
   }
