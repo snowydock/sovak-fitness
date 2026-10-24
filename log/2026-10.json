@@ -2017,13 +2017,14 @@
             "name": "Ab Wheel",
             "weight": 0,
             "sets": [
+              10,
               10
             ]
           }
         ]
       },
       "day_type": "light_social",
-      "updated": "2026-10-24T15:39:50.437Z"
+      "updated": "2026-10-24T15:42:56.723Z"
     }
   }
 }
