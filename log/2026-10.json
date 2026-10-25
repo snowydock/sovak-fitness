@@ -2110,6 +2110,14 @@
             ]
           },
           {
+            "name": "Seated Cable Row",
+            "weight": 110,
+            "sets": [
+              10,
+              10
+            ]
+          },
+          {
             "name": "Straight-Arm Pulldown",
             "weight": 90,
             "sets": [
@@ -2117,10 +2125,20 @@
               15,
               10
             ]
+          },
+          {
+            "name": "DB Lateral Raise",
+            "weight": 25,
+            "sets": [
+              12,
+              12,
+              12,
+              12
+            ]
           }
         ]
       },
-      "updated": "2026-10-25T16:18:26.471Z"
+      "updated": "2026-10-25T16:36:43.673Z"
     }
   }
 }
