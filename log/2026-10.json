@@ -2140,19 +2140,21 @@
             "name": "Tricep Pushdown",
             "weight": 110,
             "sets": [
-              12
+              12,
+              11
             ]
           },
           {
             "name": "Hammer Curl",
             "weight": 35,
             "sets": [
+              8,
               8
             ]
           }
         ]
       },
-      "updated": "2026-10-25T16:38:51.973Z"
+      "updated": "2026-10-25T16:42:04.089Z"
     }
   }
 }
