@@ -2158,12 +2158,13 @@
             "name": "Concentration Curl",
             "weight": 25,
             "sets": [
-              10
+              10,
+              7
             ]
           }
         ]
       },
-      "updated": "2026-10-25T16:46:53.770Z"
+      "updated": "2026-10-25T16:49:11.398Z"
     }
   }
 }
