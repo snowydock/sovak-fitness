@@ -2025,7 +2025,76 @@
         ]
       },
       "day_type": "light_social",
-      "updated": "2026-10-25T15:20:47.194Z"
+      "updated": "2026-10-25T15:20:55.690Z",
+      "food": {
+        "kcal": 2398,
+        "protein": 151,
+        "carbs": 226,
+        "fat": 79,
+        "fiber": 33,
+        "sodium": 3793,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Egg, Large",
+            "qty": "3 Each",
+            "kcal": 214
+          },
+          {
+            "name": "Tortillas, Gluten Free, Carb Bueno, Maria And Ricardo's",
+            "qty": "88 Grams",
+            "kcal": 180
+          },
+          {
+            "name": "Salsa, Mateo's Gourmet Salsa",
+            "qty": "2 Tablespoons",
+            "kcal": 10
+          },
+          {
+            "name": "Cheese, Mozzarella, Shredded",
+            "qty": "20 Grams",
+            "kcal": 60
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Chobani Strawberries & Cream",
+            "qty": "1 Serving",
+            "kcal": 170
+          },
+          {
+            "name": "NYC Pepperoni Slice",
+            "qty": "1 Serving",
+            "kcal": 440
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chicken Pad Thai",
+            "qty": "½ Serving",
+            "kcal": 530
+          },
+          {
+            "name": "Vodka, Titos",
+            "qty": "2 Fluid Ounces",
+            "kcal": 120
+          },
+          {
+            "name": "Beer, Bud Light, Bottle",
+            "qty": "1 Bottle",
+            "kcal": 110
+          }
+        ]
+      },
+      "weight": 177.4,
+      "steps": 11588
     }
   }
 }
