@@ -2164,7 +2164,66 @@
           }
         ]
       },
-      "updated": "2026-10-25T16:49:11.398Z"
+      "updated": "2026-10-26T02:56:18.002Z",
+      "food": {
+        "kcal": 2413,
+        "protein": 177,
+        "carbs": 97,
+        "fat": 108,
+        "fiber": 15,
+        "sodium": 2737,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "½ Cup",
+            "kcal": 67
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "3 Each",
+            "kcal": 214
+          },
+          {
+            "name": "Bread, Pita, White, Pita Pit",
+            "qty": "¼ Each",
+            "kcal": 50
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "5 Grams",
+            "kcal": 15
+          },
+          {
+            "name": "Cheese, Mozzarella, Shredded",
+            "qty": "21 Grams",
+            "kcal": 63
+          },
+          {
+            "name": "3 Glasses Red Wine",
+            "qty": "1 Serving",
+            "kcal": 450
+          },
+          {
+            "name": "Roast Half Chicken & Veg",
+            "qty": "1 Serving",
+            "kcal": 990
+          }
+        ]
+      },
+      "weight": 179,
+      "steps": 15556
     }
   }
 }
