@@ -2298,6 +2298,63 @@
       "day_type": "light_social",
       "notes": "today was very discouraging. The social day sort of came out of nowhere and I felt a big conflict of really wanting to spend time with my friends but feeling like I’ve been screwing this whole program up. It’s a bit of a low point in this process for me and I feel like I’m just spinning my wheels.",
       "updated": "2026-10-28T00:14:15.127Z"
+    },
+    "2026-10-27": {
+      "food": {
+        "kcal": 2009,
+        "protein": 176,
+        "carbs": 215,
+        "fat": 52,
+        "fiber": 26,
+        "sodium": 2840,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Greek Pasta Bake (607g 93/7 beef)",
+            "qty": "1 Serving",
+            "kcal": 440
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Apple - Honey Crisp-large",
+            "qty": "1 Each",
+            "kcal": 116
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "50 Grams",
+            "kcal": 30
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Gochujang Chicken Flat Noodles",
+            "qty": "1 Serving",
+            "kcal": 650
+          }
+        ]
+      },
+      "weight": 178.5,
+      "steps": 13085,
+      "updated": "2026-10-28T02:10:58.851Z"
     }
   }
 }
