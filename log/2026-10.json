@@ -2224,6 +2224,78 @@
       },
       "weight": 179,
       "steps": 15556
+    },
+    "2026-10-26": {
+      "food": {
+        "kcal": 2780,
+        "protein": 178,
+        "carbs": 246,
+        "fat": 85,
+        "fiber": 29,
+        "sodium": 4047,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Chicken Pad Thai",
+            "qty": "½ Serving",
+            "kcal": 530
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "3 Each",
+            "kcal": 214
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "100 Grams",
+            "kcal": 54
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "½ Container",
+            "kcal": 155
+          },
+          {
+            "name": "Skinny margarita, Chili's",
+            "qty": "3 Servings",
+            "kcal": 330
+          },
+          {
+            "name": "Greek Pasta Bake (607g 93/7 beef)",
+            "qty": "1 Serving",
+            "kcal": 440
+          },
+          {
+            "name": "Tortilla chips (20) and salsa",
+            "qty": "1 Serving",
+            "kcal": 323
+          }
+        ]
+      },
+      "weight": 178.1,
+      "steps": 10371,
+      "updated": "2026-10-28T00:13:35.403Z"
     }
   }
 }
