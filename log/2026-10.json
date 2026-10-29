@@ -2460,6 +2460,13 @@
             ]
           },
           {
+            "name": "Cable Lateral Raise",
+            "weight": 25,
+            "sets": [
+              12
+            ]
+          },
+          {
             "name": "Overhead Cable Tricep Ext",
             "weight": 70,
             "sets": [
@@ -2479,7 +2486,8 @@
           }
         ]
       },
-      "updated": "2026-10-29T20:02:10.315Z"
+      "notes": "for cable lat raises i switched to single arm which slowed me down. it is how i should do those moving forward tho",
+      "updated": "2026-10-29T20:04:45.105Z"
     }
   }
 }
