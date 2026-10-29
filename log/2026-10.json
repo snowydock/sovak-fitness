@@ -2355,6 +2355,78 @@
       "weight": 178.5,
       "steps": 13085,
       "updated": "2026-10-28T02:10:58.851Z"
+    },
+    "2026-10-28": {
+      "food": {
+        "kcal": 2009,
+        "protein": 182,
+        "carbs": 207,
+        "fat": 50,
+        "fiber": 26,
+        "sodium": 2917,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Greek Pasta Bake (607g 93/7 beef)",
+            "qty": "1 Serving",
+            "kcal": 440
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "50 Grams",
+            "kcal": 30
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "½ Container",
+            "kcal": 155
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "2 Each",
+            "kcal": 143
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "50 Grams",
+            "kcal": 27
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Chicken Salad week of October 28",
+            "qty": "1 Serving",
+            "kcal": 200
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "110 Grams",
+            "kcal": 241
+          }
+        ]
+      },
+      "weight": 177.6,
+      "steps": 10190,
+      "updated": "2026-10-29T12:26:35.498Z"
     }
   }
 }
