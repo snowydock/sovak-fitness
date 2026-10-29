@@ -2462,6 +2462,8 @@
             "name": "Overhead Cable Tricep Ext",
             "weight": 70,
             "sets": [
+              15,
+              15,
               15
             ]
           },
@@ -2469,12 +2471,14 @@
             "name": "Incline DB Curl",
             "weight": 25,
             "sets": [
+              10,
+              10,
               10
             ]
           }
         ]
       },
-      "updated": "2026-10-29T19:49:27.016Z"
+      "updated": "2026-10-29T20:02:03.733Z"
     }
   }
 }
