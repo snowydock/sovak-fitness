@@ -2449,10 +2449,32 @@
               12,
               12
             ]
+          },
+          {
+            "name": "Lat Pulldown",
+            "weight": 110,
+            "sets": [
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Overhead Cable Tricep Ext",
+            "weight": 70,
+            "sets": [
+              15
+            ]
+          },
+          {
+            "name": "Incline DB Curl",
+            "weight": 25,
+            "sets": [
+              10
+            ]
           }
         ]
       },
-      "updated": "2026-10-29T17:50:04.127Z"
+      "updated": "2026-10-29T19:49:27.016Z"
     }
   }
 }
