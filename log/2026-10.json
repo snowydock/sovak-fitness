@@ -2640,6 +2640,21 @@
       },
       "steps": 9393,
       "updated": "2026-10-31T16:40:03.216Z"
+    },
+    "2026-10-31": {
+      "lift": {
+        "session": "Upper B",
+        "exercises": [
+          {
+            "name": "Barbell OHP",
+            "weight": 45,
+            "sets": [
+              12
+            ]
+          }
+        ]
+      },
+      "updated": "2026-10-31T16:51:47.857Z"
     }
   }
 }
