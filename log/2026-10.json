@@ -2563,6 +2563,82 @@
       },
       "weight": 176.4,
       "steps": 14541
+    },
+    "2026-10-30": {
+      "food": {
+        "kcal": 2099,
+        "protein": 191,
+        "carbs": 215,
+        "fat": 51,
+        "fiber": 26,
+        "sodium": 2782,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Taco Casserole (93/7 Swap)",
+            "qty": "1 Serving",
+            "kcal": 360
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "50 Grams",
+            "kcal": 30
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "½ Container",
+            "kcal": 155
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "2 Each",
+            "kcal": 143
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "50 Grams",
+            "kcal": 27
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Chobani Strawberries & Cream",
+            "qty": "1 Serving",
+            "kcal": 170
+          },
+          {
+            "name": "Chicken Salad week of October 28",
+            "qty": "1 Serving",
+            "kcal": 200
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "110 Grams",
+            "kcal": 241
+          }
+        ]
+      },
+      "steps": 9393,
+      "updated": "2026-10-31T16:40:03.216Z"
     }
   }
 }
