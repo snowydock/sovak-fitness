@@ -2488,7 +2488,81 @@
         ]
       },
       "notes": "for cable lat raises i switched to single arm which slowed me down. it is how i should do those moving forward tho",
-      "updated": "2026-10-29T21:58:37.927Z"
+      "updated": "2026-10-31T16:39:19.875Z",
+      "food": {
+        "kcal": 3924,
+        "protein": 221,
+        "carbs": 400,
+        "fat": 110,
+        "fiber": 44,
+        "sodium": 5042,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Taco Casserole (93/7 Swap)",
+            "qty": "1 Serving",
+            "kcal": 360
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "50 Grams",
+            "kcal": 30
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "1 Container",
+            "kcal": 310
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "2 Each",
+            "kcal": 143
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "50 Grams",
+            "kcal": 27
+          },
+          {
+            "name": "Birthday Party Taco Spread + Drinks",
+            "qty": "1 Serving",
+            "kcal": 1840
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Chicken Salad week of October 28",
+            "qty": "1 Serving",
+            "kcal": 200
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "110 Grams",
+            "kcal": 241
+          }
+        ]
+      },
+      "weight": 176.4,
+      "steps": 14541
     }
   }
 }
