@@ -2488,7 +2488,6 @@
         ]
       },
       "notes": "for cable lat raises i switched to single arm which slowed me down. it is how i should do those moving forward tho",
-      "updated": "2026-10-31T16:39:19.875Z",
       "food": {
         "kcal": 3924,
         "protein": 221,
@@ -2562,7 +2561,9 @@
         ]
       },
       "weight": 176.4,
-      "steps": 14541
+      "steps": 14541,
+      "day_type": "heavy_social",
+      "updated": "2026-10-31T16:40:36.160Z"
     },
     "2026-10-30": {
       "food": {
