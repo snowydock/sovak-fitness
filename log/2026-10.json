@@ -2665,6 +2665,22 @@
             ]
           },
           {
+            "name": "Tricep Pushdown",
+            "weight": 110,
+            "sets": [
+              12,
+              12
+            ]
+          },
+          {
+            "name": "Hammer Curl",
+            "weight": 35,
+            "sets": [
+              10,
+              10
+            ]
+          },
+          {
             "name": "Barbell OHP",
             "weight": 45,
             "sets": [
@@ -2675,7 +2691,7 @@
           }
         ]
       },
-      "updated": "2026-10-31T17:23:52.964Z"
+      "updated": "2026-10-31T17:35:56.548Z"
     }
   }
 }
