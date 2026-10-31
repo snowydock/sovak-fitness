@@ -2646,6 +2646,13 @@
         "session": "Upper B",
         "exercises": [
           {
+            "name": "Straight-Arm Pulldown",
+            "weight": 90,
+            "sets": [
+              15
+            ]
+          },
+          {
             "name": "Barbell OHP",
             "weight": 45,
             "sets": [
@@ -2656,7 +2663,7 @@
           }
         ]
       },
-      "updated": "2026-10-31T16:56:54.427Z"
+      "updated": "2026-10-31T17:00:54.479Z"
     }
   }
 }
