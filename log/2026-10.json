@@ -2655,6 +2655,16 @@
             ]
           },
           {
+            "name": "DB Lateral Raise",
+            "weight": 25,
+            "sets": [
+              15,
+              15,
+              15,
+              15
+            ]
+          },
+          {
             "name": "Barbell OHP",
             "weight": 45,
             "sets": [
@@ -2665,7 +2675,7 @@
           }
         ]
       },
-      "updated": "2026-10-31T17:04:54.932Z"
+      "updated": "2026-10-31T17:23:52.964Z"
     }
   }
 }
