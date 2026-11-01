@@ -2691,7 +2691,56 @@
           }
         ]
       },
-      "updated": "2026-10-31T17:35:56.548Z"
+      "updated": "2026-11-01T16:35:03.310Z",
+      "food": {
+        "kcal": 2731,
+        "protein": 196,
+        "carbs": 371,
+        "fat": 82,
+        "fiber": 47,
+        "sodium": 3333,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Taco Casserole (93/7 Swap)",
+            "qty": "1 Serving",
+            "kcal": 360
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Nathan hot dog with bun, Sam's Club",
+            "qty": "1 Serving",
+            "kcal": 200
+          },
+          {
+            "name": "Vodka, Bud Light & NYC Pizza",
+            "qty": "1 Serving",
+            "kcal": 1260
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chicken Breast, Skinless, Cooked",
+            "qty": "150 Grams",
+            "kcal": 248
+          }
+        ]
+      },
+      "weight": 176.9,
+      "steps": 13140
     }
   }
 }
