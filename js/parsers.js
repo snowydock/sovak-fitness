@@ -123,7 +123,8 @@ const FULL_MONTHS = { January: 1, February: 2, March: 3, April: 4, May: 5, June:
 export function parseDailyReport(lines) {
   const L = lines.map(l => l.replace(/\t+/g, " | ").replace(/\s*\|\s*/g, " | ").replace(/ {2,}/g, " ").trim()).filter(Boolean);
   const t = L.find(l => /daily report for/i.test(l));
-  const dm = t && t.match(/daily report for\s+([A-Z][a-z]+)\s+(\d{1,2}),\s+(\d{4})/i);
+  const tc = t && t.replace(/ \| /g, " ").replace(/\b([A-Z]) ([a-z]{2,})/g, "$1$2");   // "N ovember" -> "November"
+  const dm = tc && tc.match(/daily report for\s+([A-Z][a-z]+)\s+(\d{1,2}),\s+(\d{4})/i);
   if (!dm || !FULL_MONTHS[dm[1]]) return null;
   const date = `${dm[3]}-${String(FULL_MONTHS[dm[1]]).padStart(2, "0")}-${String(dm[2]).padStart(2, "0")}`;
   const flat = L.map(l => l.replace(/ \| /g, " "));
@@ -156,7 +157,7 @@ export function parseDailyReport(lines) {
     f.items.push({ name: c[0], qty: c.slice(1, -1).join(" ").replace(/(\d) ½/, "$1½"), kcal: n(c.at(-1)) });
   }
   if (f.kcal == null && f.protein == null) return null;
-  return { title: t, days: { [date]: f } };
+  return { title: tc, days: { [date]: f } };
 }
 
 // lines: one string per visual row (cells separated by whitespace, tabs or " | ")
@@ -200,7 +201,7 @@ export function parseReportText(text) {
 
 // PDF -> rows of text, rebuilt from pdf.js glyph positions. pdfjs is loaded lazily (1.6 MB).
 export async function pdfToLines(file) {
-  const pdfjs = await import("./vendor/pdf.min.mjs?v=202610241518");
+  const pdfjs = await import("./vendor/pdf.min.mjs?v=202611030350");
   pdfjs.GlobalWorkerOptions.workerSrc = new URL("./vendor/pdf.worker.min.mjs" + new URL(import.meta.url).search, import.meta.url).href;
   const doc = await pdfjs.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
   const out = [];
@@ -214,7 +215,17 @@ export async function pdfToLines(file) {
       if (!row) rows.push(row = { y, cells: [] });
       row.cells.push({ x, s: it.str.trim() });
     }
-    rows.sort((a, b) => b.y - a.y).forEach(r => out.push(r.cells.sort((a, b) => a.x - b.x).map(c => c.s).join(" | ")));
+    // LoseIt draws some capitals as their own glyph run ("N" + "ovember", "N" + "utrients"):
+    // glue a lone capital onto a following lowercase cell so dates and headers read as words.
+    rows.sort((a, b) => b.y - a.y).forEach(r => {
+      const cells = [];
+      for (const c of r.cells.sort((a, b) => a.x - b.x)) {
+        const prev = cells.at(-1);
+        if (prev && /^[A-Z]$/.test(prev) && /^[a-z]/.test(c.s)) cells[cells.length - 1] = prev + c.s;
+        else cells.push(c.s);
+      }
+      out.push(cells.join(" | "));
+    });
   }
   return out;
 }
