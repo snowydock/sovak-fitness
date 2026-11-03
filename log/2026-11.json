@@ -97,6 +97,21 @@
       "weight": 179.2,
       "steps": 7329,
       "updated": "2026-11-03T03:51:39.469Z"
+    },
+    "2026-11-03": {
+      "lift": {
+        "session": "Lower",
+        "exercises": [
+          {
+            "name": "Barbell Back Squat",
+            "weight": 155,
+            "sets": [
+              10
+            ]
+          }
+        ]
+      },
+      "updated": "2026-11-03T18:15:26.930Z"
     }
   }
 }
