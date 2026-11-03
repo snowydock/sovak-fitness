@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "days": {
+    "2026-11-01": {
+      "food": {
+        "kcal": 2083,
+        "protein": 144,
+        "carbs": 220,
+        "fat": 69,
+        "fiber": 17,
+        "sodium": 3355,
+        "source": "loseit-report",
+        "items": [
+          {
+            "name": "NYC Pepperoni Slice",
+            "qty": "1 Serving",
+            "kcal": 440
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chicken Tikka Masala, Rice & Naan",
+            "qty": "1 Serving",
+            "kcal": 970
+          }
+        ]
+      },
+      "steps": 9125,
+      "updated": "2026-11-03T03:51:18.102Z"
+    }
+  }
+}
