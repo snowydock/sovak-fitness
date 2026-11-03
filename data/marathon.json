@@ -1,0 +1,48 @@
+{
+  "race": { "name": "Cleveland Marathon", "date": "2027-05-16", "mi": 26.2 },
+  "start": "2026-11-02",
+  "days": { "tue": 1, "thu": 3, "sat": 5, "sun": 6 },
+  "phases": [
+    { "name": "Base", "weeks": [1, 6] },
+    { "name": "Build", "weeks": [7, 11] },
+    { "name": "Marathon block", "weeks": [12, 19] },
+    { "name": "Peak", "weeks": [20, 25] },
+    { "name": "Taper", "weeks": [26, 28] }
+  ],
+  "modes": {
+    "rw": "Run/walk at your current ratio",
+    "shrink": "Shrink the walk breaks: 3:1 → 4:1 → 4:30/0:30",
+    "lengthen": "Run/walk, lengthening run segments each week",
+    "cont": "Continuous, conversational pace"
+  },
+  "weeks": [
+    { "wk": 1, "tue": 1.5, "sat": 2, "weekday": "rw", "long": "rw", "note": "Run/walk at your current ratio" },
+    { "wk": 2, "tue": 2, "sat": 2, "weekday": "rw", "long": "rw" },
+    { "wk": 3, "tue": 2, "sat": 2.5, "weekday": "rw", "long": "rw" },
+    { "wk": 4, "tue": 2, "sat": 3, "weekday": "rw", "long": "rw", "note": "Thanksgiving week" },
+    { "wk": 5, "thu": 1.5, "sat": 1.5, "optional": ["thu", "sat"], "weekday": "rw", "long": "rw", "note": "Move + Bangkok: walk a lot, run only if it feels easy" },
+    { "wk": 6, "tue": 1.5, "sat": 3, "optional": ["tue"], "weekday": "rw", "long": "rw", "note": "Back Dec 11. Drop Saturday to 2 if jet-lagged" },
+    { "wk": 7, "tue": 2, "thu": 2, "sat": 3.5, "weekday": "shrink", "long": "rw", "note": "Thursday runs start; weekday walk breaks start shrinking" },
+    { "wk": 8, "tue": 2.5, "thu": 2, "sat": 4, "weekday": "shrink", "long": "rw", "note": "Christmas week" },
+    { "wk": 9, "tue": 2.5, "thu": 2.5, "sat": 4.5, "weekday": "shrink", "long": "rw" },
+    { "wk": 10, "tue": 2, "thu": 2, "sat": 3.5, "weekday": "shrink", "long": "rw", "cutback": true },
+    { "wk": 11, "tue": 3, "thu": 2.5, "sat": 5, "weekday": "cont", "long": "rw", "note": "Weekday runs continuous by now" },
+    { "wk": 12, "tue": 3, "thu": 3, "sat": 6, "weekday": "cont", "long": "lengthen", "note": "Marathon block begins" },
+    { "wk": 13, "tue": 3, "thu": 3, "sat": 7, "weekday": "cont", "long": "lengthen" },
+    { "wk": 14, "tue": 3.5, "thu": 3, "sat": 8, "weekday": "cont", "long": "lengthen", "note": "Calories to maintenance; start fueling on long runs" },
+    { "wk": 15, "tue": 3, "thu": 3, "sat": 6, "weekday": "cont", "long": "lengthen", "cutback": true },
+    { "wk": 16, "tue": 4, "thu": 3, "sat": 9, "weekday": "cont", "long": "lengthen", "note": "Lower moves to maintenance" },
+    { "wk": 17, "tue": 4, "thu": 3.5, "sat": 10, "weekday": "cont", "long": "lengthen" },
+    { "wk": 18, "tue": 4, "thu": 4, "sat": 11, "weekday": "cont", "long": "lengthen" },
+    { "wk": 19, "tue": 3, "thu": 3, "sat": 8, "weekday": "cont", "long": "cont", "cutback": true, "note": "Long run continuous by now" },
+    { "wk": 20, "tue": 4.5, "thu": 4, "sat": 13, "weekday": "cont", "long": "cont", "note": "Peak phase begins" },
+    { "wk": 21, "tue": 5, "thu": 4, "sat": 14, "weekday": "cont", "long": "cont" },
+    { "wk": 22, "tue": 5, "thu": 4, "sat": 16, "weekday": "cont", "long": "cont" },
+    { "wk": 23, "tue": 4, "thu": 3, "sat": 12, "weekday": "cont", "long": "cont", "cutback": true },
+    { "wk": 24, "tue": 5, "thu": 4, "sat": 17, "weekday": "cont", "long": "cont" },
+    { "wk": 25, "tue": 5, "thu": 4, "sat": 18, "weekday": "cont", "long": "cont", "note": "Peak week; cap the long run at about 4 hours" },
+    { "wk": 26, "tue": 4, "thu": 3, "sat": 12, "weekday": "cont", "long": "cont", "note": "Taper begins" },
+    { "wk": 27, "tue": 4, "thu": 3, "sat": 8, "weekday": "cont", "long": "cont" },
+    { "wk": 28, "tue": 3, "thu": 2, "sun": 26.2, "weekday": "cont", "long": "cont", "note": "Race week. Saturday off" }
+  ]
+}

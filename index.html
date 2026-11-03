@@ -22,7 +22,7 @@
   --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
   --grid:#e8e6df; --axis:#c3c2b7; --ring:rgba(11,11,11,.08);
   --s1:#5B5BD6; --s1-wash:rgba(91,91,214,.10); --on-s1:#ffffff;
-  --s2:#eb6834; --s3:#1baf7a;
+  --s2:#eb6834; --s3:#1baf7a; --s4:#1f8fd1;
   --div-neg:#5B5BD6; --div-mid:#ecebe6; --div-pos:#e34948;
   --good:#006300; --bad:#c23434;
   --accent-grad:linear-gradient(135deg,#5B5BD6 0%,#1baf7a 100%);
@@ -34,7 +34,7 @@
     --ink:#ffffff; --ink-2:#c3c2b7; --muted:#8f8d86;
     --grid:#2a2a28; --axis:#3d3d3a; --ring:rgba(255,255,255,.08);
     --s1:#8E9BF5; --s1-wash:rgba(142,155,245,.14); --on-s1:#0f0f0e;
-    --s2:#d95926; --s3:#199e70;
+    --s2:#d95926; --s3:#199e70; --s4:#4fb0e8;
     --div-neg:#8E9BF5; --div-mid:#2f2f2c; --div-pos:#e66767;
     --good:#0ca30c; --bad:#e66767;
   }
@@ -45,7 +45,7 @@
   --ink:#ffffff; --ink-2:#c3c2b7; --muted:#8f8d86;
   --grid:#2a2a28; --axis:#3d3d3a; --ring:rgba(255,255,255,.08);
   --s1:#8E9BF5; --s1-wash:rgba(142,155,245,.14); --on-s1:#0f0f0e;
-  --s2:#d95926; --s3:#199e70;
+  --s2:#d95926; --s3:#199e70; --s4:#4fb0e8;
   --div-neg:#8E9BF5; --div-mid:#2f2f2c; --div-pos:#e66767;
   --good:#0ca30c; --bad:#e66767;
 }
@@ -223,6 +223,7 @@ textarea:focus{box-shadow:inset 0 0 0 2px var(--s1)}
 .wk .wn{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
 .wk .dots{display:flex;gap:3px;height:6px}
 .wk .dots i{width:6px;height:6px;border-radius:50%}
+.wk .dr{background:var(--s4)}.wk .dp{box-shadow:inset 0 0 0 1.5px var(--s4)}
 .wk .df{background:var(--s1)}.wk .dl{background:var(--s3)}.wk .ds{background:var(--s2)}.wk .dd{background:var(--muted)}
 .wk.today{box-shadow:inset 0 0 0 2px var(--s1)}
 .wk.future .wn{color:var(--ink-2)}
@@ -344,9 +345,19 @@ details.monthly[open] summary{margin-bottom:12px}
 .sheet .field{margin:14px 0 8px}
 .sheet-msg{font-size:13.5px;min-height:20px;margin:6px 0 12px;color:var(--ink-2)}
 .sheet-msg.ok{color:var(--good);font-weight:650}.sheet-msg.bad{color:var(--bad);font-weight:650}
+/* run */
+.runplan{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:2px 0 12px}
+.runplan b{font-family:"Numerals",Georgia,serif;font-variation-settings:"SOFT" 100,"WONK" 0,"opsz" 72;font-weight:620;font-size:30px}
+.runplan small{flex-basis:100%;font-size:13px;color:var(--ink-2)}
+.rk{font-size:11.5px;font-weight:700;border-radius:999px;padding:4px 9px;color:var(--s4);background:color-mix(in srgb,var(--s4) 15%,transparent)}
+.rk.long{color:#fff;background:var(--s4)}.rk.race{color:#fff;background:var(--accent-grad)}
+.runrow{appearance:none;border:0;width:100%;text-align:left;color:var(--ink);font:inherit}
+.runrow.sel{box-shadow:0 0 0 2px var(--s4)}
+.hero .bar i{background:var(--s4)}
+.lr-ico.run{background:color-mix(in srgb,var(--s4) 16%,transparent);color:var(--s4)}
 @media (min-width:640px){ .grid3{grid-template-columns:repeat(6,minmax(0,1fr))} }
 </style>
-<script type="module" src="js/app.js?v=202611030350"></script>
+<script type="module" src="js/app.js?v=202611031824"></script>
 </head>
 <body data-tab="today">
 <main id="app">
@@ -360,6 +371,7 @@ details.monthly[open] summary{margin-bottom:12px}
 <nav class="tabbar" aria-label="Sections">
   <button data-tab="today"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M8.5 14.5l2.2 2.2 4.8-4.8"/></svg>Log</button>
   <button data-tab="lift"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>Lift</button>
+  <button data-tab="run"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="4.5" r="1.8"/><path d="M8 21l3.2-5.2 2.8 2.2v3M6.5 11.5l3-3.5 4 1 2.5 3 3 .5M9.5 8l-1.5 5.5 3.2 2.3"/></svg>Run</button>
   <button data-tab="trends"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19.5h17M5 15.5l4.5-5 3.5 3 6-7"/><circle cx="19" cy="6.5" r="1.2" fill="currentColor"/></svg>Trends</button>
 </nav>
 <div class="tip" id="tip"></div>

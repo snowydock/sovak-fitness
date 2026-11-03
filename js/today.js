@@ -1,12 +1,12 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO } from "./store.js?v=202611030350";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611030350";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611030350";
-import { isClosedDate, token } from "./store.js?v=202611030350";
-import { buildSummary } from "./summary.js?v=202611030350";
-import { VERSION } from "./version.js?v=202611030350";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611031824";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611031824";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611031824";
+import { isClosedDate, token } from "./store.js?v=202611031824";
+import { buildSummary } from "./summary.js?v=202611031824";
+import { VERSION } from "./version.js?v=202611031824";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
-const ACTS = ["Flag football", "Run", "Walk", "Cardio", "Sport"];
+const ACTS = ["Run", "Walk", "Cardio", "Sport"];
 
 function getPath(o, path) { return path.split(".").reduce((x, k) => (x == null ? undefined : x[k]), o); }
 function setPath(o, path, v) {
@@ -92,6 +92,7 @@ export function renderToday(root, ctx) {
       <span class="lr-t">${lift.length ? `<b>${esc(day.lift.session || "Lift")}</b><small>${lift.length} exercises · ${setsN} sets</small>` : `<b>No lift logged</b><small>${future ? "Plan it on the Lift tab" : "Blank means rest day"}</small>`}</span>
       <span class="lr-go">${icon.right}</span>
     </button>
+    ${runRowHtml(day, date, future)}
   </section>`);
   root.appendChild(dayCard);
 
@@ -222,6 +223,7 @@ export function renderToday(root, ctx) {
       ctx.changed(); return;
     }
     if ("golift" in b.dataset) return ctx.goTab("lift");
+    if ("gorun" in b.dataset) return ctx.goTab("run");
     if (b.dataset.rm) {
       if (b.dataset.rm.startsWith("p")) state.pending.splice(Number(b.dataset.rm.slice(1)), 1);
       else state.day.food.images = state.day.food.images.filter(p => p !== b.dataset.rm);
@@ -285,4 +287,13 @@ export function renderToday(root, ctx) {
   });
 
   refresh();
+}
+
+function runRowHtml(day, date, future) {
+  const plan = plannedOn(date), r = day.run || {};
+  if (!plan && r.mi == null && !r.skipped) return "";
+  const t = r.skipped ? `<b>Run skipped</b><small>Planned ${plan?.mi ?? r.planned ?? ""} mi</small>`
+    : r.mi != null ? `<b>Ran ${fmt(r.mi, Number.isInteger(r.mi) ? 0 : 1)} mi</b><small>${plan ? `Plan ${plan.mi} mi` : "Unplanned run"}${r.ratio ? ` · ${esc(r.ratio)}` : ""}</small>`
+    : `<b>${plan.mi} mi ${plan.kind === "long" ? "long run" : plan.kind === "race" ? "race" : "easy run"}${plan.optional ? " (optional)" : ""}</b><small>${future ? "Planned" : "Not logged yet"}</small>`;
+  return `<button class="liftrow" data-gorun><span class="lr-ico run">${icon.run}</span><span class="lr-t">${t}</span><span class="lr-go">${icon.right}</span></button>`;
 }

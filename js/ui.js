@@ -1,5 +1,5 @@
 // Shared UI helpers.
-import { iso, parseISO, todayISO, addDays } from "./store.js?v=202611030350";
+import { iso, parseISO, todayISO, addDays } from "./store.js?v=202611031824";
 
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -22,6 +22,7 @@ export const icon = {
   paste: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2.5"/><path d="M9 4.5V3.5h6v1M9.5 10h5M9.5 13.5h5M9.5 17h3"/></svg>`,
   camera: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.6l1.4-2h5l1.4 2h1.6A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.5" r="3.3"/></svg>`,
   doc: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5H7.5A2.5 2.5 0 0 0 5 6v12a2.5 2.5 0 0 0 2.5 2.5h9A2.5 2.5 0 0 0 19 18V8.5z"/><path d="M14 3.5v5h5M9 13h6M9 16.5h4"/></svg>`,
+  run: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="4.5" r="1.8"/><path d="M8 21l3.2-5.2 2.8 2.2v3M6.5 11.5l3-3.5 4 1 2.5 3 3 .5M9.5 8l-1.5 5.5 3.2 2.3"/></svg>`,
   plus: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`,
 };
 
@@ -47,7 +48,7 @@ export function dateNav(container, date, onPick, status) {
       return `<button class="wk ${x === date ? "sel" : ""} ${x === today ? "today" : ""} ${x > today ? "future" : ""}" data-date="${x}">
         <span class="wl">${parseISO(x).toLocaleDateString("en-US", { weekday: "narrow" })}</span>
         <span class="wn">${parseISO(x).getDate()}</span>
-        <span class="dots">${s.food ? '<i class="df"></i>' : ""}${s.lift ? '<i class="dl"></i>' : ""}${s.social ? '<i class="ds"></i>' : ""}${s.draft ? '<i class="dd"></i>' : ""}</span>
+        <span class="dots">${s.food ? '<i class="df"></i>' : ""}${s.lift ? '<i class="dl"></i>' : ""}${s.run ? '<i class="dr"></i>' : s.planned ? '<i class="dp"></i>' : ""}${s.social ? '<i class="ds"></i>' : ""}${s.draft ? '<i class="dd"></i>' : ""}</span>
       </button>`;
     }).join("")}</div>
     ${date !== today ? `<button class="pill today-pill" data-today>Jump to today</button>` : ""}

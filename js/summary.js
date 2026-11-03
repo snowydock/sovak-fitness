@@ -1,6 +1,6 @@
 // "Copy for Claude": a compact, paste-ready check-in for the monthly coaching chat.
-import { merged, liftHistory, targetsFor, addDays, parseISO } from "./store.js?v=202611030350";
-import { fmt, md } from "./ui.js?v=202611030350";
+import { merged, liftHistory, targetsFor, addDays, parseISO, plannedOn, planWeek, runHistory } from "./store.js?v=202611031824";
+import { fmt, md } from "./ui.js?v=202611031824";
 
 const DT = { normal: "Normal", light_social: "Light social", heavy_social: "Heavy social", travel: "Travel" };
 const n = v => (v == null || v === "" || isNaN(v) ? null : Number(v));
@@ -67,6 +67,22 @@ export function buildSummary(date, day, { dirty = false } = {}) {
     L.push(`Lift: ${day.lift.session || "Other"}`, ...lines);
   } else L.push("Lift: none");
 
+  // Run (vs the marathon plan)
+  const plan = plannedOn(date), r = day.run || {};
+  const pc = (mi, sec) => { if (!(mi > 0 && sec > 0)) return ""; const s = Math.round(sec / mi); return ` (${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}/mi)`; };
+  const tm = sec => { if (!sec) return ""; const s = Math.round(sec); const hh = Math.floor(s / 3600), mm = Math.floor(s % 3600 / 60), ss = s % 60; return ` in ${hh ? hh + ":" + String(mm).padStart(2, "0") : mm}:${String(ss).padStart(2, "0")}`; };
+  const planTxt = plan ? `plan ${plan.mi} mi ${plan.kind}${plan.optional ? " (optional)" : ""}, wk ${plan.wk}` : "";
+  if (r.skipped) L.push(`Run: skipped${planTxt ? ` (${planTxt})` : ""}`);
+  else if (r.mi != null || r.sec != null) {
+    const bits = [`${r.mi != null ? String(+Number(r.mi).toFixed(2)) + " mi" : ""}${tm(r.sec)}${pc(r.mi, r.sec)}`];
+    if (r.ratio) bits.push(r.ratio === "Continuous" ? "continuous" : `${r.ratio} run/walk`);
+    if (r.effort) bits.push(r.effort.replace("_", " "));
+    if (r.hr) bits.push(`HR ${r.hr}`);
+    if (r.pain && r.pain !== "none") bits.push(`${r.pain}${r.where ? `: ${r.where}` : ""}`);
+    L.push(`Run: ${bits.join(" · ")}${planTxt ? ` · ${planTxt}` : " · unplanned"}`);
+    if (r.note?.trim()) L.push(`Run notes: ${r.note.trim()}`);
+  } else if (plan) L.push(`Run: ${planTxt} · not logged`);
+
   if (day.notes?.trim()) L.push(`Notes: ${day.notes.trim()}`);
   if (day.monthly?.bf != null || day.monthly?.waist != null)
     L.push(`Monthly: ${day.monthly.bf != null ? `Hume BF ${fmt(day.monthly.bf, 1)}%` : ""}${day.monthly.bf != null && day.monthly.waist != null ? " · " : ""}${day.monthly.waist != null ? `waist ${fmt(day.monthly.waist, 1)} in` : ""}`);
@@ -90,6 +106,11 @@ export function buildSummary(date, day, { dirty = false } = {}) {
   const st = wr.filter(r => r.steps != null);
   if (st.length) parts.push(`avg steps ${fmt(st.reduce((s, r) => s + r.steps, 0) / st.length)}`);
   parts.push(`lifts ${liftDays.size}/3`);
+  const pw = planWeek(date);
+  if (pw) {
+    const ran = runHistory().filter(x => x.date >= pw.mon && x.date < date && !x.skipped).reduce((s, x) => s + (x.mi || 0), 0) + (r.skipped ? 0 : (r.mi || 0));
+    parts.push(`run ${fmt(ran, 1)}/${fmt(pw.total, 1)} mi (marathon wk ${pw.wk})`);
+  }
   const soc = wr.filter(r => /social/.test(r.dt || "")).length;
   if (soc) parts.push(`${soc} social`);
   L.push(`Week so far (${md(mon)}–${md(date)}): ${parts.join(" · ")}`);

@@ -1,11 +1,12 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf } from "./store.js?v=202611030350";
-import { $, h, esc, icon } from "./ui.js?v=202611030350";
-import { renderDashboard } from "./dashboard.js?v=202611030350";
-import { renderToday } from "./today.js?v=202611030350";
-import { renderLift } from "./lift.js?v=202611030350";
-import { VERSION } from "./version.js?v=202611030350";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611031824";
+import { $, h, esc, icon } from "./ui.js?v=202611031824";
+import { renderDashboard } from "./dashboard.js?v=202611031824";
+import { renderToday } from "./today.js?v=202611031824";
+import { renderLift } from "./lift.js?v=202611031824";
+import { renderRun } from "./run.js?v=202611031824";
+import { VERSION } from "./version.js?v=202611031824";
 
-const TABS = ["today", "lift", "trends"];
+const TABS = ["today", "lift", "run", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
 const view = $("#view");
 
@@ -48,18 +49,21 @@ const isDirty = () => state.pending.length > 0 || !same(state.day, state.saved);
 
 /* ---------- date + status ---------- */
 function indexCSV() {
-  const food = new Set(), lift = new Set(), social = new Set();
+  const food = new Set(), lift = new Set(), social = new Set(), run = new Set();
   for (const r of store.csv.daily) { if (r.calories) food.add(r.date); if (/social/.test(r.day_type)) social.add(r.date); }
   for (const r of store.csv.lifts) lift.add(r.date);
-  state.csvIdx = { food, lift, social };
+  for (const r of store.csv.runs || []) if (r.distance_mi) run.add(r.date);
+  state.csvIdx = { food, lift, social, run };
 }
 function status(date) {
   const d = date === state.date ? state.day : getDay(date);
-  const i = state.csvIdx || { food: new Set(), lift: new Set(), social: new Set() };
+  const i = state.csvIdx || { food: new Set(), lift: new Set(), social: new Set(), run: new Set() };
   return {
     food: d?.food?.kcal != null || i.food.has(date),
     lift: (d?.lift?.exercises || []).some(e => (e.sets || []).some(v => v != null && v !== "")) || i.lift.has(date),
     social: /social/.test(d?.day_type || "") || i.social.has(date),
+    run: d?.run?.mi != null || i.run.has(date),
+    planned: !!plannedOn(date),
     draft: date !== state.date && !!drafts.get(date),
   };
 }
@@ -242,6 +246,7 @@ function renderNow() {
   $("#asof").textContent = "";
   if (state.tab === "trends") renderDashboard(page, merged());
   else if (state.tab === "lift") renderLift(page, ctx);
+  else if (state.tab === "run") renderRun(page, ctx);
   else renderToday(page, ctx);
   refreshSaveBar();
 }

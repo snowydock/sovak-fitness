@@ -101,7 +101,8 @@ async function writeFile(path, base64, sha, message) {
 /* ---------- the in-memory store ---------- */
 export const store = {
   program: null,
-  csv: { daily: [], lifts: [], body: [], phases: [] },
+  marathon: null,
+  csv: { daily: [], lifts: [], body: [], phases: [], runs: [] },
   log: {},          // { "YYYY-MM": { days: { "YYYY-MM-DD": {...} } } }
   shas: {},         // sha per month file, when read through the API
   listeners: new Set(),
@@ -122,13 +123,15 @@ async function fetchText(path) {
 }
 
 export async function loadAll() {
-  const [prog, daily, lifts, body, phases] = await Promise.all([
+  const [prog, daily, lifts, body, phases, mara, runs] = await Promise.all([
     fetchText("data/program.json"),
     fetchText("data/daily.csv"), fetchText("data/lifts.csv"),
     fetchText("data/body.csv"), fetchText("data/phases.csv"),
+    fetchText("data/marathon.json"), fetchText("data/runs.csv"),
   ]);
   store.program = JSON.parse(prog);
-  store.csv = { daily: parseCSV(daily || ""), lifts: parseCSV(lifts || ""), body: parseCSV(body || ""), phases: parseCSV(phases || "") };
+  try { store.marathon = mara ? JSON.parse(mara) : null; } catch { store.marathon = null; }
+  store.csv = { daily: parseCSV(daily || ""), lifts: parseCSV(lifts || ""), body: parseCSV(body || ""), phases: parseCSV(phases || ""), runs: parseCSV(runs || "") };
   // Closed months live in the CSVs; open months start the month after the last CSV row.
   const lastCSV = store.csv.daily.at(-1)?.date;
   const start = lastCSV ? monthOf(addDays(lastCSV.slice(0, 8) + "28", 7)) : monthOf(todayISO());
@@ -159,7 +162,8 @@ export function isEmptyDay(d) {
   const f = d.food || {};
   const hasFood = ["kcal", "protein", "carbs", "fat"].some(k => f[k] != null) || (f.images || []).length;
   const hasLift = d.lift?.exercises?.length;
-  return d.weight == null && d.steps == null && !hasFood && !hasLift && !d.notes && !d.activity &&
+  const hasRun = d.run && (d.run.mi != null || d.run.sec != null || d.run.skipped || d.run.note);
+  return d.weight == null && d.steps == null && !hasFood && !hasLift && !hasRun && !d.notes && !d.activity &&
     (!d.day_type || d.day_type === "normal") && d.monthly?.bf == null && d.monthly?.waist == null;
 }
 
@@ -243,7 +247,7 @@ export function merged() {
         daily.push({
           date, weight_lb: s(d.weight), calories: s(f.kcal), protein_g: s(f.protein), carbs_g: s(f.carbs),
           fat_g: s(f.fat), fiber_g: s(f.fiber), sodium_mg: s(f.sodium), steps: s(d.steps),
-          day_type: d.day_type || "normal", activity: [d.lift?.session, d.activity].filter(Boolean).join(" + "), notes: d.notes || "",
+          day_type: d.day_type || "normal", activity: [d.lift?.session, d.run?.mi != null ? `Run ${d.run.mi} mi` : null, d.activity].filter(Boolean).join(" + "), notes: d.notes || "",
         });
       }
       if (!csvLiftDates.has(date) && d.lift?.exercises?.length) {
@@ -301,4 +305,43 @@ export async function compressImage(file, max = 1400, q = 0.72) {
     const dataURL = c.toDataURL("image/jpeg", q);
     return { preview: dataURL, base64: dataURL.split(",")[1] };
   } finally { URL.revokeObjectURL(url); }
+}
+
+/* ---------- marathon plan + run history ---------- */
+const DOW = ["tue", "thu", "sat", "sun"];
+// Every planned run as { date, wk, day, mi, kind: easy|long|race, optional, mode, week }
+export function planRuns() {
+  const m = store.marathon; if (!m) return [];
+  const out = [];
+  for (const w of m.weeks) {
+    const mon = addDays(m.start, (w.wk - 1) * 7);
+    for (const k of DOW) {
+      if (w[k] == null) continue;
+      const kind = k === "sun" && m.race && addDays(mon, m.days[k]) === m.race.date ? "race" : k === "sat" ? "long" : "easy";
+      out.push({ date: addDays(mon, m.days[k]), wk: w.wk, day: k, mi: w[k], kind, optional: (w.optional || []).includes(k),
+        mode: kind === "race" ? "cont" : kind === "long" ? w.long : w.weekday, week: w });
+    }
+  }
+  return out;
+}
+export const plannedOn = date => planRuns().find(r => r.date === date) || null;
+export function planWeek(date) {
+  const m = store.marathon; if (!m) return null;
+  const i = Math.floor((parseISO(date) - parseISO(m.start)) / 864e5 / 7);
+  const w = m.weeks[i]; if (!w) return null;
+  const phase = (m.phases || []).find(p => w.wk >= p.weeks[0] && w.wk <= p.weeks[1]);
+  const mon = addDays(m.start, i * 7);
+  const runs = planRuns().filter(r => r.wk === w.wk);
+  return { ...w, mon, sun: addDays(mon, 6), phase: phase?.name || "", runs, total: runs.reduce((s, r) => s + r.mi, 0) };
+}
+// Logged runs from closed-month CSV + open-month logs: { date, mi, sec, ratio, effort, hr, pain, where, note, skipped }
+export function runHistory() {
+  const byDate = new Map();
+  const n = v => (v == null || v === "" || isNaN(v) ? null : Number(v));
+  for (const r of store.csv.runs || []) byDate.set(r.date, { date: r.date, mi: n(r.distance_mi), sec: n(r.duration_sec), ratio: r.run_walk || "", effort: r.effort || "", hr: n(r.avg_hr), pain: r.pain || "", where: r.pain_where || "", note: r.notes || "", skipped: r.status === "skipped" });
+  for (const ym of Object.keys(store.log)) for (const [date, d] of Object.entries(store.log[ym].days || {})) {
+    if (!d.run || byDate.has(date)) continue;
+    byDate.set(date, { date, ...d.run });
+  }
+  return [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
 }
