@@ -1,10 +1,10 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611031835";
-import { $, h, esc, icon } from "./ui.js?v=202611031835";
-import { renderDashboard } from "./dashboard.js?v=202611031835";
-import { renderToday } from "./today.js?v=202611031835";
-import { renderLift } from "./lift.js?v=202611031835";
-import { renderRun } from "./run.js?v=202611031835";
-import { VERSION } from "./version.js?v=202611031835";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611031934";
+import { $, h, esc, icon } from "./ui.js?v=202611031934";
+import { renderDashboard } from "./dashboard.js?v=202611031934";
+import { renderToday } from "./today.js?v=202611031934";
+import { renderLift } from "./lift.js?v=202611031934";
+import { renderRun } from "./run.js?v=202611031934";
+import { VERSION } from "./version.js?v=202611031934";
 
 const TABS = ["today", "lift", "run", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };

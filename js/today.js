@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611031835";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611031835";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611031835";
-import { isClosedDate, token } from "./store.js?v=202611031835";
-import { buildSummary } from "./summary.js?v=202611031835";
-import { VERSION } from "./version.js?v=202611031835";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611031934";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611031934";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611031934";
+import { isClosedDate, token } from "./store.js?v=202611031934";
+import { buildSummary } from "./summary.js?v=202611031934";
+import { VERSION } from "./version.js?v=202611031934";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];

@@ -1,6 +1,6 @@
 // Run tab: the Cleveland plan slotted onto the calendar, with each run logged against it.
-import { store, todayISO, addDays, parseISO, plannedOn, planWeek, planRuns, runHistory } from "./store.js?v=202611031835";
-import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202611031835";
+import { store, todayISO, addDays, parseISO, plannedOn, planWeek, planRuns, runHistory } from "./store.js?v=202611031934";
+import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202611031934";
 
 const EFFORT = [["easy", "Easy"], ["steady", "Steady"], ["hard", "Hard"], ["very_hard", "Very hard"]];
 const PAIN = [["none", "None"], ["niggle", "Niggle"], ["pain", "Pain"]];
@@ -64,10 +64,14 @@ export function renderRun(root, ctx) {
     ${planLine}
     ${wk.note && plan && wk.note !== m.modes[plan.mode] ? `<p class="fine" style="margin:0 0 12px">${esc(wk.note)}</p>` : ""}
     ${future ? `<p class="fine">Log it here after you run.</p>` : `
-    <div class="fields2">
+    <div>
       <label class="field"><span>Distance</span><div class="inwrap"><input inputmode="decimal" data-r="mi" placeholder="${plan ? plan.mi : "0"}" value="${r.mi ?? ""}"><em>mi</em></div></label>
-      <label class="field"><span>Time</span><div class="inwrap"><input inputmode="numeric" data-r="time" placeholder="mm:ss" value="${fmtTime(r.sec)}"><em data-pace></em></div></label>
     </div>
+      <div class="field" style="margin-top:12px"><span>Time <small data-pace style="color:var(--muted);font-weight:600"></small></span><div class="fields2">
+        <label class="inwrap"><input inputmode="numeric" pattern="[0-9]*" data-r="min" placeholder="min" value="${r.sec != null ? Math.floor(r.sec / 60) : ""}" aria-label="Minutes"><em>min</em></label>
+        <label class="inwrap"><input inputmode="numeric" pattern="[0-9]*" data-r="secs" placeholder="sec" value="${r.sec != null ? Math.round(r.sec % 60) : ""}" aria-label="Seconds"><em>sec</em></label>
+      </div></div>
+
     <div class="field" style="margin-top:14px"><span>Effort</span></div>
     <div class="seg">${EFFORT.map(([v, l]) => `<button class="${r.effort === v ? "on" : ""}" data-effort="${v}">${l}</button>`).join("")}</div>
     <div class="field"><span>Aches or pain</span></div>
@@ -83,7 +87,7 @@ export function renderRun(root, ctx) {
   root.appendChild(card);
 
   const paceEl = card.querySelector("[data-pace]");
-  const showPace = () => { if (paceEl) { const p = pace(r.mi, r.sec); paceEl.textContent = p ? `${p}/mi` : ""; } };
+  const showPace = () => { if (paceEl) { const p = pace(r.mi, r.sec); paceEl.textContent = p ? `· ${p}/mi pace` : ""; } };
   showPace();
 
   /* ---------- this week ---------- */
@@ -115,10 +119,13 @@ export function renderRun(root, ctx) {
   root.addEventListener("input", e => {
     const k = e.target.dataset.r; if (!k) return;
     if (k === "mi" || k === "hr") r[k] = numOrNull(e.target.value);
-    else if (k === "time") r.sec = parseTime(e.target.value);
+    else if (k === "min" || k === "secs") {
+      const mn = numOrNull(card.querySelector('[data-r="min"]').value), sc = numOrNull(card.querySelector('[data-r="secs"]').value);
+      r.sec = mn == null && sc == null ? null : (mn || 0) * 60 + Math.min(59, sc || 0);
+    }
     else r[k] = e.target.value || null;
-    if (k === "mi" || k === "time") { if (r.mi != null || r.sec != null) r.skipped = null; showPace(); }
-    if (plan && (k === "mi" || k === "time")) r.planned = plan.mi;
+    if (["mi", "min", "secs"].includes(k)) { if (r.mi != null || r.sec != null) r.skipped = null; showPace(); }
+    if (plan && ["mi", "min", "secs"].includes(k)) r.planned = plan.mi;
     ctx.changed();
   });
   root.addEventListener("click", e => {
