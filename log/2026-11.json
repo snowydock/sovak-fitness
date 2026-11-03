@@ -40,6 +40,63 @@
       },
       "steps": 9125,
       "updated": "2026-11-03T03:51:18.102Z"
+    },
+    "2026-11-02": {
+      "food": {
+        "kcal": 1964,
+        "protein": 172,
+        "carbs": 200,
+        "fat": 51,
+        "fiber": 15,
+        "sodium": 1138,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Cottage Cheese Lasagna",
+            "qty": "1 Serving",
+            "kcal": 530
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "200 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Chicken sausage minestrone",
+            "qty": "1 Serving",
+            "kcal": 300
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "110 Grams",
+            "kcal": 241
+          }
+        ]
+      },
+      "weight": 179.2,
+      "steps": 7329,
+      "updated": "2026-11-03T03:51:39.469Z"
     }
   }
 }
