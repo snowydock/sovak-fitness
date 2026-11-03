@@ -338,7 +338,7 @@ export function planWeek(date) {
 export function runHistory() {
   const byDate = new Map();
   const n = v => (v == null || v === "" || isNaN(v) ? null : Number(v));
-  for (const r of store.csv.runs || []) byDate.set(r.date, { date: r.date, mi: n(r.distance_mi), sec: n(r.duration_sec), ratio: r.run_walk || "", effort: r.effort || "", hr: n(r.avg_hr), pain: r.pain || "", where: r.pain_where || "", note: r.notes || "", skipped: r.status === "skipped" });
+  for (const r of store.csv.runs || []) byDate.set(r.date, { date: r.date, mi: n(r.distance_mi), sec: n(r.duration_sec), effort: r.effort || "", hr: n(r.avg_hr), pain: r.pain || "", where: r.pain_where || "", note: r.notes || "", skipped: r.status === "skipped" });
   for (const ym of Object.keys(store.log)) for (const [date, d] of Object.entries(store.log[ym].days || {})) {
     if (!d.run || byDate.has(date)) continue;
     byDate.set(date, { date, ...d.run });

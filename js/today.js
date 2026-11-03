@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611031824";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611031824";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611031824";
-import { isClosedDate, token } from "./store.js?v=202611031824";
-import { buildSummary } from "./summary.js?v=202611031824";
-import { VERSION } from "./version.js?v=202611031824";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611031835";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611031835";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611031835";
+import { isClosedDate, token } from "./store.js?v=202611031835";
+import { buildSummary } from "./summary.js?v=202611031835";
+import { VERSION } from "./version.js?v=202611031835";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];
@@ -293,7 +293,7 @@ function runRowHtml(day, date, future) {
   const plan = plannedOn(date), r = day.run || {};
   if (!plan && r.mi == null && !r.skipped) return "";
   const t = r.skipped ? `<b>Run skipped</b><small>Planned ${plan?.mi ?? r.planned ?? ""} mi</small>`
-    : r.mi != null ? `<b>Ran ${fmt(r.mi, Number.isInteger(r.mi) ? 0 : 1)} mi</b><small>${plan ? `Plan ${plan.mi} mi` : "Unplanned run"}${r.ratio ? ` · ${esc(r.ratio)}` : ""}</small>`
+    : r.mi != null ? `<b>Ran ${fmt(r.mi, Number.isInteger(r.mi) ? 0 : 1)} mi</b><small>${plan ? `Plan ${plan.mi} mi` : "Unplanned run"}</small>`
     : `<b>${plan.mi} mi ${plan.kind === "long" ? "long run" : plan.kind === "race" ? "race" : "easy run"}${plan.optional ? " (optional)" : ""}</b><small>${future ? "Planned" : "Not logged yet"}</small>`;
   return `<button class="liftrow" data-gorun><span class="lr-ico run">${icon.run}</span><span class="lr-t">${t}</span><span class="lr-go">${icon.right}</span></button>`;
 }

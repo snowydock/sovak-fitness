@@ -1,10 +1,9 @@
 // Run tab: the Cleveland plan slotted onto the calendar, with each run logged against it.
-import { store, todayISO, addDays, parseISO, plannedOn, planWeek, planRuns, runHistory } from "./store.js?v=202611031824";
-import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202611031824";
+import { store, todayISO, addDays, parseISO, plannedOn, planWeek, planRuns, runHistory } from "./store.js?v=202611031835";
+import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202611031835";
 
 const EFFORT = [["easy", "Easy"], ["steady", "Steady"], ["hard", "Hard"], ["very_hard", "Very hard"]];
 const PAIN = [["none", "None"], ["niggle", "Niggle"], ["pain", "Pain"]];
-const RATIOS = ["1:1", "2:1", "3:1", "4:1", "5:1", "Continuous"];
 const KIND = { easy: "Easy run", long: "Long run", race: "Race day" };
 const DAYN = { tue: "Tue", thu: "Thu", sat: "Sat", sun: "Sun" };
 
@@ -69,15 +68,13 @@ export function renderRun(root, ctx) {
       <label class="field"><span>Distance</span><div class="inwrap"><input inputmode="decimal" data-r="mi" placeholder="${plan ? plan.mi : "0"}" value="${r.mi ?? ""}"><em>mi</em></div></label>
       <label class="field"><span>Time</span><div class="inwrap"><input inputmode="numeric" data-r="time" placeholder="mm:ss" value="${fmtTime(r.sec)}"><em data-pace></em></div></label>
     </div>
-    <div class="field" style="margin-top:14px"><span>Run : walk</span></div>
-    <div class="chips">${RATIOS.map(x => `<button class="chip ${r.ratio === x ? "on" : ""}" data-ratio="${x}">${x}</button>`).join("")}</div>
-    <div class="field"><span>Effort</span></div>
+    <div class="field" style="margin-top:14px"><span>Effort</span></div>
     <div class="seg">${EFFORT.map(([v, l]) => `<button class="${r.effort === v ? "on" : ""}" data-effort="${v}">${l}</button>`).join("")}</div>
     <div class="field"><span>Aches or pain</span></div>
     <div class="seg">${PAIN.map(([v, l]) => `<button class="${(r.pain || "none") === v && r.pain ? "on" : ""} ${v !== "none" ? "soc" : ""}" data-pain="${v}">${l}</button>`).join("")}</div>
     ${r.pain && r.pain !== "none" ? `<label class="field"><span>Where, and when it started</span><div class="inwrap"><input data-r="where" placeholder="e.g. left shin, mile 2" value="${esc(r.where || "")}"></div></label>` : ""}
     <label class="field" style="margin-top:12px"><span>Avg heart rate (optional)</span><div class="inwrap"><input inputmode="numeric" data-r="hr" placeholder="bpm" value="${r.hr ?? ""}"><em>bpm</em></div></label>
-    <label class="field" style="margin-top:12px"><span>How it went</span><textarea rows="2" data-r="note" placeholder="Walk breaks, weather, legs, fueling…">${esc(r.note || "")}</textarea></label>
+    <label class="field" style="margin-top:12px"><span>How it went</span><textarea rows="2" data-r="note" placeholder="Any walking, weather, legs, fueling…">${esc(r.note || "")}</textarea></label>
     <div class="row between" style="margin-top:12px">
       ${plan ? `<button class="link" data-skip>${r.skipped ? "Undo skip" : "Mark skipped"}</button>` : "<span></span>"}
       <button class="link danger" data-clearrun>Clear run</button>
@@ -128,7 +125,6 @@ export function renderRun(root, ctx) {
     const b = e.target.closest("button"); if (!b) return;
     if ("discard" in b.dataset) return ctx.discardDraft();
     if (b.dataset.go) return ctx.pickDate(b.dataset.go);
-    if (b.dataset.ratio) { r.ratio = r.ratio === b.dataset.ratio ? null : b.dataset.ratio; ctx.changed(); return ctx.rerender(); }
     if (b.dataset.effort) { r.effort = r.effort === b.dataset.effort ? null : b.dataset.effort; ctx.changed(); return ctx.rerender(); }
     if (b.dataset.pain) { r.pain = b.dataset.pain; if (r.pain === "none") r.where = null; ctx.changed(); return ctx.rerender(); }
     if ("skip" in b.dataset) {

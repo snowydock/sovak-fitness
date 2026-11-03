@@ -1,6 +1,6 @@
 // "Copy for Claude": a compact, paste-ready check-in for the monthly coaching chat.
-import { merged, liftHistory, targetsFor, addDays, parseISO, plannedOn, planWeek, runHistory } from "./store.js?v=202611031824";
-import { fmt, md } from "./ui.js?v=202611031824";
+import { merged, liftHistory, targetsFor, addDays, parseISO, plannedOn, planWeek, runHistory } from "./store.js?v=202611031835";
+import { fmt, md } from "./ui.js?v=202611031835";
 
 const DT = { normal: "Normal", light_social: "Light social", heavy_social: "Heavy social", travel: "Travel" };
 const n = v => (v == null || v === "" || isNaN(v) ? null : Number(v));
@@ -75,7 +75,6 @@ export function buildSummary(date, day, { dirty = false } = {}) {
   if (r.skipped) L.push(`Run: skipped${planTxt ? ` (${planTxt})` : ""}`);
   else if (r.mi != null || r.sec != null) {
     const bits = [`${r.mi != null ? String(+Number(r.mi).toFixed(2)) + " mi" : ""}${tm(r.sec)}${pc(r.mi, r.sec)}`];
-    if (r.ratio) bits.push(r.ratio === "Continuous" ? "continuous" : `${r.ratio} run/walk`);
     if (r.effort) bits.push(r.effort.replace("_", " "));
     if (r.hr) bits.push(`HR ${r.hr}`);
     if (r.pain && r.pain !== "none") bits.push(`${r.pain}${r.where ? `: ${r.where}` : ""}`);
