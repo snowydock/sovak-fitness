@@ -148,7 +148,76 @@
         "pain": "none"
       },
       "notes": "leg day and a run was tougher than i needed",
-      "updated": "2026-11-03T19:47:54.780Z"
+      "updated": "2026-11-04T13:36:19.157Z",
+      "food": {
+        "kcal": 2037,
+        "protein": 177,
+        "carbs": 199,
+        "fat": 57,
+        "fiber": 14,
+        "sodium": 1128,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Cottage Cheese Lasagna",
+            "qty": "1 Serving",
+            "kcal": 530
+          },
+          {
+            "name": "Rice, White, Cooked",
+            "qty": "50 Grams",
+            "kcal": 65
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "200 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Crackers, Graham, Plain",
+            "qty": "1 Each",
+            "kcal": 59
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Chicken sausage minestrone",
+            "qty": "1 Serving",
+            "kcal": 300
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "55 Grams",
+            "kcal": 120
+          }
+        ]
+      },
+      "weight": 178.6,
+      "steps": 12628
     }
   }
 }
