@@ -218,6 +218,88 @@
       },
       "weight": 178.6,
       "steps": 12628
+    },
+    "2026-11-04": {
+      "food": {
+        "kcal": 2301,
+        "protein": 187,
+        "carbs": 248,
+        "fat": 59,
+        "fiber": 16,
+        "sodium": 1232,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Cottage Cheese Lasagna",
+            "qty": "1 Serving",
+            "kcal": 530
+          },
+          {
+            "name": "Rice, White, Cooked",
+            "qty": "50 Grams",
+            "kcal": 65
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "200 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Crackers, Graham, Plain",
+            "qty": "1 Each",
+            "kcal": 59
+          },
+          {
+            "name": "Powdered Peanut Butter L, PB2",
+            "qty": "15 Grams",
+            "kcal": 69
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "55 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Chomps Beef Stick",
+            "qty": "1 Serving",
+            "kcal": 100
+          },
+          {
+            "name": "Chicken sausage minestrone",
+            "qty": "1 Serving",
+            "kcal": 300
+          },
+          {
+            "name": "Rice, White, Cooked",
+            "qty": "150 Grams",
+            "kcal": 195
+          }
+        ]
+      },
+      "weight": 177.9,
+      "steps": 8049,
+      "updated": "2026-11-06T20:08:06.528Z"
     }
   }
 }
