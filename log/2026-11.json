@@ -300,6 +300,21 @@
       "weight": 177.9,
       "steps": 8049,
       "updated": "2026-11-06T20:08:06.528Z"
+    },
+    "2026-11-06": {
+      "lift": {
+        "session": "Upper A",
+        "exercises": [
+          {
+            "name": "Incline DB Press",
+            "weight": 50,
+            "sets": [
+              10
+            ]
+          }
+        ]
+      },
+      "updated": "2026-11-06T20:11:36.142Z"
     }
   }
 }
