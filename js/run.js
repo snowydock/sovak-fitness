@@ -1,6 +1,6 @@
 // Run tab: the Cleveland plan slotted onto the calendar, with each run logged against it.
-import { store, todayISO, addDays, parseISO, plannedOn, planWeek, planRuns, runHistory } from "./store.js?v=202611031934";
-import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202611031934";
+import { store, todayISO, addDays, parseISO, plannedOn, planWeek, planRuns, runHistory } from "./store.js?v=202611062004";
+import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202611062004";
 
 const EFFORT = [["easy", "Easy"], ["steady", "Steady"], ["hard", "Hard"], ["very_hard", "Very hard"]];
 const PAIN = [["none", "None"], ["niggle", "Niggle"], ["pain", "Pain"]];

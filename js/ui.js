@@ -1,5 +1,5 @@
 // Shared UI helpers.
-import { iso, parseISO, todayISO, addDays } from "./store.js?v=202611031934";
+import { iso, parseISO, todayISO, addDays } from "./store.js?v=202611062004";
 
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];

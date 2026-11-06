@@ -1,10 +1,10 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611031934";
-import { $, h, esc, icon } from "./ui.js?v=202611031934";
-import { renderDashboard } from "./dashboard.js?v=202611031934";
-import { renderToday } from "./today.js?v=202611031934";
-import { renderLift } from "./lift.js?v=202611031934";
-import { renderRun } from "./run.js?v=202611031934";
-import { VERSION } from "./version.js?v=202611031934";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611062004";
+import { $, h, esc, icon } from "./ui.js?v=202611062004";
+import { renderDashboard } from "./dashboard.js?v=202611062004";
+import { renderToday } from "./today.js?v=202611062004";
+import { renderLift } from "./lift.js?v=202611062004";
+import { renderRun } from "./run.js?v=202611062004";
+import { VERSION } from "./version.js?v=202611062004";
 
 const TABS = ["today", "lift", "run", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
@@ -122,7 +122,7 @@ ctx.applyReport = async (days, label) => {
   const dates = Object.keys(days).sort();
   try {
     await saveMany(patches, `log: LoseIt report ${dates[0]}${dates.length > 1 ? " to " + dates.at(-1) : ""}`);
-  } catch (e) { console.error(e); toast(e.status === 401 ? "Token rejected. Check settings." : "Import failed. Nothing was changed.", true); return false; }
+  } catch (e) { console.error(e); toast(e.status === 401 ? "Token rejected. Check settings." : e.status === 403 || e.status === 404 ? "Token can't write to the repo. Give it Contents: Read and write." : `Import failed (${e.status || e.message || e}). Nothing was changed.`, true); return false; }
   if (days[state.date]) {                // keep any unsaved edits on the open day, layered over the imported numbers
     const fresh = clone(getDay(state.date));
     const wasDirty = isDirty();

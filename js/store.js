@@ -74,6 +74,11 @@ export async function testToken() {
   if (!r.ok) return { ok: false, msg: `GitHub said ${r.status}. Check the token has access to ${REPO}.` };
   const j = await r.json();
   if (!j.permissions?.push) return { ok: false, msg: "Token can read but not write. Give it Contents: Read and write." };
+  // permissions.push reflects the account, not a fine-grained token's scope. Prove the token can write
+  // by creating a loose blob: it needs Contents: write but doesn't touch any branch or file.
+  const w = await gh("/git/blobs", { method: "POST", body: JSON.stringify({ content: "write test", encoding: "utf-8" }) });
+  if (w.status === 403 || w.status === 404) return { ok: false, msg: "Token can read but not write. Edit it on GitHub: Repository permissions → Contents → Read and write." };
+  if (!w.ok) return { ok: false, msg: `Write test failed (GitHub said ${w.status}).` };
   return { ok: true, msg: "Connected. Saves go straight to the repo." };
 }
 
