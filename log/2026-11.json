@@ -403,7 +403,56 @@
           }
         ]
       },
-      "updated": "2026-11-06T23:46:30.411Z"
+      "updated": "2026-11-07T16:10:23.833Z",
+      "food": {
+        "kcal": 1766,
+        "protein": 159,
+        "carbs": 178,
+        "fat": 47,
+        "fiber": 13,
+        "sodium": 1278,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Chicken sausage minestrone",
+            "qty": "1½ Servings",
+            "kcal": 450
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "55 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "200 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Overnight Oats",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "EZ Beef Stroganoff",
+            "qty": "1 Serving",
+            "kcal": 443
+          }
+        ]
+      },
+      "weight": 178.2,
+      "steps": 9853
     },
     "2026-11-07": {
       "lift": {
