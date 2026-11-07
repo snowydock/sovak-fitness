@@ -512,7 +512,16 @@
           }
         ]
       },
-      "updated": "2026-11-07T16:25:18.560Z"
+      "run": {
+        "mi": 2,
+        "planned": 2,
+        "sec": 1210,
+        "hr": 145,
+        "pain": "none",
+        "effort": "easy",
+        "note": "felt GOOD id be surprised if my pace was actually that quick but felt like i could have gone a lot longer. beautiful night great run"
+      },
+      "updated": "2026-11-07T22:27:02.056Z"
     }
   }
 }
