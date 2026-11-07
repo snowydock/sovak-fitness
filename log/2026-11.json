@@ -344,6 +344,21 @@
         ]
       },
       "updated": "2026-11-06T23:46:30.411Z"
+    },
+    "2026-11-07": {
+      "lift": {
+        "session": "Upper A",
+        "exercises": [
+          {
+            "name": "Lat Pulldown",
+            "weight": 110,
+            "sets": [
+              12
+            ]
+          }
+        ]
+      },
+      "updated": "2026-11-07T15:58:46.270Z"
     }
   }
 }
