@@ -420,7 +420,7 @@
         "items": [
           {
             "name": "Chicken sausage minestrone",
-            "qty": "1\u00bd Servings",
+            "qty": "1½ Servings",
             "kcal": 450
           },
           {
@@ -497,12 +497,13 @@
             "sets": [
               15,
               12,
-              13
+              13,
+              12
             ]
           }
         ]
       },
-      "updated": "2026-11-07T16:13:21.912Z"
+      "updated": "2026-11-07T16:17:14.337Z"
     }
   }
 }
