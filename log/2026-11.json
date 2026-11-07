@@ -301,6 +301,66 @@
       "steps": 8049,
       "updated": "2026-11-06T20:08:06.528Z"
     },
+    "2026-11-05": {
+      "food": {
+        "kcal": 1958,
+        "protein": 170,
+        "carbs": 171,
+        "fat": 65,
+        "fiber": 12,
+        "sodium": 3078,
+        "source": "loseit-report",
+        "items": [
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "200 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "55 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Powdered Peanut Butter L, PB2",
+            "qty": "15 Grams",
+            "kcal": 69
+          },
+          {
+            "name": "Honey, Amber",
+            "qty": "15 Grams",
+            "kcal": 46
+          },
+          {
+            "name": "Chobani Strawberries & Cream",
+            "qty": "1 Serving",
+            "kcal": 170
+          },
+          {
+            "name": "Chipotle Chicken Bowl",
+            "qty": "1 Serving",
+            "kcal": 770
+          },
+          {
+            "name": "EZ Beef Stroganoff",
+            "qty": "1 Serving",
+            "kcal": 443
+          }
+        ]
+      },
+      "steps": 6520,
+      "updated": "2026-11-07T16:09:37.810Z"
+    },
     "2026-11-06": {
       "lift": {
         "session": "Upper A",
