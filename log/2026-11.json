@@ -403,14 +403,14 @@
           }
         ]
       },
-      "updated": "2026-11-07T16:10:23.833Z",
+      "updated": "2026-11-07T16:11:31.944Z",
       "food": {
-        "kcal": 1766,
-        "protein": 159,
-        "carbs": 178,
-        "fat": 47,
-        "fiber": 13,
-        "sodium": 1278,
+        "kcal": 2236,
+        "protein": 165,
+        "carbs": 269,
+        "fat": 53,
+        "fiber": 42,
+        "sodium": 1898,
         "source": "loseit-report",
         "incomplete": true,
         "items": [
@@ -433,6 +433,26 @@
             "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
             "qty": "200 Grams",
             "kcal": 120
+          },
+          {
+            "name": "Fruity Pebbles, Post",
+            "qty": "1 Cup",
+            "kcal": 140
+          },
+          {
+            "name": "Oat Milk, Planet Oat Oatmilk",
+            "qty": "1 Cup",
+            "kcal": 90
+          },
+          {
+            "name": "Oat Milk, Planet Oat Oatmilk",
+            "qty": "1 Cup",
+            "kcal": 90
+          },
+          {
+            "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
+            "qty": "1 Cup",
+            "kcal": 150
           },
           {
             "name": "Overnight Oats",
