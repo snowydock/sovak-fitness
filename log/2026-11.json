@@ -521,7 +521,71 @@
         "effort": "easy",
         "note": "felt GOOD id be surprised if my pace was actually that quick but felt like i could have gone a lot longer. beautiful night great run\n\n156spm"
       },
-      "updated": "2026-11-07T22:28:38.892Z"
+      "updated": "2026-11-08T04:17:20.148Z",
+      "food": {
+        "kcal": 2773,
+        "protein": 141,
+        "carbs": 322,
+        "fat": 76,
+        "fiber": 57,
+        "sodium": 3535,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Cheeseburger, Bun & Veg",
+            "qty": "1 Serving",
+            "kcal": 780
+          },
+          {
+            "name": "Diner Fries with Ketchup",
+            "qty": "1 Serving",
+            "kcal": 660
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Fruity Pebbles, Post",
+            "qty": "1 Cup",
+            "kcal": 140
+          },
+          {
+            "name": "Oat Milk, Planet Oat Oatmilk",
+            "qty": "1 Cup",
+            "kcal": 90
+          },
+          {
+            "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
+            "qty": "1 Cup",
+            "kcal": 150
+          },
+          {
+            "name": "Oat Milk, Planet Oat Oatmilk",
+            "qty": "1 Cup",
+            "kcal": 90
+          },
+          {
+            "name": "Cereal, GOLEAN, Original, Kashi",
+            "qty": "1 Serving",
+            "kcal": 180
+          },
+          {
+            "name": "Oat Milk, Planet Oat Oatmilk",
+            "qty": "1 Cup",
+            "kcal": 90
+          },
+          {
+            "name": "EZ Beef Stroganoff",
+            "qty": "1 Serving",
+            "kcal": 443
+          }
+        ]
+      },
+      "weight": 178,
+      "steps": 15505
     }
   }
 }
