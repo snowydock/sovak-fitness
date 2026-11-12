@@ -734,6 +734,63 @@
       },
       "updated": "2026-11-10T20:42:40.264Z"
     },
+    "2026-11-11": {
+      "food": {
+        "kcal": 2430,
+        "protein": 180,
+        "carbs": 232,
+        "fat": 88,
+        "fiber": 20,
+        "sodium": 2860,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Philly Cheesesteak Bowl",
+            "qty": "1 Serving",
+            "kcal": 490
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "½ Container",
+            "kcal": 155
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Taco, Soft, Beef, Taco Bell",
+            "qty": "1 Each",
+            "kcal": 180
+          },
+          {
+            "name": "Quesadilla, Chicken, Taco Bell",
+            "qty": "1 Each",
+            "kcal": 510
+          },
+          {
+            "name": "Gordita Crunch, Cheesy, Taco Bell",
+            "qty": "1 Each",
+            "kcal": 500
+          },
+          {
+            "name": "Honey garlic pork tenderloin",
+            "qty": "1 Serving",
+            "kcal": 335
+          }
+        ]
+      },
+      "weight": 177.5,
+      "steps": 9183,
+      "updated": "2026-11-12T17:01:40.036Z"
+    },
     "2026-11-12": {
       "lift": {
         "session": "Lower",
