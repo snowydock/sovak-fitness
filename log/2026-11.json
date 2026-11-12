@@ -814,6 +814,13 @@
             ]
           },
           {
+            "name": "Leg Curl",
+            "weight": 120,
+            "sets": [
+              15
+            ]
+          },
+          {
             "name": "Leg Extension",
             "weight": 150,
             "sets": [
@@ -823,7 +830,7 @@
           }
         ]
       },
-      "updated": "2026-11-12T17:34:57.904Z"
+      "updated": "2026-11-12T17:36:54.171Z"
     }
   }
 }
