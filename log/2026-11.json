@@ -733,6 +733,21 @@
         "hr": 144
       },
       "updated": "2026-11-10T20:42:40.264Z"
+    },
+    "2026-11-12": {
+      "lift": {
+        "session": "Lower",
+        "exercises": [
+          {
+            "name": "Barbell Back Squat",
+            "weight": 165,
+            "sets": [
+              10
+            ]
+          }
+        ]
+      },
+      "updated": "2026-11-12T17:01:21.449Z"
     }
   }
 }
