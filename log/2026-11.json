@@ -587,6 +587,82 @@
       "weight": 178,
       "steps": 15505
     },
+    "2026-11-08": {
+      "food": {
+        "kcal": 2850,
+        "protein": 198,
+        "carbs": 226,
+        "fat": 117,
+        "fiber": 24,
+        "sodium": 6990,
+        "source": "loseit-report",
+        "items": [
+          {
+            "name": "Italian Combo Hero",
+            "qty": "1 Serving",
+            "kcal": 1430
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+            "qty": "1 Each",
+            "kcal": 70
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "200 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Costco Bao Buns",
+            "qty": "2 Servings",
+            "kcal": 300
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Cereal, GOLEAN, Original, Kashi",
+            "qty": "1 Serving",
+            "kcal": 180
+          },
+          {
+            "name": "Oat Milk, Planet Oat Oatmilk",
+            "qty": "1 Cup",
+            "kcal": 90
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "2 Each",
+            "kcal": 143
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "100 Grams",
+            "kcal": 54
+          },
+          {
+            "name": "Cheese, Mozzarella, Shredded",
+            "qty": "15 Grams",
+            "kcal": 45
+          },
+          {
+            "name": "Wine, Red",
+            "qty": "187 Milliliters",
+            "kcal": 158
+          }
+        ]
+      },
+      "weight": 177.8,
+      "steps": 13859,
+      "updated": "2026-11-12T16:03:59.446Z"
+    },
     "2026-11-10": {
       "run": {
         "mi": 2.03,
