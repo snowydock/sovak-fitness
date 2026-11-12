@@ -663,6 +663,67 @@
       "steps": 13859,
       "updated": "2026-11-12T16:03:59.446Z"
     },
+    "2026-11-09": {
+      "food": {
+        "kcal": 2522,
+        "protein": 174,
+        "carbs": 258,
+        "fat": 76,
+        "fiber": 67,
+        "sodium": 3478,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Philly Cheesesteak Bowl",
+            "qty": "1 Serving",
+            "kcal": 490
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "½ Container",
+            "kcal": 155
+          },
+          {
+            "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
+            "qty": "2 Cups",
+            "kcal": 300
+          },
+          {
+            "name": "Oat Milk, Planet Oat Oatmilk",
+            "qty": "2 Cups",
+            "kcal": 180
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Chipotle Chicken Bowl",
+            "qty": "1 Serving",
+            "kcal": 830
+          },
+          {
+            "name": "Egg, Large",
+            "qty": "3 Each",
+            "kcal": 214
+          },
+          {
+            "name": "Sourdough, Sprouts Bread",
+            "qty": "55 Grams",
+            "kcal": 120
+          },
+          {
+            "name": "Egg Whites, Quick Whites",
+            "qty": "150 Grams",
+            "kcal": 82
+          }
+        ]
+      },
+      "steps": 12442,
+      "updated": "2026-11-12T16:04:21.617Z"
+    },
     "2026-11-10": {
       "run": {
         "mi": 2.03,
