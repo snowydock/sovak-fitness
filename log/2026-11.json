@@ -799,12 +799,13 @@
             "name": "Barbell Back Squat",
             "weight": 165,
             "sets": [
+              10,
               10
             ]
           }
         ]
       },
-      "updated": "2026-11-12T17:01:21.449Z"
+      "updated": "2026-11-12T17:05:42.772Z"
     }
   }
 }
