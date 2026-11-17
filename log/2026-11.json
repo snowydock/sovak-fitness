@@ -852,10 +852,64 @@
               10,
               10
             ]
+          },
+          {
+            "name": "Machine OHP",
+            "weight": 120,
+            "sets": [
+              10,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "Lat Pulldown",
+            "weight": 110,
+            "sets": [
+              12,
+              12,
+              8
+            ]
+          },
+          {
+            "name": "Cable Lateral Raise",
+            "weight": 20,
+            "sets": [
+              15,
+              15,
+              15,
+              15
+            ]
+          },
+          {
+            "name": "Overhead Cable Tricep Ext",
+            "weight": 80,
+            "sets": [
+              15,
+              15,
+              15
+            ]
+          },
+          {
+            "name": "Incline DB Curl",
+            "weight": 25,
+            "sets": [
+              10,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "Face Pull",
+            "weight": 35,
+            "sets": [
+              15,
+              15
+            ]
           }
         ]
       },
-      "updated": "2026-11-17T14:07:19.630Z"
+      "updated": "2026-11-17T14:07:50.818Z"
     }
   }
 }
