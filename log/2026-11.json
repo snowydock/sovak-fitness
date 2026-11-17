@@ -420,7 +420,7 @@
         "items": [
           {
             "name": "Chicken sausage minestrone",
-            "qty": "1\u00bd Servings",
+            "qty": "1½ Servings",
             "kcal": 450
           },
           {
@@ -681,7 +681,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "\u00bd Container",
+            "qty": "½ Container",
             "kcal": 155
           },
           {
@@ -752,7 +752,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "\u00bd Container",
+            "qty": "½ Container",
             "kcal": 155
           },
           {
@@ -966,6 +966,17 @@
       },
       "steps": 9354,
       "updated": "2026-11-17T14:09:28.228Z"
+    },
+    "2026-11-17": {
+      "run": {
+        "mi": 2,
+        "planned": 2,
+        "sec": 1368,
+        "effort": "steady",
+        "pain": "none",
+        "hr": 148
+      },
+      "updated": "2026-11-17T19:51:51.042Z"
     }
   }
 }
