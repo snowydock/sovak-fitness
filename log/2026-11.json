@@ -910,6 +910,62 @@
         ]
       },
       "updated": "2026-11-17T14:07:50.818Z"
+    },
+    "2026-11-16": {
+      "food": {
+        "kcal": 2319,
+        "protein": 153,
+        "carbs": 272,
+        "fat": 72,
+        "fiber": 30,
+        "sodium": 1527,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Creamy Garlic Chicken Mac Bake",
+            "qty": "1 Serving",
+            "kcal": 530
+          },
+          {
+            "name": "Ground Beef, 93% Lean 7% Fat, Walmart",
+            "qty": "50 Grams",
+            "kcal": 75
+          },
+          {
+            "name": "Cooked Sticky White Rice, Bibigo",
+            "qty": "1 Container",
+            "kcal": 310
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Banana, Large, 8\" - 8 7/8\" Long",
+            "qty": "1 Each",
+            "kcal": 121
+          },
+          {
+            "name": "Chicken Pot Pie, Marie Calendar's",
+            "qty": "1 Serving",
+            "kcal": 610
+          }
+        ]
+      },
+      "steps": 9354,
+      "updated": "2026-11-17T14:09:28.228Z"
     }
   }
 }
