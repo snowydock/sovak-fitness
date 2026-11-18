@@ -976,7 +976,66 @@
         "pain": "none",
         "hr": 148
       },
-      "updated": "2026-11-17T19:51:51.042Z"
+      "updated": "2026-11-18T02:31:41.255Z",
+      "food": {
+        "kcal": 3083,
+        "protein": 214,
+        "carbs": 281,
+        "fat": 125,
+        "fiber": 29,
+        "sodium": 3581,
+        "source": "loseit-report",
+        "incomplete": true,
+        "items": [
+          {
+            "name": "Creamy Garlic Chicken Mac Bake",
+            "qty": "1 Serving",
+            "kcal": 530
+          },
+          {
+            "name": "Chocolate Nurri",
+            "qty": "1 Serving",
+            "kcal": 150
+          },
+          {
+            "name": "Greek Yogurt Strawberry, Chobani",
+            "qty": "1 Container",
+            "kcal": 110
+          },
+          {
+            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+            "qty": "150 Grams",
+            "kcal": 90
+          },
+          {
+            "name": "Crackers, Graham, Plain",
+            "qty": "1 Each",
+            "kcal": 59
+          },
+          {
+            "name": "Overnight Oats with Blueberries",
+            "qty": "1 Serving",
+            "kcal": 413
+          },
+          {
+            "name": "Banana, Large, 8\" - 8 7/8\" Long",
+            "qty": "1 Each",
+            "kcal": 121
+          },
+          {
+            "name": "Chicken Pot Pie, Marie Calendar's",
+            "qty": "1 Serving",
+            "kcal": 610
+          },
+          {
+            "name": "Costco Chicken Street Tacos",
+            "qty": "1 Serving",
+            "kcal": 1000
+          }
+        ]
+      },
+      "weight": 177.1,
+      "steps": 10068
     }
   }
 }
