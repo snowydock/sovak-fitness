@@ -1,10 +1,10 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611222036";
-import { $, h, esc, icon } from "./ui.js?v=202611222036";
-import { renderDashboard } from "./dashboard.js?v=202611222036";
-import { renderToday } from "./today.js?v=202611222036";
-import { renderLift } from "./lift.js?v=202611222036";
-import { renderRun } from "./run.js?v=202611222036";
-import { VERSION } from "./version.js?v=202611222036";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611222045";
+import { $, h, esc, icon } from "./ui.js?v=202611222045";
+import { renderDashboard } from "./dashboard.js?v=202611222045";
+import { renderToday } from "./today.js?v=202611222045";
+import { renderLift } from "./lift.js?v=202611222045";
+import { renderRun } from "./run.js?v=202611222045";
+import { VERSION } from "./version.js?v=202611222045";
 
 const TABS = ["today", "lift", "run", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
@@ -187,6 +187,7 @@ const toastEl = h(`<div class="toast" role="status"></div>`); document.body.appe
 let tt;
 function toast(msg, bad) { toastEl.textContent = msg; toastEl.className = "toast show" + (bad ? " bad" : ""); clearTimeout(tt); tt = setTimeout(() => toastEl.className = "toast", 2600); }
 ctx.toast = toast;
+ctx.save = () => { if (token.get() && isDirty() && !saving) saveBar.querySelector(".sb-save").click(); };
 
 /* ---------- settings sheet ---------- */
 function openSettings() {

@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222036";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222036";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222036";
-import { isClosedDate, token } from "./store.js?v=202611222036";
-import { buildSummary } from "./summary.js?v=202611222036";
-import { VERSION } from "./version.js?v=202611222036";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222045";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222045";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222045";
+import { isClosedDate, token } from "./store.js?v=202611222045";
+import { buildSummary } from "./summary.js?v=202611222045";
+import { VERSION } from "./version.js?v=202611222045";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];
@@ -41,9 +41,21 @@ function goalsFor(t, dayType) {
   const carbs = kcal ? Math.max(0, Math.round((kcal - protein * 4 - fat * 9) / 4 / 5) * 5) : null;
   return { kcal, protein, carbs, fat, fiber };
 }
-function addFoodBtn(label = "Add food") {
-  const id = store.program?.claudeSession;
-  return id ? `<a class="btn small add" href="claude://code/${esc(id)}">${icon.plus || "+"}<span>${label}</span></a>` : "";
+function addFoodBtn(meal) {
+  return `<button class="btn small add" data-add="${esc(meal)}">${icon.plus}<span>Add food</span></button>`;
+}
+const round1 = n => Math.round(n * 10) / 10;
+// One usual serving of a library food, as a log item.
+function libraryItem(food, meal) {
+  const m = food.usual?.mult || 1, it = { name: food.name, qty: food.usual?.qty || food.serving, basis: "library", food_id: food.id };
+  if (meal && meal !== "Other") it.meal = meal;
+  it.time = new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  it.kcal = Math.round(food.kcal * m);
+  for (const k of ["protein", "carbs", "fat", "fiber", "sodium"]) if (food[k] != null) it[k] = round1(food[k] * m);
+  return it;
+}
+function foodRows(list) {
+  return list.map(f => { const it = libraryItem(f); return `<button class="foodrow" data-food="${esc(f.id)}"><span><b>${esc(f.name)}</b><small>${esc(it.qty)}${it.protein ? ` · ${fmt(it.protein)} g protein` : ""}</small></span><em class="num">${fmt(it.kcal)}</em><i class="fr-add">${icon.plus}</i></button>`; }).join("");
 }
 function mealsHtml(f, canAdd) {
   const items = (f.items || []).map((it, idx) => ({ ...it, idx }));
@@ -52,10 +64,10 @@ function mealsHtml(f, canAdd) {
     .filter(([m, g]) => g.length || ALWAYS.includes(m));
   return groups.map(([m, g]) => {
     const title = m === "Other" && !viaClaude ? "From Lose It" : m;
-    if (!g.length) return `<div class="card meal-card empty"><div class="row between"><h3>${title}</h3>${canAdd ? addFoodBtn() : ""}</div></div>`;
+    if (!g.length) return `<div class="card meal-card empty"><div class="row between"><h3>${title}</h3>${canAdd ? addFoodBtn(m) : ""}</div></div>`;
     const line = MACROS.filter(([k]) => g.some(i => i[k] != null)).map(([k, l]) => `${fmt(sumOf(g, k))} g ${l.toLowerCase()}`).join(" · ");
     return `<div class="card meal-card">
-      <div class="row between"><h3>${title}<b class="num">${fmt(sumOf(g, "kcal"))}</b></h3>${canAdd && m !== "Other" ? addFoodBtn() : ""}</div>
+      <div class="row between"><h3>${title}<b class="num">${fmt(sumOf(g, "kcal"))}</b></h3>${canAdd && m !== "Other" ? addFoodBtn(m) : ""}</div>
       ${line ? `<p class="mac-line">${line}</p>` : ""}
       <ul class="foods">${g.map(i => `<li><span>${esc(i.name)}${i.basis === "estimate" ? ' <em class="est" title="Estimated from a photo or description">est.</em>' : ""}<small>${esc([i.time, i.qty].filter(Boolean).join(" · "))}</small></span><b class="num">${fmt(i.kcal)}</b>${viaClaude ? `<button class="del" data-del="${i.idx}" aria-label="Remove ${esc(i.name)}">${icon.x}</button>` : ""}</li>`).join("")}</ul>
     </div>`;
@@ -78,7 +90,7 @@ export function renderToday(root, ctx) {
   /* ---------- Budget ---------- */
   const f = day.food || {};
   const savedImgs = f.images || [];
-  const srcTag = f.source ? `<span class="tag">${f.source?.startsWith("loseit") ? "from LoseIt" : f.source === "claude" ? "from Claude" : f.source === "screenshot" ? "screenshots" : "typed"}</span>` : "";
+  const srcTag = f.source ? `<span class="tag">${f.source?.startsWith("loseit") ? "from LoseIt" : f.source === "claude" ? "meal log" : f.source === "screenshot" ? "screenshots" : "typed"}</span>` : "";
   root.appendChild(h(`<section class="card budget">
     <div class="row between"><h2 data-btitle>Budget</h2>${srcTag}</div>
     <div class="b-top">
@@ -96,7 +108,7 @@ export function renderToday(root, ctx) {
 
   /* ---------- Meals ---------- */
   const pw = prevWeight(date);
-  root.appendChild(h(`<section class="meals"><div class="row between sec-h"><h2>Meals</h2><small class="fine">${store.program?.claudeSession && !future ? "Add food opens Claude" : ""}</small></div><div data-meals></div></section>`));
+  root.appendChild(h(`<section class="meals"><div class="row between sec-h"><h2>Meals</h2><small class="fine"></small></div><div data-meals></div></section>`));
   const renderMeals = () => { root.querySelector("[data-meals]").innerHTML = mealsHtml(state.day.food || {}, !future); };
 
   /* ---------- Weight & steps ---------- */
@@ -179,6 +191,44 @@ export function renderToday(root, ctx) {
         <p class="sub">Long-press, Select All, Copy.</p><textarea rows="12" readonly class="summary-ta">${esc(text)}</textarea>`, "Copy for Claude");
       const ta2 = s.el.querySelector("textarea"); ta2.focus(); ta2.select();
     }
+  }
+
+  /* ---------- Add food: usual foods for this meal, or a photo through Claude ---------- */
+  function openAddFood(meal) {
+    const fd0 = state.day.food || {};
+    if (fd0.source && fd0.source !== "claude" && fd0.kcal != null) return ctx.toast("This day's food came from Lose It. Clear the numbers under Add or fix manually to log by meal.", true);
+    const all = [...(store.foods || [])].sort((a, b) => (b.count || 0) - (a.count || 0) || a.name.localeCompare(b.name));
+    const usual = all.filter(f => (f.meals || []).includes(meal));
+    const base = usual.length ? usual : all;
+    const chat = store.program?.foodChat || store.program?.claudeSession;
+    const s = sheet(`<div class="sheet-h"><h2>Add to ${esc(meal)}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
+      ${chat ? `<a class="btn primary wide photo" href="claude://code/${esc(chat)}">${icon.camera || ""}<span>Photo or describe it to Claude</span></a>` : ""}
+      <label class="field"><div class="inwrap"><input type="search" placeholder="Search your foods" data-fsearch autocomplete="off"></div></label>
+      <div class="fr-h" data-fh>${usual.length ? `Your usual for ${esc(meal.toLowerCase())}` : "Your foods"}</div>
+      <div class="foodlist" data-flist>${foodRows(base.slice(0, 14))}</div>
+      <p class="fine">Tap a food to add one usual serving. Tap again for another.</p>
+      <button class="btn soft wide" data-close>Done</button>`, `Add to ${meal}`);
+    const list = s.el.querySelector("[data-flist]"), head = s.el.querySelector("[data-fh]");
+    s.el.querySelector("[data-fsearch]").addEventListener("input", e => {
+      const q = e.target.value.trim().toLowerCase();
+      if (!q) { head.textContent = usual.length ? `Your usual for ${meal.toLowerCase()}` : "Your foods"; list.innerHTML = foodRows(base.slice(0, 14)); return; }
+      const hits = all.filter(f => f.name.toLowerCase().includes(q) || (f.loseit_names || []).some(n => n.toLowerCase().includes(q)));
+      head.textContent = hits.length ? "Matches" : "Nothing in your library. Send Claude a photo instead.";
+      list.innerHTML = foodRows(hits.slice(0, 30));
+    });
+    let added = 0;
+    list.addEventListener("click", e => {
+      const row = e.target.closest("[data-food]"); if (!row) return;
+      const food = all.find(f => f.id === row.dataset.food); if (!food) return;
+      const fd = (state.day.food ??= {});
+      fd.source = "claude";
+      fd.items = [...(fd.items || []), libraryItem(food, meal)];
+      for (const k of ["kcal", "protein", "carbs", "fat", "fiber", "sodium"]) { const vals = fd.items.filter(i => i[k] != null); if (vals.length) fd[k] = Math.round(sumOf(vals, k)); }
+      added++; row.classList.add("did"); setTimeout(() => row.classList.remove("did"), 700);
+      ctx.changed(); refresh();
+      ctx.toast(`Added ${food.name}`);
+    });
+    s.el.addEventListener("click", e => { if ((e.target === s.el || e.target.closest("[data-close]")) && added) setTimeout(() => ctx.save(), 260); });
   }
 
   /* ---------- live bits ---------- */
@@ -278,6 +328,7 @@ export function renderToday(root, ctx) {
       return;
     }
     if (b.dataset.dt) { state.day.day_type = b.dataset.dt; ctx.changed(); root.querySelectorAll("[data-dt]").forEach(x => { const on = x.dataset.dt === b.dataset.dt; x.classList.toggle("on", on); x.setAttribute("aria-checked", on); }); refresh(); return; }
+    if (b.dataset.add != null) return openAddFood(b.dataset.add);
     if (b.dataset.del != null) {
       const fd = state.day.food, items = (fd.items || []).filter((_, i) => i !== Number(b.dataset.del));
       fd.items = items;

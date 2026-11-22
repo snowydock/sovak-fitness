@@ -134,6 +134,7 @@ export async function loadAll() {
     fetchText("data/body.csv"), fetchText("data/phases.csv"),
     fetchText("data/marathon.json"), fetchText("data/runs.csv"),
   ]);
+  fetchText("data/foods.json").then(t => { try { store.foods = JSON.parse(t).foods || []; } catch { store.foods = []; } }).catch(() => { store.foods = []; });
   store.program = JSON.parse(prog);
   try { store.marathon = mara ? JSON.parse(mara) : null; } catch { store.marathon = null; }
   store.csv = { daily: parseCSV(daily || ""), lifts: parseCSV(lifts || ""), body: parseCSV(body || ""), phases: parseCSV(phases || ""), runs: parseCSV(runs || "") };

@@ -15,7 +15,16 @@
    "source": "label",
    "loseit_names": [
     "Chocolate Nurri"
-   ]
+   ],
+   "count": 32,
+   "meals": [
+    "Snacks",
+    "Breakfast"
+   ],
+   "usual": {
+    "qty": "1 can (11 fl oz)",
+    "mult": 1
+   }
   },
   {
    "id": "chobani-strawberry",
@@ -31,7 +40,16 @@
    "loseit_names": [
     "Greek Yogurt Strawberry, Chobani"
    ],
-   "note": "verify label (macros typical for this cup)"
+   "note": "verify label (macros typical for this cup)",
+   "count": 18,
+   "meals": [
+    "Snacks",
+    "Breakfast"
+   ],
+   "usual": {
+    "qty": "1 container (5.3 oz)",
+    "mult": 1
+   }
   },
   {
    "id": "chobani-plain-nf",
@@ -49,7 +67,16 @@
    "source": "label",
    "loseit_names": [
     "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani"
-   ]
+   ],
+   "count": 18,
+   "meals": [
+    "Snacks",
+    "Breakfast"
+   ],
+   "usual": {
+    "qty": "200 Grams",
+    "mult": 2.0
+   }
   },
   {
    "id": "chobani-straw-cream",
@@ -65,7 +92,15 @@
    "loseit_names": [
     "Chobani Strawberries & Cream"
    ],
-   "note": "verify label"
+   "note": "verify label",
+   "count": 8,
+   "meals": [
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 cup",
+    "mult": 1
+   }
   },
   {
    "id": "string-cheese",
@@ -80,7 +115,15 @@
    "source": "label",
    "loseit_names": [
     "Cheese, String, Mozzarella Sticks, Crystal Farms"
-   ]
+   ],
+   "count": 18,
+   "meals": [
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 stick",
+    "mult": 1
+   }
   },
   {
    "id": "chomps",
@@ -95,7 +138,15 @@
    "source": "label",
    "loseit_names": [
     "Chomps Beef Stick"
-   ]
+   ],
+   "count": 17,
+   "meals": [
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 stick",
+    "mult": 1
+   }
   },
   {
    "id": "egg",
@@ -110,7 +161,15 @@
    "source": "label",
    "loseit_names": [
     "Egg, Large"
-   ]
+   ],
+   "count": 13,
+   "meals": [
+    "Breakfast"
+   ],
+   "usual": {
+    "qty": "2 Each",
+    "mult": 1.99
+   }
   },
   {
    "id": "egg-whites",
@@ -128,7 +187,15 @@
    "source": "label",
    "loseit_names": [
     "Egg Whites, Quick Whites"
-   ]
+   ],
+   "count": 11,
+   "meals": [
+    "Breakfast"
+   ],
+   "usual": {
+    "qty": "100 g",
+    "mult": 1
+   }
   },
   {
    "id": "sourdough-sprouts",
@@ -146,7 +213,16 @@
    "source": "label",
    "loseit_names": [
     "Sourdough, Sprouts Bread"
-   ]
+   ],
+   "count": 12,
+   "meals": [
+    "Breakfast",
+    "Lunch"
+   ],
+   "usual": {
+    "qty": "110 Grams",
+    "mult": 1.1
+   }
   },
   {
    "id": "sourdough",
@@ -164,7 +240,16 @@
    "source": "label",
    "loseit_names": [
     "Bread, Sourdough"
-   ]
+   ],
+   "count": 5,
+   "meals": [
+    "Breakfast",
+    "Lunch"
+   ],
+   "usual": {
+    "qty": "60 Grams",
+    "mult": 0.6
+   }
   },
   {
    "id": "honey",
@@ -182,7 +267,16 @@
    "source": "label",
    "loseit_names": [
     "Honey, Amber"
-   ]
+   ],
+   "count": 11,
+   "meals": [
+    "Breakfast",
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "10 g",
+    "mult": 1
+   }
   },
   {
    "id": "bibigo-rice",
@@ -197,7 +291,16 @@
    "source": "label",
    "loseit_names": [
     "Cooked Sticky White Rice, Bibigo"
-   ]
+   ],
+   "count": 10,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 bowl (210 g)",
+    "mult": 1
+   }
   },
   {
    "id": "white-rice",
@@ -215,7 +318,16 @@
    "source": "usda",
    "loseit_names": [
     "Rice, White, Cooked"
-   ]
+   ],
+   "count": 4,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "50 Grams",
+    "mult": 0.5
+   }
   },
   {
    "id": "oat-milk",
@@ -230,7 +342,16 @@
    "source": "label",
    "loseit_names": [
     "Oat Milk, Planet Oat Oatmilk"
-   ]
+   ],
+   "count": 7,
+   "meals": [
+    "Breakfast",
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 cup",
+    "mult": 1
+   }
   },
   {
    "id": "edamame",
@@ -248,7 +369,17 @@
    "source": "label",
    "loseit_names": [
     "Soybeans, Edamame, Shelled (scanned Len), Seapoint Farms"
-   ]
+   ],
+   "count": 5,
+   "meals": [
+    "Snacks",
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "120 Grams",
+    "mult": 1.2
+   }
   },
   {
    "id": "chicken-breast",
@@ -266,7 +397,16 @@
    "source": "usda",
    "loseit_names": [
     "Chicken Breast, Skinless, Cooked"
-   ]
+   ],
+   "count": 5,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "161 Grams",
+    "mult": 1.61
+   }
   },
   {
    "id": "fairlife-np",
@@ -281,7 +421,16 @@
    "source": "label",
    "loseit_names": [
     "Protein Shake, Chocolate, Fairlife nutrition plan"
-   ]
+   ],
+   "count": 4,
+   "meals": [
+    "Snacks",
+    "Breakfast"
+   ],
+   "usual": {
+    "qty": "1 bottle (11.5 fl oz)",
+    "mult": 1
+   }
   },
   {
    "id": "clif",
@@ -296,7 +445,15 @@
    "source": "label",
    "loseit_names": [
     "Clif Bar, Chocolate Chip"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "\u00bd Each",
+    "mult": 0.5
+   }
   },
   {
    "id": "pb2",
@@ -314,7 +471,16 @@
    "source": "label",
    "loseit_names": [
     "Powdered Peanut Butter L, PB2"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Snacks",
+    "Breakfast"
+   ],
+   "usual": {
+    "qty": "15 g",
+    "mult": 1
+   }
   },
   {
    "id": "salsa",
@@ -329,7 +495,17 @@
    "source": "label",
    "loseit_names": [
     "Salsa, Mateo's Gourmet Salsa"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner",
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "2 tbsp",
+    "mult": 1
+   }
   },
   {
    "id": "mozz-shred",
@@ -347,7 +523,17 @@
    "source": "label",
    "loseit_names": [
     "Cheese, Mozzarella, Shredded"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Breakfast",
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "20 Grams",
+    "mult": 2.0
+   }
   },
   {
    "id": "cheddar-shred",
@@ -365,7 +551,17 @@
    "source": "label",
    "loseit_names": [
     "Cheese, Cheddar, Shredded"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Breakfast",
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "10 g",
+    "mult": 1
+   }
   },
   {
    "id": "graham",
@@ -380,7 +576,15 @@
    "source": "label",
    "loseit_names": [
     "Crackers, Graham, Plain"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 sheet",
+    "mult": 1
+   }
   },
   {
    "id": "banana",
@@ -395,7 +599,16 @@
    "source": "usda",
    "loseit_names": [
     "Banana, Large, 8\" - 8 7/8\" Long"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Breakfast",
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 banana",
+    "mult": 1
+   }
   },
   {
    "id": "golean",
@@ -411,7 +624,16 @@
    "loseit_names": [
     "Cereal, GOLEAN, Original, Kashi"
    ],
-   "note": "verify serving vs label"
+   "note": "verify serving vs label",
+   "count": 2,
+   "meals": [
+    "Breakfast",
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "capn-crunch-berries",
@@ -427,7 +649,16 @@
    "loseit_names": [
     "Captain Berry Crunch Cereal, Captain Crunch Berry"
    ],
-   "note": "LoseIt entry had bad fiber (~22 g/cup); real is ~1 g"
+   "note": "LoseIt entry had bad fiber (~22 g/cup); real is ~1 g",
+   "count": 3,
+   "meals": [
+    "Breakfast",
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 cup",
+    "mult": 1
+   }
   },
   {
    "id": "fruity-pebbles",
@@ -442,7 +673,16 @@
    "source": "label",
    "loseit_names": [
     "Fruity Pebbles, Post"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Breakfast",
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 cup",
+    "mult": 1
+   }
   },
   {
    "id": "pot-pie",
@@ -457,7 +697,16 @@
    "source": "label",
    "loseit_names": [
     "Chicken Pot Pie, Marie Calendar's"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 pie (10 oz)",
+    "mult": 1
+   }
   },
   {
    "id": "velveeta-shells",
@@ -472,7 +721,16 @@
    "source": "label",
    "loseit_names": [
     "Shells & Cheese, Velveeta"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1\u00bd Cups",
+    "mult": 1.5
+   }
   },
   {
    "id": "carb-balance-tortilla",
@@ -487,7 +745,16 @@
    "source": "label",
    "loseit_names": [
     "Low Carb Balance, Mission Tortilla"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "2 Servings",
+    "mult": 2.0
+   }
   },
   {
    "id": "bun",
@@ -503,7 +770,16 @@
    "loseit_names": [
     "Bun, Hamburger, Great Value",
     "Buns, Burger, Butternut"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 bun",
+    "mult": 1
+   }
   },
   {
    "id": "bacon",
@@ -518,7 +794,15 @@
    "source": "usda",
    "loseit_names": [
     "Bacon, Cooked"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Breakfast"
+   ],
+   "usual": {
+    "qty": "2 slices",
+    "mult": 1
+   }
   },
   {
    "id": "ground-beef-85",
@@ -536,7 +820,16 @@
    "source": "usda",
    "loseit_names": [
     "Ground Beef Grass Fed 85/15"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "110 Grams",
+    "mult": 1.1
+   }
   },
   {
    "id": "ground-beef-93",
@@ -554,7 +847,16 @@
    "source": "usda",
    "loseit_names": [
     "Ground Beef, 93% Lean 7% Fat, Walmart"
-   ]
+   ],
+   "count": 1,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "50 Grams",
+    "mult": 0.49
+   }
   },
   {
    "id": "ketchup",
@@ -569,7 +871,16 @@
    "source": "label",
    "loseit_names": [
     "Ketchup"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 tbsp",
+    "mult": 1
+   }
   },
   {
    "id": "bbq-sauce",
@@ -585,7 +896,16 @@
    "loseit_names": [
     "Sauce, BBQ, Original, Sweet Baby Ray's",
     "Sauce, Barbecue, Sweet Baby Ray's"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "3 Tablespoons",
+    "mult": 1.5
+   }
   },
   {
    "id": "ranch",
@@ -600,7 +920,16 @@
    "source": "label",
    "loseit_names": [
     "Dressing, Ranch, Hidden Valley"
-   ]
+   ],
+   "count": 1,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 tbsp",
+    "mult": 1
+   }
   },
   {
    "id": "choc-chips",
@@ -615,7 +944,15 @@
    "source": "label",
    "loseit_names": [
     "Baking Chips, Morsels, Chocolate, Real, Semi Sweet, Nestle Toll House"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 tbsp",
+    "mult": 1
+   }
   },
   {
    "id": "creatine",
@@ -631,6 +968,10 @@
    "loseit_names": [
     "Creatine Monohydrate, Micronized, Optimum Nutrition",
     "ReLyte Electrolytes and Creatine"
+   ],
+   "count": 5,
+   "meals": [
+    "Snacks"
    ]
   },
   {
@@ -649,7 +990,17 @@
    ],
    "note": "Mike's version has no flax. kcal from his LoseIt recipe (413); macros from the recipe without flax.",
    "fiber": 7,
-   "sodium": 170
+   "sodium": 170,
+   "count": 28,
+   "meals": [
+    "Breakfast",
+    "Lunch",
+    "Snacks"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-dill-chicken-soup",
@@ -664,7 +1015,16 @@
    "loseit_names": [
     "Dill chicken soup"
    ],
-   "note": "kcal from Mike's LoseIt recipe (342); TSK card says 290. Macros scaled."
+   "note": "kcal from Mike's LoseIt recipe (342); TSK card says 290. Macros scaled.",
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-white-turkey-chili",
@@ -675,7 +1035,12 @@
    "protein": 23.0,
    "carbs": 20.0,
    "fat": 9.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-thai-beef-veggie-bowls",
@@ -686,7 +1051,12 @@
    "protein": 21.0,
    "carbs": 9.0,
    "fat": 15.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-crispy-cheesy-beef-tacos",
@@ -697,7 +1067,12 @@
    "protein": 26.0,
    "carbs": 22.0,
    "fat": 13.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-mediterranean-chicken-with-salad-pita",
@@ -708,7 +1083,12 @@
    "protein": 37.0,
    "carbs": 18.0,
    "fat": 14.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-sausage-basil-pasta",
@@ -719,7 +1099,12 @@
    "protein": 29.0,
    "carbs": 45.0,
    "fat": 20.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-tender-turkey-burger",
@@ -730,7 +1115,12 @@
    "protein": 21.0,
    "carbs": 24.0,
    "fat": 12.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-taco-casserole",
@@ -745,7 +1135,16 @@
    "loseit_names": [
     "Taco Casserole (93/7 Swap)"
    ],
-   "note": "kcal from Mike's LoseIt recipe (360); TSK card says 500. Macros scaled."
+   "note": "kcal from Mike's LoseIt recipe (360); TSK card says 500. Macros scaled.",
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-cottage-cheese-lasagna",
@@ -759,7 +1158,16 @@
    "source": "tsk",
    "loseit_names": [
     "Cottage Cheese Lasagna"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-greek-pasta-bake",
@@ -774,7 +1182,16 @@
    "loseit_names": [
     "Greek Pasta Bake (607g 93/7 beef)"
    ],
-   "note": "kcal from Mike's LoseIt recipe (440); TSK card says 510. Macros scaled."
+   "note": "kcal from Mike's LoseIt recipe (440); TSK card says 510. Macros scaled.",
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-shepherd-s-pie",
@@ -785,7 +1202,12 @@
    "protein": 34.0,
    "carbs": 30.0,
    "fat": 23.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-southwest-chicken-rice-bake",
@@ -796,7 +1218,12 @@
    "protein": 36.0,
    "carbs": 35.0,
    "fat": 18.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-creamy-garlic-chicken-mac-bake",
@@ -811,7 +1238,16 @@
    "loseit_names": [
     "Creamy Garlic Chicken Mac Bake"
    ],
-   "note": "kcal from Mike's LoseIt recipe (530); TSK card says 495. Macros scaled."
+   "note": "kcal from Mike's LoseIt recipe (530); TSK card says 495. Macros scaled.",
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-chicken-alfredo-zucchini-bake",
@@ -822,7 +1258,12 @@
    "protein": 42.0,
    "carbs": 14.0,
    "fat": 20.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-chicken-shawarma-rice-bowls",
@@ -833,7 +1274,12 @@
    "protein": 46.0,
    "carbs": 48.0,
    "fat": 19.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-crispy-spicy-beef-noodles",
@@ -847,7 +1293,16 @@
    "source": "tsk",
    "loseit_names": [
     "Crispy spicy beef noodles"
-   ]
+   ],
+   "count": 6,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-street-corn-chicken-bowls",
@@ -858,7 +1313,12 @@
    "protein": 50.0,
    "carbs": 43.0,
    "fat": 18.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-creamy-garlic-cheesy-chicken-potatoes",
@@ -869,7 +1329,12 @@
    "protein": 54.0,
    "carbs": 43.0,
    "fat": 17.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-orange-chicken-rice-bowl",
@@ -884,7 +1349,16 @@
    "loseit_names": [
     "Orange chicken rice bowl"
    ],
-   "note": "kcal from Mike's LoseIt recipe (556); TSK card says 452. Macros scaled."
+   "note": "kcal from Mike's LoseIt recipe (556); TSK card says 452. Macros scaled.",
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-cowboy-caviar",
@@ -895,7 +1369,12 @@
    "protein": 5.0,
    "carbs": 14.0,
    "fat": 8.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Snacks",
+    "Lunch"
+   ]
   },
   {
    "id": "tsk-korean-bbq-chicken-bowls",
@@ -906,7 +1385,12 @@
    "protein": 49.0,
    "carbs": 50.0,
    "fat": 10.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-skinny-beef-stroganoff",
@@ -921,7 +1405,16 @@
    "loseit_names": [
     "EZ Beef Stroganoff"
    ],
-   "note": "kcal from Mike's LoseIt recipe (443); TSK card says 300. Macros scaled."
+   "note": "kcal from Mike's LoseIt recipe (443); TSK card says 300. Macros scaled.",
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-longevity-bowl",
@@ -932,7 +1425,12 @@
    "protein": 18.0,
    "carbs": 20.0,
    "fat": 16.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Snacks",
+    "Lunch"
+   ]
   },
   {
    "id": "tsk-greek-turkey-meatballs-with-tomato-feta-protein-pasta",
@@ -947,7 +1445,16 @@
    "loseit_names": [
     "Greek turkey meatballs with tomato-feta protein pasta"
    ],
-   "note": "kcal from Mike's LoseIt recipe (524); TSK card says 545. Macros scaled."
+   "note": "kcal from Mike's LoseIt recipe (524); TSK card says 545. Macros scaled.",
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-high-protein-chicken-salad",
@@ -961,7 +1468,16 @@
    "source": "tsk",
    "loseit_names": [
     "Chicken Salad week of October 28"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-sheet-pan-chicken-fajitas-prep-ahead",
@@ -972,7 +1488,12 @@
    "protein": 38.0,
    "carbs": 11.0,
    "fat": 7.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-chicken-sausage-minestrone",
@@ -986,7 +1507,16 @@
    "source": "tsk",
    "loseit_names": [
     "Chicken sausage minestrone"
-   ]
+   ],
+   "count": 4,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-chicken-veggie-stir-fry-with-rice",
@@ -997,7 +1527,12 @@
    "protein": 40.0,
    "carbs": 49.0,
    "fat": 6.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-chili-con-carne",
@@ -1012,7 +1547,16 @@
    "loseit_names": [
     "Chili con carne"
    ],
-   "note": "kcal from Mike's LoseIt recipe (368); TSK card says 433. Macros scaled."
+   "note": "kcal from Mike's LoseIt recipe (368); TSK card says 433. Macros scaled.",
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-butter-chicken",
@@ -1023,7 +1567,12 @@
    "protein": 37.0,
    "carbs": 38.0,
    "fat": 11.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-chicken-sausage-jambalaya",
@@ -1034,7 +1583,12 @@
    "protein": 30.0,
    "carbs": 34.0,
    "fat": 12.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-moroccan-chicken-chickpea-stew",
@@ -1045,7 +1599,12 @@
    "protein": 31.0,
    "carbs": 38.0,
    "fat": 7.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-japanese-chicken-curry",
@@ -1056,7 +1615,12 @@
    "protein": 27.0,
    "carbs": 45.0,
    "fat": 9.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-honey-garlic-pork-tenderloin",
@@ -1070,7 +1634,16 @@
    "source": "tsk",
    "loseit_names": [
     "Honey garlic pork tenderloin"
-   ]
+   ],
+   "count": 1,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-philly-cheesesteak-bowls",
@@ -1084,7 +1657,16 @@
    "source": "tsk",
    "loseit_names": [
     "Philly Cheesesteak Bowl"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 serving",
+    "mult": 1
+   }
   },
   {
    "id": "tsk-banh-mi-pork-bowls",
@@ -1095,7 +1677,12 @@
    "protein": 46.0,
    "carbs": 50.0,
    "fat": 11.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tsk-chicken-parm-pasta-bake",
@@ -1106,7 +1693,12 @@
    "protein": 48.0,
    "carbs": 37.0,
    "fat": 14.0,
-   "source": "tsk"
+   "source": "tsk",
+   "count": 0,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ]
   },
   {
    "id": "tb-cheesy-gordita",
@@ -1121,7 +1713,16 @@
    "source": "official",
    "loseit_names": [
     "Gordita Crunch, Cheesy, Taco Bell"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 each",
+    "mult": 1
+   }
   },
   {
    "id": "tb-chicken-quesadilla",
@@ -1136,7 +1737,16 @@
    "source": "official",
    "loseit_names": [
     "Quesadilla, Chicken, Taco Bell"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 each",
+    "mult": 1
+   }
   },
   {
    "id": "tb-soft-taco",
@@ -1151,7 +1761,16 @@
    "source": "official",
    "loseit_names": [
     "Taco, Soft, Beef, Taco Bell"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 each",
+    "mult": 1
+   }
   },
   {
    "id": "mcd-fries-med",
@@ -1166,7 +1785,16 @@
    "source": "official",
    "loseit_names": [
     "French Fries, Medium, McDonald's"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 Serving",
+    "mult": 1.06
+   }
   },
   {
    "id": "chipotle-chicken-bowl",
@@ -1182,7 +1810,16 @@
    "loseit_names": [
     "Chipotle Chicken Bowl"
    ],
-   "note": "Build-dependent; Mike logged 770-830. Re-check build each time."
+   "note": "Build-dependent; Mike logged 770-830. Re-check build each time.",
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 bowl",
+    "mult": 1
+   }
   },
   {
    "id": "costco-street-tacos",
@@ -1197,7 +1834,16 @@
    "loseit_names": [
     "Costco Chicken Street Tacos"
    ],
-   "note": "Portion as logged once; verify package label"
+   "note": "Portion as logged once; verify package label",
+   "count": 1,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "as logged",
+    "mult": 1
+   }
   },
   {
    "id": "wine-glass",
@@ -1213,7 +1859,15 @@
    "loseit_names": [
     "Cabarnet Sauvigon, Glass Of Red Wine",
     "Wine, Red"
-   ]
+   ],
+   "count": 3,
+   "meals": [
+    "Booze"
+   ],
+   "usual": {
+    "qty": "24 Ounces",
+    "mult": 4.44
+   }
   },
   {
    "id": "guinness",
@@ -1228,7 +1882,15 @@
    "source": "typical",
    "loseit_names": [
     "Beer, Guinness"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Booze"
+   ],
+   "usual": {
+    "qty": "6 Bottles",
+    "mult": 6.0
+   }
   },
   {
    "id": "bud-light",
@@ -1243,7 +1905,15 @@
    "source": "typical",
    "loseit_names": [
     "Beer, Bud Light, Budweiser"
-   ]
+   ],
+   "count": 1,
+   "meals": [
+    "Booze"
+   ],
+   "usual": {
+    "qty": "1\u00bd Bottles",
+    "mult": 1.5
+   }
   },
   {
    "id": "high-life",
@@ -1258,7 +1928,15 @@
    "source": "typical",
    "loseit_names": [
     "Beer, Miller High Life"
-   ]
+   ],
+   "count": 1,
+   "meals": [
+    "Booze"
+   ],
+   "usual": {
+    "qty": "24 Fluid Ounces",
+    "mult": 2.0
+   }
   },
   {
    "id": "old-fashioned",
@@ -1273,7 +1951,15 @@
    "source": "typical",
    "loseit_names": [
     "Old Fashioned Cocktail, Bar drink"
-   ]
+   ],
+   "count": 1,
+   "meals": [
+    "Booze"
+   ],
+   "usual": {
+    "qty": "1 drink",
+    "mult": 1
+   }
   },
   {
    "id": "margarita",
@@ -1288,7 +1974,15 @@
    "source": "typical",
    "loseit_names": [
     "Margarita, Classic, On the Rocks, Red Lobster"
-   ]
+   ],
+   "count": 1,
+   "meals": [
+    "Booze"
+   ],
+   "usual": {
+    "qty": "3 Each",
+    "mult": 3.0
+   }
   },
   {
    "id": "cider",
@@ -1303,7 +1997,15 @@
    "source": "typical",
    "loseit_names": [
     "Cider, Okanahan"
-   ]
+   ],
+   "count": 1,
+   "meals": [
+    "Booze"
+   ],
+   "usual": {
+    "qty": "2 Each",
+    "mult": 2.0
+   }
   },
   {
    "id": "chicken-pad-thai",
@@ -1319,7 +2021,16 @@
    "loseit_names": [
     "Chicken Pad Thai"
    ],
-   "note": "Logged 3x; half order = ~385"
+   "note": "Logged 3x; half order = ~385",
+   "count": 3,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "\u00bd Serving",
+    "mult": 0.69
+   }
   },
   {
    "id": "nyc-pepperoni-slice",
@@ -1334,7 +2045,16 @@
    "source": "estimate",
    "loseit_names": [
     "NYC Pepperoni Slice"
-   ]
+   ],
+   "count": 2,
+   "meals": [
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "1 slice",
+    "mult": 1
+   }
   }
  ]
 }

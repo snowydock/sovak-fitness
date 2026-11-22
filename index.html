@@ -295,6 +295,17 @@ textarea:focus{box-shadow:inset 0 0 0 2px var(--s1)}
 .meal-card .del{appearance:none;border:0;background:transparent;color:var(--muted);padding:6px;margin:-6px -6px -6px 0;cursor:pointer;display:flex}
 .meal-card .del svg{width:16px;height:16px}
 .btn.add{background:var(--s1-wash);color:var(--s1);min-height:34px;padding:7px 12px;font-size:13.5px}
+.btn.photo{margin:14px 0 4px}
+.fr-h{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:650;margin:10px 0 2px}
+.foodlist{margin:0 -6px}
+.foodrow{width:100%;appearance:none;border:0;background:transparent;color:var(--ink);display:flex;align-items:center;gap:10px;text-align:left;padding:11px 6px;border-top:1px solid var(--grid);cursor:pointer;border-radius:10px;font:inherit}
+.foodrow:first-child{border-top:0}
+.foodrow span{flex:1;min-width:0}.foodrow b{display:block;font-size:15px;font-weight:600}
+.foodrow small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.foodrow em{font-style:normal;font-weight:650;font-size:15px}
+.foodrow .fr-add{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--s1-wash);color:var(--s1)}
+.foodrow.did{background:color-mix(in srgb,var(--s3) 16%,transparent)}.foodrow.did .fr-add{background:var(--s3);color:#fff}
+button.btn.add{border:0;cursor:pointer}
 details.manual>summary{font-size:15px;font-weight:650;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
 details.manual>summary::-webkit-details-marker{display:none}
 details.manual>summary::after{content:"+";color:var(--muted);font-weight:500;font-size:20px;line-height:1}
@@ -401,7 +412,7 @@ details.monthly[open] summary{margin-bottom:12px}
 .lr-ico.run{background:color-mix(in srgb,var(--s4) 16%,transparent);color:var(--s4)}
 @media (min-width:640px){ .grid3{grid-template-columns:repeat(6,minmax(0,1fr))} }
 </style>
-<script type="module" src="js/app.js?v=202611222036"></script>
+<script type="module" src="js/app.js?v=202611222045"></script>
 </head>
 <body data-tab="today">
 <main id="app">
