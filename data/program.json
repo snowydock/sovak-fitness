@@ -227,5 +227,6 @@
     "light_social": 2300,
     "heavy_social": 2700
   },
-  "claudeSession": "session_01C1Czw6zcyZDetMbYU5Udy9"
+  "claudeSession": "session_01C1Czw6zcyZDetMbYU5Udy9",
+  "timezone": "America/New_York"
 }
