@@ -420,7 +420,7 @@
         "items": [
           {
             "name": "Chicken sausage minestrone",
-            "qty": "1½ Servings",
+            "qty": "1\u00bd Servings",
             "kcal": 450
           },
           {
@@ -681,7 +681,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -752,7 +752,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -832,7 +832,14 @@
           }
         ]
       },
-      "updated": "2026-11-12T17:41:06.856Z"
+      "updated": "2026-11-22T19:39:31Z",
+      "weight": 177.7,
+      "notes": "Backfilled from Apple Health."
+    },
+    "2026-11-13": {
+      "weight": 176.7,
+      "updated": "2026-11-22T19:39:31Z",
+      "notes": "Backfilled from Apple Health."
     },
     "2026-11-15": {
       "run": {
@@ -909,7 +916,9 @@
           }
         ]
       },
-      "updated": "2026-11-17T14:10:36.380Z"
+      "updated": "2026-11-22T19:39:31Z",
+      "steps": 14956,
+      "notes": "Backfilled from Apple Health."
     },
     "2026-11-16": {
       "food": {
@@ -1036,6 +1045,35 @@
       },
       "weight": 177.1,
       "steps": 10068
+    },
+    "2026-11-18": {
+      "weight": 176.5,
+      "steps": 10748,
+      "food": {
+        "kcal": 2607,
+        "protein": 177,
+        "source": "apple-health",
+        "incomplete": true,
+        "items": []
+      },
+      "updated": "2026-11-22T19:39:31Z",
+      "notes": "Backfilled from Apple Health."
+    },
+    "2026-11-19": {
+      "weight": 176.5,
+      "steps": 8376,
+      "updated": "2026-11-22T19:39:31Z",
+      "notes": "Backfilled from Apple Health."
+    },
+    "2026-11-20": {
+      "steps": 15853,
+      "updated": "2026-11-22T19:39:31Z",
+      "notes": "Backfilled from Apple Health."
+    },
+    "2026-11-21": {
+      "steps": 6729,
+      "updated": "2026-11-22T19:39:31Z",
+      "notes": "Backfilled from Apple Health."
     },
     "2026-11-22": {
       "run": {
