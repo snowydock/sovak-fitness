@@ -1063,17 +1063,20 @@
       "weight": 176.5,
       "steps": 8376,
       "updated": "2026-11-22T19:39:31Z",
-      "notes": "Backfilled from Apple Health."
+      "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
+      "day_type": "heavy_social"
     },
     "2026-11-20": {
       "steps": 15853,
       "updated": "2026-11-22T19:39:31Z",
-      "notes": "Backfilled from Apple Health."
+      "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
+      "day_type": "heavy_social"
     },
     "2026-11-21": {
       "steps": 6729,
       "updated": "2026-11-22T19:39:31Z",
-      "notes": "Backfilled from Apple Health."
+      "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
+      "day_type": "heavy_social"
     },
     "2026-11-22": {
       "run": {
