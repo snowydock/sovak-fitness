@@ -1,0 +1,1338 @@
+{
+ "about": "Mike's food library for /calest and logging. Match here before estimating. kcal = what Mike logs (LoseIt wins over TSK cards); 'per' means scale by that unit. Categories: packaged, staple, tsk, chain, condiment, booze.",
+ "updated": "2026-11-22",
+ "foods": [
+  {
+   "id": "nurri",
+   "name": "Nurri protein shake (chocolate)",
+   "category": "packaged",
+   "serving": "1 can (11 fl oz)",
+   "kcal": 150,
+   "protein": 30,
+   "carbs": 3,
+   "fat": 2.5,
+   "fiber": 1,
+   "source": "label",
+   "loseit_names": [
+    "Chocolate Nurri"
+   ]
+  },
+  {
+   "id": "chobani-strawberry",
+   "name": "Chobani Greek yogurt, strawberry",
+   "category": "packaged",
+   "serving": "1 container (5.3 oz)",
+   "kcal": 110,
+   "protein": 11,
+   "carbs": 13,
+   "fat": 1.5,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Greek Yogurt Strawberry, Chobani"
+   ],
+   "note": "verify label (macros typical for this cup)"
+  },
+  {
+   "id": "chobani-plain-nf",
+   "name": "Chobani plain nonfat Greek yogurt",
+   "category": "packaged",
+   "serving": "100 g",
+   "kcal": 60,
+   "protein": 10,
+   "carbs": 3.6,
+   "fat": 0,
+   "fiber": 0,
+   "per": {
+    "g": 100
+   },
+   "source": "label",
+   "loseit_names": [
+    "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani"
+   ]
+  },
+  {
+   "id": "chobani-straw-cream",
+   "name": "Chobani Strawberries & Cream",
+   "category": "packaged",
+   "serving": "1 cup",
+   "kcal": 170,
+   "protein": 12,
+   "carbs": 20,
+   "fat": 4.5,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Chobani Strawberries & Cream"
+   ],
+   "note": "verify label"
+  },
+  {
+   "id": "string-cheese",
+   "name": "Crystal Farms mozzarella string cheese",
+   "category": "packaged",
+   "serving": "1 stick",
+   "kcal": 70,
+   "protein": 6,
+   "carbs": 1,
+   "fat": 4.5,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Cheese, String, Mozzarella Sticks, Crystal Farms"
+   ]
+  },
+  {
+   "id": "chomps",
+   "name": "Chomps original beef stick",
+   "category": "packaged",
+   "serving": "1 stick",
+   "kcal": 100,
+   "protein": 10,
+   "carbs": 0,
+   "fat": 7,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Chomps Beef Stick"
+   ]
+  },
+  {
+   "id": "egg",
+   "name": "Egg, large",
+   "category": "packaged",
+   "serving": "1 egg",
+   "kcal": 72,
+   "protein": 6.3,
+   "carbs": 0.4,
+   "fat": 4.8,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Egg, Large"
+   ]
+  },
+  {
+   "id": "egg-whites",
+   "name": "Liquid egg whites",
+   "category": "packaged",
+   "serving": "100 g",
+   "kcal": 54,
+   "protein": 11,
+   "carbs": 0.7,
+   "fat": 0,
+   "fiber": 0,
+   "per": {
+    "g": 100
+   },
+   "source": "label",
+   "loseit_names": [
+    "Egg Whites, Quick Whites"
+   ]
+  },
+  {
+   "id": "sourdough-sprouts",
+   "name": "Sprouts sourdough",
+   "category": "packaged",
+   "serving": "100 g",
+   "kcal": 219,
+   "protein": 8.5,
+   "carbs": 43,
+   "fat": 1.5,
+   "fiber": 2,
+   "per": {
+    "g": 100
+   },
+   "source": "label",
+   "loseit_names": [
+    "Sourdough, Sprouts Bread"
+   ]
+  },
+  {
+   "id": "sourdough",
+   "name": "Sourdough bread (generic)",
+   "category": "packaged",
+   "serving": "100 g",
+   "kcal": 289,
+   "protein": 11,
+   "carbs": 56,
+   "fat": 2,
+   "fiber": 2.5,
+   "per": {
+    "g": 100
+   },
+   "source": "label",
+   "loseit_names": [
+    "Bread, Sourdough"
+   ]
+  },
+  {
+   "id": "honey",
+   "name": "Honey",
+   "category": "packaged",
+   "serving": "10 g",
+   "kcal": 30,
+   "protein": 0,
+   "carbs": 8.2,
+   "fat": 0,
+   "fiber": 0,
+   "per": {
+    "g": 10
+   },
+   "source": "label",
+   "loseit_names": [
+    "Honey, Amber"
+   ]
+  },
+  {
+   "id": "bibigo-rice",
+   "name": "Bibigo cooked sticky white rice",
+   "category": "packaged",
+   "serving": "1 bowl (210 g)",
+   "kcal": 310,
+   "protein": 6,
+   "carbs": 71,
+   "fat": 1,
+   "fiber": 3,
+   "source": "label",
+   "loseit_names": [
+    "Cooked Sticky White Rice, Bibigo"
+   ]
+  },
+  {
+   "id": "white-rice",
+   "name": "White rice, cooked",
+   "category": "staple",
+   "serving": "100 g",
+   "kcal": 130,
+   "protein": 2.7,
+   "carbs": 28,
+   "fat": 0.3,
+   "fiber": 0.4,
+   "per": {
+    "g": 100
+   },
+   "source": "usda",
+   "loseit_names": [
+    "Rice, White, Cooked"
+   ]
+  },
+  {
+   "id": "oat-milk",
+   "name": "Oat milk (Planet Oat original)",
+   "category": "packaged",
+   "serving": "1 cup",
+   "kcal": 90,
+   "protein": 1,
+   "carbs": 19,
+   "fat": 1.5,
+   "fiber": 1,
+   "source": "label",
+   "loseit_names": [
+    "Oat Milk, Planet Oat Oatmilk"
+   ]
+  },
+  {
+   "id": "edamame",
+   "name": "Seapoint shelled edamame",
+   "category": "packaged",
+   "serving": "100 g",
+   "kcal": 120,
+   "protein": 12,
+   "carbs": 9,
+   "fat": 5,
+   "fiber": 5,
+   "per": {
+    "g": 100
+   },
+   "source": "label",
+   "loseit_names": [
+    "Soybeans, Edamame, Shelled (scanned Len), Seapoint Farms"
+   ]
+  },
+  {
+   "id": "chicken-breast",
+   "name": "Chicken breast, cooked",
+   "category": "staple",
+   "serving": "100 g",
+   "kcal": 165,
+   "protein": 31,
+   "carbs": 0,
+   "fat": 3.6,
+   "fiber": 0,
+   "per": {
+    "g": 100
+   },
+   "source": "usda",
+   "loseit_names": [
+    "Chicken Breast, Skinless, Cooked"
+   ]
+  },
+  {
+   "id": "fairlife-np",
+   "name": "Fairlife Nutrition Plan shake (chocolate)",
+   "category": "packaged",
+   "serving": "1 bottle (11.5 fl oz)",
+   "kcal": 150,
+   "protein": 30,
+   "carbs": 4,
+   "fat": 2.5,
+   "fiber": 1,
+   "source": "label",
+   "loseit_names": [
+    "Protein Shake, Chocolate, Fairlife nutrition plan"
+   ]
+  },
+  {
+   "id": "clif",
+   "name": "Clif Bar, chocolate chip",
+   "category": "packaged",
+   "serving": "1 bar",
+   "kcal": 250,
+   "protein": 10,
+   "carbs": 44,
+   "fat": 5,
+   "fiber": 4,
+   "source": "label",
+   "loseit_names": [
+    "Clif Bar, Chocolate Chip"
+   ]
+  },
+  {
+   "id": "pb2",
+   "name": "PB2 powdered peanut butter",
+   "category": "packaged",
+   "serving": "15 g",
+   "kcal": 69,
+   "protein": 7,
+   "carbs": 6,
+   "fat": 2,
+   "fiber": 2,
+   "per": {
+    "g": 15
+   },
+   "source": "label",
+   "loseit_names": [
+    "Powdered Peanut Butter L, PB2"
+   ]
+  },
+  {
+   "id": "salsa",
+   "name": "Mateo's salsa",
+   "category": "packaged",
+   "serving": "2 tbsp",
+   "kcal": 10,
+   "protein": 0,
+   "carbs": 2,
+   "fat": 0,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Salsa, Mateo's Gourmet Salsa"
+   ]
+  },
+  {
+   "id": "mozz-shred",
+   "name": "Shredded mozzarella",
+   "category": "packaged",
+   "serving": "10 g",
+   "kcal": 30,
+   "protein": 2.5,
+   "carbs": 0.3,
+   "fat": 2,
+   "fiber": 0,
+   "per": {
+    "g": 10
+   },
+   "source": "label",
+   "loseit_names": [
+    "Cheese, Mozzarella, Shredded"
+   ]
+  },
+  {
+   "id": "cheddar-shred",
+   "name": "Shredded cheddar",
+   "category": "packaged",
+   "serving": "10 g",
+   "kcal": 40,
+   "protein": 2.3,
+   "carbs": 0.1,
+   "fat": 3.3,
+   "fiber": 0,
+   "per": {
+    "g": 10
+   },
+   "source": "label",
+   "loseit_names": [
+    "Cheese, Cheddar, Shredded"
+   ]
+  },
+  {
+   "id": "graham",
+   "name": "Graham cracker",
+   "category": "packaged",
+   "serving": "1 sheet",
+   "kcal": 59,
+   "protein": 1,
+   "carbs": 11,
+   "fat": 1.4,
+   "fiber": 0.4,
+   "source": "label",
+   "loseit_names": [
+    "Crackers, Graham, Plain"
+   ]
+  },
+  {
+   "id": "banana",
+   "name": "Banana, large",
+   "category": "staple",
+   "serving": "1 banana",
+   "kcal": 121,
+   "protein": 1.5,
+   "carbs": 31,
+   "fat": 0.4,
+   "fiber": 3.5,
+   "source": "usda",
+   "loseit_names": [
+    "Banana, Large, 8\" - 8 7/8\" Long"
+   ]
+  },
+  {
+   "id": "golean",
+   "name": "Kashi GO original",
+   "category": "packaged",
+   "serving": "1 serving",
+   "kcal": 180,
+   "protein": 13,
+   "carbs": 33,
+   "fat": 2.5,
+   "fiber": 8,
+   "source": "label",
+   "loseit_names": [
+    "Cereal, GOLEAN, Original, Kashi"
+   ],
+   "note": "verify serving vs label"
+  },
+  {
+   "id": "capn-crunch-berries",
+   "name": "Cap'n Crunch's Crunch Berries",
+   "category": "packaged",
+   "serving": "1 cup",
+   "kcal": 150,
+   "protein": 1.5,
+   "carbs": 31,
+   "fat": 2,
+   "fiber": 1,
+   "source": "label",
+   "loseit_names": [
+    "Captain Berry Crunch Cereal, Captain Crunch Berry"
+   ],
+   "note": "LoseIt entry had bad fiber (~22 g/cup); real is ~1 g"
+  },
+  {
+   "id": "fruity-pebbles",
+   "name": "Fruity Pebbles",
+   "category": "packaged",
+   "serving": "1 cup",
+   "kcal": 140,
+   "protein": 1,
+   "carbs": 31,
+   "fat": 1.5,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Fruity Pebbles, Post"
+   ]
+  },
+  {
+   "id": "pot-pie",
+   "name": "Marie Callender's chicken pot pie (single)",
+   "category": "packaged",
+   "serving": "1 pie (10 oz)",
+   "kcal": 610,
+   "protein": 17,
+   "carbs": 61,
+   "fat": 32,
+   "fiber": 4,
+   "source": "label",
+   "loseit_names": [
+    "Chicken Pot Pie, Marie Calendar's"
+   ]
+  },
+  {
+   "id": "velveeta-shells",
+   "name": "Velveeta shells & cheese",
+   "category": "packaged",
+   "serving": "1 cup",
+   "kcal": 370,
+   "protein": 13,
+   "carbs": 49,
+   "fat": 12,
+   "fiber": 1.5,
+   "source": "label",
+   "loseit_names": [
+    "Shells & Cheese, Velveeta"
+   ]
+  },
+  {
+   "id": "carb-balance-tortilla",
+   "name": "Mission Carb Balance tortilla",
+   "category": "packaged",
+   "serving": "1 tortilla",
+   "kcal": 80,
+   "protein": 5,
+   "carbs": 19,
+   "fat": 3.5,
+   "fiber": 15,
+   "source": "label",
+   "loseit_names": [
+    "Low Carb Balance, Mission Tortilla"
+   ]
+  },
+  {
+   "id": "bun",
+   "name": "Hamburger bun",
+   "category": "packaged",
+   "serving": "1 bun",
+   "kcal": 110,
+   "protein": 4,
+   "carbs": 20,
+   "fat": 1.5,
+   "fiber": 1,
+   "source": "label",
+   "loseit_names": [
+    "Bun, Hamburger, Great Value",
+    "Buns, Burger, Butternut"
+   ]
+  },
+  {
+   "id": "bacon",
+   "name": "Bacon, cooked",
+   "category": "staple",
+   "serving": "2 slices",
+   "kcal": 87,
+   "protein": 6,
+   "carbs": 0.2,
+   "fat": 7,
+   "fiber": 0,
+   "source": "usda",
+   "loseit_names": [
+    "Bacon, Cooked"
+   ]
+  },
+  {
+   "id": "ground-beef-85",
+   "name": "Ground beef 85/15, raw",
+   "category": "staple",
+   "serving": "100 g",
+   "kcal": 212,
+   "protein": 18.6,
+   "carbs": 0,
+   "fat": 15,
+   "fiber": 0,
+   "per": {
+    "g": 100
+   },
+   "source": "usda",
+   "loseit_names": [
+    "Ground Beef Grass Fed 85/15"
+   ]
+  },
+  {
+   "id": "ground-beef-93",
+   "name": "Ground beef 93/7, raw",
+   "category": "staple",
+   "serving": "100 g",
+   "kcal": 152,
+   "protein": 21,
+   "carbs": 0,
+   "fat": 7,
+   "fiber": 0,
+   "per": {
+    "g": 100
+   },
+   "source": "usda",
+   "loseit_names": [
+    "Ground Beef, 93% Lean 7% Fat, Walmart"
+   ]
+  },
+  {
+   "id": "ketchup",
+   "name": "Ketchup",
+   "category": "condiment",
+   "serving": "1 tbsp",
+   "kcal": 15,
+   "protein": 0,
+   "carbs": 4,
+   "fat": 0,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Ketchup"
+   ]
+  },
+  {
+   "id": "bbq-sauce",
+   "name": "Sweet Baby Ray's BBQ sauce",
+   "category": "condiment",
+   "serving": "2 tbsp",
+   "kcal": 70,
+   "protein": 0,
+   "carbs": 17,
+   "fat": 0,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Sauce, BBQ, Original, Sweet Baby Ray's",
+    "Sauce, Barbecue, Sweet Baby Ray's"
+   ]
+  },
+  {
+   "id": "ranch",
+   "name": "Hidden Valley ranch",
+   "category": "condiment",
+   "serving": "1 tbsp",
+   "kcal": 70,
+   "protein": 0,
+   "carbs": 1,
+   "fat": 7,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Dressing, Ranch, Hidden Valley"
+   ]
+  },
+  {
+   "id": "choc-chips",
+   "name": "Chocolate chips",
+   "category": "packaged",
+   "serving": "1 tbsp",
+   "kcal": 70,
+   "protein": 1,
+   "carbs": 9,
+   "fat": 4,
+   "fiber": 1,
+   "source": "label",
+   "loseit_names": [
+    "Baking Chips, Morsels, Chocolate, Real, Semi Sweet, Nestle Toll House"
+   ]
+  },
+  {
+   "id": "creatine",
+   "name": "Creatine",
+   "category": "packaged",
+   "serving": "1 serving",
+   "kcal": 0,
+   "protein": 0,
+   "carbs": 0,
+   "fat": 0,
+   "fiber": 0,
+   "source": "label",
+   "loseit_names": [
+    "Creatine Monohydrate, Micronized, Optimum Nutrition",
+    "ReLyte Electrolytes and Creatine"
+   ]
+  },
+  {
+   "id": "tsk-overnight-oats",
+   "name": "Overnight oats",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 413,
+   "protein": 34,
+   "carbs": 39,
+   "fat": 14,
+   "source": "tsk",
+   "loseit_names": [
+    "Overnight Oats with Blueberries",
+    "Overnight Oats"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (413); TSK card says 445. Macros scaled."
+  },
+  {
+   "id": "tsk-dill-chicken-soup",
+   "name": "Dill chicken soup",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 342,
+   "protein": 35,
+   "carbs": 28,
+   "fat": 12,
+   "source": "tsk",
+   "loseit_names": [
+    "Dill chicken soup"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (342); TSK card says 290. Macros scaled."
+  },
+  {
+   "id": "tsk-white-turkey-chili",
+   "name": "White turkey chili",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 250,
+   "protein": 23.0,
+   "carbs": 20.0,
+   "fat": 9.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-thai-beef-veggie-bowls",
+   "name": "Thai beef & veggie bowls",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 245,
+   "protein": 21.0,
+   "carbs": 9.0,
+   "fat": 15.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-crispy-cheesy-beef-tacos",
+   "name": "Crispy cheesy beef tacos",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 310,
+   "protein": 26.0,
+   "carbs": 22.0,
+   "fat": 13.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-mediterranean-chicken-with-salad-pita",
+   "name": "Mediterranean chicken with salad & pita",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 370,
+   "protein": 37.0,
+   "carbs": 18.0,
+   "fat": 14.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-sausage-basil-pasta",
+   "name": "Sausage & basil pasta",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 495,
+   "protein": 29.0,
+   "carbs": 45.0,
+   "fat": 20.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-tender-turkey-burger",
+   "name": "Tender turkey burger",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 300,
+   "protein": 21.0,
+   "carbs": 24.0,
+   "fat": 12.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-taco-casserole",
+   "name": "Taco casserole",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 360,
+   "protein": 26,
+   "carbs": 22,
+   "fat": 19,
+   "source": "tsk",
+   "loseit_names": [
+    "Taco Casserole (93/7 Swap)"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (360); TSK card says 500. Macros scaled."
+  },
+  {
+   "id": "tsk-cottage-cheese-lasagna",
+   "name": "Cottage cheese lasagna",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 530,
+   "protein": 40.0,
+   "carbs": 32.0,
+   "fat": 24.0,
+   "source": "tsk",
+   "loseit_names": [
+    "Cottage Cheese Lasagna"
+   ]
+  },
+  {
+   "id": "tsk-greek-pasta-bake",
+   "name": "Greek pasta bake",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 440,
+   "protein": 28,
+   "carbs": 30,
+   "fat": 22,
+   "source": "tsk",
+   "loseit_names": [
+    "Greek Pasta Bake (607g 93/7 beef)"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (440); TSK card says 510. Macros scaled."
+  },
+  {
+   "id": "tsk-shepherd-s-pie",
+   "name": "Shepherd's pie",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 460,
+   "protein": 34.0,
+   "carbs": 30.0,
+   "fat": 23.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-southwest-chicken-rice-bake",
+   "name": "Southwest chicken & rice bake",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 470,
+   "protein": 36.0,
+   "carbs": 35.0,
+   "fat": 18.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-creamy-garlic-chicken-mac-bake",
+   "name": "Creamy garlic chicken mac bake",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 530,
+   "protein": 45,
+   "carbs": 34,
+   "fat": 24,
+   "source": "tsk",
+   "loseit_names": [
+    "Creamy Garlic Chicken Mac Bake"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (530); TSK card says 495. Macros scaled."
+  },
+  {
+   "id": "tsk-chicken-alfredo-zucchini-bake",
+   "name": "Chicken Alfredo zucchini bake",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 445,
+   "protein": 42.0,
+   "carbs": 14.0,
+   "fat": 20.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-chicken-shawarma-rice-bowls",
+   "name": "Chicken shawarma rice bowls",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 552,
+   "protein": 46.0,
+   "carbs": 48.0,
+   "fat": 19.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-crispy-spicy-beef-noodles",
+   "name": "Crispy spicy beef noodles",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 562,
+   "protein": 42.0,
+   "carbs": 45.0,
+   "fat": 22.0,
+   "source": "tsk",
+   "loseit_names": [
+    "Crispy spicy beef noodles"
+   ]
+  },
+  {
+   "id": "tsk-street-corn-chicken-bowls",
+   "name": "Street corn chicken bowls",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 559,
+   "protein": 50.0,
+   "carbs": 43.0,
+   "fat": 18.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-creamy-garlic-cheesy-chicken-potatoes",
+   "name": "Creamy garlic cheesy chicken & potatoes",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 543,
+   "protein": 54.0,
+   "carbs": 43.0,
+   "fat": 17.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-orange-chicken-rice-bowl",
+   "name": "Orange chicken rice bowl",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 556,
+   "protein": 47,
+   "carbs": 60,
+   "fat": 15,
+   "source": "tsk",
+   "loseit_names": [
+    "Orange chicken rice bowl"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (556); TSK card says 452. Macros scaled."
+  },
+  {
+   "id": "tsk-cowboy-caviar",
+   "name": "Cowboy caviar",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 156,
+   "protein": 5.0,
+   "carbs": 14.0,
+   "fat": 8.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-korean-bbq-chicken-bowls",
+   "name": "Korean BBQ chicken bowls",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 484,
+   "protein": 49.0,
+   "carbs": 50.0,
+   "fat": 10.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-skinny-beef-stroganoff",
+   "name": "Skinny beef stroganoff",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 443,
+   "protein": 35,
+   "carbs": 44,
+   "fat": 15,
+   "source": "tsk",
+   "loseit_names": [
+    "EZ Beef Stroganoff"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (443); TSK card says 300. Macros scaled."
+  },
+  {
+   "id": "tsk-longevity-bowl",
+   "name": "Longevity bowl",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 290,
+   "protein": 18.0,
+   "carbs": 20.0,
+   "fat": 16.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-greek-turkey-meatballs-with-tomato-feta-protein-pasta",
+   "name": "Greek turkey meatballs with tomato-feta protein pasta",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 524,
+   "protein": 40,
+   "carbs": 51,
+   "fat": 18,
+   "source": "tsk",
+   "loseit_names": [
+    "Greek turkey meatballs with tomato-feta protein pasta"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (524); TSK card says 545. Macros scaled."
+  },
+  {
+   "id": "tsk-high-protein-chicken-salad",
+   "name": "High-protein chicken salad",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 200,
+   "protein": 30.0,
+   "carbs": 8.0,
+   "fat": 6.0,
+   "source": "tsk",
+   "loseit_names": [
+    "Chicken Salad week of October 28"
+   ]
+  },
+  {
+   "id": "tsk-sheet-pan-chicken-fajitas-prep-ahead",
+   "name": "Sheet-pan chicken fajitas (prep-ahead)",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 265,
+   "protein": 38.0,
+   "carbs": 11.0,
+   "fat": 7.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-chicken-sausage-minestrone",
+   "name": "Chicken sausage minestrone",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 300,
+   "protein": 24.0,
+   "carbs": 34.0,
+   "fat": 8.0,
+   "source": "tsk",
+   "loseit_names": [
+    "Chicken sausage minestrone"
+   ]
+  },
+  {
+   "id": "tsk-chicken-veggie-stir-fry-with-rice",
+   "name": "Chicken & veggie stir fry with rice",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 434,
+   "protein": 40.0,
+   "carbs": 49.0,
+   "fat": 6.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-chili-con-carne",
+   "name": "Chili con carne",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 368,
+   "protein": 25,
+   "carbs": 37,
+   "fat": 12,
+   "source": "tsk",
+   "loseit_names": [
+    "Chili con carne"
+   ],
+   "note": "kcal from Mike's LoseIt recipe (368); TSK card says 433. Macros scaled."
+  },
+  {
+   "id": "tsk-butter-chicken",
+   "name": "Butter chicken",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 405,
+   "protein": 37.0,
+   "carbs": 38.0,
+   "fat": 11.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-chicken-sausage-jambalaya",
+   "name": "Chicken & sausage jambalaya",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 355,
+   "protein": 30.0,
+   "carbs": 34.0,
+   "fat": 12.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-moroccan-chicken-chickpea-stew",
+   "name": "Moroccan chicken & chickpea stew",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 335,
+   "protein": 31.0,
+   "carbs": 38.0,
+   "fat": 7.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-japanese-chicken-curry",
+   "name": "Japanese chicken curry",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 360,
+   "protein": 27.0,
+   "carbs": 45.0,
+   "fat": 9.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-honey-garlic-pork-tenderloin",
+   "name": "Honey-garlic pork tenderloin",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 335,
+   "protein": 35.0,
+   "carbs": 36.0,
+   "fat": 6.0,
+   "source": "tsk",
+   "loseit_names": [
+    "Honey garlic pork tenderloin"
+   ]
+  },
+  {
+   "id": "tsk-philly-cheesesteak-bowls",
+   "name": "Philly cheesesteak bowls",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 490,
+   "protein": 45.0,
+   "carbs": 46.0,
+   "fat": 14.0,
+   "source": "tsk",
+   "loseit_names": [
+    "Philly Cheesesteak Bowl"
+   ]
+  },
+  {
+   "id": "tsk-banh-mi-pork-bowls",
+   "name": "Banh mi pork bowls",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 495,
+   "protein": 46.0,
+   "carbs": 50.0,
+   "fat": 11.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tsk-chicken-parm-pasta-bake",
+   "name": "Chicken parm pasta bake",
+   "category": "tsk",
+   "serving": "1 serving",
+   "kcal": 480,
+   "protein": 48.0,
+   "carbs": 37.0,
+   "fat": 14.0,
+   "source": "tsk"
+  },
+  {
+   "id": "tb-cheesy-gordita",
+   "name": "Taco Bell Cheesy Gordita Crunch",
+   "category": "chain",
+   "serving": "1 each",
+   "kcal": 500,
+   "protein": 20,
+   "carbs": 41,
+   "fat": 28,
+   "fiber": 5,
+   "source": "official",
+   "loseit_names": [
+    "Gordita Crunch, Cheesy, Taco Bell"
+   ]
+  },
+  {
+   "id": "tb-chicken-quesadilla",
+   "name": "Taco Bell chicken quesadilla",
+   "category": "chain",
+   "serving": "1 each",
+   "kcal": 510,
+   "protein": 27,
+   "carbs": 37,
+   "fat": 27,
+   "fiber": 3,
+   "source": "official",
+   "loseit_names": [
+    "Quesadilla, Chicken, Taco Bell"
+   ]
+  },
+  {
+   "id": "tb-soft-taco",
+   "name": "Taco Bell soft taco, beef",
+   "category": "chain",
+   "serving": "1 each",
+   "kcal": 180,
+   "protein": 9,
+   "carbs": 18,
+   "fat": 9,
+   "fiber": 2,
+   "source": "official",
+   "loseit_names": [
+    "Taco, Soft, Beef, Taco Bell"
+   ]
+  },
+  {
+   "id": "mcd-fries-med",
+   "name": "McDonald's medium fries",
+   "category": "chain",
+   "serving": "1 medium",
+   "kcal": 320,
+   "protein": 4,
+   "carbs": 43,
+   "fat": 15,
+   "fiber": 4,
+   "source": "official",
+   "loseit_names": [
+    "French Fries, Medium, McDonald's"
+   ]
+  },
+  {
+   "id": "chipotle-chicken-bowl",
+   "name": "Chipotle chicken bowl (Mike's usual build)",
+   "category": "chain",
+   "serving": "1 bowl",
+   "kcal": 800,
+   "protein": 55,
+   "carbs": 80,
+   "fat": 25,
+   "fiber": 12,
+   "source": "estimate",
+   "loseit_names": [
+    "Chipotle Chicken Bowl"
+   ],
+   "note": "Build-dependent; Mike logged 770-830. Re-check build each time."
+  },
+  {
+   "id": "costco-street-tacos",
+   "name": "Costco chicken street tacos",
+   "category": "chain",
+   "serving": "as logged",
+   "kcal": 1000,
+   "protein": 60,
+   "carbs": 90,
+   "fat": 40,
+   "source": "loseit",
+   "loseit_names": [
+    "Costco Chicken Street Tacos"
+   ],
+   "note": "Portion as logged once; verify package label"
+  },
+  {
+   "id": "wine-glass",
+   "name": "Wine (red), 5 oz glass",
+   "category": "booze",
+   "serving": "5 oz",
+   "kcal": 125,
+   "protein": 0,
+   "carbs": 4,
+   "fat": 0,
+   "fiber": 0,
+   "source": "typical",
+   "loseit_names": [
+    "Cabarnet Sauvigon, Glass Of Red Wine",
+    "Wine, Red"
+   ]
+  },
+  {
+   "id": "guinness",
+   "name": "Guinness, bottle",
+   "category": "booze",
+   "serving": "12 oz",
+   "kcal": 125,
+   "protein": 0,
+   "carbs": 10,
+   "fat": 0,
+   "fiber": 0,
+   "source": "typical",
+   "loseit_names": [
+    "Beer, Guinness"
+   ]
+  },
+  {
+   "id": "bud-light",
+   "name": "Bud Light",
+   "category": "booze",
+   "serving": "12 oz",
+   "kcal": 110,
+   "protein": 0,
+   "carbs": 6.6,
+   "fat": 0,
+   "fiber": 0,
+   "source": "typical",
+   "loseit_names": [
+    "Beer, Bud Light, Budweiser"
+   ]
+  },
+  {
+   "id": "high-life",
+   "name": "Miller High Life",
+   "category": "booze",
+   "serving": "12 oz",
+   "kcal": 143,
+   "protein": 0,
+   "carbs": 13,
+   "fat": 0,
+   "fiber": 0,
+   "source": "typical",
+   "loseit_names": [
+    "Beer, Miller High Life"
+   ]
+  },
+  {
+   "id": "old-fashioned",
+   "name": "Old fashioned",
+   "category": "booze",
+   "serving": "1 drink",
+   "kcal": 160,
+   "protein": 0,
+   "carbs": 4,
+   "fat": 0,
+   "fiber": 0,
+   "source": "typical",
+   "loseit_names": [
+    "Old Fashioned Cocktail, Bar drink"
+   ]
+  },
+  {
+   "id": "margarita",
+   "name": "Margarita on the rocks",
+   "category": "booze",
+   "serving": "1 drink",
+   "kcal": 250,
+   "protein": 0,
+   "carbs": 25,
+   "fat": 0,
+   "fiber": 0,
+   "source": "typical",
+   "loseit_names": [
+    "Margarita, Classic, On the Rocks, Red Lobster"
+   ]
+  },
+  {
+   "id": "cider",
+   "name": "Hard cider",
+   "category": "booze",
+   "serving": "12 oz",
+   "kcal": 150,
+   "protein": 0,
+   "carbs": 15,
+   "fat": 0,
+   "fiber": 0,
+   "source": "typical",
+   "loseit_names": [
+    "Cider, Okanahan"
+   ]
+  },
+  {
+   "id": "chicken-pad-thai",
+   "name": "Chicken pad thai (takeout)",
+   "category": "chain",
+   "serving": "1 order (as Mike logs it)",
+   "kcal": 770,
+   "protein": 35,
+   "carbs": 95,
+   "fat": 27,
+   "fiber": 4,
+   "source": "estimate",
+   "loseit_names": [
+    "Chicken Pad Thai"
+   ],
+   "note": "Logged 3x; half order = ~385"
+  },
+  {
+   "id": "nyc-pepperoni-slice",
+   "name": "NYC pepperoni slice",
+   "category": "chain",
+   "serving": "1 slice",
+   "kcal": 440,
+   "protein": 18,
+   "carbs": 48,
+   "fat": 19,
+   "fiber": 2,
+   "source": "estimate",
+   "loseit_names": [
+    "NYC Pepperoni Slice"
+   ]
+  }
+ ]
+}
