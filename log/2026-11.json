@@ -1086,7 +1086,7 @@
         "pain": "none",
         "hr": 135
       },
-      "updated": "2026-11-22T20:29:32Z",
+      "updated": "2026-11-22T20:39:25Z",
       "food": {
         "source": "claude",
         "items": [
@@ -1115,15 +1115,29 @@
             "sodium": 170,
             "basis": "library",
             "food_id": "tsk-overnight-oats"
+          },
+          {
+            "time": "3:39 PM",
+            "meal": "Snacks",
+            "name": "Saut\u00e9ed green beans",
+            "qty": "~1 cup",
+            "kcal": 100,
+            "protein": 3,
+            "carbs": 11,
+            "fat": 5,
+            "fiber": 4,
+            "sodium": 250,
+            "basis": "estimate"
           }
         ],
-        "kcal": 1383,
-        "protein": 73,
-        "carbs": 165,
-        "fat": 47,
-        "fiber": 11,
-        "sodium": 2020
-      }
+        "kcal": 1483,
+        "protein": 76,
+        "carbs": 176,
+        "fat": 52,
+        "fiber": 15,
+        "sodium": 2270
+      },
+      "steps": 11045
     }
   }
 }
