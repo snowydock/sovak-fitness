@@ -1,10 +1,10 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611222029";
-import { $, h, esc, icon } from "./ui.js?v=202611222029";
-import { renderDashboard } from "./dashboard.js?v=202611222029";
-import { renderToday } from "./today.js?v=202611222029";
-import { renderLift } from "./lift.js?v=202611222029";
-import { renderRun } from "./run.js?v=202611222029";
-import { VERSION } from "./version.js?v=202611222029";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611222036";
+import { $, h, esc, icon } from "./ui.js?v=202611222036";
+import { renderDashboard } from "./dashboard.js?v=202611222036";
+import { renderToday } from "./today.js?v=202611222036";
+import { renderLift } from "./lift.js?v=202611222036";
+import { renderRun } from "./run.js?v=202611222036";
+import { VERSION } from "./version.js?v=202611222036";
 
 const TABS = ["today", "lift", "run", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
@@ -284,6 +284,14 @@ $("#gear").addEventListener("click", openSettings);
 window.addEventListener("hashchange", () => go(location.hash.slice(1)));
 window.addEventListener("beforeunload", () => { if (isDirty()) drafts.set(state.date, state.day); });
 document.addEventListener("visibilitychange", () => { if (document.hidden && isDirty()) drafts.set(state.date, state.day); });
+// Coming back to the app: pick up anything logged elsewhere (e.g. food logged through Claude), unless there are unsaved edits.
+let lastSync = 0;
+document.addEventListener("visibilitychange", async () => {
+  if (document.hidden || !state.date || isDirty() || Date.now() - lastSync < 5000) return;
+  lastSync = Date.now();
+  try { await loadMonth(monthOf(state.date)); } catch { return; }
+  if (!isDirty() && !same(getDay(state.date), state.saved)) openDate(state.date);
+});
 
 (async () => {
   try { await loadAll(); }

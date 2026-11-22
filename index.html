@@ -260,6 +260,46 @@ textarea:focus{box-shadow:inset 0 0 0 2px var(--s1)}
 .thumb img{width:100%;height:100%;object-fit:cover}
 .thumb.pending{outline:2px dashed var(--s2);outline-offset:2px}
 .thumb button{position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;display:flex;align-items:center;justify-content:center}
+.budget .b-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:10px 0 14px}
+.b-side{text-align:center}.b-side span{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.b-side b{font-size:22px;font-weight:750;letter-spacing:-.02em}
+.ring{position:relative;width:132px;height:132px}
+.ring svg{width:100%;height:100%}
+.ring circle{fill:none;stroke-width:10;stroke-linecap:round}
+.ring .rt{stroke:var(--grid)}
+.ring .rf{stroke:var(--s3);stroke-dasharray:0 400;transition:stroke-dasharray .45s cubic-bezier(.2,.8,.2,1)}
+.ring .rf.over{stroke:var(--bad)}
+.ring-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-c b{font-size:30px;font-weight:780;letter-spacing:-.03em;line-height:1;color:var(--s3)}
+.ring.is-over .ring-c b{color:var(--bad)}
+.ring-c small{font-size:12px;color:var(--ink-2);font-weight:600;margin-top:3px}
+.macros{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.mac-h{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:650}
+.mac-h small{font-size:12px;color:var(--muted);font-weight:600}
+.mac .bar{margin-top:6px}
+.mac .bar i.hit{background:var(--s3)}.mac .bar i.warn{background:var(--s2)}
+.mac-v{font-size:13px;color:var(--muted);margin-top:5px}.mac-v b{color:var(--ink);font-size:15px}
+.b-foot{display:flex;justify-content:space-between;margin-top:14px;padding-top:10px;border-top:1px solid var(--grid);font-size:13px;color:var(--ink-2)}
+.b-foot b{color:var(--ink)}
+.meals .sec-h{margin:4px 4px 8px}.meals .sec-h h2{font-size:20px;font-weight:750;letter-spacing:-.02em;margin:0}.meals .sec-h .fine{margin:0}
+.meal-card{padding:14px 16px;margin-bottom:10px}
+.meal-card h3{font-size:15px;font-weight:650;margin:0;display:flex;align-items:baseline;gap:8px}
+.meal-card h3 b{font-size:15px;color:var(--ink-2);font-weight:650}
+.meal-card.empty h3{color:var(--ink-2)}
+.meal-card .mac-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.meal-card ul.foods{list-style:none;margin:10px 0 0;padding:0}
+.meal-card .foods li{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--grid);font-size:14.5px}
+.meal-card .foods li span{flex:1;min-width:0}
+.meal-card .foods li small{display:block;color:var(--muted);font-size:12px}
+.meal-card .foods em.est{font-style:normal;font-size:11px;color:var(--muted);border:1px solid var(--grid);border-radius:6px;padding:0 4px;margin-left:4px}
+.meal-card .del{appearance:none;border:0;background:transparent;color:var(--muted);padding:6px;margin:-6px -6px -6px 0;cursor:pointer;display:flex}
+.meal-card .del svg{width:16px;height:16px}
+.btn.add{background:var(--s1-wash);color:var(--s1);min-height:34px;padding:7px 12px;font-size:13.5px}
+details.manual>summary{font-size:15px;font-weight:650;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.manual>summary::-webkit-details-marker{display:none}
+details.manual>summary::after{content:"+";color:var(--muted);font-weight:500;font-size:20px;line-height:1}
+details.manual[open]>summary::after{content:"–"}
+details.manual[open]>summary{margin-bottom:14px}
 details.items{margin-top:12px}
 details.items summary{font-size:13px;font-weight:650;color:var(--ink-2);cursor:pointer}
 details.items ul{list-style:none;margin:8px 0 0;padding:0}
@@ -361,7 +401,7 @@ details.monthly[open] summary{margin-bottom:12px}
 .lr-ico.run{background:color-mix(in srgb,var(--s4) 16%,transparent);color:var(--s4)}
 @media (min-width:640px){ .grid3{grid-template-columns:repeat(6,minmax(0,1fr))} }
 </style>
-<script type="module" src="js/app.js?v=202611222029"></script>
+<script type="module" src="js/app.js?v=202611222036"></script>
 </head>
 <body data-tab="today">
 <main id="app">
@@ -373,7 +413,7 @@ details.monthly[open] summary{margin-bottom:12px}
   <footer>Data: LoseIt · Apple Health · Hume &nbsp;·&nbsp; <a href="https://github.com/snowydock/sovak-fitness">repo</a></footer>
 </main>
 <nav class="tabbar" aria-label="Sections">
-  <button data-tab="today"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M8.5 14.5l2.2 2.2 4.8-4.8"/></svg>Log</button>
+  <button data-tab="today"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M8.5 14.5l2.2 2.2 4.8-4.8"/></svg>Today</button>
   <button data-tab="lift"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>Lift</button>
   <button data-tab="run"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="4.5" r="1.8"/><path d="M8 21l3.2-5.2 2.8 2.2v3M6.5 11.5l3-3.5 4 1 2.5 3 3 .5M9.5 8l-1.5 5.5 3.2 2.3"/></svg>Run</button>
   <button data-tab="trends"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19.5h17M5 15.5l4.5-5 3.5 3 6-7"/><circle cx="19" cy="6.5" r="1.2" fill="currentColor"/></svg>Trends</button>

@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222029";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222029";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222029";
-import { isClosedDate, token } from "./store.js?v=202611222029";
-import { buildSummary } from "./summary.js?v=202611222029";
-import { VERSION } from "./version.js?v=202611222029";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222036";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222036";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222036";
+import { isClosedDate, token } from "./store.js?v=202611222036";
+import { buildSummary } from "./summary.js?v=202611222036";
+import { VERSION } from "./version.js?v=202611222036";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];
@@ -27,20 +27,39 @@ function prevWeight(date) {
   return null;
 }
 
-// Food items. Claude-logged items carry a meal slot and time: group them by slot with subtotals.
-const MEALS = ["Breakfast", "Lunch", "Snacks", "Dinner", "Late night", "Booze"];
-function itemLi(i) {
-  const est = i.basis === "estimate" ? ' <em class="est" title="Estimated from a photo or description">est.</em>' : "";
-  const sub = [i.time, i.qty].filter(Boolean).join(" · ");
-  return `<li><span>${esc(i.name)}${est}<small>${esc(sub)}</small></span><b class="num">${fmt(i.kcal)}</b></li>`;
+// Meals. Items logged through Claude carry an optional meal label and a time.
+const MEALS = ["Breakfast", "Lunch", "Dinner", "Snacks", "Late night", "Booze"];
+const ALWAYS = ["Breakfast", "Lunch", "Dinner", "Snacks"];
+const MACROS = [["protein", "Protein"], ["carbs", "Carbs"], ["fat", "Fat"], ["fiber", "Fiber"]];
+const sumOf = (items, k) => items.reduce((t, i) => t + (Number(i[k]) || 0), 0);
+
+// Daily goals. Protein and fat are fixed; carbs take whatever calories are left. A sized social day swaps the budget.
+function goalsFor(t, dayType) {
+  const P = store.program || {}, g = P.targets || {};
+  const kcal = (P.dayBudgets || {})[dayType] || t.kcal || null;
+  const protein = t.protein || g.protein || 180, fat = g.fat || 65, fiber = g.fiber || 30;
+  const carbs = kcal ? Math.max(0, Math.round((kcal - protein * 4 - fat * 9) / 4 / 5) * 5) : null;
+  return { kcal, protein, carbs, fat, fiber };
 }
-function itemsHtml(f) {
-  const items = f.items || [];
-  if (!items.length) return "";
-  if (!items.some(i => i.meal) && f.source !== "claude") return `<details class="items"><summary>${items.length} foods logged</summary><ul>${items.map(itemLi).join("")}</ul></details>`;
-  const groups = [...MEALS, "Other"].map(m => [m, items.filter(i => (i.meal || "Other") === m)]).filter(([, g]) => g.length);
-  return `<details class="items" open><summary>${items.length} foods · by meal</summary>${groups.map(([m, g]) =>
-    `<div class="meal"><div class="meal-h"><span>${m}</span><b class="num">${fmt(g.reduce((s, i) => s + (i.kcal || 0), 0))}</b></div><ul>${g.map(itemLi).join("")}</ul></div>`).join("")}</details>`;
+function addFoodBtn(label = "Add food") {
+  const id = store.program?.claudeSession;
+  return id ? `<a class="btn small add" href="claude://code/${esc(id)}">${icon.plus || "+"}<span>${label}</span></a>` : "";
+}
+function mealsHtml(f, canAdd) {
+  const items = (f.items || []).map((it, idx) => ({ ...it, idx }));
+  const viaClaude = f.source === "claude";
+  const groups = [...MEALS, "Other"].map(m => [m, items.filter(i => (i.meal || "Other") === m)])
+    .filter(([m, g]) => g.length || ALWAYS.includes(m));
+  return groups.map(([m, g]) => {
+    const title = m === "Other" && !viaClaude ? "From Lose It" : m;
+    if (!g.length) return `<div class="card meal-card empty"><div class="row between"><h3>${title}</h3>${canAdd ? addFoodBtn() : ""}</div></div>`;
+    const line = MACROS.filter(([k]) => g.some(i => i[k] != null)).map(([k, l]) => `${fmt(sumOf(g, k))} g ${l.toLowerCase()}`).join(" · ");
+    return `<div class="card meal-card">
+      <div class="row between"><h3>${title}<b class="num">${fmt(sumOf(g, "kcal"))}</b></h3>${canAdd && m !== "Other" ? addFoodBtn() : ""}</div>
+      ${line ? `<p class="mac-line">${line}</p>` : ""}
+      <ul class="foods">${g.map(i => `<li><span>${esc(i.name)}${i.basis === "estimate" ? ' <em class="est" title="Estimated from a photo or description">est.</em>' : ""}<small>${esc([i.time, i.qty].filter(Boolean).join(" · "))}</small></span><b class="num">${fmt(i.kcal)}</b>${viaClaude ? `<button class="del" data-del="${i.idx}" aria-label="Remove ${esc(i.name)}">${icon.x}</button>` : ""}</li>`).join("")}</ul>
+    </div>`;
+  }).join("");
 }
 
 export function renderToday(root, ctx) {
@@ -56,10 +75,33 @@ export function renderToday(root, ctx) {
   if (state.restored) root.appendChild(h(`<div class="banner"><span>Unsaved changes from earlier on this phone.</span><button class="link" data-discard>Discard</button></div>`));
   if (future) root.appendChild(h(`<div class="banner calm"><span><b>Planning ahead.</b> Mark a social day now and we'll size it before it happens.</span></div>`));
 
-  /* ---------- Morning ---------- */
+  /* ---------- Budget ---------- */
+  const f = day.food || {};
+  const savedImgs = f.images || [];
+  const srcTag = f.source ? `<span class="tag">${f.source?.startsWith("loseit") ? "from LoseIt" : f.source === "claude" ? "from Claude" : f.source === "screenshot" ? "screenshots" : "typed"}</span>` : "";
+  root.appendChild(h(`<section class="card budget">
+    <div class="row between"><h2 data-btitle>Budget</h2>${srcTag}</div>
+    <div class="b-top">
+      <div class="b-side"><span>Food</span><b class="num" data-kcal>–</b></div>
+      <div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rt" cx="60" cy="60" r="52"/><circle class="rf" data-ring cx="60" cy="60" r="52" transform="rotate(-90 60 60)"/></svg>
+        <div class="ring-c"><b class="num" data-left>–</b><small data-leftlbl>kcal left</small></div></div>
+      <div class="b-side"><span>Protein left</span><b class="num" data-pleft>–</b></div>
+    </div>
+    <div class="macros">${MACROS.map(([k, l]) => `<div class="mac" data-mac="${k}">
+      <div class="mac-h"><span>${l}</span><small class="num" data-togo></small></div>
+      <div class="bar thin"><i></i></div>
+      <div class="mac-v num"><b data-v>–</b><span data-g></span></div></div>`).join("")}</div>
+    <div class="b-foot"><span>Sodium</span><b class="num" data-sodium>–</b></div>
+  </section>`));
+
+  /* ---------- Meals ---------- */
   const pw = prevWeight(date);
-  const morning = h(`<section class="card form">
-    <h2>Morning</h2>
+  root.appendChild(h(`<section class="meals"><div class="row between sec-h"><h2>Meals</h2><small class="fine">${store.program?.claudeSession && !future ? "Add food opens Claude" : ""}</small></div><div data-meals></div></section>`));
+  const renderMeals = () => { root.querySelector("[data-meals]").innerHTML = mealsHtml(state.day.food || {}, !future); };
+
+  /* ---------- Weight & steps ---------- */
+  root.appendChild(h(`<section class="card form">
+    <h2>Weight &amp; steps</h2>
     <div class="fields2">
       <label class="field"><span>Weigh-in</span>
         <div class="inwrap"><input inputmode="decimal" enterkeyhint="next" data-k="weight" data-num placeholder="${pw ? fmt(pw.w, 1) : "lb"}" value="${day.weight ?? ""}"><em>lb</em></div>
@@ -68,31 +110,20 @@ export function renderToday(root, ctx) {
         <div class="inwrap"><input inputmode="numeric" enterkeyhint="next" data-k="steps" data-num placeholder="${fmt(t.steps || 10000)}" value="${day.steps != null ? fmt(day.steps) : ""}"></div>
         <div class="minibar"><i data-stepbar></i></div></label>
     </div>
-  </section>`);
-  root.appendChild(morning);
+  </section>`));
 
-  /* ---------- Food ---------- */
-  const f = day.food || {};
-  const savedImgs = f.images || [];
-  const food = h(`<section class="card form">
-    <div class="row between"><h2>Food</h2>${f.source ? `<span class="tag">${f.source?.startsWith("loseit") ? "from LoseIt" : f.source === "claude" ? "from Claude" : f.source === "screenshot" ? "screenshots" : "typed"}</span>` : ""}</div>
-    <div class="meter">
-      <div class="m-row"><span class="m-big num" data-kcal>–</span><span class="m-of num">${t.kcal ? `/ ${fmt(t.kcal)} kcal` : "kcal"}</span><span class="m-delta num" data-kdelta></span></div>
-      <div class="bar"><i data-kbar></i>${t.kcal ? `<b class="tick" style="left:${(t.kcal / (t.kcal * 1.5)) * 100}%"></b>` : ""}</div>
-      <div class="m-row small"><span>Protein</span><span class="num" data-pro>–</span><span class="m-of num">/ ${fmt(t.protein)} g</span></div>
-      <div class="bar thin"><i data-pbar class="pro"></i></div>
-    </div>
-    <label class="btn primary wide" data-pdf-label>${icon.doc}<span>Import LoseIt report (PDF)</span><input type="file" accept="application/pdf,.pdf" hidden data-pdf></label>
+  /* ---------- Manual entry (backup): LoseIt import and typed numbers ---------- */
+  const manual = h(`<details class="card form manual">
+    <summary>Add or fix manually</summary>
+    <label class="btn soft wide" data-pdf-label>${icon.doc}<span>Import LoseIt report (PDF)</span><input type="file" accept="application/pdf,.pdf" hidden data-pdf></label>
     <div class="parsed" data-parsed hidden></div>
     <div class="thumbs" data-thumbs></div>
     <div class="grid3">
       ${[["kcal", "Calories", ""], ["protein", "Protein", "g"], ["carbs", "Carbs", "g"], ["fat", "Fat", "g"], ["fiber", "Fiber", "g"], ["sodium", "Sodium", "mg"]].map(([k, l, u]) =>
         `<label class="field compact"><span>${l}</span><div class="inwrap"><input inputmode="decimal" data-k="food.${k}" data-num value="${f[k] != null ? f[k] : ""}">${u ? `<em>${u}</em>` : ""}</div></label>`).join("")}
     </div>
-    ${itemsHtml(f)}
-    <p class="fine">In LoseIt: Daily Report → Share → Save to Files, then import it here. Or type the numbers.</p>
-  </section>`);
-  root.appendChild(food);
+    <p class="fine">Backup for days you don't log through Claude. In LoseIt: Daily Report → Share → Save to Files, then import it here.</p>
+  </details>`);
 
   /* ---------- Day ---------- */
   const lift = day.lift?.exercises?.filter(e => (e.sets || []).some(v => v != null && v !== "")) || [];
@@ -134,6 +165,7 @@ export function renderToday(root, ctx) {
     </div>
   </section>`));
 
+  root.appendChild(manual);
   root.appendChild(h(`<div class="center"><button class="link danger" data-clear>Clear this day</button></div>`));
 
   async function copySummary() {
@@ -152,23 +184,40 @@ export function renderToday(root, ctx) {
   /* ---------- live bits ---------- */
   function refresh() {
     const d = state.day, fd = d.food || {};
-    const kcal = fd.kcal, pro = fd.protein;
-    root.querySelector("[data-kcal]").textContent = fmt(kcal);
-    root.querySelector("[data-pro]").textContent = pro != null ? fmt(pro) + " g" : "–";
-    const kd = root.querySelector("[data-kdelta]");
-    if (t.kcal && kcal != null) { const diff = kcal - t.kcal; kd.textContent = (diff > 0 ? "+" : "") + fmt(diff); kd.className = "m-delta num " + (diff > 150 ? "over" : diff < -150 ? "under" : "ok"); }
-    else kd.textContent = "";
-    const kb = root.querySelector("[data-kbar]");
-    kb.style.width = kcal != null && t.kcal ? Math.min(100, (kcal / (t.kcal * 1.5)) * 100) + "%" : "0";
-    kb.className = kcal != null && t.kcal && kcal > t.kcal + 150 ? "over" : "";
-    root.querySelector("[data-pbar]").style.width = pro != null ? Math.min(100, (pro / (t.protein || 180)) * 100) + "%" : "0";
-    root.querySelector("[data-pbar]").classList.toggle("hit", pro != null && pro >= (t.protein || 180) * 0.95);
-    const sb = root.querySelector("[data-stepbar]");
+    const g = goalsFor(t, d.day_type);
+    const q = sel => root.querySelector(sel);
+    q("[data-btitle]").textContent = g.kcal ? `Budget: ${fmt(g.kcal)} kcal` : "Food";
+    q("[data-kcal]").textContent = fmt(fd.kcal);
+    const ring = q("[data-ring]"), C = 2 * Math.PI * 52, eaten = fd.kcal || 0;
+    if (g.kcal) {
+      const left = g.kcal - eaten;
+      q("[data-left]").textContent = fmt(Math.abs(left));
+      q("[data-leftlbl]").textContent = left >= 0 ? "kcal left" : "kcal over";
+      ring.style.strokeDasharray = `${C * Math.min(1, eaten / g.kcal)} ${C}`;
+      ring.classList.toggle("over", left < -150);
+      q(".ring").classList.toggle("is-over", left < -150);
+    } else {
+      q("[data-left]").textContent = fmt(fd.kcal); q("[data-leftlbl]").textContent = "kcal"; ring.style.strokeDasharray = `0 ${C}`;
+    }
+    q("[data-pleft]").textContent = fd.protein != null || eaten ? `${fmt(Math.max(0, g.protein - (fd.protein || 0)))} g` : `${fmt(g.protein)} g`;
+    for (const [k] of MACROS) {
+      const el = q(`[data-mac="${k}"]`), v = fd[k], goal = g[k];
+      el.querySelector("[data-v]").textContent = fmt(v);
+      el.querySelector("[data-g]").textContent = goal ? ` / ${fmt(goal)} g` : " g";
+      const bar = el.querySelector(".bar i"), togo = el.querySelector("[data-togo]");
+      bar.style.width = v != null && goal ? Math.min(100, (v / goal) * 100) + "%" : "0";
+      const floor = k === "protein" || k === "fiber";              // goals to reach; carbs and fat are budgets
+      bar.className = floor ? (v != null && v >= goal * 0.95 ? "hit" : "") : (v != null && goal && v > goal * 1.1 ? "warn" : "");
+      togo.textContent = !goal ? "" : v == null ? `${fmt(goal)} to go` : v >= goal ? (floor ? "hit" : v > goal ? `${fmt(v - goal)} over` : "at goal") : `${fmt(goal - v)} to go`;
+    }
+    q("[data-sodium]").textContent = fd.sodium != null ? `${fmt(fd.sodium)} mg` : "–";
+    const sb = q("[data-stepbar]");
     sb.style.width = d.steps != null ? Math.min(100, (d.steps / (t.steps || 10000)) * 100) + "%" : "0";
     sb.classList.toggle("hit", d.steps != null && d.steps >= (t.steps || 10000));
-    const wd = root.querySelector("[data-wdelta]");
+    const wd = q("[data-wdelta]");
     if (d.weight != null && pw) { const x = d.weight - pw.w; wd.textContent = `${x > 0 ? "+" : x < 0 ? "−" : "±"}${fmt(Math.abs(x), 1)} vs ${md(pw.date)}`; }
     else wd.textContent = pw ? `Last: ${fmt(pw.w, 1)} on ${md(pw.date)}` : "";
+    renderMeals();
     renderThumbs();
   }
 
@@ -228,7 +277,13 @@ export function renderToday(root, ctx) {
       catch { ctx.toast("Clipboard blocked. Long-press the box and Paste.", true); ta.focus(); }
       return;
     }
-    if (b.dataset.dt) { state.day.day_type = b.dataset.dt; ctx.changed(); root.querySelectorAll("[data-dt]").forEach(x => { const on = x.dataset.dt === b.dataset.dt; x.classList.toggle("on", on); x.setAttribute("aria-checked", on); }); return; }
+    if (b.dataset.dt) { state.day.day_type = b.dataset.dt; ctx.changed(); root.querySelectorAll("[data-dt]").forEach(x => { const on = x.dataset.dt === b.dataset.dt; x.classList.toggle("on", on); x.setAttribute("aria-checked", on); }); refresh(); return; }
+    if (b.dataset.del != null) {
+      const fd = state.day.food, items = (fd.items || []).filter((_, i) => i !== Number(b.dataset.del));
+      fd.items = items;
+      for (const k of ["kcal", "protein", "carbs", "fat", "fiber", "sodium"]) { const vals = items.filter(i => i[k] != null); if (vals.length) fd[k] = Math.round(sumOf(vals, k)); else delete fd[k]; }
+      ctx.changed(); refresh(); return;
+    }
     if (b.dataset.act) {
       const list = (state.day.activity || "").split(" + ").filter(Boolean);
       const i = list.indexOf(b.dataset.act);
