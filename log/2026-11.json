@@ -420,7 +420,7 @@
         "items": [
           {
             "name": "Chicken sausage minestrone",
-            "qty": "1½ Servings",
+            "qty": "1\u00bd Servings",
             "kcal": 450
           },
           {
@@ -681,7 +681,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -752,7 +752,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -1118,7 +1118,7 @@
           {
             "time": "3:39 PM",
             "meal": "Snacks",
-            "name": "Sautéed green beans",
+            "name": "Saut\u00e9ed green beans",
             "qty": "~1 cup",
             "kcal": 100,
             "protein": 3,
@@ -1140,17 +1140,31 @@
             "carbs": 3,
             "fat": 2.5,
             "fiber": 1
+          },
+          {
+            "time": "15:55",
+            "meal": "Snacks",
+            "name": "Nurri protein shake (chocolate)",
+            "qty": "1 can (11 fl oz)",
+            "kcal": 150,
+            "protein": 30,
+            "carbs": 3,
+            "fat": 2.5,
+            "fiber": 1,
+            "sodium": 220,
+            "basis": "library",
+            "food_id": "nurri"
           }
         ],
-        "kcal": 1633,
-        "protein": 106,
-        "carbs": 179,
-        "fat": 55,
-        "fiber": 16,
-        "sodium": 2270
+        "kcal": 1783,
+        "protein": 136,
+        "carbs": 182,
+        "fat": 57,
+        "fiber": 17,
+        "sodium": 2490
       },
       "steps": 11045,
-      "updated": "2026-11-22T20:49:08.732Z"
+      "updated": "2026-11-22T20:56:02Z"
     }
   }
 }
