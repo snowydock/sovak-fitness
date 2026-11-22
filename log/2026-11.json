@@ -1153,17 +1153,30 @@
             "fiber": 1,
             "sodium": 790,
             "basis": "estimate"
+          },
+          {
+            "time": "6:31 PM",
+            "meal": "Snacks",
+            "name": "Sour Patch Kids (half 3.5 oz box)",
+            "qty": "1/2 box (~1.75 servings)",
+            "kcal": 190,
+            "protein": 0,
+            "carbs": 47,
+            "fat": 0,
+            "fiber": 0,
+            "sodium": 40,
+            "basis": "estimate"
           }
         ],
-        "kcal": 2043,
+        "kcal": 2233,
         "protein": 125,
-        "carbs": 204,
+        "carbs": 251,
         "fat": 78,
         "fiber": 17,
-        "sodium": 3060
+        "sodium": 3100
       },
       "steps": 11045,
-      "updated": "2026-11-22T22:05:32Z"
+      "updated": "2026-11-22T23:32:04Z"
     }
   }
 }
