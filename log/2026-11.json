@@ -1145,22 +1145,22 @@
             "time": "5:05 PM",
             "meal": "Dinner",
             "name": "Breakfast quesadilla (egg, sausage, cheese)",
-            "qty": "1 quesadilla",
-            "kcal": 690,
-            "protein": 33,
-            "carbs": 30,
-            "fat": 46,
+            "qty": "1 small quesadilla",
+            "kcal": 410,
+            "protein": 19,
+            "carbs": 25,
+            "fat": 24,
             "fiber": 1,
-            "sodium": 1320,
+            "sodium": 790,
             "basis": "estimate"
           }
         ],
-        "kcal": 2323,
-        "protein": 139,
-        "carbs": 209,
-        "fat": 100,
+        "kcal": 2043,
+        "protein": 125,
+        "carbs": 204,
+        "fat": 78,
         "fiber": 17,
-        "sodium": 3590
+        "sodium": 3060
       },
       "steps": 11045,
       "updated": "2026-11-22T22:05:32Z"
