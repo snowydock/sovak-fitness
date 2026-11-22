@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611062004";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611062004";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611062004";
-import { isClosedDate, token } from "./store.js?v=202611062004";
-import { buildSummary } from "./summary.js?v=202611062004";
-import { VERSION } from "./version.js?v=202611062004";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222011";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222011";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222011";
+import { isClosedDate, token } from "./store.js?v=202611222011";
+import { buildSummary } from "./summary.js?v=202611222011";
+import { VERSION } from "./version.js?v=202611222011";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];
@@ -25,6 +25,22 @@ function prevWeight(date) {
     if (c) return { date: d, w: Number(c.weight_lb) };
   }
   return null;
+}
+
+// Food items. Claude-logged items carry a meal slot and time: group them by slot with subtotals.
+const MEALS = ["Breakfast", "Lunch", "Snacks", "Dinner", "Late night", "Booze"];
+function itemLi(i) {
+  const est = i.basis === "estimate" ? ' <em class="est" title="Estimated from a photo or description">est.</em>' : "";
+  const sub = [i.time, i.qty].filter(Boolean).join(" · ");
+  return `<li><span>${esc(i.name)}${est}<small>${esc(sub)}</small></span><b class="num">${fmt(i.kcal)}</b></li>`;
+}
+function itemsHtml(f) {
+  const items = f.items || [];
+  if (!items.length) return "";
+  if (!items.some(i => i.meal)) return `<details class="items"><summary>${items.length} foods logged</summary><ul>${items.map(itemLi).join("")}</ul></details>`;
+  const groups = MEALS.map(m => [m, items.filter(i => (i.meal || "Snacks") === m)]).filter(([, g]) => g.length);
+  return `<details class="items" open><summary>${items.length} foods · by meal</summary>${groups.map(([m, g]) =>
+    `<div class="meal"><div class="meal-h"><span>${m}</span><b class="num">${fmt(g.reduce((s, i) => s + (i.kcal || 0), 0))}</b></div><ul>${g.map(itemLi).join("")}</ul></div>`).join("")}</details>`;
 }
 
 export function renderToday(root, ctx) {
@@ -59,7 +75,7 @@ export function renderToday(root, ctx) {
   const f = day.food || {};
   const savedImgs = f.images || [];
   const food = h(`<section class="card form">
-    <div class="row between"><h2>Food</h2>${f.source ? `<span class="tag">${f.source?.startsWith("loseit") ? "from LoseIt" : f.source === "screenshot" ? "screenshots" : "typed"}</span>` : ""}</div>
+    <div class="row between"><h2>Food</h2>${f.source ? `<span class="tag">${f.source?.startsWith("loseit") ? "from LoseIt" : f.source === "claude" ? "from Claude" : f.source === "screenshot" ? "screenshots" : "typed"}</span>` : ""}</div>
     <div class="meter">
       <div class="m-row"><span class="m-big num" data-kcal>–</span><span class="m-of num">${t.kcal ? `/ ${fmt(t.kcal)} kcal` : "kcal"}</span><span class="m-delta num" data-kdelta></span></div>
       <div class="bar"><i data-kbar></i>${t.kcal ? `<b class="tick" style="left:${(t.kcal / (t.kcal * 1.5)) * 100}%"></b>` : ""}</div>
@@ -73,7 +89,7 @@ export function renderToday(root, ctx) {
       ${[["kcal", "Calories", ""], ["protein", "Protein", "g"], ["carbs", "Carbs", "g"], ["fat", "Fat", "g"], ["fiber", "Fiber", "g"], ["sodium", "Sodium", "mg"]].map(([k, l, u]) =>
         `<label class="field compact"><span>${l}</span><div class="inwrap"><input inputmode="decimal" data-k="food.${k}" data-num value="${f[k] != null ? f[k] : ""}">${u ? `<em>${u}</em>` : ""}</div></label>`).join("")}
     </div>
-    ${f.items?.length ? `<details class="items"><summary>${f.items.length} foods logged</summary><ul>${f.items.map(i => `<li><span>${esc(i.name)}<small>${esc(i.qty || "")}</small></span><b class="num">${fmt(i.kcal)}</b></li>`).join("")}</ul></details>` : ""}
+    ${itemsHtml(f)}
     <p class="fine">In LoseIt: Daily Report → Share → Save to Files, then import it here. Or type the numbers.</p>
   </section>`);
   root.appendChild(food);

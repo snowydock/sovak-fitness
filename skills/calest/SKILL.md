@@ -32,6 +32,14 @@ Give one best estimate aimed at the true amount: don't pad it to be safe and don
 ## Step 3: slot it
 Use the time Mike sent the message (his local time) to pick a slot: Breakfast (before 11am), Lunch (11am–3pm), Snacks (3–5pm or between meals), Dinner (5–10pm), Late night (after 10pm). Any alcoholic drink goes to Booze whatever the time. If Mike says when he ate it, use that instead.
 
+## Step 4: log it (only where the repo can be written)
+If this session can push to the snowydock/sovak-fitness repo (a clone with push access), log every estimate unless Mike says "just estimate":
+1. `git pull`, then run `python3 tools/log_food.py '<json>'` with date, time, meal (the slot), name, qty, kcal, protein, carbs, fat, fiber, sodium, `basis` ("library" or "estimate") and `food_id` for library matches. One item per call; a combined plate can be one item.
+2. Commit as "log: <date> <meal> via Claude" and push. If the push is rejected, pull and retry once.
+3. Add one line under the output: `Logged → 11/22 Dinner · day 1,840 kcal · 151 g P`.
+4. If the day already has food from a LoseIt import, the tool refuses: tell Mike and don't mix sources for that day.
+In a regular chat that can't push, skip this step and end with: `Not logged (this chat can't write to your log).`
+
 ## Output format
 1. A short bold title for the meal (2–5 words).
 2. Six lines, number leading each, in this order: calories, fat, carb, protein, fiber, sodium.

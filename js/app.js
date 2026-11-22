@@ -1,10 +1,10 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611062004";
-import { $, h, esc, icon } from "./ui.js?v=202611062004";
-import { renderDashboard } from "./dashboard.js?v=202611062004";
-import { renderToday } from "./today.js?v=202611062004";
-import { renderLift } from "./lift.js?v=202611062004";
-import { renderRun } from "./run.js?v=202611062004";
-import { VERSION } from "./version.js?v=202611062004";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611222011";
+import { $, h, esc, icon } from "./ui.js?v=202611222011";
+import { renderDashboard } from "./dashboard.js?v=202611222011";
+import { renderToday } from "./today.js?v=202611222011";
+import { renderLift } from "./lift.js?v=202611222011";
+import { renderRun } from "./run.js?v=202611222011";
+import { VERSION } from "./version.js?v=202611222011";
 
 const TABS = ["today", "lift", "run", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
@@ -105,6 +105,12 @@ const ctx = {
 // Apply a LoseIt report: { date: fields } -> one commit per month. Fields fill food + weight; nothing else is touched.
 export function reportPatch(f) {
   return day => {
+    if (day.food?.source === "claude") {     // food logged through Claude wins: a LoseIt report only fills weight and steps
+      const out = { ...day };
+      if (f.weight != null && out.weight == null) out.weight = f.weight;
+      if (f.steps != null) out.steps = f.steps;
+      return out;
+    }
     const food = { ...(day.food || {}) };
     for (const k of ["kcal", "protein", "carbs", "fat", "fiber", "sodium"]) if (f[k] != null) food[k] = f[k];
     food.source = food.items?.length ? (food.source || "loseit") : "loseit-report";
