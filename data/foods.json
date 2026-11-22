@@ -635,19 +635,21 @@
   },
   {
    "id": "tsk-overnight-oats",
-   "name": "Overnight oats",
+   "name": "Overnight oats with blueberries (no flax)",
    "category": "tsk",
    "serving": "1 serving",
    "kcal": 413,
    "protein": 34,
-   "carbs": 39,
-   "fat": 14,
+   "carbs": 55,
+   "fat": 7,
    "source": "tsk",
    "loseit_names": [
     "Overnight Oats with Blueberries",
     "Overnight Oats"
    ],
-   "note": "kcal from Mike's LoseIt recipe (413); TSK card says 445. Macros scaled."
+   "note": "Mike's version has no flax. kcal from his LoseIt recipe (413); macros from the recipe without flax.",
+   "fiber": 7,
+   "sodium": 170
   },
   {
    "id": "tsk-dill-chicken-soup",

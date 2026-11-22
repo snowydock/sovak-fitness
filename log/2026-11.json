@@ -1086,31 +1086,43 @@
         "pain": "none",
         "hr": 135
       },
-      "updated": "2026-11-22T20:21:14Z",
+      "updated": "2026-11-22T20:29:32Z",
       "food": {
         "source": "claude",
         "items": [
           {
+            "meal": "Breakfast",
+            "name": "Breakfast panini + silver dollar pancakes",
+            "qty": "1 meal",
+            "kcal": 970,
+            "protein": 39,
+            "carbs": 110,
+            "fat": 40,
+            "fiber": 4,
+            "sodium": 1850,
+            "basis": "estimate"
+          },
+          {
             "time": "3:21 PM",
-            "meal": "Snacks",
+            "meal": "Lunch",
             "name": "Overnight oats with blueberries",
             "qty": "1 serving",
             "kcal": 413,
             "protein": 34,
-            "carbs": 39,
-            "fat": 14,
-            "fiber": 9,
+            "carbs": 55,
+            "fat": 7,
+            "fiber": 7,
             "sodium": 170,
             "basis": "library",
             "food_id": "tsk-overnight-oats"
           }
         ],
-        "kcal": 413,
-        "protein": 34,
-        "carbs": 39,
-        "fat": 14,
-        "fiber": 9,
-        "sodium": 170
+        "kcal": 1383,
+        "protein": 73,
+        "carbs": 165,
+        "fat": 47,
+        "fiber": 11,
+        "sodium": 2020
       }
     }
   }

@@ -29,12 +29,12 @@ Give one best estimate aimed at the true amount: don't pad it to be safe and don
 - Home food with a known recipe or label: use it as is.
 - If program.md in the sovak-fitness repo lists an estimate adjustment from a month close (logged intake vs. the scale trend), apply it to estimated items only, never to library items.
 
-## Step 3: slot it
-Use the time Mike sent the message (his local time) to pick a slot: Breakfast (before 11am), Lunch (11am–3pm), Snacks (3–5pm or between meals), Dinner (5–10pm), Late night (after 10pm). Any alcoholic drink goes to Booze whatever the time. If Mike says when he ate it, use that instead.
+## Step 3: meal label (never guess from the clock)
+Record the time Mike sent the message, but don't pick a meal from it. Use a meal label only when Mike gives one ("lunch", "this was dinner") or the food's own name makes it obvious. Labels: Breakfast, Lunch, Snacks, Dinner, Late night, Booze. Any alcoholic drink is Booze. With no label, log it with the time only; the app lists it under Other. If Mike names the meal later, move it.
 
 ## Step 4: log it (only where the repo can be written)
 If this session can push to the snowydock/sovak-fitness repo (a clone with push access), log every estimate unless Mike says "just estimate":
-1. `git pull`, then run `python3 tools/log_food.py '<json>'` with date, time, meal (the slot), name, qty, kcal, protein, carbs, fat, fiber, sodium, `basis` ("library" or "estimate") and `food_id` for library matches. One item per call; a combined plate can be one item.
+1. `git pull`, then run `python3 tools/log_food.py '<json>'` with date, time, meal (only if Mike named it), name, qty, kcal, protein, carbs, fat, fiber, sodium, `basis` ("library" or "estimate") and `food_id` for library matches. One item per call; a combined plate can be one item.
 2. Commit as "log: <date> <meal> via Claude" and push. If the push is rejected, pull and retry once.
 3. Add one line under the output: `Logged → 11/22 Dinner · day 1,840 kcal · 151 g P`.
 4. If the day already has food from a LoseIt import, the tool refuses: tell Mike and don't mix sources for that day.
@@ -43,7 +43,7 @@ In a regular chat that can't push, skip this step and end with: `Not logged (thi
 ## Output format
 1. A short bold title for the meal (2–5 words).
 2. Six lines, number leading each, in this order: calories, fat, carb, protein, fiber, sodium.
-3. A slot line: `Slot: Lunch · 12:40 PM`.
+3. A time line, with the meal only if Mike named it: `Lunch · 12:40 PM` or `12:40 PM`.
 4. A blank line, then 1–2 short lines of context: what you identified, which items came from the library, and the portion/prep assumptions that drive the number most.
 
 ```
@@ -54,7 +54,7 @@ In a regular chat that can't push, skip this step and end with: `Not logged (thi
 ##g protein
 ##g fiber
 ####mg sodium
-Slot: Lunch · 12:40 PM
+Lunch · 12:40 PM
 
 Context line 1.
 Context line 2 (optional).

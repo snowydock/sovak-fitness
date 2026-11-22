@@ -10,7 +10,7 @@ gets source "claude", which the app labels "from Claude" and protects from LoseI
 import json, sys, datetime, pathlib
 MEALS = ["Breakfast", "Lunch", "Snacks", "Dinner", "Late night", "Booze"]
 it = json.loads(sys.argv[1]); date = it.pop("date")
-assert it.get("meal") in MEALS, f"meal must be one of {MEALS}"
+assert it.get("meal") in MEALS + [None], f"meal must be one of {MEALS} or omitted"
 p = pathlib.Path(__file__).resolve().parent.parent / "log" / f"{date[:7]}.json"
 doc = json.loads(p.read_text()) if p.exists() else {"month": date[:7], "days": {}}
 day = doc["days"].setdefault(date, {})

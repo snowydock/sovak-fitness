@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222011";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222011";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222011";
-import { isClosedDate, token } from "./store.js?v=202611222011";
-import { buildSummary } from "./summary.js?v=202611222011";
-import { VERSION } from "./version.js?v=202611222011";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222029";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222029";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222029";
+import { isClosedDate, token } from "./store.js?v=202611222029";
+import { buildSummary } from "./summary.js?v=202611222029";
+import { VERSION } from "./version.js?v=202611222029";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];
@@ -37,8 +37,8 @@ function itemLi(i) {
 function itemsHtml(f) {
   const items = f.items || [];
   if (!items.length) return "";
-  if (!items.some(i => i.meal)) return `<details class="items"><summary>${items.length} foods logged</summary><ul>${items.map(itemLi).join("")}</ul></details>`;
-  const groups = MEALS.map(m => [m, items.filter(i => (i.meal || "Snacks") === m)]).filter(([, g]) => g.length);
+  if (!items.some(i => i.meal) && f.source !== "claude") return `<details class="items"><summary>${items.length} foods logged</summary><ul>${items.map(itemLi).join("")}</ul></details>`;
+  const groups = [...MEALS, "Other"].map(m => [m, items.filter(i => (i.meal || "Other") === m)]).filter(([, g]) => g.length);
   return `<details class="items" open><summary>${items.length} foods · by meal</summary>${groups.map(([m, g]) =>
     `<div class="meal"><div class="meal-h"><span>${m}</span><b class="num">${fmt(g.reduce((s, i) => s + (i.kcal || 0), 0))}</b></div><ul>${g.map(itemLi).join("")}</ul></div>`).join("")}</details>`;
 }
