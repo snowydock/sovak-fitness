@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222045";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222045";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222045";
-import { isClosedDate, token } from "./store.js?v=202611222045";
-import { buildSummary } from "./summary.js?v=202611222045";
-import { VERSION } from "./version.js?v=202611222045";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222057";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222057";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222057";
+import { isClosedDate, token } from "./store.js?v=202611222057";
+import { buildSummary } from "./summary.js?v=202611222057";
+import { VERSION } from "./version.js?v=202611222057";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];
@@ -202,7 +202,7 @@ export function renderToday(root, ctx) {
     const base = usual.length ? usual : all;
     const chat = store.program?.foodChat || store.program?.claudeSession;
     const s = sheet(`<div class="sheet-h"><h2>Add to ${esc(meal)}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
-      ${chat ? `<a class="btn primary wide photo" href="claude://code/${esc(chat)}">${icon.camera || ""}<span>Photo or describe it to Claude</span></a>` : ""}
+      ${chat ? `<a class="btn primary wide photo" href="${chat.startsWith("session_") ? `claude://code/${esc(chat)}` : `claude://claude.ai/chat/${esc(chat)}`}">${icon.camera || ""}<span>Photo or describe it to Claude</span></a>` : ""}
       <label class="field"><div class="inwrap"><input type="search" placeholder="Search your foods" data-fsearch autocomplete="off"></div></label>
       <div class="fr-h" data-fh>${usual.length ? `Your usual for ${esc(meal.toLowerCase())}` : "Your foods"}</div>
       <div class="foodlist" data-flist>${foodRows(base.slice(0, 14))}</div>
