@@ -1,1169 +1,1169 @@
 {
-  "version": 1,
-  "days": {
-    "2026-11-01": {
-      "food": {
-        "kcal": 2083,
-        "protein": 144,
-        "carbs": 220,
-        "fat": 69,
-        "fiber": 17,
-        "sodium": 3355,
-        "source": "loseit-report",
-        "items": [
-          {
-            "name": "NYC Pepperoni Slice",
-            "qty": "1 Serving",
-            "kcal": 440
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt Strawberry, Chobani",
-            "qty": "1 Container",
-            "kcal": 110
-          },
-          {
-            "name": "Overnight Oats with Blueberries",
-            "qty": "1 Serving",
-            "kcal": 413
-          },
-          {
-            "name": "Chicken Tikka Masala, Rice & Naan",
-            "qty": "1 Serving",
-            "kcal": 970
-          }
-        ]
-      },
-      "steps": 9125,
-      "updated": "2026-11-03T03:51:18.102Z"
-    },
-    "2026-11-02": {
-      "food": {
-        "kcal": 1964,
-        "protein": 172,
-        "carbs": 200,
-        "fat": 51,
-        "fiber": 15,
-        "sodium": 1138,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Cottage Cheese Lasagna",
-            "qty": "1 Serving",
-            "kcal": 530
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt Strawberry, Chobani",
-            "qty": "1 Container",
-            "kcal": 110
-          },
-          {
-            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
-            "qty": "200 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Overnight Oats with Blueberries",
-            "qty": "1 Serving",
-            "kcal": 413
-          },
-          {
-            "name": "Chomps Beef Stick",
-            "qty": "1 Serving",
-            "kcal": 100
-          },
-          {
-            "name": "Chicken sausage minestrone",
-            "qty": "1 Serving",
-            "kcal": 300
-          },
-          {
-            "name": "Sourdough, Sprouts Bread",
-            "qty": "110 Grams",
-            "kcal": 241
-          }
-        ]
-      },
-      "weight": 179.2,
-      "steps": 7329,
-      "updated": "2026-11-03T03:51:39.469Z",
-      "monthly": {
-        "bf": 22.4
-      },
-      "notes": "Hume BF taken 11/2 (morning after Halloween; hydration may skew)."
-    },
-    "2026-11-03": {
-      "lift": {
-        "session": "Lower",
-        "exercises": [
-          {
-            "name": "Barbell Back Squat",
-            "weight": 155,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "RDL",
-            "weight": 145,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "Leg Curl",
-            "weight": 120,
-            "sets": [
-              12,
-              13
-            ]
-          },
-          {
-            "name": "Leg Extension",
-            "weight": 140,
-            "sets": [
-              15,
-              15
-            ]
-          }
-        ]
-      },
-      "run": {
-        "mi": 1.51,
-        "planned": 1.5,
-        "hr": 165,
-        "note": "156spm\ndid on the same day i lifted legs, probably harder than it needed to be",
-        "sec": 996,
-        "effort": "steady",
-        "pain": "none"
-      },
-      "notes": "leg day and a run was tougher than i needed",
-      "updated": "2026-11-04T13:36:19.157Z",
-      "food": {
-        "kcal": 2037,
-        "protein": 177,
-        "carbs": 199,
-        "fat": 57,
-        "fiber": 14,
-        "sodium": 1128,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Cottage Cheese Lasagna",
-            "qty": "1 Serving",
-            "kcal": 530
-          },
-          {
-            "name": "Rice, White, Cooked",
-            "qty": "50 Grams",
-            "kcal": 65
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt Strawberry, Chobani",
-            "qty": "1 Container",
-            "kcal": 110
-          },
-          {
-            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
-            "qty": "200 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
-            "qty": "1 Each",
-            "kcal": 70
-          },
-          {
-            "name": "Crackers, Graham, Plain",
-            "qty": "1 Each",
-            "kcal": 59
-          },
-          {
-            "name": "Overnight Oats with Blueberries",
-            "qty": "1 Serving",
-            "kcal": 413
-          },
-          {
-            "name": "Chomps Beef Stick",
-            "qty": "1 Serving",
-            "kcal": 100
-          },
-          {
-            "name": "Chicken sausage minestrone",
-            "qty": "1 Serving",
-            "kcal": 300
-          },
-          {
-            "name": "Sourdough, Sprouts Bread",
-            "qty": "55 Grams",
-            "kcal": 120
-          }
-        ]
-      },
-      "weight": 178.6,
-      "steps": 12628
-    },
-    "2026-11-04": {
-      "food": {
-        "kcal": 2301,
-        "protein": 187,
-        "carbs": 248,
-        "fat": 59,
-        "fiber": 16,
-        "sodium": 1232,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Cottage Cheese Lasagna",
-            "qty": "1 Serving",
-            "kcal": 530
-          },
-          {
-            "name": "Rice, White, Cooked",
-            "qty": "50 Grams",
-            "kcal": 65
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt Strawberry, Chobani",
-            "qty": "1 Container",
-            "kcal": 110
-          },
-          {
-            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
-            "qty": "200 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
-            "qty": "1 Each",
-            "kcal": 70
-          },
-          {
-            "name": "Crackers, Graham, Plain",
-            "qty": "1 Each",
-            "kcal": 59
-          },
-          {
-            "name": "Powdered Peanut Butter L, PB2",
-            "qty": "15 Grams",
-            "kcal": 69
-          },
-          {
-            "name": "Sourdough, Sprouts Bread",
-            "qty": "55 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Overnight Oats with Blueberries",
-            "qty": "1 Serving",
-            "kcal": 413
-          },
-          {
-            "name": "Chomps Beef Stick",
-            "qty": "1 Serving",
-            "kcal": 100
-          },
-          {
-            "name": "Chicken sausage minestrone",
-            "qty": "1 Serving",
-            "kcal": 300
-          },
-          {
-            "name": "Rice, White, Cooked",
-            "qty": "150 Grams",
-            "kcal": 195
-          }
-        ]
-      },
-      "weight": 177.9,
-      "steps": 8049,
-      "updated": "2026-11-06T20:08:06.528Z"
-    },
-    "2026-11-05": {
-      "food": {
-        "kcal": 1958,
-        "protein": 170,
-        "carbs": 171,
-        "fat": 65,
-        "fiber": 12,
-        "sodium": 3078,
-        "source": "loseit-report",
-        "items": [
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
-            "qty": "200 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
-            "qty": "1 Each",
-            "kcal": 70
-          },
-          {
-            "name": "Sourdough, Sprouts Bread",
-            "qty": "55 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Powdered Peanut Butter L, PB2",
-            "qty": "15 Grams",
-            "kcal": 69
-          },
-          {
-            "name": "Honey, Amber",
-            "qty": "15 Grams",
-            "kcal": 46
-          },
-          {
-            "name": "Chobani Strawberries & Cream",
-            "qty": "1 Serving",
-            "kcal": 170
-          },
-          {
-            "name": "Chipotle Chicken Bowl",
-            "qty": "1 Serving",
-            "kcal": 770
-          },
-          {
-            "name": "EZ Beef Stroganoff",
-            "qty": "1 Serving",
-            "kcal": 443
-          }
-        ]
-      },
-      "steps": 6520,
-      "updated": "2026-11-07T16:09:37.810Z"
-    },
-    "2026-11-06": {
-      "lift": {
-        "session": "Upper A",
-        "exercises": [
-          {
-            "name": "Incline DB Press",
-            "weight": 50,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "Machine OHP",
-            "weight": 120,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "Overhead Cable Tricep Ext",
-            "weight": 75,
-            "sets": [
-              15,
-              15,
-              15
-            ]
-          },
-          {
-            "name": "Incline DB Curl",
-            "weight": 25,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          }
-        ]
-      },
-      "updated": "2026-11-07T16:11:31.944Z",
-      "food": {
-        "kcal": 2236,
-        "protein": 165,
-        "carbs": 269,
-        "fat": 53,
-        "fiber": 42,
-        "sodium": 1898,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Chicken sausage minestrone",
-            "qty": "1\u00bd Servings",
-            "kcal": 450
-          },
-          {
-            "name": "Sourdough, Sprouts Bread",
-            "qty": "55 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
-            "qty": "200 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Fruity Pebbles, Post",
-            "qty": "1 Cup",
-            "kcal": 140
-          },
-          {
-            "name": "Oat Milk, Planet Oat Oatmilk",
-            "qty": "1 Cup",
-            "kcal": 90
-          },
-          {
-            "name": "Oat Milk, Planet Oat Oatmilk",
-            "qty": "1 Cup",
-            "kcal": 90
-          },
-          {
-            "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
-            "qty": "1 Cup",
-            "kcal": 150
-          },
-          {
-            "name": "Overnight Oats",
-            "qty": "1 Serving",
-            "kcal": 413
-          },
-          {
-            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
-            "qty": "1 Each",
-            "kcal": 70
-          },
-          {
-            "name": "EZ Beef Stroganoff",
-            "qty": "1 Serving",
-            "kcal": 443
-          }
-        ]
-      },
-      "weight": 178.2,
-      "steps": 9853
-    },
-    "2026-11-07": {
-      "lift": {
-        "session": "Upper B",
-        "exercises": [
-          {
-            "name": "Seated Cable Row",
-            "weight": 110,
-            "sets": [
-              12,
-              12,
-              12
-            ]
-          },
-          {
-            "name": "Lat Pulldown",
-            "weight": 110,
-            "sets": [
-              12,
-              12,
-              10
-            ]
-          },
-          {
-            "name": "Cable Lateral Raise",
-            "weight": 25,
-            "sets": [
-              15,
-              12,
-              13,
-              12
-            ]
-          }
-        ]
-      },
-      "run": {
-        "mi": 2,
-        "planned": 2,
-        "sec": 1210,
-        "hr": 145,
-        "pain": "none",
-        "effort": "easy",
-        "note": "felt GOOD id be surprised if my pace was actually that quick but felt like i could have gone a lot longer. beautiful night great run\n\n156spm"
-      },
-      "updated": "2026-11-08T04:17:20.148Z",
-      "food": {
-        "kcal": 2773,
-        "protein": 141,
-        "carbs": 322,
-        "fat": 76,
-        "fiber": 57,
-        "sodium": 3535,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Cheeseburger, Bun & Veg",
-            "qty": "1 Serving",
-            "kcal": 780
-          },
-          {
-            "name": "Diner Fries with Ketchup",
-            "qty": "1 Serving",
-            "kcal": 660
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Fruity Pebbles, Post",
-            "qty": "1 Cup",
-            "kcal": 140
-          },
-          {
-            "name": "Oat Milk, Planet Oat Oatmilk",
-            "qty": "1 Cup",
-            "kcal": 90
-          },
-          {
-            "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
-            "qty": "1 Cup",
-            "kcal": 150
-          },
-          {
-            "name": "Oat Milk, Planet Oat Oatmilk",
-            "qty": "1 Cup",
-            "kcal": 90
-          },
-          {
-            "name": "Cereal, GOLEAN, Original, Kashi",
-            "qty": "1 Serving",
-            "kcal": 180
-          },
-          {
-            "name": "Oat Milk, Planet Oat Oatmilk",
-            "qty": "1 Cup",
-            "kcal": 90
-          },
-          {
-            "name": "EZ Beef Stroganoff",
-            "qty": "1 Serving",
-            "kcal": 443
-          }
-        ]
-      },
-      "weight": 178,
-      "steps": 15505
-    },
-    "2026-11-08": {
-      "food": {
-        "kcal": 2850,
-        "protein": 198,
-        "carbs": 226,
-        "fat": 117,
-        "fiber": 24,
-        "sodium": 6990,
-        "source": "loseit-report",
-        "items": [
-          {
-            "name": "Italian Combo Hero",
-            "qty": "1 Serving",
-            "kcal": 1430
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
-            "qty": "1 Each",
-            "kcal": 70
-          },
-          {
-            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
-            "qty": "200 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Costco Bao Buns",
-            "qty": "2 Servings",
-            "kcal": 300
-          },
-          {
-            "name": "Greek Yogurt Strawberry, Chobani",
-            "qty": "1 Container",
-            "kcal": 110
-          },
-          {
-            "name": "Cereal, GOLEAN, Original, Kashi",
-            "qty": "1 Serving",
-            "kcal": 180
-          },
-          {
-            "name": "Oat Milk, Planet Oat Oatmilk",
-            "qty": "1 Cup",
-            "kcal": 90
-          },
-          {
-            "name": "Egg, Large",
-            "qty": "2 Each",
-            "kcal": 143
-          },
-          {
-            "name": "Egg Whites, Quick Whites",
-            "qty": "100 Grams",
-            "kcal": 54
-          },
-          {
-            "name": "Cheese, Mozzarella, Shredded",
-            "qty": "15 Grams",
-            "kcal": 45
-          },
-          {
-            "name": "Wine, Red",
-            "qty": "187 Milliliters",
-            "kcal": 158
-          }
-        ]
-      },
-      "weight": 177.8,
-      "steps": 13859,
-      "updated": "2026-11-12T16:03:59.446Z"
-    },
-    "2026-11-09": {
-      "food": {
-        "kcal": 2522,
-        "protein": 174,
-        "carbs": 258,
-        "fat": 76,
-        "fiber": 67,
-        "sodium": 3478,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Philly Cheesesteak Bowl",
-            "qty": "1 Serving",
-            "kcal": 490
-          },
-          {
-            "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "\u00bd Container",
-            "kcal": 155
-          },
-          {
-            "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
-            "qty": "2 Cups",
-            "kcal": 300
-          },
-          {
-            "name": "Oat Milk, Planet Oat Oatmilk",
-            "qty": "2 Cups",
-            "kcal": 180
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Chipotle Chicken Bowl",
-            "qty": "1 Serving",
-            "kcal": 830
-          },
-          {
-            "name": "Egg, Large",
-            "qty": "3 Each",
-            "kcal": 214
-          },
-          {
-            "name": "Sourdough, Sprouts Bread",
-            "qty": "55 Grams",
-            "kcal": 120
-          },
-          {
-            "name": "Egg Whites, Quick Whites",
-            "qty": "150 Grams",
-            "kcal": 82
-          }
-        ]
-      },
-      "steps": 12442,
-      "updated": "2026-11-12T16:04:21.617Z"
-    },
-    "2026-11-10": {
-      "run": {
-        "mi": 2.03,
-        "planned": 2,
-        "sec": 1404,
-        "effort": "steady",
-        "hr": 144
-      },
-      "updated": "2026-11-10T20:42:40.264Z"
-    },
-    "2026-11-11": {
-      "food": {
-        "kcal": 2430,
-        "protein": 180,
-        "carbs": 232,
-        "fat": 88,
-        "fiber": 20,
-        "sodium": 2860,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Philly Cheesesteak Bowl",
-            "qty": "1 Serving",
-            "kcal": 490
-          },
-          {
-            "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "\u00bd Container",
-            "kcal": 155
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt Strawberry, Chobani",
-            "qty": "1 Container",
-            "kcal": 110
-          },
-          {
-            "name": "Taco, Soft, Beef, Taco Bell",
-            "qty": "1 Each",
-            "kcal": 180
-          },
-          {
-            "name": "Quesadilla, Chicken, Taco Bell",
-            "qty": "1 Each",
-            "kcal": 510
-          },
-          {
-            "name": "Gordita Crunch, Cheesy, Taco Bell",
-            "qty": "1 Each",
-            "kcal": 500
-          },
-          {
-            "name": "Honey garlic pork tenderloin",
-            "qty": "1 Serving",
-            "kcal": 335
-          }
-        ]
-      },
-      "weight": 177.5,
-      "steps": 9183,
-      "updated": "2026-11-12T17:01:40.036Z"
-    },
-    "2026-11-12": {
-      "lift": {
-        "session": "Lower",
-        "exercises": [
-          {
-            "name": "Barbell Back Squat",
-            "weight": 165,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "RDL",
-            "weight": 155,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "Leg Curl",
-            "weight": 120,
-            "sets": [
-              15,
-              15,
-              15
-            ]
-          },
-          {
-            "name": "Leg Extension",
-            "weight": 150,
-            "sets": [
-              15,
-              15
-            ]
-          }
-        ]
-      },
-      "updated": "2026-11-22T19:39:31Z",
-      "weight": 177.7,
-      "notes": "Backfilled from Apple Health."
-    },
-    "2026-11-13": {
-      "weight": 176.7,
-      "updated": "2026-11-22T19:39:31Z",
-      "notes": "Backfilled from Apple Health."
-    },
-    "2026-11-15": {
-      "run": {
-        "mi": 2,
-        "sec": 1362,
-        "hr": 144,
-        "effort": "easy"
-      },
-      "lift": {
-        "session": "Upper A",
-        "exercises": [
-          {
-            "name": "Incline DB Press",
-            "weight": 50,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "Machine OHP",
-            "weight": 120,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "Lat Pulldown",
-            "weight": 110,
-            "sets": [
-              12,
-              12,
-              8
-            ]
-          },
-          {
-            "name": "Cable Lateral Raise",
-            "weight": 20,
-            "sets": [
-              15,
-              15,
-              15,
-              15
-            ]
-          },
-          {
-            "name": "Overhead Cable Tricep Ext",
-            "weight": 80,
-            "sets": [
-              15,
-              15,
-              15
-            ]
-          },
-          {
-            "name": "Incline DB Curl",
-            "weight": 25,
-            "sets": [
-              10,
-              10,
-              10
-            ]
-          },
-          {
-            "name": "Face Pull",
-            "weight": 35,
-            "sets": [
-              15,
-              15
-            ]
-          }
-        ]
-      },
-      "updated": "2026-11-22T19:39:31Z",
-      "steps": 14956,
-      "notes": "Backfilled from Apple Health."
-    },
-    "2026-11-16": {
-      "food": {
-        "kcal": 2319,
-        "protein": 153,
-        "carbs": 272,
-        "fat": 72,
-        "fiber": 30,
-        "sodium": 1527,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Creamy Garlic Chicken Mac Bake",
-            "qty": "1 Serving",
-            "kcal": 530
-          },
-          {
-            "name": "Ground Beef, 93% Lean 7% Fat, Walmart",
-            "qty": "50 Grams",
-            "kcal": 75
-          },
-          {
-            "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "1 Container",
-            "kcal": 310
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt Strawberry, Chobani",
-            "qty": "1 Container",
-            "kcal": 110
-          },
-          {
-            "name": "Overnight Oats with Blueberries",
-            "qty": "1 Serving",
-            "kcal": 413
-          },
-          {
-            "name": "Banana, Large, 8\" - 8 7/8\" Long",
-            "qty": "1 Each",
-            "kcal": 121
-          },
-          {
-            "name": "Chicken Pot Pie, Marie Calendar's",
-            "qty": "1 Serving",
-            "kcal": 610
-          }
-        ]
-      },
-      "steps": 9354,
-      "updated": "2026-11-17T14:09:28.228Z"
-    },
-    "2026-11-17": {
-      "run": {
-        "mi": 2,
-        "planned": 2,
-        "sec": 1368,
-        "effort": "steady",
-        "pain": "none",
-        "hr": 148
-      },
-      "updated": "2026-11-18T02:31:41.255Z",
-      "food": {
-        "kcal": 3083,
-        "protein": 214,
-        "carbs": 281,
-        "fat": 125,
-        "fiber": 29,
-        "sodium": 3581,
-        "source": "loseit-report",
-        "incomplete": true,
-        "items": [
-          {
-            "name": "Creamy Garlic Chicken Mac Bake",
-            "qty": "1 Serving",
-            "kcal": 530
-          },
-          {
-            "name": "Chocolate Nurri",
-            "qty": "1 Serving",
-            "kcal": 150
-          },
-          {
-            "name": "Greek Yogurt Strawberry, Chobani",
-            "qty": "1 Container",
-            "kcal": 110
-          },
-          {
-            "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
-            "qty": "150 Grams",
-            "kcal": 90
-          },
-          {
-            "name": "Crackers, Graham, Plain",
-            "qty": "1 Each",
-            "kcal": 59
-          },
-          {
-            "name": "Overnight Oats with Blueberries",
-            "qty": "1 Serving",
-            "kcal": 413
-          },
-          {
-            "name": "Banana, Large, 8\" - 8 7/8\" Long",
-            "qty": "1 Each",
-            "kcal": 121
-          },
-          {
-            "name": "Chicken Pot Pie, Marie Calendar's",
-            "qty": "1 Serving",
-            "kcal": 610
-          },
-          {
-            "name": "Costco Chicken Street Tacos",
-            "qty": "1 Serving",
-            "kcal": 1000
-          }
-        ]
-      },
-      "weight": 177.1,
-      "steps": 10068
-    },
-    "2026-11-18": {
-      "weight": 176.5,
-      "steps": 10748,
-      "food": {
-        "kcal": 2607,
-        "protein": 177,
-        "source": "apple-health",
-        "incomplete": true,
-        "items": []
-      },
-      "updated": "2026-11-22T19:39:31Z",
-      "notes": "Backfilled from Apple Health."
-    },
-    "2026-11-19": {
-      "weight": 176.5,
-      "steps": 8376,
-      "updated": "2026-11-22T19:39:31Z",
-      "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
-      "day_type": "heavy_social"
-    },
-    "2026-11-20": {
-      "steps": 15853,
-      "updated": "2026-11-22T19:39:31Z",
-      "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
-      "day_type": "heavy_social"
-    },
-    "2026-11-21": {
-      "steps": 6729,
-      "updated": "2026-11-22T19:39:31Z",
-      "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
-      "day_type": "heavy_social"
-    },
-    "2026-11-22": {
-      "run": {
-        "mi": 2.5,
-        "sec": 1800,
-        "effort": "steady",
-        "pain": "none",
-        "hr": 135
-      },
-      "food": {
-        "source": "claude",
-        "items": [
-          {
-            "meal": "Breakfast",
-            "name": "Breakfast panini + silver dollar pancakes",
-            "qty": "1 meal",
-            "kcal": 970,
-            "protein": 39,
-            "carbs": 110,
-            "fat": 40,
-            "fiber": 4,
-            "sodium": 1850,
-            "basis": "estimate"
-          },
-          {
-            "time": "3:21 PM",
-            "meal": "Lunch",
-            "name": "Overnight oats with blueberries",
-            "qty": "1 serving",
-            "kcal": 413,
-            "protein": 34,
-            "carbs": 55,
-            "fat": 7,
-            "fiber": 7,
-            "sodium": 170,
-            "basis": "library",
-            "food_id": "tsk-overnight-oats"
-          },
-          {
-            "time": "3:39 PM",
-            "meal": "Snacks",
-            "name": "Saut\u00e9ed green beans",
-            "qty": "~1 cup",
-            "kcal": 100,
-            "protein": 3,
-            "carbs": 11,
-            "fat": 5,
-            "fiber": 4,
-            "sodium": 250,
-            "basis": "estimate"
-          },
-          {
-            "name": "Nurri protein shake (chocolate)",
-            "qty": "1 can (11 fl oz)",
-            "basis": "library",
-            "food_id": "nurri",
-            "meal": "Snacks",
-            "time": "3:49 PM",
-            "kcal": 150,
-            "protein": 30,
-            "carbs": 3,
-            "fat": 2.5,
-            "fiber": 1
-          },
-          {
-            "time": "5:05 PM",
-            "meal": "Breakfast",
-            "name": "Breakfast quesadilla (egg, sausage, cheese)",
-            "qty": "1 quesadilla",
-            "kcal": 690,
-            "protein": 33,
-            "carbs": 30,
-            "fat": 46,
-            "fiber": 1,
-            "sodium": 1320,
-            "basis": "estimate"
-          }
-        ],
-        "kcal": 2323,
-        "protein": 139,
-        "carbs": 209,
-        "fat": 100,
-        "fiber": 17,
-        "sodium": 3590
-      },
-      "steps": 11045,
-      "updated": "2026-11-22T22:05:32Z"
-    }
+ "version": 1,
+ "days": {
+  "2026-11-01": {
+   "food": {
+    "kcal": 2083,
+    "protein": 144,
+    "carbs": 220,
+    "fat": 69,
+    "fiber": 17,
+    "sodium": 3355,
+    "source": "loseit-report",
+    "items": [
+     {
+      "name": "NYC Pepperoni Slice",
+      "qty": "1 Serving",
+      "kcal": 440
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt Strawberry, Chobani",
+      "qty": "1 Container",
+      "kcal": 110
+     },
+     {
+      "name": "Overnight Oats with Blueberries",
+      "qty": "1 Serving",
+      "kcal": 413
+     },
+     {
+      "name": "Chicken Tikka Masala, Rice & Naan",
+      "qty": "1 Serving",
+      "kcal": 970
+     }
+    ]
+   },
+   "steps": 9125,
+   "updated": "2026-11-03T03:51:18.102Z"
+  },
+  "2026-11-02": {
+   "food": {
+    "kcal": 1964,
+    "protein": 172,
+    "carbs": 200,
+    "fat": 51,
+    "fiber": 15,
+    "sodium": 1138,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Cottage Cheese Lasagna",
+      "qty": "1 Serving",
+      "kcal": 530
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt Strawberry, Chobani",
+      "qty": "1 Container",
+      "kcal": 110
+     },
+     {
+      "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+      "qty": "200 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Overnight Oats with Blueberries",
+      "qty": "1 Serving",
+      "kcal": 413
+     },
+     {
+      "name": "Chomps Beef Stick",
+      "qty": "1 Serving",
+      "kcal": 100
+     },
+     {
+      "name": "Chicken sausage minestrone",
+      "qty": "1 Serving",
+      "kcal": 300
+     },
+     {
+      "name": "Sourdough, Sprouts Bread",
+      "qty": "110 Grams",
+      "kcal": 241
+     }
+    ]
+   },
+   "weight": 179.2,
+   "steps": 7329,
+   "updated": "2026-11-03T03:51:39.469Z",
+   "monthly": {
+    "bf": 22.4
+   },
+   "notes": "Hume BF taken 11/2 (morning after Halloween; hydration may skew)."
+  },
+  "2026-11-03": {
+   "lift": {
+    "session": "Lower",
+    "exercises": [
+     {
+      "name": "Barbell Back Squat",
+      "weight": 155,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "RDL",
+      "weight": 145,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "Leg Curl",
+      "weight": 120,
+      "sets": [
+       12,
+       13
+      ]
+     },
+     {
+      "name": "Leg Extension",
+      "weight": 140,
+      "sets": [
+       15,
+       15
+      ]
+     }
+    ]
+   },
+   "run": {
+    "mi": 1.51,
+    "planned": 1.5,
+    "hr": 165,
+    "note": "156spm\ndid on the same day i lifted legs, probably harder than it needed to be",
+    "sec": 996,
+    "effort": "steady",
+    "pain": "none"
+   },
+   "notes": "leg day and a run was tougher than i needed",
+   "updated": "2026-11-04T13:36:19.157Z",
+   "food": {
+    "kcal": 2037,
+    "protein": 177,
+    "carbs": 199,
+    "fat": 57,
+    "fiber": 14,
+    "sodium": 1128,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Cottage Cheese Lasagna",
+      "qty": "1 Serving",
+      "kcal": 530
+     },
+     {
+      "name": "Rice, White, Cooked",
+      "qty": "50 Grams",
+      "kcal": 65
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt Strawberry, Chobani",
+      "qty": "1 Container",
+      "kcal": 110
+     },
+     {
+      "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+      "qty": "200 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+      "qty": "1 Each",
+      "kcal": 70
+     },
+     {
+      "name": "Crackers, Graham, Plain",
+      "qty": "1 Each",
+      "kcal": 59
+     },
+     {
+      "name": "Overnight Oats with Blueberries",
+      "qty": "1 Serving",
+      "kcal": 413
+     },
+     {
+      "name": "Chomps Beef Stick",
+      "qty": "1 Serving",
+      "kcal": 100
+     },
+     {
+      "name": "Chicken sausage minestrone",
+      "qty": "1 Serving",
+      "kcal": 300
+     },
+     {
+      "name": "Sourdough, Sprouts Bread",
+      "qty": "55 Grams",
+      "kcal": 120
+     }
+    ]
+   },
+   "weight": 178.6,
+   "steps": 12628
+  },
+  "2026-11-04": {
+   "food": {
+    "kcal": 2301,
+    "protein": 187,
+    "carbs": 248,
+    "fat": 59,
+    "fiber": 16,
+    "sodium": 1232,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Cottage Cheese Lasagna",
+      "qty": "1 Serving",
+      "kcal": 530
+     },
+     {
+      "name": "Rice, White, Cooked",
+      "qty": "50 Grams",
+      "kcal": 65
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt Strawberry, Chobani",
+      "qty": "1 Container",
+      "kcal": 110
+     },
+     {
+      "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+      "qty": "200 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+      "qty": "1 Each",
+      "kcal": 70
+     },
+     {
+      "name": "Crackers, Graham, Plain",
+      "qty": "1 Each",
+      "kcal": 59
+     },
+     {
+      "name": "Powdered Peanut Butter L, PB2",
+      "qty": "15 Grams",
+      "kcal": 69
+     },
+     {
+      "name": "Sourdough, Sprouts Bread",
+      "qty": "55 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Overnight Oats with Blueberries",
+      "qty": "1 Serving",
+      "kcal": 413
+     },
+     {
+      "name": "Chomps Beef Stick",
+      "qty": "1 Serving",
+      "kcal": 100
+     },
+     {
+      "name": "Chicken sausage minestrone",
+      "qty": "1 Serving",
+      "kcal": 300
+     },
+     {
+      "name": "Rice, White, Cooked",
+      "qty": "150 Grams",
+      "kcal": 195
+     }
+    ]
+   },
+   "weight": 177.9,
+   "steps": 8049,
+   "updated": "2026-11-06T20:08:06.528Z"
+  },
+  "2026-11-05": {
+   "food": {
+    "kcal": 1958,
+    "protein": 170,
+    "carbs": 171,
+    "fat": 65,
+    "fiber": 12,
+    "sodium": 3078,
+    "source": "loseit-report",
+    "items": [
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+      "qty": "200 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+      "qty": "1 Each",
+      "kcal": 70
+     },
+     {
+      "name": "Sourdough, Sprouts Bread",
+      "qty": "55 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Powdered Peanut Butter L, PB2",
+      "qty": "15 Grams",
+      "kcal": 69
+     },
+     {
+      "name": "Honey, Amber",
+      "qty": "15 Grams",
+      "kcal": 46
+     },
+     {
+      "name": "Chobani Strawberries & Cream",
+      "qty": "1 Serving",
+      "kcal": 170
+     },
+     {
+      "name": "Chipotle Chicken Bowl",
+      "qty": "1 Serving",
+      "kcal": 770
+     },
+     {
+      "name": "EZ Beef Stroganoff",
+      "qty": "1 Serving",
+      "kcal": 443
+     }
+    ]
+   },
+   "steps": 6520,
+   "updated": "2026-11-07T16:09:37.810Z"
+  },
+  "2026-11-06": {
+   "lift": {
+    "session": "Upper A",
+    "exercises": [
+     {
+      "name": "Incline DB Press",
+      "weight": 50,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "Machine OHP",
+      "weight": 120,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "Overhead Cable Tricep Ext",
+      "weight": 75,
+      "sets": [
+       15,
+       15,
+       15
+      ]
+     },
+     {
+      "name": "Incline DB Curl",
+      "weight": 25,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     }
+    ]
+   },
+   "updated": "2026-11-07T16:11:31.944Z",
+   "food": {
+    "kcal": 2236,
+    "protein": 165,
+    "carbs": 269,
+    "fat": 53,
+    "fiber": 42,
+    "sodium": 1898,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Chicken sausage minestrone",
+      "qty": "1½ Servings",
+      "kcal": 450
+     },
+     {
+      "name": "Sourdough, Sprouts Bread",
+      "qty": "55 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+      "qty": "200 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Fruity Pebbles, Post",
+      "qty": "1 Cup",
+      "kcal": 140
+     },
+     {
+      "name": "Oat Milk, Planet Oat Oatmilk",
+      "qty": "1 Cup",
+      "kcal": 90
+     },
+     {
+      "name": "Oat Milk, Planet Oat Oatmilk",
+      "qty": "1 Cup",
+      "kcal": 90
+     },
+     {
+      "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
+      "qty": "1 Cup",
+      "kcal": 150
+     },
+     {
+      "name": "Overnight Oats",
+      "qty": "1 Serving",
+      "kcal": 413
+     },
+     {
+      "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+      "qty": "1 Each",
+      "kcal": 70
+     },
+     {
+      "name": "EZ Beef Stroganoff",
+      "qty": "1 Serving",
+      "kcal": 443
+     }
+    ]
+   },
+   "weight": 178.2,
+   "steps": 9853
+  },
+  "2026-11-07": {
+   "lift": {
+    "session": "Upper B",
+    "exercises": [
+     {
+      "name": "Seated Cable Row",
+      "weight": 110,
+      "sets": [
+       12,
+       12,
+       12
+      ]
+     },
+     {
+      "name": "Lat Pulldown",
+      "weight": 110,
+      "sets": [
+       12,
+       12,
+       10
+      ]
+     },
+     {
+      "name": "Cable Lateral Raise",
+      "weight": 25,
+      "sets": [
+       15,
+       12,
+       13,
+       12
+      ]
+     }
+    ]
+   },
+   "run": {
+    "mi": 2,
+    "planned": 2,
+    "sec": 1210,
+    "hr": 145,
+    "pain": "none",
+    "effort": "easy",
+    "note": "felt GOOD id be surprised if my pace was actually that quick but felt like i could have gone a lot longer. beautiful night great run\n\n156spm"
+   },
+   "updated": "2026-11-08T04:17:20.148Z",
+   "food": {
+    "kcal": 2773,
+    "protein": 141,
+    "carbs": 322,
+    "fat": 76,
+    "fiber": 57,
+    "sodium": 3535,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Cheeseburger, Bun & Veg",
+      "qty": "1 Serving",
+      "kcal": 780
+     },
+     {
+      "name": "Diner Fries with Ketchup",
+      "qty": "1 Serving",
+      "kcal": 660
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Fruity Pebbles, Post",
+      "qty": "1 Cup",
+      "kcal": 140
+     },
+     {
+      "name": "Oat Milk, Planet Oat Oatmilk",
+      "qty": "1 Cup",
+      "kcal": 90
+     },
+     {
+      "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
+      "qty": "1 Cup",
+      "kcal": 150
+     },
+     {
+      "name": "Oat Milk, Planet Oat Oatmilk",
+      "qty": "1 Cup",
+      "kcal": 90
+     },
+     {
+      "name": "Cereal, GOLEAN, Original, Kashi",
+      "qty": "1 Serving",
+      "kcal": 180
+     },
+     {
+      "name": "Oat Milk, Planet Oat Oatmilk",
+      "qty": "1 Cup",
+      "kcal": 90
+     },
+     {
+      "name": "EZ Beef Stroganoff",
+      "qty": "1 Serving",
+      "kcal": 443
+     }
+    ]
+   },
+   "weight": 178,
+   "steps": 15505
+  },
+  "2026-11-08": {
+   "food": {
+    "kcal": 2850,
+    "protein": 198,
+    "carbs": 226,
+    "fat": 117,
+    "fiber": 24,
+    "sodium": 6990,
+    "source": "loseit-report",
+    "items": [
+     {
+      "name": "Italian Combo Hero",
+      "qty": "1 Serving",
+      "kcal": 1430
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Cheese, String, Mozzarella Sticks, Crystal Farms",
+      "qty": "1 Each",
+      "kcal": 70
+     },
+     {
+      "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+      "qty": "200 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Costco Bao Buns",
+      "qty": "2 Servings",
+      "kcal": 300
+     },
+     {
+      "name": "Greek Yogurt Strawberry, Chobani",
+      "qty": "1 Container",
+      "kcal": 110
+     },
+     {
+      "name": "Cereal, GOLEAN, Original, Kashi",
+      "qty": "1 Serving",
+      "kcal": 180
+     },
+     {
+      "name": "Oat Milk, Planet Oat Oatmilk",
+      "qty": "1 Cup",
+      "kcal": 90
+     },
+     {
+      "name": "Egg, Large",
+      "qty": "2 Each",
+      "kcal": 143
+     },
+     {
+      "name": "Egg Whites, Quick Whites",
+      "qty": "100 Grams",
+      "kcal": 54
+     },
+     {
+      "name": "Cheese, Mozzarella, Shredded",
+      "qty": "15 Grams",
+      "kcal": 45
+     },
+     {
+      "name": "Wine, Red",
+      "qty": "187 Milliliters",
+      "kcal": 158
+     }
+    ]
+   },
+   "weight": 177.8,
+   "steps": 13859,
+   "updated": "2026-11-12T16:03:59.446Z"
+  },
+  "2026-11-09": {
+   "food": {
+    "kcal": 2522,
+    "protein": 174,
+    "carbs": 258,
+    "fat": 76,
+    "fiber": 67,
+    "sodium": 3478,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Philly Cheesesteak Bowl",
+      "qty": "1 Serving",
+      "kcal": 490
+     },
+     {
+      "name": "Cooked Sticky White Rice, Bibigo",
+      "qty": "½ Container",
+      "kcal": 155
+     },
+     {
+      "name": "Captain Berry Crunch Cereal, Captain Crunch Berry",
+      "qty": "2 Cups",
+      "kcal": 300
+     },
+     {
+      "name": "Oat Milk, Planet Oat Oatmilk",
+      "qty": "2 Cups",
+      "kcal": 180
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Chipotle Chicken Bowl",
+      "qty": "1 Serving",
+      "kcal": 830
+     },
+     {
+      "name": "Egg, Large",
+      "qty": "3 Each",
+      "kcal": 214
+     },
+     {
+      "name": "Sourdough, Sprouts Bread",
+      "qty": "55 Grams",
+      "kcal": 120
+     },
+     {
+      "name": "Egg Whites, Quick Whites",
+      "qty": "150 Grams",
+      "kcal": 82
+     }
+    ]
+   },
+   "steps": 12442,
+   "updated": "2026-11-12T16:04:21.617Z"
+  },
+  "2026-11-10": {
+   "run": {
+    "mi": 2.03,
+    "planned": 2,
+    "sec": 1404,
+    "effort": "steady",
+    "hr": 144
+   },
+   "updated": "2026-11-10T20:42:40.264Z"
+  },
+  "2026-11-11": {
+   "food": {
+    "kcal": 2430,
+    "protein": 180,
+    "carbs": 232,
+    "fat": 88,
+    "fiber": 20,
+    "sodium": 2860,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Philly Cheesesteak Bowl",
+      "qty": "1 Serving",
+      "kcal": 490
+     },
+     {
+      "name": "Cooked Sticky White Rice, Bibigo",
+      "qty": "½ Container",
+      "kcal": 155
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt Strawberry, Chobani",
+      "qty": "1 Container",
+      "kcal": 110
+     },
+     {
+      "name": "Taco, Soft, Beef, Taco Bell",
+      "qty": "1 Each",
+      "kcal": 180
+     },
+     {
+      "name": "Quesadilla, Chicken, Taco Bell",
+      "qty": "1 Each",
+      "kcal": 510
+     },
+     {
+      "name": "Gordita Crunch, Cheesy, Taco Bell",
+      "qty": "1 Each",
+      "kcal": 500
+     },
+     {
+      "name": "Honey garlic pork tenderloin",
+      "qty": "1 Serving",
+      "kcal": 335
+     }
+    ]
+   },
+   "weight": 177.5,
+   "steps": 9183,
+   "updated": "2026-11-12T17:01:40.036Z"
+  },
+  "2026-11-12": {
+   "lift": {
+    "session": "Lower",
+    "exercises": [
+     {
+      "name": "Barbell Back Squat",
+      "weight": 165,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "RDL",
+      "weight": 155,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "Leg Curl",
+      "weight": 120,
+      "sets": [
+       15,
+       15,
+       15
+      ]
+     },
+     {
+      "name": "Leg Extension",
+      "weight": 150,
+      "sets": [
+       15,
+       15
+      ]
+     }
+    ]
+   },
+   "updated": "2026-11-22T19:39:31Z",
+   "weight": 177.7,
+   "notes": "Backfilled from Apple Health."
+  },
+  "2026-11-13": {
+   "weight": 176.7,
+   "updated": "2026-11-22T19:39:31Z",
+   "notes": "Backfilled from Apple Health."
+  },
+  "2026-11-15": {
+   "run": {
+    "mi": 2,
+    "sec": 1362,
+    "hr": 144,
+    "effort": "easy"
+   },
+   "lift": {
+    "session": "Upper A",
+    "exercises": [
+     {
+      "name": "Incline DB Press",
+      "weight": 50,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "Machine OHP",
+      "weight": 120,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "Lat Pulldown",
+      "weight": 110,
+      "sets": [
+       12,
+       12,
+       8
+      ]
+     },
+     {
+      "name": "Cable Lateral Raise",
+      "weight": 20,
+      "sets": [
+       15,
+       15,
+       15,
+       15
+      ]
+     },
+     {
+      "name": "Overhead Cable Tricep Ext",
+      "weight": 80,
+      "sets": [
+       15,
+       15,
+       15
+      ]
+     },
+     {
+      "name": "Incline DB Curl",
+      "weight": 25,
+      "sets": [
+       10,
+       10,
+       10
+      ]
+     },
+     {
+      "name": "Face Pull",
+      "weight": 35,
+      "sets": [
+       15,
+       15
+      ]
+     }
+    ]
+   },
+   "updated": "2026-11-22T19:39:31Z",
+   "steps": 14956,
+   "notes": "Backfilled from Apple Health."
+  },
+  "2026-11-16": {
+   "food": {
+    "kcal": 2319,
+    "protein": 153,
+    "carbs": 272,
+    "fat": 72,
+    "fiber": 30,
+    "sodium": 1527,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Creamy Garlic Chicken Mac Bake",
+      "qty": "1 Serving",
+      "kcal": 530
+     },
+     {
+      "name": "Ground Beef, 93% Lean 7% Fat, Walmart",
+      "qty": "50 Grams",
+      "kcal": 75
+     },
+     {
+      "name": "Cooked Sticky White Rice, Bibigo",
+      "qty": "1 Container",
+      "kcal": 310
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt Strawberry, Chobani",
+      "qty": "1 Container",
+      "kcal": 110
+     },
+     {
+      "name": "Overnight Oats with Blueberries",
+      "qty": "1 Serving",
+      "kcal": 413
+     },
+     {
+      "name": "Banana, Large, 8\" - 8 7/8\" Long",
+      "qty": "1 Each",
+      "kcal": 121
+     },
+     {
+      "name": "Chicken Pot Pie, Marie Calendar's",
+      "qty": "1 Serving",
+      "kcal": 610
+     }
+    ]
+   },
+   "steps": 9354,
+   "updated": "2026-11-17T14:09:28.228Z"
+  },
+  "2026-11-17": {
+   "run": {
+    "mi": 2,
+    "planned": 2,
+    "sec": 1368,
+    "effort": "steady",
+    "pain": "none",
+    "hr": 148
+   },
+   "updated": "2026-11-18T02:31:41.255Z",
+   "food": {
+    "kcal": 3083,
+    "protein": 214,
+    "carbs": 281,
+    "fat": 125,
+    "fiber": 29,
+    "sodium": 3581,
+    "source": "loseit-report",
+    "incomplete": true,
+    "items": [
+     {
+      "name": "Creamy Garlic Chicken Mac Bake",
+      "qty": "1 Serving",
+      "kcal": 530
+     },
+     {
+      "name": "Chocolate Nurri",
+      "qty": "1 Serving",
+      "kcal": 150
+     },
+     {
+      "name": "Greek Yogurt Strawberry, Chobani",
+      "qty": "1 Container",
+      "kcal": 110
+     },
+     {
+      "name": "Greek Yogurt, Plain, Nonfat, Indiv. Container, Chobani",
+      "qty": "150 Grams",
+      "kcal": 90
+     },
+     {
+      "name": "Crackers, Graham, Plain",
+      "qty": "1 Each",
+      "kcal": 59
+     },
+     {
+      "name": "Overnight Oats with Blueberries",
+      "qty": "1 Serving",
+      "kcal": 413
+     },
+     {
+      "name": "Banana, Large, 8\" - 8 7/8\" Long",
+      "qty": "1 Each",
+      "kcal": 121
+     },
+     {
+      "name": "Chicken Pot Pie, Marie Calendar's",
+      "qty": "1 Serving",
+      "kcal": 610
+     },
+     {
+      "name": "Costco Chicken Street Tacos",
+      "qty": "1 Serving",
+      "kcal": 1000
+     }
+    ]
+   },
+   "weight": 177.1,
+   "steps": 10068
+  },
+  "2026-11-18": {
+   "weight": 176.5,
+   "steps": 10748,
+   "food": {
+    "kcal": 2607,
+    "protein": 177,
+    "source": "apple-health",
+    "incomplete": true,
+    "items": []
+   },
+   "updated": "2026-11-22T19:39:31Z",
+   "notes": "Backfilled from Apple Health."
+  },
+  "2026-11-19": {
+   "weight": 176.5,
+   "steps": 8376,
+   "updated": "2026-11-22T19:39:31Z",
+   "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
+   "day_type": "heavy_social"
+  },
+  "2026-11-20": {
+   "steps": 15853,
+   "updated": "2026-11-22T19:39:31Z",
+   "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
+   "day_type": "heavy_social"
+  },
+  "2026-11-21": {
+   "steps": 6729,
+   "updated": "2026-11-22T19:39:31Z",
+   "notes": "Backfilled from Apple Health. Ali's birthday celebration (heavy social); food not logged.",
+   "day_type": "heavy_social"
+  },
+  "2026-11-22": {
+   "run": {
+    "mi": 2.5,
+    "sec": 1800,
+    "effort": "steady",
+    "pain": "none",
+    "hr": 135
+   },
+   "food": {
+    "source": "claude",
+    "items": [
+     {
+      "meal": "Breakfast",
+      "name": "Breakfast panini + silver dollar pancakes",
+      "qty": "1 meal",
+      "kcal": 970,
+      "protein": 39,
+      "carbs": 110,
+      "fat": 40,
+      "fiber": 4,
+      "sodium": 1850,
+      "basis": "estimate"
+     },
+     {
+      "time": "3:21 PM",
+      "meal": "Lunch",
+      "name": "Overnight oats with blueberries",
+      "qty": "1 serving",
+      "kcal": 413,
+      "protein": 34,
+      "carbs": 55,
+      "fat": 7,
+      "fiber": 7,
+      "sodium": 170,
+      "basis": "library",
+      "food_id": "tsk-overnight-oats"
+     },
+     {
+      "time": "3:39 PM",
+      "meal": "Snacks",
+      "name": "Sautéed green beans",
+      "qty": "~1 cup",
+      "kcal": 100,
+      "protein": 3,
+      "carbs": 11,
+      "fat": 5,
+      "fiber": 4,
+      "sodium": 250,
+      "basis": "estimate"
+     },
+     {
+      "name": "Nurri protein shake (chocolate)",
+      "qty": "1 can (11 fl oz)",
+      "basis": "library",
+      "food_id": "nurri",
+      "meal": "Snacks",
+      "time": "3:49 PM",
+      "kcal": 150,
+      "protein": 30,
+      "carbs": 3,
+      "fat": 2.5,
+      "fiber": 1
+     },
+     {
+      "time": "5:05 PM",
+      "meal": "Dinner",
+      "name": "Breakfast quesadilla (egg, sausage, cheese)",
+      "qty": "1 quesadilla",
+      "kcal": 690,
+      "protein": 33,
+      "carbs": 30,
+      "fat": 46,
+      "fiber": 1,
+      "sodium": 1320,
+      "basis": "estimate"
+     }
+    ],
+    "kcal": 2323,
+    "protein": 139,
+    "carbs": 209,
+    "fat": 100,
+    "fiber": 17,
+    "sodium": 3590
+   },
+   "steps": 11045,
+   "updated": "2026-11-22T22:05:32Z"
   }
+ }
 }
