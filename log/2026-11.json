@@ -420,7 +420,7 @@
         "items": [
           {
             "name": "Chicken sausage minestrone",
-            "qty": "1½ Servings",
+            "qty": "1\u00bd Servings",
             "kcal": 450
           },
           {
@@ -681,7 +681,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -752,7 +752,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -1118,7 +1118,7 @@
           {
             "time": "3:39 PM",
             "meal": "Snacks",
-            "name": "Sautéed green beans",
+            "name": "Saut\u00e9ed green beans",
             "qty": "~1 cup",
             "kcal": 100,
             "protein": 3,
@@ -1166,17 +1166,30 @@
             "fiber": 0,
             "sodium": 40,
             "basis": "estimate"
+          },
+          {
+            "time": "9:03 PM",
+            "name": "Chicken parm pasta bake",
+            "qty": "1 serving",
+            "kcal": 480,
+            "protein": 48,
+            "carbs": 37,
+            "fat": 14,
+            "fiber": 3,
+            "sodium": 900,
+            "basis": "library",
+            "food_id": "tsk-chicken-parm-pasta-bake"
           }
         ],
-        "kcal": 2233,
-        "protein": 125,
-        "carbs": 251,
-        "fat": 79,
-        "fiber": 17,
-        "sodium": 3100
+        "kcal": 2713,
+        "protein": 173,
+        "carbs": 288,
+        "fat": 92,
+        "fiber": 20,
+        "sodium": 4000
       },
       "steps": 11045,
-      "updated": "2026-11-23T02:03:25.869Z"
+      "updated": "2026-11-23T02:04:00Z"
     }
   }
 }
