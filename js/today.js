@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611222057";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611222057";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611222057";
-import { isClosedDate, token } from "./store.js?v=202611222057";
-import { buildSummary } from "./summary.js?v=202611222057";
-import { VERSION } from "./version.js?v=202611222057";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611230234";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611230234";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611230234";
+import { isClosedDate, token } from "./store.js?v=202611230234";
+import { buildSummary } from "./summary.js?v=202611230234";
+import { VERSION } from "./version.js?v=202611230234";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];
@@ -45,17 +45,51 @@ function addFoodBtn(meal) {
   return `<button class="btn small add" data-add="${esc(meal)}">${icon.plus}<span>Add food</span></button>`;
 }
 const round1 = n => Math.round(n * 10) / 10;
-// One usual serving of a library food, as a log item.
-function libraryItem(food, meal) {
-  const m = food.usual?.mult || 1, it = { name: food.name, qty: food.usual?.qty || food.serving, basis: "library", food_id: food.id };
+// How a library food is measured: by weight (foods stored per N grams) or by serving.
+function unitOf(food) {
+  const m = food.usual?.mult || 1;
+  if (food.per?.g) { const base = food.per.g; return { unit: "g", base, step: base >= 50 ? 10 : 5, def: Math.round(base * m) }; }
+  return { unit: "serving", base: 1, step: 0.5, def: Math.max(0.5, Math.round(m * 2) / 2) };
+}
+const amtLabel = (food, u, a) => u.unit === "g" ? `${fmt(a)} g` : a === 1 ? food.serving : `${a} × ${food.serving}`;
+// A library food at a given amount (grams or servings), as a log item. No amount = the usual portion.
+function libraryItem(food, meal, amount) {
+  const u = unitOf(food), a = amount ?? u.def, m = a / u.base;
+  const it = { name: food.name, qty: amtLabel(food, u, a), amount: a, unit: u.unit, basis: "library", food_id: food.id };
   if (meal && meal !== "Other") it.meal = meal;
   it.time = new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
   it.kcal = Math.round(food.kcal * m);
   for (const k of ["protein", "carbs", "fat", "fiber", "sodium"]) if (food[k] != null) it[k] = round1(food[k] * m);
   return it;
 }
-function foodRows(list) {
-  return list.map(f => { const it = libraryItem(f); return `<button class="foodrow" data-food="${esc(f.id)}"><span><b>${esc(f.name)}</b><small>${esc(it.qty)}${it.protein ? ` · ${fmt(it.protein)} g protein` : ""}</small></span><em class="num">${fmt(it.kcal)}</em><i class="fr-add">${icon.plus}</i></button>`; }).join("");
+const amountHtml = (food, a) => { const u = unitOf(food); return `<div class="amt" data-amt>
+  <button type="button" class="stepb" data-step="-1" aria-label="Less">−</button>
+  <div class="inwrap"><input inputmode="decimal" enterkeyhint="done" data-amount value="${a ?? u.def}" aria-label="Amount"><em>${u.unit === "g" ? "g" : "×"}</em></div>
+  <button type="button" class="stepb" data-step="1" aria-label="More">+</button>
+  <div class="amt-v"><b class="num" data-akcal></b><small data-asub></small></div></div>`; };
+// Wire a stepper block: returns a getter for the current amount.
+function wireAmount(box, food, onChange) {
+  const u = unitOf(food), input = box.querySelector("[data-amount]");
+  const read = () => { const v = parseFloat(String(input.value).replace(",", ".")); return v > 0 ? v : null; };
+  const show = () => { const a = read(), it = a ? libraryItem(food, null, a) : null;
+    box.querySelector("[data-akcal]").textContent = it ? `${fmt(it.kcal)} kcal` : "–";
+    box.querySelector("[data-asub]").textContent = it ? [u.unit === "serving" ? food.serving : "", it.protein ? `${fmt(it.protein)} g protein` : ""].filter(Boolean).join(" · ") : "";
+    onChange?.(a); };
+  box.addEventListener("click", e => { const b = e.target.closest("[data-step]"); if (!b) return;
+    const next = Math.max(u.step, Math.round(((read() || 0) + Number(b.dataset.step) * u.step) / u.step) * u.step);
+    input.value = u.unit === "g" ? next : Math.round(next * 100) / 100; show(); });
+  input.addEventListener("input", show);
+  input.addEventListener("focus", () => input.select());
+  show();
+  return read;
+}
+function foodRows(list, counts = {}) {
+  return list.map(f => { const it = libraryItem(f), n = counts[f.id] || 0;
+    return `<div class="foodrow${n ? " has" : ""}" data-row="${esc(f.id)}">
+      <button type="button" class="fr-main" data-open="${esc(f.id)}"><span><b>${esc(f.name)}</b><small>${esc(it.qty)}${it.protein ? ` · ${fmt(it.protein)} g protein` : ""}</small></span><em class="num">${fmt(it.kcal)}</em></button>
+      <button type="button" class="fr-add" data-quick="${esc(f.id)}" aria-label="Add ${esc(f.name)}">${n ? `<b class="num">${n}</b>` : icon.plus}</button>
+      <div class="fr-edit" data-edit-for="${esc(f.id)}"><div class="fr-edit-in"></div></div>
+    </div>`; }).join("");
 }
 function mealsHtml(f, canAdd) {
   const items = (f.items || []).map((it, idx) => ({ ...it, idx }));
@@ -69,7 +103,7 @@ function mealsHtml(f, canAdd) {
     return `<div class="card meal-card">
       <div class="row between"><h3>${title}<b class="num">${fmt(sumOf(g, "kcal"))}</b></h3>${canAdd && m !== "Other" ? addFoodBtn(m) : ""}</div>
       ${line ? `<p class="mac-line">${line}</p>` : ""}
-      <ul class="foods">${g.map(i => `<li><span>${esc(i.name)}${i.basis === "estimate" ? ' <em class="est" title="Estimated from a photo or description">est.</em>' : ""}<small>${esc([i.time, i.qty].filter(Boolean).join(" · "))}</small></span><b class="num">${fmt(i.kcal)}</b>${viaClaude ? `<button class="del" data-del="${i.idx}" aria-label="Remove ${esc(i.name)}">${icon.x}</button>` : ""}</li>`).join("")}</ul>
+      <ul class="foods">${g.map(i => `<li>${viaClaude && i.food_id ? `<button type="button" class="fitem" data-edit="${i.idx}">` : `<span class="fitem">`}<span>${esc(i.name)}${i.basis === "estimate" ? ' <em class="est" title="Estimated from a photo or description">est.</em>' : ""}<small>${esc([i.time, i.qty].filter(Boolean).join(" · "))}</small></span><b class="num">${fmt(i.kcal)}</b>${viaClaude && i.food_id ? "</button>" : "</span>"}${viaClaude ? `<button class="del" data-del="${i.idx}" aria-label="Remove ${esc(i.name)}">${icon.x}</button>` : ""}</li>`).join("")}</ul>
     </div>`;
   }).join("");
 }
@@ -194,41 +228,93 @@ export function renderToday(root, ctx) {
   }
 
   /* ---------- Add food: usual foods for this meal, or a photo through Claude ---------- */
+  const retotal = fd => { for (const k of ["kcal", "protein", "carbs", "fat", "fiber", "sodium"]) { const vals = (fd.items || []).filter(i => i[k] != null); if (vals.length) fd[k] = Math.round(sumOf(vals, k)); else delete fd[k]; } };
   function openAddFood(meal) {
     const fd0 = state.day.food || {};
     if (fd0.source && fd0.source !== "claude" && fd0.kcal != null) return ctx.toast("This day's food came from Lose It. Clear the numbers under Add or fix manually to log by meal.", true);
     const all = [...(store.foods || [])].sort((a, b) => (b.count || 0) - (a.count || 0) || a.name.localeCompare(b.name));
     const usual = all.filter(f => (f.meals || []).includes(meal));
-    const base = usual.length ? usual : all;
     const chat = store.program?.foodChat || store.program?.claudeSession;
-    const s = sheet(`<div class="sheet-h"><h2>Add to ${esc(meal)}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
-      ${chat ? `<a class="btn primary wide photo" href="${chat.startsWith("session_") ? `claude://code/${esc(chat)}` : `claude://claude.ai/chat/${esc(chat)}`}">${icon.camera || ""}<span>Photo or describe it to Claude</span></a>` : ""}
-      <label class="field"><div class="inwrap"><input type="search" placeholder="Search your foods" data-fsearch autocomplete="off"></div></label>
-      <div class="fr-h" data-fh>${usual.length ? `Your usual for ${esc(meal.toLowerCase())}` : "Your foods"}</div>
-      <div class="foodlist" data-flist>${foodRows(base.slice(0, 14))}</div>
-      <p class="fine">Tap a food to add one usual serving. Tap again for another.</p>
-      <button class="btn soft wide" data-close>Done</button>`, `Add to ${meal}`);
-    const list = s.el.querySelector("[data-flist]"), head = s.el.querySelector("[data-fh]");
-    s.el.querySelector("[data-fsearch]").addEventListener("input", e => {
-      const q = e.target.value.trim().toLowerCase();
-      if (!q) { head.textContent = usual.length ? `Your usual for ${meal.toLowerCase()}` : "Your foods"; list.innerHTML = foodRows(base.slice(0, 14)); return; }
-      const hits = all.filter(f => f.name.toLowerCase().includes(q) || (f.loseit_names || []).some(n => n.toLowerCase().includes(q)));
-      head.textContent = hits.length ? "Matches" : "Nothing in your library. Send Claude a photo instead.";
-      list.innerHTML = foodRows(hits.slice(0, 30));
-    });
-    let added = 0;
+    const chatHref = !chat ? "" : chat.startsWith("session_") ? `claude://code/${esc(chat)}` : `claude://claude.ai/chat/${esc(chat)}`;
+    const s = sheet(`<div class="af-head">
+        <div class="sheet-h"><h2>Add to ${esc(meal)}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
+        <div class="af-search"><div class="inwrap"><input type="search" placeholder="Search your foods" data-fsearch autocomplete="off" autocorrect="off" enterkeyhint="search"></div>
+          ${chatHref ? `<a class="btn soft af-cam" href="${chatHref}" aria-label="Photo or describe it to Claude">${icon.camera}<span>Claude</span></a>` : ""}</div>
+      </div>
+      <div class="af-tray" data-tray></div>
+      <div class="fr-h" data-fh></div>
+      <div class="foodlist" data-flist></div>
+      <div class="af-foot"><button class="btn primary wide" data-close data-done>Done</button></div>`, `Add to ${meal}`);
+    s.el.querySelector(".sheet").classList.add("addfood");
+    const list = s.el.querySelector("[data-flist]"), head = s.el.querySelector("[data-fh]"), tray = s.el.querySelector("[data-tray]"), done = s.el.querySelector("[data-done]");
+    const pending = [];                                   // added in this sheet; written to the day when it closes
+    let showAll = false, query = "";
+    const counts = () => pending.reduce((c, it) => (c[it.food_id] = (c[it.food_id] || 0) + 1, c), {});
+    const draw = () => {
+      const q = query.trim().toLowerCase();
+      let rows, label;
+      if (q) { rows = all.filter(f => f.name.toLowerCase().includes(q) || (f.loseit_names || []).some(n => n.toLowerCase().includes(q))).slice(0, 40); label = rows.length ? "Matches" : "Not in your foods yet. Send it to Claude instead."; }
+      else if (usual.length && !showAll) { rows = usual.slice(0, 12); label = `Your usual for ${meal.toLowerCase()}`; }
+      else { rows = all; label = "All your foods"; }
+      head.textContent = label;
+      list.innerHTML = foodRows(rows, counts()) + (!q && usual.length && !showAll ? `<button type="button" class="fr-more" data-all>Show all ${all.length} foods</button>` : "");
+    };
+    const drawTray = () => {
+      tray.innerHTML = pending.length ? pending.map((it, i) => `<button type="button" class="chip-x" data-undo="${i}" aria-label="Remove ${esc(it.name)}"><span>${esc(it.name)}</span><b class="num">${fmt(it.kcal)}</b>${icon.x}</button>`).join("")
+        : `<span class="hint">Tap + for your usual amount, or a name to change it.</span>`;
+      if (pending.length) tray.scrollLeft = tray.scrollWidth;
+      done.textContent = pending.length ? `Add ${pending.length} to ${meal} · ${fmt(sumOf(pending, "kcal"))} kcal` : "Done";
+    };
+    const add = (food, amount) => {
+      pending.push(libraryItem(food, meal, amount));
+      const row = list.querySelector(`[data-row="${CSS.escape(food.id)}"]`);
+      if (row) { row.classList.add("has", "pop"); row.querySelector(".fr-add").innerHTML = `<b class="num">${counts()[food.id]}</b>`; row.classList.remove("open"); setTimeout(() => row.classList.remove("pop"), 320); }
+      drawTray();
+    };
+    s.el.querySelector("[data-fsearch]").addEventListener("input", e => { query = e.target.value; draw(); });
     list.addEventListener("click", e => {
-      const row = e.target.closest("[data-food]"); if (!row) return;
-      const food = all.find(f => f.id === row.dataset.food); if (!food) return;
-      const fd = (state.day.food ??= {});
-      fd.source = "claude";
-      fd.items = [...(fd.items || []), libraryItem(food, meal)];
-      for (const k of ["kcal", "protein", "carbs", "fat", "fiber", "sodium"]) { const vals = fd.items.filter(i => i[k] != null); if (vals.length) fd[k] = Math.round(sumOf(vals, k)); }
-      added++; row.classList.add("did"); setTimeout(() => row.classList.remove("did"), 700);
-      ctx.changed(); refresh();
-      ctx.toast(`Added ${food.name}`);
+      if (e.target.closest("[data-all]")) { showAll = true; return draw(); }
+      const quick = e.target.closest("[data-quick]"), open = e.target.closest("[data-open]"), addBtn = e.target.closest("[data-addamt]");
+      if (quick) return add(all.find(f => f.id === quick.dataset.quick));
+      if (open) {
+        const row = open.closest(".foodrow"), food = all.find(f => f.id === open.dataset.open), was = row.classList.contains("open");
+        list.querySelectorAll(".foodrow.open").forEach(r => r.classList.remove("open"));
+        if (was) return;
+        const box = row.querySelector(".fr-edit-in");
+        box.innerHTML = `${amountHtml(food)}<button type="button" class="btn primary small" data-addamt>Add</button>`;
+        row._read = wireAmount(box, food, a => { box.querySelector("[data-addamt]").disabled = !a; });
+        box.querySelector("[data-amount]").addEventListener("keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); box.querySelector("[data-addamt]").click(); } });
+        row.classList.add("open");
+        return;
+      }
+      if (addBtn) { const row = addBtn.closest(".foodrow"), a = row._read?.(); if (a) add(all.find(f => f.id === row.dataset.row), a); }
     });
-    s.el.addEventListener("click", e => { if ((e.target === s.el || e.target.closest("[data-close]")) && added) setTimeout(() => ctx.save(), 260); });
+    tray.addEventListener("click", e => { const b = e.target.closest("[data-undo]"); if (!b) return; pending.splice(Number(b.dataset.undo), 1); draw(); drawTray(); });
+    const commit = () => {
+      if (!pending.length) return;
+      const fd = (state.day.food ??= {});
+      fd.source = "claude"; fd.items = [...(fd.items || []), ...pending.splice(0)];
+      retotal(fd); ctx.changed(); refresh();
+      setTimeout(() => ctx.save(), 280);
+    };
+    s.el.addEventListener("click", e => { if (e.target === s.el || e.target.closest("[data-close]")) commit(); });
+    draw(); drawTray();
+  }
+
+  /* ---------- Change the amount of a food already in a meal ---------- */
+  function openEditItem(idx) {
+    const fd = state.day.food || {}, it = (fd.items || [])[idx], food = (store.foods || []).find(f => f.id === it?.food_id);
+    if (!it || !food) return;
+    const u = unitOf(food), current = it.amount ?? (food.kcal ? Math.round((it.kcal / food.kcal) * u.base * (u.unit === "g" ? 1 : 2)) / (u.unit === "g" ? 1 : 2) : u.def);
+    const s = sheet(`<div class="sheet-h"><h2>${esc(food.name)}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
+      <p class="sub">${esc([it.meal, it.time].filter(Boolean).join(" · "))}</p>
+      <div class="edit-amt">${amountHtml(food, current)}</div>
+      <button class="btn primary wide" data-update>Update</button>
+      <button class="btn ghost wide danger" data-remove>Remove</button>`, "Edit amount");
+    const read = wireAmount(s.el.querySelector(".edit-amt"), food, a => { s.el.querySelector("[data-update]").disabled = !a; });
+    const finish = () => { retotal(fd); ctx.changed(); refresh(); s.close(); setTimeout(() => ctx.save(), 280); };
+    s.el.querySelector("[data-update]").addEventListener("click", () => { const a = read(); if (!a) return; fd.items[idx] = { ...libraryItem(food, it.meal, a), time: it.time }; finish(); });
+    s.el.querySelector("[data-remove]").addEventListener("click", () => { fd.items.splice(idx, 1); finish(); });
   }
 
   /* ---------- live bits ---------- */
@@ -244,6 +330,7 @@ export function renderToday(root, ctx) {
       q("[data-left]").textContent = fmt(Math.abs(left));
       q("[data-leftlbl]").textContent = left >= 0 ? "kcal left" : "kcal over";
       ring.style.strokeDasharray = `${C * Math.min(1, eaten / g.kcal)} ${C}`;
+      ring.style.opacity = eaten ? 1 : 0;
       ring.classList.toggle("over", left < -150);
       q(".ring").classList.toggle("is-over", left < -150);
     } else {
@@ -329,6 +416,7 @@ export function renderToday(root, ctx) {
     }
     if (b.dataset.dt) { state.day.day_type = b.dataset.dt; ctx.changed(); root.querySelectorAll("[data-dt]").forEach(x => { const on = x.dataset.dt === b.dataset.dt; x.classList.toggle("on", on); x.setAttribute("aria-checked", on); }); refresh(); return; }
     if (b.dataset.add != null) return openAddFood(b.dataset.add);
+    if (b.dataset.edit != null) return openEditItem(Number(b.dataset.edit));
     if (b.dataset.del != null) {
       const fd = state.day.food, items = (fd.items || []).filter((_, i) => i !== Number(b.dataset.del));
       fd.items = items;

@@ -89,10 +89,13 @@ export function renderDashboard(C0, data){
   const sessions = new Set(lifts.map(l=>l.date)).size;
   // maintenance: avg intake minus trend change converted to kcal
   const maint = avg("kcal") - (dTrend / Math.max(1, daysBetween(first.d,last.d))) * 3500;
+  const lastW = [...daily].reverse().find(r => r.weight != null);
+  // Date labels under a daily chart: first, last and Mondays, skipping any that would collide.
+  const dateTicks = (xf, gap = 40) => { const n = daily.length, placed = [0, n-1], cx = j => xf(j) + (j === 0 ? 14 : j === n-1 ? -14 : 0); daily.forEach((r,i) => { if (i > 0 && i < n-1 && r.d.getDay() === 1 && placed.every(j => Math.abs(cx(i) - cx(j)) >= gap)) placed.push(i); }); return new Set(placed); };
   const hero = html(`<section class="card hero">
     <div class="label">Trend weight</div>
     <div class="big num">${fmt(last.trend,1)}<small>lb</small></div>
-    <div class="delta">${dTrend<=0?"▼":"▲"} <b class="num">${fmt(Math.abs(dTrend),1)} lb</b> since ${md(first.d)} · last weigh-in <b class="num">${fmt(last.weight,1)}</b></div>
+    <div class="delta">${dTrend<=0?"▼":"▲"} <b class="num">${fmt(Math.abs(dTrend),1)} lb</b> since ${md(first.d)} · last weigh-in <b class="num">${lastW ? fmt(lastW.weight,1) : "–"}</b>${lastW && lastW !== last ? ` (${md(lastW.d)})` : ""}</div>
     <div class="tiles">
       <div class="tile"><div class="k">Avg calories</div><div class="v num">${fmt(avg("kcal"))}</div><div class="n">per day, ${n} days</div></div>
       <div class="tile"><div class="k">Avg protein</div><div class="v num">${fmt(avg("protein"))}<small>g</small></div><div class="n num">on target ${proteinHits}/${n} days</div></div>
@@ -178,7 +181,7 @@ export function renderDashboard(C0, data){
       const tx=el("text",{x:P.l-6,y:y(t)+3.5,"text-anchor":"end","font-size":10,fill:css("--muted"),class:"num"},svg); tx.textContent=t;
     });
     // x labels: first, mid weeks, last
-    daily.forEach((r,i)=>{ if(i===0||i===n-1||(r.d.getDay()===1&&n-1-i>3&&i>3)){ const tx=el("text",{x:x(i),y:H-6,"text-anchor":i===0?"start":i===n-1?"end":"middle","font-size":10,fill:css("--muted")},svg); tx.textContent=md(r.d);} });
+    const tk1 = dateTicks(x); daily.forEach((r,i)=>{ if(tk1.has(i)){ const tx=el("text",{x:x(i),y:H-6,"text-anchor":i===0?"start":i===n-1?"end":"middle","font-size":10,fill:css("--muted")},svg); tx.textContent=md(r.d);} });
     // area wash under trend
     const tp = daily.map((r,i)=>`${x(i)},${y(r.trend)}`).join(" L");
     el("path",{d:`M${x(0)},${y(lo)} L${tp} L${x(n-1)},${y(lo)} Z`,fill:css("--s1-wash")},svg);
@@ -251,9 +254,10 @@ export function renderDashboard(C0, data){
       if(r.kcal!=null) w.days.push(r);
     });
     weeks.forEach(w => { w.avg = w.days.reduce((s,r)=>s+r.kcal,0)/w.days.length; w.n = w.days.length; w.social = w.days.filter(r=>/social/.test(r.day_type)).length; });
+    const curTarget = [...daily].reverse().find(r => r.target)?.target || 2000;
     const card = html(`<section class="card"><h2>Weekly average intake</h2>
-      <p class="sub">Against the target and estimated maintenance.</p>
-      <div class="legend"><span><i class="line" style="background:var(--ink-2)"></i>Target 2,050</span><span><i class="line" style="background:repeating-linear-gradient(90deg,var(--ink-2) 0 3px,transparent 3px 6px)"></i>Est. maintenance ~${fmt(Math.round(maint/50)*50)}</span></div>
+      <p class="sub">Against the target and estimated maintenance. Faded bars are partial weeks.</p>
+      <div class="legend"><span><i class="line" style="background:var(--ink-2)"></i>Target ${fmt(curTarget)}</span><span><i class="dot" style="background:var(--s2)"></i>Social day</span><span><i class="line" style="background:repeating-linear-gradient(90deg,var(--ink-2) 0 3px,transparent 3px 6px)"></i>Est. maintenance ~${fmt(Math.round(maint/50)*50)}</span></div>
       <div class="chart" id="wk"></div></section>`);
     C.appendChild(card);
     const W=360,H=170,P={l:40,r:12,t:16,b:30};
@@ -265,15 +269,15 @@ export function renderDashboard(C0, data){
     [0,1000,2000,3000].forEach(t=>{ el("line",{x1:P.l,x2:W-P.r,y1:y(t),y2:y(t),stroke:css("--grid")},svg); const tx=el("text",{x:P.l-6,y:y(t)+3.5,"text-anchor":"end","font-size":10,fill:css("--muted"),class:"num"},svg); tx.textContent=fmt(t); });
     weeks.forEach((w,i)=>{
       const h = y(0)-y(w.avg), x0 = x(i)-bw/2, r = 5;
-      el("path",{d:`M${x0},${y(0)} V${y(w.avg)+r} Q${x0},${y(w.avg)} ${x0+r},${y(w.avg)} H${x0+bw-r} Q${x0+bw},${y(w.avg)} ${x0+bw},${y(w.avg)+r} V${y(0)} Z`,fill:css("--s1")},svg);
-      const v = el("text",{x:x(i),y:y(w.avg)+16,"text-anchor":"middle","font-size":11,"font-weight":700,fill:"#ffffff",class:"num"},svg); v.textContent = fmt(w.avg);
-      const l = el("text",{x:x(i),y:H-14,"text-anchor":"middle","font-size":10,fill:css("--muted")},svg); l.textContent = md(w.start);
-      const l2 = el("text",{x:x(i),y:H-3,"text-anchor":"middle","font-size":9.5,fill:css("--muted")},svg); l2.textContent = `${w.n}d${w.social?` · ${w.social} social`:""}`;
+      el("path",{d:`M${x0},${y(0)} V${y(w.avg)+r} Q${x0},${y(w.avg)} ${x0+r},${y(w.avg)} H${x0+bw-r} Q${x0+bw},${y(w.avg)} ${x0+bw},${y(w.avg)+r} V${y(0)} Z`,fill:css("--s1"),opacity:w.n<7?0.5:1},svg);
+      const v = el("text",{x:x(i),y:y(w.avg)-5,"text-anchor":"middle","font-size":10,"font-weight":650,fill:css("--ink"),class:"num"},svg); v.textContent = (w.avg/1000).toFixed(1)+"k";
+      const l = el("text",{x:x(i),y:H-14,"text-anchor":"middle","font-size":10,fill:css("--muted")},svg); l.textContent = `${w.start.getMonth()+1}/${w.start.getDate()}`;
+      for (let k=0;k<w.social;k++) el("circle",{cx:x(i)+(k-(w.social-1)/2)*7,cy:H-5,r:2.4,fill:css("--s2")},svg);
     });
     const ref = (v, label, dash) => {
       el("line",{x1:P.l,x2:W-P.r,y1:y(v),y2:y(v),stroke:css("--ink-2"),"stroke-width":1.25,"stroke-dasharray":dash||""},svg);
     };
-    ref(2050,"Target 2,050");
+    ref(curTarget,`Target ${fmt(curTarget)}`);
     ref(Math.round(maint/50)*50, `Maint. ~${fmt(Math.round(maint/50)*50)}`, "3 3");
     card.querySelector("#wk").appendChild(svg);
   }
@@ -297,7 +301,7 @@ export function renderDashboard(C0, data){
     });
     el("line",{x1:P.l,x2:W-P.r,y1:y(target),y2:y(target),stroke:css("--ink-2"),"stroke-width":1.25,"stroke-dasharray":"3 3"},svg);
     el("line",{x1:P.l,x2:W-P.r,y1:y(0),y2:y(0),stroke:css("--axis")},svg);
-    daily.forEach((r,i)=>{ if(i===0||i===n-1||(r.d.getDay()===1&&n-1-i>3&&i>3)){ const t=el("text",{x:x(i),y:H-4,"text-anchor":"middle","font-size":9.5,fill:css("--muted")},svg); t.textContent=md(r.d);} });
+    const tk2 = dateTicks(x); daily.forEach((r,i)=>{ if(tk2.has(i)){ const t=el("text",{x:x(i),y:H-4,"text-anchor":i===0?"start":i===n-1?"end":"middle","font-size":9.5,fill:css("--muted")},svg); t.textContent=md(r.d);} });
     const box = card.querySelector(".chart"); box.appendChild(svg);
     scrub(box, svg, daily.map((_,i)=>x(i)), (i,k)=>{ const r=daily[i]; showTip(box, x(i)*k, y(r[key]||0)*k, `<b>${wd(r.d)} ${md(r.d)}</b><br><b class="num">${fmt(r[key])}</b> ${unit}`); }, ()=>{});
   }

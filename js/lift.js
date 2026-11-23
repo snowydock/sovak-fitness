@@ -1,6 +1,6 @@
-import { store, liftHistory, todayISO, getDay } from "./store.js?v=202611222057";
-import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202611222057";
-import { parseNotes } from "./parsers.js?v=202611222057";
+import { store, liftHistory, todayISO, getDay } from "./store.js?v=202611230234";
+import { h, esc, fmt, numOrNull, md, icon, dateNav } from "./ui.js?v=202611230234";
+import { parseNotes } from "./parsers.js?v=202611230234";
 
 function sessionKey(name = "") {
   if (/upper\s*a/i.test(name)) return "Upper A";
@@ -108,7 +108,7 @@ export function renderLift(root, ctx) {
   });
 
   const add = h(`<section class="card form addex">
-    <div class="row gap"><div class="inwrap grow"><input data-newname placeholder="Add an exercise (e.g. Bulgarian Split Squat)"></div><button class="btn soft" data-add>${icon.plus}<span>Add</span></button></div>
+    <div class="row gap"><div class="inwrap grow"><input data-newname placeholder="Add an exercise"></div><button class="btn soft" data-add>${icon.plus}<span>Add</span></button></div>
     <div class="row between"><button class="link danger" data-clearlift>Clear this lift</button><span class="fine">Blank sets aren't saved.</span></div>
   </section>`);
   root.appendChild(add);
