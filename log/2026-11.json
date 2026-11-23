@@ -1166,43 +1166,17 @@
             "fiber": 0,
             "sodium": 40,
             "basis": "estimate"
-          },
-          {
-            "name": "Chobani plain nonfat Greek yogurt",
-            "qty": "200 Grams",
-            "basis": "library",
-            "food_id": "chobani-plain-nf",
-            "meal": "Snacks",
-            "time": "8:56 PM",
-            "kcal": 120,
-            "protein": 20,
-            "carbs": 7.2,
-            "fat": 0,
-            "fiber": 0
-          },
-          {
-            "name": "Chobani Greek yogurt, strawberry",
-            "qty": "1 container (5.3 oz)",
-            "basis": "library",
-            "food_id": "chobani-strawberry",
-            "meal": "Snacks",
-            "time": "8:56 PM",
-            "kcal": 110,
-            "protein": 11,
-            "carbs": 13,
-            "fat": 1.5,
-            "fiber": 0
           }
         ],
-        "kcal": 2463,
-        "protein": 156,
-        "carbs": 271,
-        "fat": 80,
+        "kcal": 2233,
+        "protein": 125,
+        "carbs": 251,
+        "fat": 79,
         "fiber": 17,
         "sodium": 3100
       },
       "steps": 11045,
-      "updated": "2026-11-23T02:03:20.957Z"
+      "updated": "2026-11-23T02:03:25.869Z"
     }
   }
 }
