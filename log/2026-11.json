@@ -1191,6 +1191,51 @@
       "steps": 11045,
       "day_type": "light_social",
       "updated": "2026-11-23T02:35:50.020Z"
+    },
+    "2026-11-23": {
+      "food": {
+        "source": "claude",
+        "items": [
+          {
+            "name": "Overnight oats with blueberries (no flax)",
+            "qty": "1 serving",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "tsk-overnight-oats",
+            "meal": "Breakfast",
+            "time": "9:10 PM",
+            "kcal": 413,
+            "protein": 34,
+            "carbs": 55,
+            "fat": 7,
+            "fiber": 7,
+            "sodium": 170
+          },
+          {
+            "name": "Crystal Farms mozzarella string cheese",
+            "qty": "1 stick",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "string-cheese",
+            "meal": "Breakfast",
+            "time": "9:11 PM",
+            "kcal": 70,
+            "protein": 6,
+            "carbs": 1,
+            "fat": 4.5,
+            "fiber": 0
+          }
+        ],
+        "kcal": 483,
+        "protein": 40,
+        "carbs": 56,
+        "fat": 12,
+        "fiber": 7,
+        "sodium": 170
+      },
+      "updated": "2026-11-24T02:11:05.210Z"
     }
   }
 }
