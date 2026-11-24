@@ -1240,16 +1240,31 @@
             "protein": 48,
             "carbs": 37,
             "fat": 14
+          },
+          {
+            "name": "Marie Callender's chicken pot pie (single)",
+            "qty": "1 pie (10 oz)",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "pot-pie",
+            "meal": "Snacks",
+            "time": "9:11 PM",
+            "kcal": 610,
+            "protein": 17,
+            "carbs": 61,
+            "fat": 32,
+            "fiber": 4
           }
         ],
-        "kcal": 963,
-        "protein": 88,
-        "carbs": 93,
-        "fat": 26,
-        "fiber": 7,
+        "kcal": 1573,
+        "protein": 105,
+        "carbs": 154,
+        "fat": 58,
+        "fiber": 11,
         "sodium": 170
       },
-      "updated": "2026-11-24T02:11:17.312Z"
+      "updated": "2026-11-24T02:11:27.735Z"
     }
   }
 }
