@@ -1418,16 +1418,31 @@
             "carbs": 3,
             "fat": 2.5,
             "fiber": 1
+          },
+          {
+            "name": "Crystal Farms mozzarella string cheese",
+            "qty": "1 stick",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "string-cheese",
+            "meal": "Snacks",
+            "time": "10:54 AM",
+            "kcal": 70,
+            "protein": 6,
+            "carbs": 1,
+            "fat": 4.5,
+            "fiber": 0
           }
         ],
-        "kcal": 1467,
-        "protein": 158,
-        "carbs": 126,
-        "fat": 34,
+        "kcal": 1537,
+        "protein": 164,
+        "carbs": 127,
+        "fat": 39,
         "fiber": 9,
         "sodium": 170
       },
-      "updated": "2026-11-24T15:54:03.346Z"
+      "updated": "2026-11-24T15:54:11.786Z"
     }
   }
 }
