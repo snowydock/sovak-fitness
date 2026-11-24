@@ -1559,7 +1559,17 @@
           }
         ]
       },
-      "updated": "2026-11-24T19:20:09.074Z"
+      "run": {
+        "mi": 2,
+        "planned": 2,
+        "sec": 1471,
+        "effort": "steady",
+        "pain": "niggle",
+        "where": "that “spleen” feeling in my side",
+        "hr": 159,
+        "note": "watch has to be a little off. “mile” out took more distance. coming back was shorter. it might all wash out but it was disorienting "
+      },
+      "updated": "2026-11-24T21:22:47.777Z"
     }
   }
 }
