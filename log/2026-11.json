@@ -1433,16 +1433,31 @@
             "carbs": 1,
             "fat": 4.5,
             "fiber": 0
+          },
+          {
+            "name": "Chobani Greek yogurt, strawberry",
+            "qty": "1 container (5.3 oz)",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "chobani-strawberry",
+            "meal": "Snacks",
+            "time": "10:54 AM",
+            "kcal": 110,
+            "protein": 11,
+            "carbs": 13,
+            "fat": 1.5,
+            "fiber": 0
           }
         ],
-        "kcal": 1537,
-        "protein": 164,
-        "carbs": 127,
-        "fat": 39,
+        "kcal": 1647,
+        "protein": 175,
+        "carbs": 140,
+        "fat": 40,
         "fiber": 9,
         "sodium": 170
       },
-      "updated": "2026-11-24T15:54:11.786Z"
+      "updated": "2026-11-24T15:54:28.550Z"
     }
   }
 }
