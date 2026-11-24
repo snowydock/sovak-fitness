@@ -1518,6 +1518,13 @@
             ]
           },
           {
+            "name": "Hammer Curl",
+            "weight": 35,
+            "sets": [
+              5
+            ]
+          },
+          {
             "name": "Barbell Curl",
             "weight": 45,
             "sets": [
@@ -1526,7 +1533,7 @@
           }
         ]
       },
-      "updated": "2026-11-24T19:07:49.734Z"
+      "updated": "2026-11-24T19:08:00.531Z"
     }
   }
 }
