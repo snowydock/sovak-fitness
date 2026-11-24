@@ -1269,16 +1269,61 @@
             "protein": 37,
             "carbs": 38,
             "fat": 11
+          },
+          {
+            "name": "Chobani Greek yogurt, strawberry",
+            "qty": "1 container (5.3 oz)",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "chobani-strawberry",
+            "meal": "Snacks",
+            "time": "9:11 PM",
+            "kcal": 110,
+            "protein": 11,
+            "carbs": 13,
+            "fat": 1.5,
+            "fiber": 0
+          },
+          {
+            "name": "Chobani plain nonfat Greek yogurt",
+            "qty": "200 g",
+            "amount": 200,
+            "unit": "g",
+            "basis": "library",
+            "food_id": "chobani-plain-nf",
+            "meal": "Snacks",
+            "time": "9:11 PM",
+            "kcal": 120,
+            "protein": 20,
+            "carbs": 7.2,
+            "fat": 0,
+            "fiber": 0
+          },
+          {
+            "name": "Graham cracker",
+            "qty": "1 sheet",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "graham",
+            "meal": "Snacks",
+            "time": "9:11 PM",
+            "kcal": 59,
+            "protein": 1,
+            "carbs": 11,
+            "fat": 1.4,
+            "fiber": 0.4
           }
         ],
-        "kcal": 1978,
-        "protein": 142,
-        "carbs": 192,
-        "fat": 69,
+        "kcal": 2267,
+        "protein": 174,
+        "carbs": 223,
+        "fat": 71,
         "fiber": 11,
         "sodium": 170
       },
-      "updated": "2026-11-24T02:11:42.236Z"
+      "updated": "2026-11-24T02:11:55.238Z"
     }
   }
 }
