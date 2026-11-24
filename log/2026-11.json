@@ -1470,7 +1470,19 @@
         "fiber": 9,
         "sodium": 170
       },
-      "updated": "2026-11-24T17:19:06.303Z"
+      "lift": {
+        "session": "Upper B",
+        "exercises": [
+          {
+            "name": "Machine Bench Press",
+            "weight": 180,
+            "sets": [
+              10
+            ]
+          }
+        ]
+      },
+      "updated": "2026-11-24T18:11:00.327Z"
     }
   }
 }
