@@ -1477,12 +1477,21 @@
             "name": "Machine Bench Press",
             "weight": 180,
             "sets": [
+              10,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "Seated Cable Row",
+            "weight": 115,
+            "sets": [
               10
             ]
           }
         ]
       },
-      "updated": "2026-11-24T18:11:00.327Z"
+      "updated": "2026-11-24T18:23:02.712Z"
     }
   }
 }
