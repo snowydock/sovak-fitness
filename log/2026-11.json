@@ -1461,12 +1461,26 @@
             "fiber": 0,
             "sodium": 0,
             "basis": "estimate"
+          },
+          {
+            "name": "Butter chicken",
+            "qty": "1 serving",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "tsk-butter-chicken",
+            "meal": "Dinner",
+            "time": "2:20 PM",
+            "kcal": 405,
+            "protein": 37,
+            "carbs": 38,
+            "fat": 11
           }
         ],
-        "kcal": 1727,
-        "protein": 175,
-        "carbs": 140,
-        "fat": 49,
+        "kcal": 2132,
+        "protein": 212,
+        "carbs": 178,
+        "fat": 60,
         "fiber": 9,
         "sodium": 170
       },
@@ -1545,7 +1559,7 @@
           }
         ]
       },
-      "updated": "2026-11-24T19:19:47.724Z"
+      "updated": "2026-11-24T19:20:09.074Z"
     }
   }
 }
