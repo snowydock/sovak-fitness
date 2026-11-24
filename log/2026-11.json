@@ -1527,6 +1527,14 @@
             ]
           },
           {
+            "name": "Concentration Curl",
+            "weight": 25,
+            "sets": [
+              5,
+              5
+            ]
+          },
+          {
             "name": "Barbell Curl",
             "weight": 65,
             "sets": [
@@ -1537,7 +1545,7 @@
           }
         ]
       },
-      "updated": "2026-11-24T19:15:01.453Z"
+      "updated": "2026-11-24T19:19:47.724Z"
     }
   }
 }
