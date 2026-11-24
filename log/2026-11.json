@@ -1487,12 +1487,21 @@
             "weight": 115,
             "sets": [
               10,
+              10,
               10
+            ]
+          },
+          {
+            "name": "Straight-Arm Pulldown",
+            "weight": 100,
+            "sets": [
+              15,
+              15
             ]
           }
         ]
       },
-      "updated": "2026-11-24T18:27:09.167Z"
+      "updated": "2026-11-24T18:52:11.711Z"
     }
   }
 }
