@@ -1226,16 +1226,30 @@
             "carbs": 1,
             "fat": 4.5,
             "fiber": 0
+          },
+          {
+            "name": "Chicken parm pasta bake",
+            "qty": "1 serving",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "tsk-chicken-parm-pasta-bake",
+            "meal": "Lunch",
+            "time": "9:11 PM",
+            "kcal": 480,
+            "protein": 48,
+            "carbs": 37,
+            "fat": 14
           }
         ],
-        "kcal": 483,
-        "protein": 40,
-        "carbs": 56,
-        "fat": 12,
+        "kcal": 963,
+        "protein": 88,
+        "carbs": 93,
+        "fat": 26,
         "fiber": 7,
         "sodium": 170
       },
-      "updated": "2026-11-24T02:11:05.210Z"
+      "updated": "2026-11-24T02:11:17.312Z"
     }
   }
 }
