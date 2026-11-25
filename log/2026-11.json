@@ -1580,17 +1580,17 @@
         "items": [
           {
             "name": "Egg, large",
-            "qty": "2 × 1 egg",
-            "amount": 2,
+            "qty": "3 × 1 egg",
+            "amount": 3,
             "unit": "serving",
             "basis": "library",
             "food_id": "egg",
             "meal": "Breakfast",
             "time": "9:42 AM",
-            "kcal": 144,
-            "protein": 12.6,
-            "carbs": 0.8,
-            "fat": 9.6,
+            "kcal": 216,
+            "protein": 18.9,
+            "carbs": 1.2,
+            "fat": 14.4,
             "fiber": 0
           },
           {
@@ -1639,13 +1639,13 @@
             "fiber": 0
           }
         ],
-        "kcal": 438,
-        "protein": 38,
+        "kcal": 510,
+        "protein": 44,
         "carbs": 36,
-        "fat": 14,
+        "fat": 19,
         "fiber": 2
       },
-      "updated": "2026-11-25T14:42:45.388Z"
+      "updated": "2026-11-25T14:43:12.316Z"
     }
   }
 }
