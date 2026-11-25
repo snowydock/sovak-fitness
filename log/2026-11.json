@@ -1697,12 +1697,27 @@
             "carbs": 3,
             "fat": 2.5,
             "fiber": 1
+          },
+          {
+            "name": "Chobani Greek yogurt, strawberry",
+            "qty": "1 container (5.3 oz)",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "chobani-strawberry",
+            "meal": "Snacks",
+            "time": "3:57 PM",
+            "kcal": 110,
+            "protein": 11,
+            "carbs": 13,
+            "fat": 1.5,
+            "fiber": 0
           }
         ],
-        "kcal": 1953,
-        "protein": 149,
-        "carbs": 166,
-        "fat": 78,
+        "kcal": 2063,
+        "protein": 160,
+        "carbs": 179,
+        "fat": 80,
         "fiber": 14,
         "sodium": 2465
       },
@@ -1746,7 +1761,7 @@
         ]
       },
       "notes": "leg extensions felt VERY uncomfortable on my knees after running yesterday ",
-      "updated": "2026-11-25T20:57:11.073Z"
+      "updated": "2026-11-25T20:57:26.824Z"
     }
   }
 }
