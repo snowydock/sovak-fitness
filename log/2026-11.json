@@ -1661,6 +1661,13 @@
             ]
           },
           {
+            "name": "RDL",
+            "weight": 165,
+            "sets": [
+              10
+            ]
+          },
+          {
             "name": "Leg Curl",
             "weight": 130,
             "sets": [
@@ -1681,7 +1688,7 @@
         ]
       },
       "notes": "leg extensions felt VERY uncomfortable on my knees after running yesterday ",
-      "updated": "2026-11-25T16:14:42.613Z"
+      "updated": "2026-11-25T16:17:59.328Z"
     }
   }
 }
