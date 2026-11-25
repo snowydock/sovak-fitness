@@ -1622,15 +1622,30 @@
             "carbs": 33.6,
             "fat": 1.2,
             "fiber": 1.5
+          },
+          {
+            "name": "Shredded cheddar",
+            "qty": "10 g",
+            "amount": 10,
+            "unit": "g",
+            "basis": "library",
+            "food_id": "cheddar-shred",
+            "meal": "Breakfast",
+            "time": "9:42 AM",
+            "kcal": 40,
+            "protein": 2.3,
+            "carbs": 0.1,
+            "fat": 3.3,
+            "fiber": 0
           }
         ],
-        "kcal": 398,
-        "protein": 36,
-        "carbs": 35,
-        "fat": 11,
+        "kcal": 438,
+        "protein": 38,
+        "carbs": 36,
+        "fat": 14,
         "fiber": 2
       },
-      "updated": "2026-11-25T14:42:32.787Z"
+      "updated": "2026-11-25T14:42:45.388Z"
     }
   }
 }
