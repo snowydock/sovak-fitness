@@ -420,7 +420,7 @@
         "items": [
           {
             "name": "Chicken sausage minestrone",
-            "qty": "1\u00bd Servings",
+            "qty": "1½ Servings",
             "kcal": 450
           },
           {
@@ -681,7 +681,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "\u00bd Container",
+            "qty": "½ Container",
             "kcal": 155
           },
           {
@@ -752,7 +752,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "\u00bd Container",
+            "qty": "½ Container",
             "kcal": 155
           },
           {
@@ -1118,7 +1118,7 @@
           {
             "time": "3:39 PM",
             "meal": "Snacks",
-            "name": "Saut\u00e9ed green beans",
+            "name": "Sautéed green beans",
             "qty": "~1 cup",
             "kcal": 100,
             "protein": 3,
@@ -1347,7 +1347,7 @@
           },
           {
             "name": "Egg, large",
-            "qty": "2 \u00d7 1 egg",
+            "qty": "2 × 1 egg",
             "amount": 2,
             "unit": "serving",
             "basis": "library",
@@ -1566,13 +1566,71 @@
         "sec": 1471,
         "effort": "steady",
         "pain": "niggle",
-        "where": "that \u201cspleen\u201d feeling in my side",
+        "where": "that “spleen” feeling in my side",
         "hr": 159,
-        "note": "watch has to be a little off. \u201cmile\u201d out took more distance. coming back was shorter. it might all wash out but it was disorienting "
+        "note": "watch has to be a little off. “mile” out took more distance. coming back was shorter. it might all wash out but it was disorienting "
       },
       "updated": "2026-11-24T21:22:47.777Z",
       "steps": 12155,
       "weight": 176.8
+    },
+    "2026-11-25": {
+      "food": {
+        "source": "claude",
+        "items": [
+          {
+            "name": "Egg, large",
+            "qty": "2 × 1 egg",
+            "amount": 2,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "egg",
+            "meal": "Breakfast",
+            "time": "9:42 AM",
+            "kcal": 144,
+            "protein": 12.6,
+            "carbs": 0.8,
+            "fat": 9.6,
+            "fiber": 0
+          },
+          {
+            "name": "Liquid egg whites",
+            "qty": "150 g",
+            "amount": 150,
+            "unit": "g",
+            "basis": "library",
+            "food_id": "egg-whites",
+            "meal": "Breakfast",
+            "time": "9:42 AM",
+            "kcal": 81,
+            "protein": 16.5,
+            "carbs": 1,
+            "fat": 0,
+            "fiber": 0
+          },
+          {
+            "name": "Sourdough bread (generic)",
+            "qty": "60 g",
+            "amount": 60,
+            "unit": "g",
+            "basis": "library",
+            "food_id": "sourdough",
+            "meal": "Breakfast",
+            "time": "9:42 AM",
+            "kcal": 173,
+            "protein": 6.6,
+            "carbs": 33.6,
+            "fat": 1.2,
+            "fiber": 1.5
+          }
+        ],
+        "kcal": 398,
+        "protein": 36,
+        "carbs": 35,
+        "fat": 11,
+        "fiber": 2
+      },
+      "updated": "2026-11-25T14:42:32.787Z"
     }
   }
 }
