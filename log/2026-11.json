@@ -1655,6 +1655,8 @@
             "name": "Barbell Back Squat",
             "weight": 175,
             "sets": [
+              10,
+              10,
               10
             ]
           },
@@ -1679,7 +1681,7 @@
         ]
       },
       "notes": "leg extensions felt VERY uncomfortable on my knees after running yesterday ",
-      "updated": "2026-11-25T16:04:58.118Z"
+      "updated": "2026-11-25T16:14:42.613Z"
     }
   }
 }
