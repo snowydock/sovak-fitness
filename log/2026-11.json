@@ -1640,13 +1640,30 @@
             "carbs": 0.1,
             "fat": 3.3,
             "fiber": 0
+          },
+          {
+            "name": "Overnight oats with blueberries (no flax)",
+            "qty": "1 serving",
+            "amount": 1,
+            "unit": "serving",
+            "basis": "library",
+            "food_id": "tsk-overnight-oats",
+            "meal": "Lunch",
+            "time": "3:11 PM",
+            "kcal": 413,
+            "protein": 34,
+            "carbs": 55,
+            "fat": 7,
+            "fiber": 7,
+            "sodium": 170
           }
         ],
-        "kcal": 510,
-        "protein": 44,
-        "carbs": 36,
-        "fat": 19,
-        "fiber": 2
+        "kcal": 923,
+        "protein": 78,
+        "carbs": 91,
+        "fat": 26,
+        "fiber": 9,
+        "sodium": 170
       },
       "lift": {
         "session": "Lower",
@@ -1688,7 +1705,7 @@
         ]
       },
       "notes": "leg extensions felt VERY uncomfortable on my knees after running yesterday ",
-      "updated": "2026-11-25T16:17:59.328Z"
+      "updated": "2026-11-25T20:12:01.728Z"
     }
   }
 }
