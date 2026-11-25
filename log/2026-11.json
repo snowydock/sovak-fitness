@@ -1669,14 +1669,27 @@
             "fiber": 0,
             "sodium": 85,
             "basis": "official"
+          },
+          {
+            "time": "3:13 PM",
+            "meal": "Lunch",
+            "name": "Italian sub, Potbelly (Original)",
+            "qty": "1 Original",
+            "kcal": 770,
+            "protein": 35,
+            "carbs": 63,
+            "fat": 44,
+            "fiber": 4,
+            "sodium": 2210,
+            "basis": "official"
           }
         ],
-        "kcal": 1033,
-        "protein": 84,
-        "carbs": 100,
-        "fat": 32,
-        "fiber": 8,
-        "sodium": 255
+        "kcal": 1803,
+        "protein": 119,
+        "carbs": 163,
+        "fat": 76,
+        "fiber": 12,
+        "sodium": 2465
       },
       "lift": {
         "session": "Lower",
@@ -1718,7 +1731,7 @@
         ]
       },
       "notes": "leg extensions felt VERY uncomfortable on my knees after running yesterday ",
-      "updated": "2026-11-25T20:12:23Z"
+      "updated": "2026-11-25T20:13:11Z"
     }
   }
 }
