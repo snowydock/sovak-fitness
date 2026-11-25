@@ -52,7 +52,14 @@ export const token = {
   clear: () => ls.del("sf_token"),
 };
 
+/* ---------- offline ----------
+   In airplane mode any network request makes iOS throw its full-screen "Turn Off Airplane Mode"
+   alert. So nothing touches the network while the phone says it's offline. */
+export const offline = () => typeof navigator !== "undefined" && navigator.onLine === false;
+const offlineError = () => Object.assign(new Error("offline"), { code: "offline" });
+
 async function gh(path, opts = {}) {
+  if (offline()) throw offlineError();
   const t = token.get();
   const r = await fetch(API + path, {
     ...opts,
@@ -122,9 +129,11 @@ function monthsBetween(a, b) {
 }
 
 async function fetchText(path) {
-  const r = await fetch(path, { cache: "no-cache" });
-  if (!r.ok) return null;
-  return r.text();
+  try {
+    const r = await fetch(path, { cache: "no-cache" });
+    if (!r.ok) return null;
+    return await r.text();
+  } catch { return null; }   // offline with nothing cached yet
 }
 
 export async function loadAll() {
@@ -135,6 +144,7 @@ export async function loadAll() {
     fetchText("data/marathon.json"), fetchText("data/runs.csv"),
   ]);
   fetchText("data/foods.json").then(t => { try { store.foods = JSON.parse(t).foods || []; } catch { store.foods = []; } }).catch(() => { store.foods = []; });
+  if (!prog) throw new Error(offline() ? "offline, and the app isn't cached on this phone yet" : "data/program.json missing");
   store.program = JSON.parse(prog);
   try { store.marathon = mara ? JSON.parse(mara) : null; } catch { store.marathon = null; }
   store.csv = { daily: parseCSV(daily || ""), lifts: parseCSV(lifts || ""), body: parseCSV(body || ""), phases: parseCSV(phases || ""), runs: parseCSV(runs || "") };
@@ -149,16 +159,20 @@ export async function loadAll() {
 // Prefer the API (fresh) when a token exists; fall back to the Pages copy (may lag ~1 min after a save).
 export const hasMonth = ym => !!store.log[ym];
 export async function loadMonth(ym) {
-  if (token.get()) {
+  let loaded = false;
+  if (token.get() && !offline()) {
     try {
       const { text, sha } = await readFile(`log/${ym}.json`);
       store.log[ym] = text ? JSON.parse(text) : { version: 1, days: {} };
       store.shas[ym] = sha;
-      return;
+      loaded = true;
     } catch (e) { console.warn("API read failed, using Pages copy", e); }
   }
-  const t = await fetchText(`log/${ym}.json`);
-  store.log[ym] = t ? JSON.parse(t) : { version: 1, days: {} };
+  if (!loaded) {
+    const t = await fetchText(`log/${ym}.json`).catch(() => null);
+    store.log[ym] = t ? JSON.parse(t) : (store.log[ym] || { version: 1, days: {} });
+  }
+  applyOutbox(ym);
 }
 
 export const getDay = date => store.log[monthOf(date)]?.days?.[date] || null;
@@ -173,9 +187,61 @@ export function isEmptyDay(d) {
     (!d.day_type || d.day_type === "normal") && d.monthly?.bf == null && d.monthly?.waist == null;
 }
 
-// Save one day: read the month fresh, replace that day, write back. Retries once on a sha race.
+/* ---------- outbox: saves made while offline ----------
+   { "YYYY-MM-DD": { day, images: [base64...] } }, kept in localStorage until they reach GitHub. */
+const outbox = {
+  all() { try { return JSON.parse(ls.get("sf_outbox")) || {}; } catch { return {}; } },
+  put(all) {
+    if (!Object.keys(all).length) { ls.del("sf_outbox"); return; }
+    localStorage.setItem("sf_outbox", JSON.stringify(all));   // throws if storage is full, so the caller keeps the draft
+  },
+};
+export const outboxCount = () => Object.keys(outbox.all()).length;
+
+function setLocalDay(date, day) {
+  const ym = monthOf(date);
+  const doc = (store.log[ym] ||= { version: 1, days: {} });
+  doc.days ||= {};
+  if (isEmptyDay(day)) delete doc.days[date]; else doc.days[date] = day;
+}
+function applyOutbox(ym) {
+  for (const [date, e] of Object.entries(outbox.all())) if (monthOf(date) === ym) setLocalDay(date, e.day);
+}
+
+// Save one day. Offline: keep it on the phone and sync later. Online: write it to GitHub.
 export async function saveDay(date, day, images = []) {
   if (!token.get()) throw Object.assign(new Error("no token"), { code: "no_token" });
+  if (offline()) {
+    const all = outbox.all();
+    all[date] = { day, images: [...(all[date]?.images || []), ...images] };
+    outbox.put(all);
+    setLocalDay(date, day);
+    emit();
+    return getDay(date);
+  }
+  return pushDay(date, day, images);
+}
+
+// Send queued offline saves to GitHub. Returns how many went through.
+let flushing = null;
+export function flushOutbox() {
+  if (flushing) return flushing;
+  flushing = (async () => {
+    let sent = 0;
+    if (offline() || !token.get()) return sent;
+    for (const [date, e] of Object.entries(outbox.all())) {
+      try { await pushDay(date, e.day, e.images || []); }
+      catch (err) { console.warn("sync failed for", date, err); break; }
+      const all = outbox.all(); delete all[date]; outbox.put(all);
+      sent++;
+    }
+    return sent;
+  })().finally(() => { flushing = null; });
+  return flushing;
+}
+
+// Read the month fresh, replace that day, write back. Retries once on a sha race.
+async function pushDay(date, day, images = []) {
   const ym = monthOf(date);
   // 1) upload any new screenshots first, so the day row can point at them
   const paths = [];
@@ -206,6 +272,7 @@ export async function saveDay(date, day, images = []) {
 // Patch many days at once (one commit per month file). patches: { "YYYY-MM-DD": day => newDay }
 export async function saveMany(patches, message) {
   if (!token.get()) throw Object.assign(new Error("no token"), { code: "no_token" });
+  if (offline()) throw offlineError();
   const byMonth = {};
   for (const [date, fn] of Object.entries(patches)) (byMonth[monthOf(date)] ||= {})[date] = fn;
   for (const [ym, fns] of Object.entries(byMonth)) {
@@ -231,6 +298,7 @@ export const isClosedDate = date => store.csv.daily.some(r => r.date === date);
 export const foodSlug = name => name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48) || "food";
 export async function saveFood(food) {
   if (!token.get()) throw Object.assign(new Error("no token"), { code: "no_token" });
+  if (offline()) throw offlineError();
   const attempt = async () => {
     const { text, sha } = await readFile("data/foods.json");
     const doc = text ? JSON.parse(text) : { foods: [] };

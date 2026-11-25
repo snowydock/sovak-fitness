@@ -1,10 +1,10 @@
-import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn } from "./store.js?v=202611251451";
-import { $, h, esc, icon } from "./ui.js?v=202611251451";
-import { renderDashboard } from "./dashboard.js?v=202611251451";
-import { renderToday } from "./today.js?v=202611251451";
-import { renderLift } from "./lift.js?v=202611251451";
-import { renderRun } from "./run.js?v=202611251451";
-import { VERSION } from "./version.js?v=202611251451";
+import { store, loadAll, getDay, saveDay, saveMany, drafts, token, testToken, todayISO, merged, prefs, hasMonth, loadMonth, monthOf, plannedOn, offline, flushOutbox, outboxCount } from "./store.js?v=202611251534";
+import { $, h, esc, icon } from "./ui.js?v=202611251534";
+import { renderDashboard } from "./dashboard.js?v=202611251534";
+import { renderToday } from "./today.js?v=202611251534";
+import { renderLift } from "./lift.js?v=202611251534";
+import { renderRun } from "./run.js?v=202611251534";
+import { VERSION } from "./version.js?v=202611251534";
 
 const TABS = ["today", "lift", "run", "trends"];
 const state = { tab: "today", date: todayISO(), saved: null, day: {}, pending: [], restored: false, csvIdx: null };
@@ -161,6 +161,7 @@ function refreshSaveBar() {
   msg.className = "sb-msg";
   if (!token.get()) { msg.textContent = dirty ? "Kept on this phone. Connect GitHub to save." : "Connect GitHub to save entries."; msg.classList.add("warn"); }
   else if (dirty) { msg.textContent = state.pending.length ? `Unsaved · ${state.pending.length} screenshot${state.pending.length > 1 ? "s" : ""}` : "Unsaved changes"; msg.classList.add("warn"); }
+  else if (outboxCount()) { msg.textContent = "Saved on this phone · syncs when you're back online"; }
   else if (lastSaved && lastSaved.date === state.date) msg.textContent = `Saved ${lastSaved.at}`;
   else msg.textContent = state.saved && Object.keys(state.saved).length ? "Up to date" : "Nothing logged yet";
 }
@@ -169,16 +170,17 @@ saveBar.querySelector(".sb-save").addEventListener("click", async () => {
   saving = true; refreshSaveBar();
   try {
     const out = cleanDay(state.day);
+    const queued = offline();
     const saved = await saveDay(state.date, out, state.pending.map(p => p.base64));
     state.saved = clone(saved); state.day = clone(saved); state.pending = []; state.restored = false;
     drafts.clear(state.date);
     lastSaved = { date: state.date, at: new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }) };
-    toast("Saved to GitHub");
+    toast(queued ? "Saved on this phone. It'll sync when you're back online." : "Saved to GitHub");
     saving = false; render();
   } catch (e) {
     saving = false; refreshSaveBar();
     console.error(e);
-    toast(e.code === "no_token" ? "Connect GitHub first" : e.status === 401 ? "Token rejected. Check settings." : e.status === 403 || e.status === 404 ? "Token can't write to the repo. Check its permissions." : "Save failed. Your entry is kept on this phone.", true);
+    toast(e.code === "no_token" ? "Connect GitHub first" : e.code === "offline" ? "You're offline. Try again once you're back online." : e.status === 401 ? "Token rejected. Check settings." : e.status === 403 || e.status === 404 ? "Token can't write to the repo. Check its permissions." : "Save failed. Your entry is kept on this phone.", true);
   }
 });
 
@@ -265,7 +267,7 @@ async function reloadData() { await loadAll(); indexCSV(); openDate(state.date);
    returning to the app, compare against version.json; if newer, reload under a fresh
    URL so the phone fetches the new files instead of its cached copies. */
 async function checkUpdate(force = false) {
-  if (!VERSION) return false;
+  if (!VERSION || offline()) return false;
   try {
     const r = await fetch(`version.json?t=${Date.now()}`, { cache: "no-store" });
     const { version } = await r.json();
@@ -288,11 +290,25 @@ document.addEventListener("visibilitychange", () => { if (document.hidden && isD
 // Coming back to the app: pick up anything logged elsewhere (e.g. food logged through Claude), unless there are unsaved edits.
 let lastSync = 0;
 document.addEventListener("visibilitychange", async () => {
-  if (document.hidden || !state.date || isDirty() || Date.now() - lastSync < 5000) return;
+  if (document.hidden || offline() || !state.date || isDirty() || Date.now() - lastSync < 5000) return;
   lastSync = Date.now();
-  try { await loadMonth(monthOf(state.date)); } catch { return; }
-  if (!isDirty() && !same(getDay(state.date), state.saved)) openDate(state.date);
+  await syncNow();
 });
+// Push anything saved offline, then pull the current month so the screen matches GitHub.
+async function syncNow() {
+  if (offline()) return;
+  let sent = 0;
+  try { sent = await flushOutbox(); } catch {}
+  try { await loadMonth(monthOf(state.date)); } catch { return; }
+  if (sent) toast(`Synced ${sent} offline save${sent > 1 ? "s" : ""} to GitHub`);
+  if (!isDirty() && !same(getDay(state.date), state.saved)) openDate(state.date);
+  else refreshSaveBar();
+}
+window.addEventListener("online", () => { if (!document.hidden && !isDirty()) syncNow(); else flushOutbox().then(refreshSaveBar); });
+window.addEventListener("offline", refreshSaveBar);
+
+// Cache the app on the phone so it opens (and logs) in airplane mode.
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(e => console.warn("sw", e));
 
 (async () => {
   try { await loadAll(); }
@@ -302,5 +318,6 @@ document.addEventListener("visibilitychange", async () => {
   state.tab = TABS.includes(startTab) ? startTab : "today";
   document.querySelectorAll(".tabbar button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab));
   openDate(todayISO());
+  if (outboxCount() && !offline()) syncNow();
   checkUpdate();
 })();
