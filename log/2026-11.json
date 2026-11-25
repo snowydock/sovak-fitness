@@ -420,7 +420,7 @@
         "items": [
           {
             "name": "Chicken sausage minestrone",
-            "qty": "1½ Servings",
+            "qty": "1\u00bd Servings",
             "kcal": 450
           },
           {
@@ -681,7 +681,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -752,7 +752,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -1118,7 +1118,7 @@
           {
             "time": "3:39 PM",
             "meal": "Snacks",
-            "name": "Sautéed green beans",
+            "name": "Saut\u00e9ed green beans",
             "qty": "~1 cup",
             "kcal": 100,
             "protein": 3,
@@ -1323,7 +1323,8 @@
         "fiber": 11,
         "sodium": 170
       },
-      "updated": "2026-11-24T02:11:55.238Z"
+      "updated": "2026-11-24T02:11:55.238Z",
+      "steps": 7833
     },
     "2026-11-24": {
       "food": {
@@ -1346,7 +1347,7 @@
           },
           {
             "name": "Egg, large",
-            "qty": "2 × 1 egg",
+            "qty": "2 \u00d7 1 egg",
             "amount": 2,
             "unit": "serving",
             "basis": "library",
@@ -1565,11 +1566,13 @@
         "sec": 1471,
         "effort": "steady",
         "pain": "niggle",
-        "where": "that “spleen” feeling in my side",
+        "where": "that \u201cspleen\u201d feeling in my side",
         "hr": 159,
-        "note": "watch has to be a little off. “mile” out took more distance. coming back was shorter. it might all wash out but it was disorienting "
+        "note": "watch has to be a little off. \u201cmile\u201d out took more distance. coming back was shorter. it might all wash out but it was disorienting "
       },
-      "updated": "2026-11-24T21:22:47.777Z"
+      "updated": "2026-11-24T21:22:47.777Z",
+      "steps": 12155,
+      "weight": 176.8
     }
   }
 }
