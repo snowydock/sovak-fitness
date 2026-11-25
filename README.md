@@ -27,6 +27,7 @@ index.html, js/     The app: Today (log), Lift, Run, Trends (dashboard)
 ### The app
 
 - **Today:** weigh-in, steps, food (import a LoseIt report PDF and every day in it fills in at once; or paste the LoseIt web page with Ctrl+A for macros, foods and steps; or attach screenshots and type calories + protein), day type (normal / light social / heavy social / travel), activity, notes, monthly Hume BF% and waist. Any date, past or future: mark a social day ahead of time.
+- **Keeping estimates:** on a day logged by meal, tap any item marked *est.* and choose **Save to my foods**. It's added to `data/foods.json` as one serving (category `saved`), shows up under Add food from then on, and Claude matches it before estimating.
 - **Lift:** suggests the next session (whichever was done longest ago), prefills each exercise with a target weight from the progression rule, shows last time's sets. Or paste an Apple Notes block.
 - **Run:** slots each planned marathon-plan run onto its date (week strip shows planned runs as hollow blue dots, logged runs solid). Log distance, time (pace auto-calculates), effort, aches/pain, optional HR and notes, or mark a planned run skipped. Shows countdown, this week planned vs done, coming-up runs and the full 28-week plan. Runs are saved as `run` on the day in `log/YYYY-MM.json` and included in Copy for Claude.
 - **Trends:** the dashboard. Merges closed-month CSVs with the open month's log.

@@ -1,9 +1,9 @@
-import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611230234";
-import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611230234";
-import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611230234";
-import { isClosedDate, token } from "./store.js?v=202611230234";
-import { buildSummary } from "./summary.js?v=202611230234";
-import { VERSION } from "./version.js?v=202611230234";
+import { store, targetsFor, compressImage, todayISO, addDays, getDay, RAW, parseISO, plannedOn } from "./store.js?v=202611251451";
+import { h, esc, fmt, numOrNull, md, icon, dateNav, sheet } from "./ui.js?v=202611251451";
+import { parseLoseIt, parseReportText, parseLoseItReport, pdfToLines } from "./parsers.js?v=202611251451";
+import { isClosedDate, token, saveFood } from "./store.js?v=202611251451";
+import { buildSummary } from "./summary.js?v=202611251451";
+import { VERSION } from "./version.js?v=202611251451";
 
 const DAY_TYPES = [["normal", "Normal"], ["light_social", "Light social"], ["heavy_social", "Heavy social"], ["travel", "Travel"]];
 const ACTS = ["Run", "Walk", "Cardio", "Sport"];
@@ -103,7 +103,7 @@ function mealsHtml(f, canAdd) {
     return `<div class="card meal-card">
       <div class="row between"><h3>${title}<b class="num">${fmt(sumOf(g, "kcal"))}</b></h3>${canAdd && m !== "Other" ? addFoodBtn(m) : ""}</div>
       ${line ? `<p class="mac-line">${line}</p>` : ""}
-      <ul class="foods">${g.map(i => `<li>${viaClaude && i.food_id ? `<button type="button" class="fitem" data-edit="${i.idx}">` : `<span class="fitem">`}<span>${esc(i.name)}${i.basis === "estimate" ? ' <em class="est" title="Estimated from a photo or description">est.</em>' : ""}<small>${esc([i.time, i.qty].filter(Boolean).join(" · "))}</small></span><b class="num">${fmt(i.kcal)}</b>${viaClaude && i.food_id ? "</button>" : "</span>"}${viaClaude ? `<button class="del" data-del="${i.idx}" aria-label="Remove ${esc(i.name)}">${icon.x}</button>` : ""}</li>`).join("")}</ul>
+      <ul class="foods">${g.map(i => { const tap = viaClaude && (i.food_id || i.basis === "estimate"); return `<li>${tap ? `<button type="button" class="fitem" data-edit="${i.idx}">` : `<span class="fitem">`}<span>${esc(i.name)}${i.basis === "estimate" ? ' <em class="est" title="Estimated from a photo or description. Tap to keep it in your foods.">est.</em>' : ""}<small>${esc([i.time, i.qty].filter(Boolean).join(" · "))}</small></span><b class="num">${fmt(i.kcal)}</b>${tap ? "</button>" : "</span>"}${viaClaude ? `<button class="del" data-del="${i.idx}" aria-label="Remove ${esc(i.name)}">${icon.x}</button>` : ""}</li>`; }).join("")}</ul>
     </div>`;
   }).join("");
 }
@@ -304,6 +304,7 @@ export function renderToday(root, ctx) {
   /* ---------- Change the amount of a food already in a meal ---------- */
   function openEditItem(idx) {
     const fd = state.day.food || {}, it = (fd.items || [])[idx], food = (store.foods || []).find(f => f.id === it?.food_id);
+    if (it && !food && it.basis === "estimate") return openKeepEstimate(idx);
     if (!it || !food) return;
     const u = unitOf(food), current = it.amount ?? (food.kcal ? Math.round((it.kcal / food.kcal) * u.base * (u.unit === "g" ? 1 : 2)) / (u.unit === "g" ? 1 : 2) : u.def);
     const s = sheet(`<div class="sheet-h"><h2>${esc(food.name)}</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
@@ -315,6 +316,42 @@ export function renderToday(root, ctx) {
     const finish = () => { retotal(fd); ctx.changed(); refresh(); s.close(); setTimeout(() => ctx.save(), 280); };
     s.el.querySelector("[data-update]").addEventListener("click", () => { const a = read(); if (!a) return; fd.items[idx] = { ...libraryItem(food, it.meal, a), time: it.time }; finish(); });
     s.el.querySelector("[data-remove]").addEventListener("click", () => { fd.items.splice(idx, 1); finish(); });
+  }
+
+  /* ---------- Keep an estimate: save it to data/foods.json so it becomes a repeat pick ---------- */
+  function openKeepEstimate(idx) {
+    const fd = state.day.food || {}, it = (fd.items || [])[idx];
+    if (!it) return;
+    const NUTS = [["kcal", "kcal"], ["protein", "g P"], ["carbs", "g C"], ["fat", "g F"], ["fiber", "g fiber"], ["sodium", "mg Na"]];
+    const line = NUTS.filter(([k]) => it[k] != null).map(([k, u]) => `${fmt(it[k])} ${u}`).join(" · ");
+    const s = sheet(`<div class="sheet-h"><h2>Keep in your foods</h2><button class="iconbtn" data-close aria-label="Close">${icon.x}</button></div>
+      <p class="sub">${esc([it.meal, it.time].filter(Boolean).join(" · "))}${it.meal || it.time ? "<br>" : ""}<span class="num">${line}</span></p>
+      <label class="field"><span>Name</span><div class="inwrap"><input data-fname value="${esc(it.name)}" autocomplete="off"></div></label>
+      <label class="field"><span>One serving is</span><div class="inwrap"><input data-fserv value="${esc(it.qty || "1 serving")}" autocomplete="off"></div></label>
+      <p class="sub">These numbers become one serving. After saving it shows up under Add food${it.meal ? ` for ${esc(it.meal.toLowerCase())}` : ""}, and Claude matches it before estimating.</p>
+      <button class="btn primary wide" data-keep>Save to my foods</button>
+      <button class="btn ghost wide danger" data-remove>Remove from this day</button>`, "Keep in your foods");
+    const btn = s.el.querySelector("[data-keep]");
+    s.el.querySelector("[data-remove]").addEventListener("click", () => { fd.items.splice(idx, 1); retotal(fd); ctx.changed(); refresh(); s.close(); setTimeout(() => ctx.save(), 280); });
+    btn.addEventListener("click", async () => {
+      if (!token.get()) return ctx.toast("Add your GitHub token under the gear first.", true);
+      const name = s.el.querySelector("[data-fname]").value.trim(), serving = s.el.querySelector("[data-fserv]").value.trim() || "1 serving";
+      if (!name) return;
+      const food = { name, category: "saved", serving, kcal: Math.round(it.kcal || 0) };
+      for (const k of ["protein", "carbs", "fat", "fiber", "sodium"]) if (it[k] != null) food[k] = it[k];
+      Object.assign(food, { source: "estimate", count: 1, meals: it.meal ? [it.meal] : [], usual: { qty: serving, mult: 1 }, added: date });
+      btn.disabled = true; btn.textContent = "Saving…";
+      try {
+        const saved = await saveFood(food);
+        fd.items[idx] = { ...it, name: saved.name, qty: saved.serving, amount: 1, unit: "serving", basis: "library", food_id: saved.id };
+        retotal(fd); ctx.changed(); refresh(); s.close();
+        ctx.toast(`Saved ${saved.name} to your foods`);
+        setTimeout(() => ctx.save(), 280);
+      } catch (e) {
+        console.error(e); btn.disabled = false; btn.textContent = "Save to my foods";
+        ctx.toast(e.code === "no_token" ? "Add your GitHub token under the gear first." : `Couldn't save (${e.status || "network"}). Try again.`, true);
+      }
+    });
   }
 
   /* ---------- live bits ---------- */

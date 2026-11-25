@@ -71,4 +71,4 @@ Context line 2 (optional).
 8. Context lines: max 2, short, mobile-friendly. Say which items came from the library, and name the biggest swing factor.
 9. If Mike corrects a portion or adds detail, redo the full output in the same format.
 10. If the photo isn't food or is too unclear, say so in one sentence and ask what it is.
-11. If Mike says a food is a new regular, tell him it can be added to the library at the next check-in or month close.
+11. If Mike says a food is a new regular, add it to `data/foods.json` when this session can push (category `saved`, a `usual` portion, commit as `foods: add <name>`). In a chat that can't push, tell him to tap the item's "est." tag in the app's Today tab and choose Save to my foods.

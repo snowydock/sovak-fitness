@@ -21,7 +21,7 @@ For every food message:
 4. Log it: `git pull`, run `python3 tools/log_food.py '<json>'`, commit as `log: <date> <meal or "food"> via Claude`, push to `main`. If the push is rejected, pull and retry once. If the tool refuses because the day already has food from a Lose It import, tell Mike and don't mix sources.
 5. Reply short: the calest block, then one line like `Logged → 11/22 Lunch · day 1,483 kcal · 76 g P · 517 kcal and 104 g protein left`. The budget is `targets.kcal`, or `dayBudgets[day_type]` when the day is marked social; protein target is `targets.protein`.
 
-Keep it to that. No scorecard, no ledger, no coaching, no plan changes: those belong in the monthly coaching chat. If Mike corrects something ("that was dinner", "half of that", "remove the last one"), fix the log entry and confirm in one line. If he asks a coaching question, answer briefly and suggest the coaching chat for anything longer.
+Keep it to that. No scorecard, no ledger, no coaching, no plan changes: those belong in the monthly coaching chat. If Mike asks to keep a food as a repeat pick, add it to `data/foods.json` per rule 11 of the skill and confirm in one line. If Mike corrects something ("that was dinner", "half of that", "remove the last one"), fix the log entry and confirm in one line. If he asks a coaching question, answer briefly and suggest the coaching chat for anything longer.
 
 ## Coaching sessions
 

@@ -1,6 +1,6 @@
 {
- "about": "Mike's food library for /calest and logging. Match here before estimating. kcal = what Mike logs (LoseIt wins over TSK cards); 'per' means scale by that unit. Categories: packaged, staple, tsk, chain, condiment, booze.",
- "updated": "2026-11-22",
+ "about": "Mike's food library for /calest and logging. Match here before estimating. kcal = what Mike logs (LoseIt wins over TSK cards); 'per' means scale by that unit. Categories: packaged, staple, tsk, chain, condiment, booze, saved (estimates kept from the log via the app or Claude).",
+ "updated": "2026-11-25",
  "foods": [
   {
    "id": "nurri",
@@ -2054,6 +2054,29 @@
    "usual": {
     "qty": "1 slice",
     "mult": 1
+   }
+  },
+  {
+   "id": "olive-oil",
+   "name": "Olive oil",
+   "category": "staple",
+   "serving": "1 tsp",
+   "kcal": 40,
+   "protein": 0,
+   "carbs": 0,
+   "fat": 4.5,
+   "fiber": 0,
+   "sodium": 0,
+   "source": "usda",
+   "count": 1,
+   "meals": [
+    "Breakfast",
+    "Lunch",
+    "Dinner"
+   ],
+   "usual": {
+    "qty": "2 tsp",
+    "mult": 2
    }
   }
  ]

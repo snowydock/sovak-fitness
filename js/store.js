@@ -227,6 +227,26 @@ export async function saveMany(patches, message) {
 }
 export const isClosedDate = date => store.csv.daily.some(r => r.date === date);
 
+// Add one food to data/foods.json (the library that Add food and Claude's estimates read). Returns the saved food.
+export const foodSlug = name => name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48) || "food";
+export async function saveFood(food) {
+  if (!token.get()) throw Object.assign(new Error("no token"), { code: "no_token" });
+  const attempt = async () => {
+    const { text, sha } = await readFile("data/foods.json");
+    const doc = text ? JSON.parse(text) : { foods: [] };
+    doc.foods ||= [];
+    let id = food.id || foodSlug(food.name), n = 2;
+    const base = id; while (doc.foods.some(f => f.id === id)) id = `${base}-${n++}`;
+    const { id: _drop, ...rest } = food, saved = { id, ...rest };
+    doc.foods.push(saved); doc.updated = todayISO();
+    await writeFile("data/foods.json", b64encode(JSON.stringify(doc, null, 1) + (text?.endsWith("\n") ? "\n" : "")), sha, `foods: add ${saved.name}`);
+    store.foods = doc.foods;
+    return saved;
+  };
+  try { return await attempt(); }
+  catch (e) { if (e.status === 409 || e.status === 422) return await attempt(); throw e; }
+}
+
 /* ---------- drafts (per-device convenience) ---------- */
 export const drafts = {
   get: date => { try { return JSON.parse(ls.get("sf_draft_" + date)); } catch { return null; } },
