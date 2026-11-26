@@ -1765,6 +1765,8 @@
             "name": "RDL",
             "weight": 165,
             "sets": [
+              10,
+              10,
               10
             ]
           },
@@ -1789,7 +1791,7 @@
         ]
       },
       "notes": "leg extensions felt VERY uncomfortable on my knees after running yesterday ",
-      "updated": "2026-11-26T01:56:34.351Z"
+      "updated": "2026-11-26T01:56:45.656Z"
     }
   }
 }
