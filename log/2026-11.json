@@ -420,7 +420,7 @@
         "items": [
           {
             "name": "Chicken sausage minestrone",
-            "qty": "1½ Servings",
+            "qty": "1\u00bd Servings",
             "kcal": 450
           },
           {
@@ -681,7 +681,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -752,7 +752,7 @@
           },
           {
             "name": "Cooked Sticky White Rice, Bibigo",
-            "qty": "½ Container",
+            "qty": "\u00bd Container",
             "kcal": 155
           },
           {
@@ -1118,7 +1118,7 @@
           {
             "time": "3:39 PM",
             "meal": "Snacks",
-            "name": "Sautéed green beans",
+            "name": "Saut\u00e9ed green beans",
             "qty": "~1 cup",
             "kcal": 100,
             "protein": 3,
@@ -1347,7 +1347,7 @@
           },
           {
             "name": "Egg, large",
-            "qty": "2 × 1 egg",
+            "qty": "2 \u00d7 1 egg",
             "amount": 2,
             "unit": "serving",
             "basis": "library",
@@ -1454,7 +1454,7 @@
             "time": "11:38 AM",
             "meal": "Breakfast",
             "name": "Olive oil",
-            "qty": "2 × 1 tsp",
+            "qty": "2 \u00d7 1 tsp",
             "kcal": 80,
             "protein": 0,
             "carbs": 0,
@@ -1569,9 +1569,9 @@
         "sec": 1471,
         "effort": "steady",
         "pain": "niggle",
-        "where": "that “spleen” feeling in my side",
+        "where": "that \u201cspleen\u201d feeling in my side",
         "hr": 159,
-        "note": "watch has to be a little off. “mile” out took more distance. coming back was shorter. it might all wash out but it was disorienting "
+        "note": "watch has to be a little off. \u201cmile\u201d out took more distance. coming back was shorter. it might all wash out but it was disorienting "
       },
       "updated": "2026-11-24T21:22:47.777Z",
       "steps": 12155,
@@ -1583,7 +1583,7 @@
         "items": [
           {
             "name": "Egg, large",
-            "qty": "3 × 1 egg",
+            "qty": "3 \u00d7 1 egg",
             "amount": 3,
             "unit": "serving",
             "basis": "library",
@@ -1712,14 +1712,27 @@
             "carbs": 13,
             "fat": 1.5,
             "fiber": 0
+          },
+          {
+            "time": "8:55 PM",
+            "meal": "Snacks",
+            "name": "BBQ pork bao bun, Laoban (Costco)",
+            "qty": "1 bun",
+            "kcal": 150,
+            "protein": 6,
+            "carbs": 24,
+            "fat": 3,
+            "fiber": 1,
+            "sodium": 300,
+            "basis": "official"
           }
         ],
-        "kcal": 2063,
-        "protein": 160,
-        "carbs": 179,
-        "fat": 80,
+        "kcal": 2213,
+        "protein": 166,
+        "carbs": 203,
+        "fat": 83,
         "fiber": 14,
-        "sodium": 2465
+        "sodium": 2765
       },
       "lift": {
         "session": "Lower",
@@ -1761,7 +1774,7 @@
         ]
       },
       "notes": "leg extensions felt VERY uncomfortable on my knees after running yesterday ",
-      "updated": "2026-11-25T20:57:26.824Z"
+      "updated": "2026-11-26T01:55:31Z"
     }
   }
 }
